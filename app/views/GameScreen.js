@@ -12,8 +12,9 @@ export default class GameScreen extends Component {
 
     this.state = {
       items : [],
-      redOuPas : "red",
-      preneur : ""
+      preneur : "",
+      roi: "",
+      type : ""
     };
   }
 
@@ -26,64 +27,38 @@ export default class GameScreen extends Component {
 
 
   buttonTurn(){
-    // if(this.buttonTurnView === 0){
-    //   this.buttonTurnView = 1
       this._panel.show()
-    // }
-    // else if(this.buttonTurnView === 1){
-    //   this.buttonTurnView = 0 
-    // }
   }
 
   buttonPartenaire0(){
-    if(this.state.redOuPas = 'red'){
-      this.state.redOuPas = '#979797'
-      this.preneur = "Joueur 1"
-    }else{
-      this.state.redOuPas = 'red'
-      this.preneur = ""
+    if(this.state.preneur != "Joueur 1"){
+      this.state.preneur = "Joueur 1"
+      this.setState(this.state);
     }
-    this.setState(this.state);
   }
   buttonPartenaire1(){
-    if(this.state.redOuPas = 'red'){
-      this.state.redOuPas = '#979797'
-      this.preneur = "Joueur 2"
-    }else{
-      this.state.redOuPas = 'red'
-      this.preneur = ""
+    if(this.state.preneur != "Joueur 2"){
+      this.state.preneur = "Joueur 2"
+      this.setState(this.state);
     }
-    this.setState(this.state);
   }
   buttonPartenaire2(){
-    if(this.state.redOuPas = 'red'){
-      this.state.redOuPas = '#979797'
-      this.preneur = "Joueur 3"
-    }else{
-      this.state.redOuPas = 'red'
-      this.preneur = ""
+    if(this.state.preneur != "Joueur 3"){
+      this.state.preneur = "Joueur 3"
+      this.setState(this.state);
     }
-    this.setState(this.state);
   }
   buttonPartenaire3(){
-    if(this.state.redOuPas = 'red'){
-      this.state.redOuPas = '#979797'
-      this.preneur = "Joueur 4"
-    }else{
-      this.state.redOuPas = 'red'
-      this.preneur = ""
+    if(this.state.preneur != "Joueur 4"){
+      this.state.preneur = "Joueur 4"
+      this.setState(this.state);
     }
-    this.setState(this.state);
   }
   buttonPartenaire4(){
-    if(this.state.redOuPas = 'red'){
-      this.state.redOuPas = '#979797'
-      this.preneur = "Joueur 5"
-    }else{
-      this.state.redOuPas = 'red'
-      this.preneur = ""
+    if(this.state.preneur != "Joueur 5"){
+      this.state.preneur = "Joueur 5"
+      this.setState(this.state);
     }
-    this.setState(this.state);
   }
 
   buttonKingCoeur(){
@@ -136,25 +111,61 @@ export default class GameScreen extends Component {
 
     if(this.state.items.length>3){
     joueurFourAlert= <Button bordered light
-                      backgroundColor={this.state.redOuPas}
-                      style={{flex:1, margin:2}}
+    backgroundColor={ this.state.preneur == 'Joueur 4' ? "steelblue" : null }
+    style={{flex:1, margin:2}}
                       onPress={() => this.buttonPartenaire3()}>
                         <View style={{width:"100%", alignItems:"center"}}>
-                          <Text>{ this.state.items[3] }</Text>
+                        <Text style={{color:"white"}}> { this.state.items[3] }</Text>
                         </View>
                       </Button>
     } else {joueurFourAlert= <View></View>}
 
     if(this.state.items.length>4){
     joueurFiveAlert = <Button bordered light
-                       backgroundColor={this.state.redOuPas}
-                       style={{flex:1, margin:2}}
+    backgroundColor={ this.state.preneur == 'Joueur 5' ? "red" : null }
+    style={{flex:1, margin:2}}
                        onPress={() => this.buttonPartenaire4()}>
                         <View style={{width:"100%", alignItems:"center"}}>
-                          <Text>{ this.state.items[4] }</Text>
+                        <Text style={{color:"white"}}>{ this.state.items[4] }</Text>
                         </View> 
                       </Button>
     } else {joueurFiveAlert = <View></View>}
+
+    titleKingChoose = <Text>Quelle roi (si 5 joueur) ?</Text>
+    kingChoose = <View style={{flex: 1, flexDirection: 'row'}}>
+    <Button bordered light
+    style={{flex:1, margin:2}}
+    onPress={() => this.buttonKingCoeur()}>
+     <View style={{width:"100%", alignItems:"center"}}>
+     <Text style={{color:"white"}}> Coeur</Text>
+     </View>
+     </Button> 
+
+     <Button bordered light
+     style={{flex:1, margin:2}}
+     onPress={() => this.buttonKingTrefle()}>
+      <View style={{width:"100%", alignItems:"center"}}>
+      <Text style={{color:"white"}}> Trêfle</Text>
+     </View>
+     </Button>
+
+     <Button bordered light
+     style={{flex:1, margin:2}}
+     onPress={() => this.buttonKingCarreau()}>
+       <View style={{width:"100%", alignItems:"center"}}>
+       <Text style={{color:"white"}}> Carreau</Text>
+       </View>
+     </Button>
+
+     <Button bordered light
+     style={{flex:1, margin:2}}
+     onPress={() => this.buttonKingPique()}>
+       <View style={{width:"100%", alignItems:"center"}}>
+       <Text style={{color:"white"}}> Pique</Text>
+       </View>
+     </Button>
+
+    </View>
 
     return (
       <View style={{
@@ -206,33 +217,33 @@ export default class GameScreen extends Component {
         </View>
          <SlidingUpPanel ref={c => this._panel = c}>
            <View style={styles.container2}>
-               <Text>Qui ?</Text>
+               <Text style={{color:"white"}}>Qui ?</Text>
                <View style={{flex: 1, flexDirection: 'row'}}>
-               <Button
-               backgroundColor={this.state.redOuPas}
+               <Button bordered light
+               backgroundColor={ this.state.preneur == 'Joueur 1' ? "steelblue" : null }
                style={{flex:1, margin:2}}
                onPress={() => this.buttonPartenaire0()}>
                 <View style={{width:"100%", alignItems:"center"}}>
-                  <Text>{ this.state.items[0] }</Text>
+                  <Text style={{color:"white"}}>{ this.state.items[0] }</Text>
                 </View>
                 </Button> 
 
 
                 <Button bordered light
-                backgroundColor={this.state.redOuPas}
-                style={{flex:1, margin:2}}
+               backgroundColor={ this.state.preneur == 'Joueur 2' ? "steelblue" : null }
+               style={{flex:1, margin:2}}
                 onPress={() => this.buttonPartenaire1()}>
                  <View style={{width:"100%", alignItems:"center"}}>
-                  <Text>{ this.state.items[1] }</Text>
+                 <Text style={{color:"white"}}>{ this.state.items[1] }</Text>
                 </View>
                 </Button>
 
                 <Button bordered light
-                backgroundColor={this.state.redOuPas}
-                style={{flex:1, margin:2}}
+               backgroundColor={ this.state.preneur == 'Joueur 3' ? "steelblue" : null }
+               style={{flex:1, margin:2}}
                 onPress={() => this.buttonPartenaire2()}>
                   <View style={{width:"100%", alignItems:"center"}}>
-                    <Text>{ this.state.items[2] }</Text>
+                  <Text style={{color:"white"}}>{ this.state.items[2] }</Text>
                   </View>
                 </Button>
 
@@ -240,68 +251,38 @@ export default class GameScreen extends Component {
                 {joueurFiveAlert}
 
                </View>
-               <Text>Quelle roi (si 5 joueur) ?</Text>
-               <View style={{flex: 1, flexDirection: 'row'}}>
-               <Button bordered light
-               style={{flex:1, margin:2}}
-               onPress={() => this.buttonKingCoeur()}>
-                <View style={{width:"100%", alignItems:"center"}}>
-                  <Text>Coeur</Text>
-                </View>
-                </Button> 
+               
+               { this.state.items.length > 4  ? titleKingChoose : null }
+               { this.state.items.length > 4  ? kingChoose : null }
 
-                <Button bordered light
-                style={{flex:1, margin:2}}
-                onPress={() => this.buttonKingTrefle()}>
-                 <View style={{width:"100%", alignItems:"center"}}>
-                  <Text>Trêfle</Text>
-                </View>
-                </Button>
-
-                <Button bordered light
-                style={{flex:1, margin:2}}
-                onPress={() => this.buttonKingCarreau()}>
-                  <View style={{width:"100%", alignItems:"center"}}>
-                    <Text>Carreau</Text>
-                  </View>
-                </Button>
-
-                <Button bordered light
-                style={{flex:1, margin:2}}
-                onPress={() => this.buttonKingPique()}>
-                  <View style={{width:"100%", alignItems:"center"}}>
-                    <Text>Pique</Text>
-                  </View>
-                </Button>
-
-               </View>
+               
                <Text>Quelles types de prise ?</Text>
                <View style={{flex: 1, flexDirection: 'row'}}>
                <Button bordered light
                style={{flex:1, margin:2}}>
                 <View style={{width:"100%", alignItems:"center"}}>
-                  <Text>Petite</Text>
+                <Text style={{color:"white"}}> Petite</Text>
                 </View>
                 </Button> 
 
                 <Button bordered light
                 style={{flex:1, margin:2}}>
                  <View style={{width:"100%", alignItems:"center"}}>
-                  <Text>Garde</Text>
+                 <Text style={{color:"white"}}> Garde</Text>
                 </View>
                 </Button>
 
                 <Button bordered light
                 style={{flex:1, margin:2}}>
                   <View style={{width:"100%", alignItems:"center"}}>
-                    <Text>G-Sans</Text>
+                  <Text style={{color:"white"}}> G-Sans</Text>
                   </View>
                 </Button>
 
                 <Button bordered light
                 style={{flex:1, margin:2}}>
                   <View style={{width:"100%", alignItems:"center"}}>
-                    <Text>G-Contre</Text>
+                  <Text style={{color:"white"}}> G-Contre</Text>
                   </View>
                 </Button>
 
