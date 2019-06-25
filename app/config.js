@@ -3,7 +3,8 @@ import LoaderScreen from "./views/Login/LoaderScreen";
 import HomeScreen from "./views/HomeScreen";
 import RegisterScreen from "./views/Login/RegisterScreen";
 import LoginScreen from "./views/Login/LoginScreen";
-import GameScreen from "./views/GameScreen";
+import GameScreen from "./views/Game/GameScreen";
+import GrillChooseScreen from "./views/Game/GrillChooseScreen";
 import ChooseScreen from "./views/Login/ChooseScreen";
 import FriendScreen from "./views/Menu/FriendScreen";
 import HistoryScreen from "./views/Menu/HistoryScreen";
@@ -22,6 +23,7 @@ const switchNavigator = createSwitchNavigator({
     Register: RegisterScreen,
     Login: LoginScreen,
     Game: GameScreen,
+    GrillChoose: GrillChooseScreen,
     Friend: FriendScreen,
     History: HistoryScreen,
     Legal: LegalScreen,

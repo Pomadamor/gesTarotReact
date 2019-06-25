@@ -87,7 +87,7 @@ export default class ChooseScreen extends Component {
                     }
                   ],
                   {cancelable: true},
-                )}>Tu préferes tester l'application avant de t'inscrir, c'est possible en cliquant ici ;).
+                )}>Tu préferes tester l'application avant de t'inscrire, c'est possible en cliquant ici ;).
               </Text>
             </View>
           </View>
