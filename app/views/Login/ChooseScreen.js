@@ -1,8 +1,21 @@
 import React, {Component} from "react";
 import { ImageBackground, View, Text, Alert } from 'react-native';
+import {connect} from "react-redux"
 
 
-export default class ChooseScreen extends Component {
+class ChooseScreen extends Component {
+
+    btnChooseThreeJoueur(){
+      const action = { type: "MUTATION_NBJOUEURS", value: 3 }
+      this.props.dispatch(action)
+      this.props.navigation.navigate("Game")
+    }
+
+    btnChooseFourJoueur(){
+      const action = { type: "MUTATION_NBJOUEURS", value: 4 }
+      this.props.dispatch(action)
+      this.props.navigation.navigate("Game")
+    }
 
     render(){
         return(
@@ -79,11 +92,11 @@ export default class ChooseScreen extends Component {
                     },
                     {
                       text: '3',
-                      onPress: () => this.props.navigation.navigate("Game",{nbJoueur: 3})
+                      onPress: () => this.btnChooseThreeJoueur()
                     },
                     {
                       text: '4',
-                      onPress: () => this.props.navigation.navigate("Game",{nbJoueur: 4})
+                      onPress: () => this.btnChooseFourJoueur()
                     }
                   ],
                   {cancelable: true},
@@ -95,3 +108,9 @@ export default class ChooseScreen extends Component {
         )
     }
 }
+
+const mappropsToProps = (props) => {
+  return props
+}
+
+export default connect(mappropsToProps)(ChooseScreen);
