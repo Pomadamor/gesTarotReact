@@ -1,154 +1,126 @@
 import React, {Component} from "react";
 import { View, Text, Alert} from 'react-native';
 import { Button } from 'native-base';
+import { connect } from 'react-redux'
 
-export default class GrillChooseScreen extends Component {
-
-    constructor()
-    {
-      super();
-      
-      this.state = {
-        items : [],    
-      };
-
-    }
+class GrillChooseScreen extends Component {
 
     buttonValiderGrill(){
-        console.log(this.state.roi)
-        if(this.state.items.length>4 && this.state.roi == undefined ){
+        if(this.props.nbJoueur>4 && this.props.roi == "" ){
             alert('Veuillez faire un choix pour chacune des catégories');
         }
 
         else if(
-              this.state.preneur == undefined ||
-              this.state.type == undefined
+              this.props.preneur == ""||
+              this.props.type == ""
         ){
             alert('Veuillez faire un choix pour chacune des catégories');
         }
         else{
-            id = this.props.navigation.getParam("idTurn")
-            this.setState(this.state);
-            this.props.navigation.navigate("Game",{
-                combien:this.state.items.length,
-                nbJoueur:this.state.preneur,
-                avecQui:this.state.roi,
-                quoi:this.state.type,
-                quand:this.state.id
-            })
-            console.log("test")
+            this.props.navigation.navigate("Game")
         }
     }
 
     buttonPartenaire0(){
-        if(this.state.preneur != "Joueur 1"){
-            this.state.preneur = "Joueur 1"
-            this.setState(this.state);
+        if(this.props.preneur != "Joueur 1"){
+            const actionPreneur1 = { type: "MUTATION_PRENEUR", value: "Joueur 1"}
+            this.props.dispatch(actionPreneur1)
         }
     }
     buttonPartenaire1(){
-        if(this.state.preneur != "Joueur 2"){
-            this.state.preneur = "Joueur 2"
-            this.setState(this.state);
+        if(this.props.preneur != "Joueur 2"){
+            const actionPreneur2 = { type: "MUTATION_PRENEUR", value: "Joueur 2"}
+            this.props.dispatch(actionPreneur2)
         }
     }
     buttonPartenaire2(){
-        if(this.state.preneur != "Joueur 3"){
-            this.state.preneur = "Joueur 3"
-            this.setState(this.state);
+        if(this.props.preneur != "Joueur 3"){
+            const actionPreneur3 = { type: "MUTATION_PRENEUR", value: "Joueur 3"}
+            this.props.dispatch(actionPreneur3)
         }
     }
     buttonPartenaire3(){
-        if(this.state.preneur != "Joueur 4"){
-            this.state.preneur = "Joueur 4"
-            this.setState(this.state);
+        if(this.props.preneur != "Joueur 4"){
+            const actionPreneur4 = { type: "MUTATION_PRENEUR", value: "Joueur 4"}
+            this.props.dispatch(actionPreneur4)
         }
     }
     buttonPartenaire4(){
-        if(this.state.preneur != "Joueur 5"){
-            this.state.preneur = "Joueur 5"
-            this.setState(this.state);
+        if(this.props.preneur != "Joueur 5"){
+            const actionPreneur5 = { type: "MUTATION_PRENEUR", value: "Joueur 5"}
+            this.props.dispatch(actionPreneur5)
         }
     }
 
     buttonKingCoeur(){
-        if(this.state.roi != "Coeur"){
-            this.state.roi = "Coeur"
-            this.setState(this.state);
-            console.log(this.state.items.length)
+        if(this.props.roi != "Coeur"){
+            const actionCoeur = { type: "MUTATION_ROI", value: "Coeur"}
+            this.props.dispatch(actionCoeur)
         }
     }
     buttonKingTrefle(){
-        if(this.state.roi != "Trefle"){
-            this.state.roi = "Trefle"
-            this.setState(this.state);
+        if(this.props.roi != "Trefle"){
+            const actionTrefle = { type: "MUTATION_ROI", value: "Trefle"}
+            this.props.dispatch(actionTrefle)
         }
     }
     buttonKingPique(){
-        if(this.state.roi != "Pique"){
-            this.state.roi = "Pique"
-            this.setState(this.state);
+        if(this.props.roi != "Pique"){
+            const actionPique = { type: "MUTATION_ROI", value: "Pique"}
+            this.props.dispatch(actionPique)
         }
     }
     buttonKingCarreau(){
-        if(this.state.roi != "Carreau"){
-            this.state.roi = "Carreau"
-            this.setState(this.state);
+        if(this.props.roi != "Carreau"){
+            const actionCarreau = { type: "MUTATION_ROI", value: "Carreau"}
+            this.props.dispatch(actionCarreau)
         }
     }
 
     buttonTypeP(){
-        if(this.state.type != "Petite"){
-            this.state.type = "Petite"
-            this.setState(this.state);
+        if(this.props.type != "Petite"){
+            const actionPetite = { type: "MUTATION_TYPE", value: "Petite"}
+            this.props.dispatch(actionPetite)
         }
     }
     buttonTypeG(){
-        if(this.state.type != "Garde"){
-            this.state.type = "Garde"
-            this.setState(this.state);
+        if(this.props.type != "Garde"){
+            const actionGarde = { type: "MUTATION_TYPE", value: "Garde"}
+            this.props.dispatch(actionGarde)
         }
     }
     buttonTypeGS(){
-        if(this.state.type != "G-Sans"){
-            this.state.type = "G-Sans"
-            this.setState(this.state);
+        if(this.props.type != "G-Sans"){
+            const actionGS = { type: "MUTATION_TYPE", value: "G-Sans"}
+            this.props.dispatch(actionGS)
         }
     }
     buttonTypeGC(){
-        if(this.state.type != "G-Contre"){
-            this.state.type = "G-Contre"
-            this.setState(this.state);
+        if(this.props.type != "G-Contre"){
+            const actionGC = { type: "MUTATION_TYPE", value: "G-Contre"}
+            this.props.dispatch(actionGC)
         }
     }
 
     render(){
-        if ( this.state.items.length == 0 ) {
-            const nbJoueurChoose = this.props.navigation.getParam("nbJoueur");
-            const state = this.state;
-            for(let i = 1; i <= nbJoueurChoose; i++){
-              this.state.items.push(`Joueur ${i}`)
-            }
-        }
-
-        if(this.state.items.length>3){
+        if(this.props.nbJoueur>3){
             joueurFourAlert= <Button bordered light
-            backgroundColor={ this.state.preneur == 'Joueur 4' ? "steelblue" : null }
+            backgroundColor={ this.props.preneur == 'Joueur 4' ? "steelblue" : null }
             style={{flex:1, margin:2}}
                               onPress={() => this.buttonPartenaire3()}>
                                 <View style={{width:"100%", alignItems:"center"}}>
-                                <Text style={{color:"white"}}> { this.state.items[3] }</Text>
+                                <Text style={{color:"white"}}>Joueur 4</Text>
                                 </View>
                               </Button>
         } else {joueurFourAlert= <View></View>}
     
-        if(this.state.items.length>4){
+        if(this.props.nbJoueur>4){
         joueurFiveAlert = <Button bordered light
-        backgroundColor={ this.state.preneur == 'Joueur 5' ? "steelblue" : null }
+        backgroundColor={ this.props.preneur == 'Joueur 5' ? "steelblue" : null }
         style={{flex:1, margin:2}}
                             onPress={() => this.buttonPartenaire4()}>
                             <View style={{width:"100%", alignItems:"center"}}>
-                            <Text style={{color:"white"}}>{ this.state.items[4] }</Text>
+                            <Text style={{color:"white"}}>Joueur 5</Text>
                             </View> 
                             </Button>
         } else {joueurFiveAlert = <View></View>}
@@ -157,7 +129,7 @@ export default class GrillChooseScreen extends Component {
             titleKingChoose = <Text style={{color:"white", fontSize:20}}>Avec qui ?</Text>
             kingChoose = <View style={{flex: 1, flexDirection: 'row'}}>
             <Button bordered light
-            backgroundColor={ this.state.roi == 'Coeur' ? "steelblue" : null }
+            backgroundColor={ this.props.roi == 'Coeur' ? "steelblue" : null }
             style={{flex:1, margin:2}}
             onPress={() => this.buttonKingCoeur()}>
              <View style={{width:"100%", alignItems:"center"}}>
@@ -166,7 +138,7 @@ export default class GrillChooseScreen extends Component {
              </Button> 
         
              <Button bordered light
-              backgroundColor={ this.state.roi == 'Trefle' ? "steelblue" : null }
+              backgroundColor={ this.props.roi == 'Trefle' ? "steelblue" : null }
               style={{flex:1, margin:2}}
               onPress={() => this.buttonKingTrefle()}>
               <View style={{width:"100%", alignItems:"center"}}>
@@ -175,7 +147,7 @@ export default class GrillChooseScreen extends Component {
              </Button>
         
              <Button bordered light
-              backgroundColor={ this.state.roi == 'Carreau' ? "steelblue" : null }
+              backgroundColor={ this.props.roi == 'Carreau' ? "steelblue" : null }
               style={{flex:1, margin:2}}
               onPress={() => this.buttonKingCarreau()}>
                <View style={{width:"100%", alignItems:"center"}}>
@@ -185,7 +157,7 @@ export default class GrillChooseScreen extends Component {
         
              <Button bordered light
              style={{flex:1, margin:2}}
-             backgroundColor={ this.state.roi == 'Pique' ? "steelblue" : null }
+             backgroundColor={ this.props.roi == 'Pique' ? "steelblue" : null }
              onPress={() => this.buttonKingPique()}>
                <View style={{width:"100%", alignItems:"center"}}>
                <Text style={{color:"white"}}> Pique</Text>
@@ -200,32 +172,32 @@ export default class GrillChooseScreen extends Component {
                 <Text style={{color:"white", fontSize:20}}>Qui ?</Text>
                 <View style={{flex: 1, flexDirection: 'row'}}>
                     <Button bordered light
-                        backgroundColor={ this.state.preneur == 'Joueur 1' ? "steelblue" : null }
+                        backgroundColor={ this.props.preneur == 'Joueur 1' ? "steelblue" : null }
                         style={{flex:1, margin:2}}
                         onPress={() => this.buttonPartenaire0()}
                     >
                         <View style={{width:"100%", alignItems:"center"}}>
-                            <Text style={{color:"white"}}>{ this.state.items[0] }</Text>
+                            <Text style={{color:"white"}}>Joueur 1</Text>
                         </View>
                     </Button> 
 
 
                     <Button bordered light
-                        backgroundColor={ this.state.preneur == 'Joueur 2' ? "steelblue" : null }
+                        backgroundColor={ this.props.preneur == 'Joueur 2' ? "steelblue" : null }
                         style={{flex:1, margin:2}}
                         onPress={() => this.buttonPartenaire1()}>
                         <View style={{width:"100%", alignItems:"center"}}>
-                            <Text style={{color:"white"}}>{ this.state.items[1] }</Text>
+                            <Text style={{color:"white"}}>Joueur 2</Text>
                         </View>
                     </Button>
 
                     <Button bordered light
-                        backgroundColor={ this.state.preneur == 'Joueur 3' ? "steelblue" : null }
+                        backgroundColor={ this.props.preneur == 'Joueur 3' ? "steelblue" : null }
                         style={{flex:1, margin:2}}
                         onPress={() => this.buttonPartenaire2()}
                         >
                         <View style={{width:"100%", alignItems:"center"}}>
-                            <Text style={{color:"white"}}>{ this.state.items[2] }</Text>
+                            <Text style={{color:"white"}}>Joueur 3</Text>
                         </View>
                     </Button>
 
@@ -234,14 +206,14 @@ export default class GrillChooseScreen extends Component {
 
                 </View>
              
-                { this.state.items.length > 4  ? titleKingChoose : null }
-                { this.state.items.length > 4  ? kingChoose : null }
+                { this.props.nbJoueur > 4  ? titleKingChoose : null }
+                { this.props.nbJoueur > 4  ? kingChoose : null }
 
                 <Text style={{color:"white", fontSize:20}}>Quoi ?</Text>
 
                 <View style={{flex: 1, flexDirection: 'row'}}>
                     <Button bordered light
-                        backgroundColor={ this.state.type == 'Petite' ? "steelblue" : null }
+                        backgroundColor={ this.props.type == 'Petite' ? "steelblue" : null }
                         style={{flex:1, margin:2}}
                         onPress={() => this.buttonTypeP()}
                     >
@@ -251,7 +223,7 @@ export default class GrillChooseScreen extends Component {
                     </Button> 
 
                     <Button bordered light
-                        backgroundColor={ this.state.type == 'Garde' ? "steelblue" : null }
+                        backgroundColor={ this.props.type == 'Garde' ? "steelblue" : null }
                         style={{flex:1, margin:2}}
                         onPress={() => this.buttonTypeG()}
                     >
@@ -261,7 +233,7 @@ export default class GrillChooseScreen extends Component {
                     </Button>
 
                     <Button bordered light
-                        backgroundColor={ this.state.type == 'G-Sans' ? "steelblue" : null }
+                        backgroundColor={ this.props.type == 'G-Sans' ? "steelblue" : null }
                         style={{flex:1, margin:2}}
                         onPress={() => this.buttonTypeGS()}
                     >
@@ -271,7 +243,7 @@ export default class GrillChooseScreen extends Component {
                     </Button>
 
                     <Button bordered light
-                        backgroundColor={ this.state.type == 'G-Contre' ? "steelblue" : null }
+                        backgroundColor={ this.props.type == 'G-Contre' ? "steelblue" : null }
                         style={{flex:1, margin:2}}
                         onPress={() => this.buttonTypeGC()}
                     >
@@ -313,3 +285,9 @@ const styles = {
     justifyContent: 'center'
   }
 }
+
+const mappropsToProps = (props) => {
+    return props
+  }
+  
+  export default connect(mappropsToProps)(GrillChooseScreen);

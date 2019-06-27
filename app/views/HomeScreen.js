@@ -1,8 +1,28 @@
 import React, { Component } from 'react';
 import { Button, View, Text, Icon} from 'native-base';
 import { Image } from 'react-native';
+import { connect } from 'react-redux'
 
-export default class HomeScreen extends Component {
+class HomeScreen extends Component {
+
+  btnChooseThreeJoueur(){
+    const action = { type: "MUTATION_NBJOUEURS", value: 3 }
+    this.props.dispatch(action)
+    this.props.navigation.navigate("Game")
+  }
+
+  btnChooseFourJoueur(){
+    const action = { type: "MUTATION_NBJOUEURS", value: 4 }
+    this.props.dispatch(action)
+    this.props.navigation.navigate("Game")
+  }
+
+  btnChooseFiveJoueur(){
+    const action = { type: "MUTATION_NBJOUEURS", value: 5 }
+    this.props.dispatch(action)
+    this.props.navigation.navigate("Game")
+  }
+
   render() {
     return (
       <View style={{
@@ -20,7 +40,7 @@ export default class HomeScreen extends Component {
               backgroundColor:'rgba(52, 52, 52, 0.6)'}}
             >
               <Image
-              onPress={() => this.props.navigation.navigate("User")}Ò
+              onPress={() => this.props.navigation.navigate("User")}
               source={{uri: 'https://upload.wikimedia.org/wikipedia/commons/2/2e/Oudlers1910.PNG'}} style={{height: 90,width: 90, marginTop: 5, marginLeft: 5, marginRight: 5}}/>
               <View style={{
                 margin: 10,
@@ -76,7 +96,7 @@ export default class HomeScreen extends Component {
               style={{
                 padding:12,
               }}
-              onPress={() => this.props.navigation.navigate("Game",{nbJoueur:3})}>
+              onPress={() => this.btnChooseThreeJoueur()}>
                 <View>
                   <Image
                     style={{
@@ -102,7 +122,7 @@ export default class HomeScreen extends Component {
               style={{
                 padding:12,
               }}
-              onPress={() => this.props.navigation.navigate("Game",{nbJoueur:4})}>
+              onPress={() => this.btnChooseFourJoueur()}>
                 <View>
                   <Image
                     style={{
@@ -127,7 +147,7 @@ export default class HomeScreen extends Component {
               style={{
                 padding:12,
               }}
-              onPress={() => this.props.navigation.navigate("Game",{nbJoueur:5})}>
+              onPress={() => this.btnChooseFiveJoueur()}>
               <View>
                   <Image
                     style={{
@@ -181,3 +201,9 @@ export default class HomeScreen extends Component {
     this.props.navigation.navigate('Auth');
   };
 }
+
+const mappropsToProps = (props) => {
+  return props
+}
+
+export default connect(mappropsToProps)(HomeScreen);

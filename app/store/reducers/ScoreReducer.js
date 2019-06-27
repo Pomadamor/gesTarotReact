@@ -9,43 +9,76 @@ const initialState = {
           score : [],    
         },
         preneur : "",
+        partenaire: "",
         roi: "",
         type : "",
         score: "",
         id:0,
-        buttonTurnView : "Commencer une nouvelle partie",
+        buttonTurnView : "Commencer une nouvelle partie"
 }
 
 function toogleScore(state = initialState, action){
     let nextState
     switch(action.type){
         case 'MUTATION_NBJOUEURS':
-        // On ajoute les joueurs à la liste de joueurs
         nextState = {
             ...state,
             nbJoueur: action.value
         }
         return nextState
         case 'MUTATION_JOUEURS':
-            // On ajoute les joueurs à la liste de joueurs
-            nextState = {
-                ...state,
-                joueurs: [...state.joueurs, action.value]
-            }
-            return nextState
+        nextState = {
+            ...state,
+            joueurs: [...state.joueurs, action.value]
+        }
+        return nextState
         case 'MUTATION_TURNS':
-            return nextState
+        nextState = {
+            ...state,
+            turns: [...state.turns, action.value]
+        }
+        return nextState
         case 'MUTATION_PRENEUR':
-            return nextState
+        nextState = {
+            ...state,
+            preneur: action.value
+        }
+        return nextState
+        case 'MUTATION_PARTENAIRE':
+        nextState = {
+            ...state,
+            partenaire: action.value
+        }
+        return nextState
         case 'MUTATION_ROI':
-            return nextState        
+        nextState = {
+            ...state,
+            roi: action.value
+        }
+        return nextState        
         case 'MUTATION_TYPE':
+        nextState = {
+            ...state,
+            type: action.value
+        }
             return nextState
         case 'MUTATION_SCORE':
+        nextState = {
+            ...state,
+            score: action.value
+        }
             return nextState        
         case 'MUTATION_ID':
+        nextState = {
+            ...state,
+            id: action.value
+        }        
             return nextState
         case 'MUTATION_BUTTONTURN':
+        nextState = {
+            ...state,
+            buttonTurnView: action.value
+        }
             return nextState
         default:
             return nextState || state

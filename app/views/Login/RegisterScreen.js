@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import { Container, Button, Content, Form, Item, Input, Label } from 'native-base';
+import { Button, Content, Form, Item, Input, Label } from 'native-base';
 import AsyncStorage from "@react-native-community/async-storage";
 import { BackHandler } from 'react-native'
 

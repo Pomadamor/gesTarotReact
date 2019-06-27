@@ -1,18 +1,19 @@
 import {createSwitchNavigator, createAppContainer} from "react-navigation";
-import LoaderScreen from "./views/Login/LoaderScreen";
+import LoaderScreen from "./views/login/LoaderScreen";
 import HomeScreen from "./views/HomeScreen";
-import RegisterScreen from "./views/Login/RegisterScreen";
-import LoginScreen from "./views/Login/LoginScreen";
-import GameScreen from "./views/Game/GameScreen";
-import GrillChooseScreen from "./views/Game/GrillChooseScreen";
-import ChooseScreen from "./views/Login/ChooseScreen";
-import FriendScreen from "./views/Menu/FriendScreen";
-import HistoryScreen from "./views/Menu/HistoryScreen";
-import LegalScreen from "./views/Menu/LegalScreen";
-import NoteScreen from "./views/Menu/NoteScreen";
-import StatScreen from "./views/Menu/StatScreen";
-import UserScreen from "./views/Menu/UserScreen";
-import MenuScreen from "./views/Menu/MenuScreen"
+import RegisterScreen from "./views/login/RegisterScreen";
+import LoginScreen from "./views/login/LoginScreen";
+import GameScreen from "./views/game/GameScreen";
+import GrillChooseScreen from "./views/game/GrillChooseScreen";
+import GrillScoreScreen from "./views/game/GrillScoreScreen";
+import ChooseScreen from "./views/login/ChooseScreen";
+import FriendScreen from "./views/menu/FriendScreen";
+import HistoryScreen from "./views/menu/HistoryScreen";
+import LegalScreen from "./views/menu/LegalScreen";
+import NoteScreen from "./views/menu/NoteScreen";
+import StatScreen from "./views/menu/StatScreen";
+import UserScreen from "./views/menu/UserScreen";
+import MenuScreen from "./views/menu/MenuScreen"
 
 
 
@@ -24,6 +25,7 @@ const switchNavigator = createSwitchNavigator({
     Login: LoginScreen,
     Game: GameScreen,
     GrillChoose: GrillChooseScreen,
+    GrillScore: GrillScoreScreen,
     Friend: FriendScreen,
     History: HistoryScreen,
     Legal: LegalScreen,
