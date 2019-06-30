@@ -12,70 +12,70 @@ class CalculScore extends Component {
           this.props.victoire = true
           if(this.props.partenaire != ""){
             if(this.props.type = "Petite"){
-              this.props.preneurScore = (25 + this.props.score - 56)*2
+              this.props.preneurScore = (25  + this.props.score - 56)}*2
               this.props.partenaireScore = 25 + this.props.score - 56
-              this.props.autreScore = -(25 + this.props.score - 56)
+              this.props.autreScore = -(25  + this.props.score - 56)}
             } else if(this.props.type = "Garde"){
-              this.props.preneurScore = (50 + this.props.score - 56)*2
+              this.props.preneurScore = (50  + this.props.score - 56)}*2
               this.props.partenaireScore = 50 + this.props.score - 56
-              this.props.autreScore = -(50 + this.props.score - 56)
+              this.props.autreScore = -(50  + this.props.score - 56)}
             } else if(this.props.type = "G-Sans"){
-              this.props.preneurScore = (100 + this.props.score - 56)*2
+              this.props.preneurScore = (100  + this.props.score - 56)}*2
               this.props.partenaireScore = 100 + this.props.score - 56
-              this.props.autreScore = -(100 + this.props.score - 56)
+              this.props.autreScore = -(100  + this.props.score - 56)}
             } else if(this.props.type = "G-Contre"){
-              this.props.preneurScore = (200 + this.props.score - 56)*2
+              this.props.preneurScore = (200  + this.props.score - 56)}*2
               this.props.partenaireScore = 200 + this.props.score - 56
-              this.props.autreScore = -(200 + this.props.score - 56)
+              this.props.autreScore = -(200  + this.props.score - 56)}
             }
           }else{
             if(this.props.type = "Petite"){
-              this.props.preneurScore = (25 + this.props.score - 56)*(this.props.nbJoueur - 1)
-              this.props.autreScore = -(25 + this.props.score - 56)
+              this.props.preneurScore = (25  + this.props.score - 56)}*(this.props.nbJoueur - 1)
+              this.props.autreScore = -(25  + this.props.score - 56)}
             } else if(this.props.type = "Garde"){
-              this.props.preneurScore = (50 + this.props.score - 56)*(this.props.nbJoueur - 1)
-              this.props.autreScore = -(50 + this.props.score - 56)
+              this.props.preneurScore = (50  + this.props.score - 56)}*(this.props.nbJoueur - 1)
+              this.props.autreScore = -(50  + this.props.score - 56)}
             } else if(this.props.type = "G-Sans"){
-              this.props.preneurScore = (100 + this.props.score - 56)*(this.props.nbJoueur - 1)
-              this.props.autreScore = -(100 + this.props.score - 56)
+              this.props.preneurScore = (100  + this.props.score - 56)}*(this.props.nbJoueur - 1)
+              this.props.autreScore = -(100  + this.props.score - 56)}
             } else if(this.props.type = "G-Contre"){
-              this.props.preneurScore = (200 + this.props.score - 56)*(this.props.nbJoueur - 1)
-              this.props.autreScore = -(200 + this.props.score - 56)
+              this.props.preneurScore = (200  + this.props.score - 56)}*(this.props.nbJoueur - 1)
+              this.props.autreScore = -(200  + this.props.score - 56)}
             }          
           }
         }else{
           this.props.victoire = false
           if(this.props.partenaire != ""){
             if(this.props.type = "Petite"){
-              this.props.preneurScore = -(25 + this.props.score - 56)*2
-              this.props.partenaireScore = -(25 + this.props.score - 56)
-              this.props.autreScore = (25 + this.props.score - 56)
+              this.props.preneurScore = -(25  + this.props.score - 56)}*2
+              this.props.partenaireScore = -(25  + this.props.score - 56)}
+              this.props.autreScore = (25  + this.props.score - 56)}
             } else if(this.props.type = "Garde"){
-              this.props.preneurScore = -((50 + this.props.score - 56)*2)
-              this.props.partenaireScore = -(50 + this.props.score - 56)
-              this.props.autreScore = (50 + this.props.score - 56)
+              this.props.preneurScore = -((50  + this.props.score - 56)}*2)
+              this.props.partenaireScore = -(50  + this.props.score - 56)}
+              this.props.autreScore = (50  + this.props.score - 56)}
             } else if(this.props.type = "G-Sans"){
-              this.props.preneurScore = -((100 + this.props.score - 56)*2)
-              this.props.partenaireScore = -(100 + this.props.score - 56)
-              this.props.autreScore = (100 + this.props.score - 56)
+              this.props.preneurScore = -((100  + this.props.score - 56)}*2)
+              this.props.partenaireScore = -(100  + this.props.score - 56)}
+              this.props.autreScore = (100  + this.props.score - 56)}
             } else if(this.props.type = "G-Contre"){
-              this.props.preneurScore = -((200 + this.props.score - 56)*2)
-              this.props.partenaireScore = -(200 + this.props.score - 56)
-              this.props.autreScore = (200 + this.props.score - 56)
+              this.props.preneurScore = -((200  + this.props.score - 56)}*2)
+              this.props.partenaireScore = -(200  + this.props.score - 56)}
+              this.props.autreScore = (200  + this.props.score - 56)}
             }
           }else{
             if(this.props.type = "Petite"){
-              this.props.preneurScore = -(25 + this.props.score - 56)*(this.props.nbJoueur - 1)
-              this.props.autreScore = (25 + this.props.score - 56)
+              this.props.preneurScore = -(25  + this.props.score - 56)}*(this.props.nbJoueur - 1)
+              this.props.autreScore = (25  + this.props.score - 56)}
             } else if(this.props.type = "Garde"){
-              this.props.preneurScore = -((50 + this.props.score - 56)*(this.props.nbJoueur - 1))
-              this.props.autreScore = (50 + this.props.score - 56)
+              this.props.preneurScore = -((50  + this.props.score - 56)}*(this.props.nbJoueur - 1))
+              this.props.autreScore = (50  + this.props.score - 56)}
             } else if(this.props.type = "G-Sans"){
-              this.props.preneurScore = -((100 + this.props.score - 56)*(this.props.nbJoueur - 1))
-              this.props.autreScore = (100 + this.props.score - 56)
+              this.props.preneurScore = -((100  + this.props.score - 56)}*(this.props.nbJoueur - 1))
+              this.props.autreScore = (100  + this.props.score - 56)}
             } else if(this.props.type = "G-Contre"){
-              this.props.preneurScore = -((200 + this.props.score - 56)*(this.props.nbJoueur - 1))
-              this.props.autreScore = (200 + this.props.score - 56)
+              this.props.preneurScore = -((200  + this.props.score - 56)}*(this.props.nbJoueur - 1))
+              this.props.autreScore = (200  + this.props.score - 56)}
             }
           }
         }
@@ -281,17 +281,17 @@ class CalculScore extends Component {
             }
           }else{
             if(this.props.type = "Petite"){
-              this.props.preneurScore = -(25 + this.props.score - 56)*(this.props.nbJoueur - 1)
-              this.props.autreScore = (25 + this.props.score - 56)
+              this.props.preneurScore = -(25  + this.props.score - 56)}*(this.props.nbJoueur - 1)
+              this.props.autreScore = (25  + this.props.score - 56)}
             } else if(this.props.type = "Garde"){
-              this.props.preneurScore = -((50 + this.props.score - 56)*(this.props.nbJoueur - 1))
-              this.props.autreScore = (50 + this.props.score - 56)
+              this.props.preneurScore = -((50  + this.props.score - 56)}*(this.props.nbJoueur - 1))
+              this.props.autreScore = (50  + this.props.score - 56)}
             } else if(this.props.type = "G-Sans"){
-              this.props.preneurScore = -((100 + this.props.score - 56)*(this.props.nbJoueur - 1))
-              this.props.autreScore = (100 + this.props.score - 56)
+              this.props.preneurScore = -((100  + this.props.score - 56)}*(this.props.nbJoueur - 1))
+              this.props.autreScore = (100  + this.props.score - 56)}
             } else if(this.props.type = "G-Contre"){
-              this.props.preneurScore = -((200 + this.props.score - 56)*(this.props.nbJoueur - 1))
-              this.props.autreScore = (200 + this.props.score - 56)
+              this.props.preneurScore = -((200  + this.props.score - 56)}*(this.props.nbJoueur - 1))
+              this.props.autreScore = (200  + this.props.score - 56)}
             }
           }
         }
