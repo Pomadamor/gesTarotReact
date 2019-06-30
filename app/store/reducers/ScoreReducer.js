@@ -15,7 +15,18 @@ const initialState = {
         score: "",
         bou:0,
         id:0,
-        buttonTurnView : "Commencer une nouvelle partie"
+        buttonTurnView : "Commencer une nouvelle partie",
+        turnsScore : [{
+            victoire : false,
+            preneurScore : 0,
+            partenaireScore : 0,
+            autreScore : 0
+        }],
+        victoire : false,
+        preneurScore : 0,
+        partenaireScore : 0,
+        autreScore : 0
+
 }
 
 function toogleScore(state = initialState, action){
@@ -85,6 +96,30 @@ function toogleScore(state = initialState, action){
         nextState = {
             ...state,
             buttonTurnView: action.value
+        }
+            return nextState
+        case 'MUTATION_VICTOIRE':
+        nextState = {
+            ...state,
+            victoire: action.value
+        }
+            return nextState
+        case 'MUTATION_PRENEURSCORE':
+        nextState = {
+            ...state,
+            preneurScore: action.value
+        }
+            return nextState
+        case 'MUTATION_PARTENAIRESCORE':
+        nextState = {
+            ...state,
+            partenaireScore: action.value
+        }
+            return nextState
+        case 'MUTATION_AUTRESCORE':
+        nextState = {
+            ...state,
+            autreScore: action.value
         }
             return nextState
         default:

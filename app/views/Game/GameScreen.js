@@ -3,6 +3,7 @@ import { View, Text } from "native-base";
 import { connect } from 'react-redux'
 import { Button } from 'native-base';
 import InitGame from "./InitGame";
+import LiveGame from "./LiveGame";
 
 class GameScreen extends Component {
 
@@ -28,12 +29,15 @@ class GameScreen extends Component {
   }
 
   render(){
+    console.log(this.props.score)
+
     return (
       <View style={{
-        flex: 1,
         flexDirection: 'column',
       }}>
-        <InitGame/>      
+        <InitGame/>
+        <LiveGame/> 
+         
         <View style={{flex:0.1, margin:20}}>
 
           <Button block info 
