@@ -14,10 +14,10 @@ class InitGame extends Component {
         }
       }
 
-    if(this.props.score != ""){      
+    if( parseInt( parseInt( parseInt(this.props.score))) != ""){      
         if(this.props.bou == 0){
             console.log("0 bout")
-            if(this.props.score > 55){
+            if( parseInt(this.props.score) > 55){
                 console.log("score superieur a 55")
                 this.props.victoire = true
                 if(this.props.partenaire != ""){
@@ -26,9 +26,9 @@ class InitGame extends Component {
                     if(this.props.type = "Petite"){
                         console.log("petite")
                         
-                        const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: (this.props.score - 56 + 25)*2}
-                        const actionPartenaireScore = { type: "MUTATION_PARTENAIRESCORE", value: this.props.score - 56 + 25}
-                        const actionAutreScore = { type: "MUTATION_AUTRESCORE", value: -(this.props.score - 56 + 25)}
+                        const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: ( parseInt(this.props.score)-56+25)*2}
+                        const actionPartenaireScore = { type: "MUTATION_PARTENAIRESCORE", value:  parseInt(this.props.score) - 56 + 25}
+                        const actionAutreScore = { type: "MUTATION_AUTRESCORE", value: -( parseInt(this.props.score) - 56 + 25)}
                         
                         this.props.dispatch(actionAutreScore)
                         this.props.dispatch(actionPartenaireScore)
@@ -37,9 +37,9 @@ class InitGame extends Component {
                     } else if(this.props.type = "Garde"){
                         console.log("Garde")
                     
-                        const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: (this.props.score  + 50 - 56)*2 }
-                        const actionPartenaireScore = { type: "MUTATION_PARTENAIRESCORE", value:this.props.score  + 50   - 56}
-                        const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:-(this.props.score  +50    - 56)}
+                        const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: ( parseInt(this.props.score) + 50 - 56)*2 }
+                        const actionPartenaireScore = { type: "MUTATION_PARTENAIRESCORE", value: parseInt(this.props.score) + 50   - 56}
+                        const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:-( parseInt(this.props.score) +50    - 56)}
                         
                         this.props.dispatch(actionAutreScore)
                         this.props.dispatch(actionPartenaireScore)
@@ -49,9 +49,9 @@ class InitGame extends Component {
                     } else if(this.props.type = "G-Sans"){
                         console.log("Garde-Sans")
 
-                        const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: (this.props.score  +100    - 56)*2}
-                        const actionPartenaireScore = { type: "MUTATION_PARTENAIRESCORE", value: this.props.score  +100   - 56}
-                        const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:-(this.props.score  +100    - 56)}
+                        const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: ( parseInt(this.props.score)  +100    - 56)*2}
+                        const actionPartenaireScore = { type: "MUTATION_PARTENAIRESCORE", value:  parseInt(this.props.score)  +100   - 56}
+                        const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:-( parseInt(this.props.score)  +100    - 56)}
                 
                         this.props.dispatch(actionAutreScore)
                         this.props.dispatch(actionPartenaireScore)
@@ -60,9 +60,9 @@ class InitGame extends Component {
                     } else if(this.props.type = "G-Contre"){
                         console.log("Garde-Contre")
 
-                        const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: (this.props.score  +200    - 56)*2}
-                        const actionPartenaireScore = { type: "MUTATION_PARTENAIRESCORE", value: this.props.score  +200   - 56}
-                        const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:-(this.props.score  +200    - 56)}
+                        const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: ( parseInt(this.props.score)  +200    - 56)*2}
+                        const actionPartenaireScore = { type: "MUTATION_PARTENAIRESCORE", value:  parseInt(this.props.score)  +200   - 56}
+                        const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:-( parseInt(this.props.score)  +200    - 56)}
                      
                         this.props.dispatch(actionAutreScore)
                         this.props.dispatch(actionPartenaireScore)
@@ -72,29 +72,29 @@ class InitGame extends Component {
                 }else{
                     console.log("pas de partenaire")
                     if(this.props.type = "Petite"){
-                        const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: (this.props.score  +25    - 56)*(this.props.nbJoueur - 1)}
-                        const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:-(this.props.score  +25    - 56)}
+                        const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: ( parseInt(this.props.score)  +25    - 56)*(this.props.nbJoueur - 1)}
+                        const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:-( parseInt(this.props.score)  +25    - 56)}
                     
                         this.props.dispatch(actionAutreScore)
                         this.props.dispatch(actionPreneurScore)
 
                     } else if(this.props.type = "Garde"){
-                        const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: (this.props.score  +50    - 56)*(this.props.nbJoueur - 1)}
-                        const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:-(this.props.score  +50    - 56)}
+                        const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: ( parseInt(this.props.score)  +50    - 56)*(this.props.nbJoueur - 1)}
+                        const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:-( parseInt(this.props.score)  +50    - 56)}
                     
                         this.props.dispatch(actionAutreScore)
                         this.props.dispatch(actionPreneurScore)
 
                     } else if(this.props.type = "G-Sans"){
-                        const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: (this.props.score  +100    - 56)*(this.props.nbJoueur - 1)}
-                        const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:-(this.props.score  +100    - 56)}
+                        const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: ( parseInt(this.props.score)  +100    - 56)*(this.props.nbJoueur - 1)}
+                        const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:-( parseInt(this.props.score)  +100    - 56)}
                     
                         this.props.dispatch(actionAutreScore)
                         this.props.dispatch(actionPreneurScore)
 
                     } else if(this.props.type = "G-Contre"){
-                        const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: (this.props.score  +200    - 56)*(this.props.nbJoueur - 1)}
-                        const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:-(this.props.score  +200    - 56)}
+                        const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: ( parseInt(this.props.score)  +200    - 56)*(this.props.nbJoueur - 1)}
+                        const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:-( parseInt(this.props.score)  +200    - 56)}
                     
                         this.props.dispatch(actionAutreScore)
                         this.props.dispatch(actionPreneurScore)
@@ -104,36 +104,36 @@ class InitGame extends Component {
                 this.props.victoire = false
                 if(this.props.partenaire != ""){
                     if(this.props.type = "Petite"){
-                        const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: -(this.props.score  +25    - 56)*2}
-                        const actionPartenaireScore = { type: "MUTATION_PARTENAIRESCORE", value: -(this.props.score  +25    - 56)}
-                        const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:(this.props.score  +25    - 56)}
+                        const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: -( parseInt(this.props.score)  +25    - 56)*2}
+                        const actionPartenaireScore = { type: "MUTATION_PARTENAIRESCORE", value: -( parseInt(this.props.score)  +25    - 56)}
+                        const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:( parseInt(this.props.score)  +25    - 56)}
                     
                         this.props.dispatch(actionAutreScore)
                         this.props.dispatch(actionPartenaireScore)
                         this.props.dispatch(actionPreneurScore)
                     
                     } else if(this.props.type = "Garde"){
-                        const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: -((this.props.score  +50    - 56)*2)}
-                        const actionPartenaireScore = { type: "MUTATION_PARTENAIRESCORE", value: -(this.props.score  +50    - 56)}
-                        const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:(this.props.score  +50    - 56)}
+                        const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: -(( parseInt(this.props.score)  +50    - 56)*2)}
+                        const actionPartenaireScore = { type: "MUTATION_PARTENAIRESCORE", value: -( parseInt(this.props.score)  +50    - 56)}
+                        const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:( parseInt(this.props.score)  +50    - 56)}
                     
                         this.props.dispatch(actionAutreScore)
                         this.props.dispatch(actionPartenaireScore)
                         this.props.dispatch(actionPreneurScore)
                     
                     } else if(this.props.type = "G-Sans"){
-                        const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: -((this.props.score  +100    - 56)*2)}
-                        const actionPartenaireScore = { type: "MUTATION_PARTENAIRESCORE", value: -(this.props.score  +100    - 56)}
-                        const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:(this.props.score  +100    - 56)}
+                        const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: -(( parseInt(this.props.score)  +100    - 56)*2)}
+                        const actionPartenaireScore = { type: "MUTATION_PARTENAIRESCORE", value: -( parseInt(this.props.score)  +100    - 56)}
+                        const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:( parseInt(this.props.score)  +100    - 56)}
                     
                         this.props.dispatch(actionAutreScore)
                         this.props.dispatch(actionPartenaireScore)
                         this.props.dispatch(actionPreneurScore)
                     
                     } else if(this.props.type = "G-Contre"){
-                        const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: -((this.props.score  +200    - 56)*2)}
-                        const actionPartenaireScore = { type: "MUTATION_PARTENAIRESCORE", value: -(this.props.score  +200    - 56)}
-                        const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:(this.props.score  +200    - 56)}
+                        const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: -(( parseInt(this.props.score)  +200    - 56)*2)}
+                        const actionPartenaireScore = { type: "MUTATION_PARTENAIRESCORE", value: -( parseInt(this.props.score)  +200    - 56)}
+                        const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:( parseInt(this.props.score)  +200    - 56)}
                     
                         this.props.dispatch(actionAutreScore)
                         this.props.dispatch(actionPartenaireScore)
@@ -142,26 +142,26 @@ class InitGame extends Component {
                     }
                 }else{
                     if(this.props.type = "Petite"){
-                        const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: -(this.props.score  +this.props.score + 25 - 56)*(this.props.nbJoueur - 1)}
-                        const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:(this.props.score  +this.props.score + 25  - 56)}
+                        const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: -( parseInt(this.props.score)  + parseInt(this.props.score) + 25 - 56)*(this.props.nbJoueur - 1)}
+                        const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:( parseInt(this.props.score)  + parseInt(this.props.score) + 25  - 56)}
                     
                         this.props.dispatch(actionAutreScore)
                         this.props.dispatch(actionPreneurScore)
                     } else if(this.props.type = "Garde"){
-                        const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: -((this.props.score  +this.props.score  + 50 - 56)*(this.props.nbJoueur - 1))}
-                        const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:(this.props.score  +this.props.score  + 50 - 56)}
+                        const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: -(( parseInt(this.props.score)  + parseInt(this.props.score)  + 50 - 56)*(this.props.nbJoueur - 1))}
+                        const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:( parseInt(this.props.score)  + parseInt(this.props.score)  + 50 - 56)}
                     
                         this.props.dispatch(actionAutreScore)
                         this.props.dispatch(actionPreneurScore)                 
                     } else if(this.props.type = "G-Sans"){
-                        const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: -((this.props.score  +100    - 56)*(this.props.nbJoueur - 1))}
-                        const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:(this.props.score  +100    - 56)}
+                        const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: -(( parseInt(this.props.score)  +100    - 56)*(this.props.nbJoueur - 1))}
+                        const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:( parseInt(this.props.score)  +100    - 56)}
                     
                         this.props.dispatch(actionAutreScore)
                         this.props.dispatch(actionPreneurScore)                   
                     } else if(this.props.type = "G-Contre"){
-                        const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: -((this.props.score  +200    - 56)*(this.props.nbJoueur - 1))}
-                        const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:(this.props.score  +200    - 56)}
+                        const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: -(( parseInt(this.props.score)  +200    - 56)*(this.props.nbJoueur - 1))}
+                        const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:( parseInt(this.props.score)  +200    - 56)}
                     
                         this.props.dispatch(actionAutreScore)
                         this.props.dispatch(actionPreneurScore)                   
@@ -169,37 +169,37 @@ class InitGame extends Component {
                 }
             }
             }else if(this.props.bou == 1){
-            if(this.props.score > 50){
+            if( parseInt(this.props.score) > 50){
                 this.props.victoire = true
                 if(this.props.partenaire != ""){
                 if(this.props.type = "Petite"){
-                    const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: (this.props.score  +25   - 51)*2}
-                    const actionPartenaireScore = { type: "MUTATION_PARTENAIRESCORE", value: this.props.score  +25   - 51}
-                    const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:-(this.props.score  +25   - 51)}
+                    const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: ( parseInt(this.props.score)  +25   - 51)*2}
+                    const actionPartenaireScore = { type: "MUTATION_PARTENAIRESCORE", value:  parseInt(this.props.score)  +25   - 51}
+                    const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:-( parseInt(this.props.score)  +25   - 51)}
                 
                     this.props.dispatch(actionAutreScore)
                     this.props.dispatch(actionPartenaireScore)
                     this.props.dispatch(actionPreneurScore)
                 } else if(this.props.type = "Garde"){
-                    const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: (this.props.score  +50   - 51)*2}
-                    const actionPartenaireScore = { type: "MUTATION_PARTENAIRESCORE", value: this.props.score  +50   - 51}
-                    const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:-(this.props.score  +50   - 51)}
+                    const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: ( parseInt(this.props.score)  +50   - 51)*2}
+                    const actionPartenaireScore = { type: "MUTATION_PARTENAIRESCORE", value:  parseInt(this.props.score)  +50   - 51}
+                    const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:-( parseInt(this.props.score)  +50   - 51)}
                 
                     this.props.dispatch(actionAutreScore)
                     this.props.dispatch(actionPartenaireScore)
                     this.props.dispatch(actionPreneurScore)
                 } else if(this.props.type = "G-Sans"){
-                    const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: (this.props.score  +100   - 51)*2}
-                    const actionPartenaireScore = { type: "MUTATION_PARTENAIRESCORE", value: this.props.score  +100   - 51}
-                    const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:-(this.props.score  +100   - 51)}
+                    const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: ( parseInt(this.props.score)  +100   - 51)*2}
+                    const actionPartenaireScore = { type: "MUTATION_PARTENAIRESCORE", value:  parseInt(this.props.score)  +100   - 51}
+                    const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:-( parseInt(this.props.score)  +100   - 51)}
                 
                     this.props.dispatch(actionAutreScore)
                     this.props.dispatch(actionPartenaireScore)
                     this.props.dispatch(actionPreneurScore)
                 } else if(this.props.type = "G-Contre"){
-                    const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: (this.props.score  +200   - 51)*2}
-                    const actionPartenaireScore = { type: "MUTATION_PARTENAIRESCORE", value:this.props.score  + 200   - 51}
-                    const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:-(this.props.score  +200   - 51)}
+                    const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: ( parseInt(this.props.score)  +200   - 51)*2}
+                    const actionPartenaireScore = { type: "MUTATION_PARTENAIRESCORE", value: parseInt(this.props.score)  + 200   - 51}
+                    const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:-( parseInt(this.props.score)  +200   - 51)}
                 
                     this.props.dispatch(actionAutreScore)
                     this.props.dispatch(actionPartenaireScore)
@@ -209,26 +209,26 @@ class InitGame extends Component {
             
             }else{
                 if(this.props.type = "Petite"){
-                    const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: (this.props.score  +25   - 51)*(this.props.nbJoueur - 1)}
-                    const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:-(this.props.score  +25   - 51)}
+                    const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: ( parseInt(this.props.score)  +25   - 51)*(this.props.nbJoueur - 1)}
+                    const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:-( parseInt(this.props.score)  +25   - 51)}
                     this.props.dispatch(actionAutreScore)
                     this.props.dispatch(actionPreneurScore)                
                 
                 } else if(this.props.type = "Garde"){
-                    const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: (this.props.score  +50   - 51)*(this.props.nbJoueur - 1)}
-                    const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:-(this.props.score  +50   - 51)}
+                    const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: ( parseInt(this.props.score)  +50   - 51)*(this.props.nbJoueur - 1)}
+                    const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:-( parseInt(this.props.score)  +50   - 51)}
                     this.props.dispatch(actionAutreScore)
                     this.props.dispatch(actionPreneurScore)                
                 
                 } else if(this.props.type = "G-Sans"){
-                    const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: (this.props.score  +100   - 51)*(this.props.nbJoueur - 1)}
-                    const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:-(this.props.score  +100   - 51)}
+                    const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: ( parseInt(this.props.score)  +100   - 51)*(this.props.nbJoueur - 1)}
+                    const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:-( parseInt(this.props.score)  +100   - 51)}
                 
                     this.props.dispatch(actionAutreScore)
                     this.props.dispatch(actionPreneurScore)                
                 } else if(this.props.type = "G-Contre"){
-                    const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: (this.props.score  +200   - 51)*(this.props.nbJoueur - 1)}
-                    const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:-(this.props.score  +200   - 51)}
+                    const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: ( parseInt(this.props.score)  +200   - 51)*(this.props.nbJoueur - 1)}
+                    const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:-( parseInt(this.props.score)  +200   - 51)}
                 
                     this.props.dispatch(actionAutreScore)
                     this.props.dispatch(actionPreneurScore)              
@@ -238,33 +238,33 @@ class InitGame extends Component {
                 this.props.visctoire = false
                 if(this.props.partenaire != ""){
                 if(this.props.type = "Petite"){
-                    const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value:-(this.props.score  +25   - 51)*2}
-                    const actionPartenaireScore = { type: "MUTATION_PARTENAIRESCORE", value: -(this.props.score  +25   - 51)}
-                    const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:(this.props.score  +25   - 51)}
+                    const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value:-( parseInt(this.props.score)  +25   - 51)*2}
+                    const actionPartenaireScore = { type: "MUTATION_PARTENAIRESCORE", value: -( parseInt(this.props.score)  +25   - 51)}
+                    const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:( parseInt(this.props.score)  +25   - 51)}
                     this.props.dispatch(actionAutreScore)
                     this.props.dispatch(actionPartenaireScore)
                     this.props.dispatch(actionPreneurScore)
                 
                 } else if(this.props.type = "Garde"){
-                    const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value:-((this.props.score  +50   - 51)*2)}
-                    const actionPartenaireScore = { type: "MUTATION_PARTENAIRESCORE", value: -(this.props.score  +50   - 51)}
-                    const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:(this.props.score  +50   - 51)}
+                    const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value:-(( parseInt(this.props.score)  +50   - 51)*2)}
+                    const actionPartenaireScore = { type: "MUTATION_PARTENAIRESCORE", value: -( parseInt(this.props.score)  +50   - 51)}
+                    const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:( parseInt(this.props.score)  +50   - 51)}
                     this.props.dispatch(actionAutreScore)
                     this.props.dispatch(actionPartenaireScore)
                     this.props.dispatch(actionPreneurScore)
                 
                 } else if(this.props.type = "G-Sans"){
-                    const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: -((this.props.score  +100   - 51)*2)}
-                    const actionPartenaireScore = { type: "MUTATION_PARTENAIRESCORE", value: -(this.props.score  +100   - 51)}
-                    const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:(this.props.score  +100   - 51)}
+                    const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: -(( parseInt(this.props.score)  +100   - 51)*2)}
+                    const actionPartenaireScore = { type: "MUTATION_PARTENAIRESCORE", value: -( parseInt(this.props.score)  +100   - 51)}
+                    const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:( parseInt(this.props.score)  +100   - 51)}
                 
                     this.props.dispatch(actionAutreScore)
                     this.props.dispatch(actionPartenaireScore)
                     this.props.dispatch(actionPreneurScore)
                 } else if(this.props.type = "G-Contre"){
-                    const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: -((this.props.score  +200   - 51)*2)}
-                    const actionPartenaireScore = { type: "MUTATION_PARTENAIRESCORE", value: -(this.props.score  +200   - 51)}
-                    const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:(this.props.score  +200   - 51)}
+                    const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: -(( parseInt(this.props.score)  +200   - 51)*2)}
+                    const actionPartenaireScore = { type: "MUTATION_PARTENAIRESCORE", value: -( parseInt(this.props.score)  +200   - 51)}
+                    const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:( parseInt(this.props.score)  +200   - 51)}
                 
                     this.props.dispatch(actionAutreScore)
                     this.props.dispatch(actionPartenaireScore)
@@ -272,60 +272,60 @@ class InitGame extends Component {
                 }
                 }else{
                 if(this.props.type = "Petite"){
-                    const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: -(this.props.score  +25   - 51)*(this.props.nbJoueur - 1)}
-                    const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:(this.props.score  +25   - 51)}
+                    const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: -( parseInt(this.props.score)  +25   - 51)*(this.props.nbJoueur - 1)}
+                    const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:( parseInt(this.props.score)  +25   - 51)}
                 
                 
                 } else if(this.props.type = "Garde"){
-                    const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: -((this.props.score  +50   - 51)*(this.props.nbJoueur - 1))}
-                    const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:(this.props.score  +50   - 51)}
+                    const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: -(( parseInt(this.props.score)  +50   - 51)*(this.props.nbJoueur - 1))}
+                    const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:( parseInt(this.props.score)  +50   - 51)}
                 
                 
                 } else if(this.props.type = "G-Sans"){
-                    const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: -((this.props.score  +100   - 51)*(this.props.nbJoueur - 1))}
-                    const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:(this.props.score  +100   - 51)}
+                    const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: -(( parseInt(this.props.score)  +100   - 51)*(this.props.nbJoueur - 1))}
+                    const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:( parseInt(this.props.score)  +100   - 51)}
                 
                 
                 } else if(this.props.type = "G-Contre"){
-                    const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: -((this.props.score  +200   - 51)*(this.props.nbJoueur - 1))}
-                    const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:(this.props.score  +200   - 51)}
+                    const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: -(( parseInt(this.props.score)  +200   - 51)*(this.props.nbJoueur - 1))}
+                    const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:( parseInt(this.props.score)  +200   - 51)}
                 
                 
                 }
                 }
             }
             }else if(this.props.bou == 2){
-            if(this.props.score > 40){
+            if( parseInt(this.props.score) > 40){
                 this.props.victoire = true
                 if(this.props.partenaire != ""){
                 if(this.props.type = "Petite"){
-                    const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: (this.props.score  +25   - 41)*2}
-                    const actionPartenaireScore = { type: "MUTATION_PARTENAIRESCORE", value: this.props.score  +25   - 41}
-                    const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:-(this.props.score  +25   - 41)}
+                    const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: ( parseInt(this.props.score)  +25   - 41)*2}
+                    const actionPartenaireScore = { type: "MUTATION_PARTENAIRESCORE", value:  parseInt(this.props.score)  +25   - 41}
+                    const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:-( parseInt(this.props.score)  +25   - 41)}
                     this.props.dispatch(actionAutreScore)
                     this.props.dispatch(actionPartenaireScore)
                     this.props.dispatch(actionPreneurScore)
                 
                 } else if(this.props.type = "Garde"){
-                    const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: (this.props.score  +50   - 41)*2}
-                    const actionPartenaireScore = { type: "MUTATION_PARTENAIRESCORE", value: this.props.score  +50   - 41}
-                    const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:-(this.props.score  +50   - 41)}
+                    const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: ( parseInt(this.props.score)  +50   - 41)*2}
+                    const actionPartenaireScore = { type: "MUTATION_PARTENAIRESCORE", value:  parseInt(this.props.score)  +50   - 41}
+                    const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:-( parseInt(this.props.score)  +50   - 41)}
                     this.props.dispatch(actionAutreScore)
                     this.props.dispatch(actionPartenaireScore)
                     this.props.dispatch(actionPreneurScore)
                 
                 } else if(this.props.type = "G-Sans"){
-                    const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: (this.props.score  +100   - 41)*2}
-                    const actionPartenaireScore = { type: "MUTATION_PARTENAIRESCORE", value: this.props.score  +100   - 41}
-                    const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:-(this.props.score  +100   - 41)}
+                    const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: ( parseInt(this.props.score)  +100   - 41)*2}
+                    const actionPartenaireScore = { type: "MUTATION_PARTENAIRESCORE", value:  parseInt(this.props.score)  +100   - 41}
+                    const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:-( parseInt(this.props.score)  +100   - 41)}
                 
                     this.props.dispatch(actionAutreScore)
                     this.props.dispatch(actionPartenaireScore)
                     this.props.dispatch(actionPreneurScore)
                 } else if(this.props.type = "G-Contre"){
-                    const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: (this.props.score  +200   - 41)*2}
-                    const actionPartenaireScore = { type: "MUTATION_PARTENAIRESCORE", value: this.props.score  +200   - 41}
-                    const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:-(this.props.score  +200   - 41)}
+                    const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: ( parseInt(this.props.score)  +200   - 41)*2}
+                    const actionPartenaireScore = { type: "MUTATION_PARTENAIRESCORE", value:  parseInt(this.props.score)  +200   - 41}
+                    const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:-( parseInt(this.props.score)  +200   - 41)}
                 
                     this.props.dispatch(actionAutreScore)
                     this.props.dispatch(actionPartenaireScore)
@@ -333,26 +333,26 @@ class InitGame extends Component {
                 }
                 }else{
                 if(this.props.type = "Petite"){
-                    const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: (this.props.score  +25   - 41)*(this.props.nbJoueur - 1)}
-                    const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:-(this.props.score  +25   - 41)}
+                    const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: ( parseInt(this.props.score)  +25   - 41)*(this.props.nbJoueur - 1)}
+                    const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:-( parseInt(this.props.score)  +25   - 41)}
                     this.props.dispatch(actionAutreScore)
                     this.props.dispatch(actionPreneurScore)              
                 
                 } else if(this.props.type = "Garde"){
-                    const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: (this.props.score  +50   - 41)*(this.props.nbJoueur - 1)}
-                    const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:-(this.props.score  +50   - 41)}
+                    const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: ( parseInt(this.props.score)  +50   - 41)*(this.props.nbJoueur - 1)}
+                    const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:-( parseInt(this.props.score)  +50   - 41)}
                 
                     this.props.dispatch(actionAutreScore)
                     this.props.dispatch(actionPreneurScore)              
                 } else if(this.props.type = "G-Sans"){
-                    const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: (this.props.score  +100   - 41)*(this.props.nbJoueur - 1)}
-                    const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:-(this.props.score  +100   - 41)}
+                    const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: ( parseInt(this.props.score)  +100   - 41)*(this.props.nbJoueur - 1)}
+                    const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:-( parseInt(this.props.score)  +100   - 41)}
                 
                     this.props.dispatch(actionAutreScore)
                     this.props.dispatch(actionPreneurScore)              
                 } else if(this.props.type = "G-Contre"){
-                    const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: (this.props.score  +200   - 41)*(this.props.nbJoueur - 1)}
-                    const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:-(this.props.score  +200   - 41)}
+                    const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: ( parseInt(this.props.score)  +200   - 41)*(this.props.nbJoueur - 1)}
+                    const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:-( parseInt(this.props.score)  +200   - 41)}
                     this.props.dispatch(actionAutreScore)
                     this.props.dispatch(actionPreneurScore)              
                 
@@ -362,33 +362,33 @@ class InitGame extends Component {
                 this.props.victoire = false
                 if(this.props.partenaire != ""){
                 if(this.props.type = "Petite"){
-                    const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value:  -(this.props.score  +25   - 41)*2}
-                    const actionPartenaireScore = { type: "MUTATION_PARTENAIRESCORE", value: -(this.props.score  +25   - 41)}
-                    const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:(this.props.score  +25   - 41)}
+                    const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value:  -( parseInt(this.props.score)  +25   - 41)*2}
+                    const actionPartenaireScore = { type: "MUTATION_PARTENAIRESCORE", value: -( parseInt(this.props.score)  +25   - 41)}
+                    const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:( parseInt(this.props.score)  +25   - 41)}
                 
                     this.props.dispatch(actionAutreScore)
                     this.props.dispatch(actionPartenaireScore)
                     this.props.dispatch(actionPreneurScore)
                 } else if(this.props.type = "Garde"){
-                    const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: -((this.props.score  +50   - 41)*2)}
-                    const actionPartenaireScore = { type: "MUTATION_PARTENAIRESCORE", value: -(this.props.score  +50   - 41)}
-                    const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:(this.props.score  +50   - 41)}
+                    const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: -(( parseInt(this.props.score)  +50   - 41)*2)}
+                    const actionPartenaireScore = { type: "MUTATION_PARTENAIRESCORE", value: -( parseInt(this.props.score)  +50   - 41)}
+                    const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:( parseInt(this.props.score)  +50   - 41)}
                 
                     this.props.dispatch(actionAutreScore)
                     this.props.dispatch(actionPartenaireScore)
                     this.props.dispatch(actionPreneurScore)
                 } else if(this.props.type = "G-Sans"){
-                    const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: -((this.props.score  +100   - 41)*2)}
-                    const actionPartenaireScore = { type: "MUTATION_PARTENAIRESCORE", value: -(this.props.score  +100   - 41)}
-                    const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:(this.props.score  +100   - 41)}
+                    const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: -(( parseInt(this.props.score)  +100   - 41)*2)}
+                    const actionPartenaireScore = { type: "MUTATION_PARTENAIRESCORE", value: -( parseInt(this.props.score)  +100   - 41)}
+                    const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:( parseInt(this.props.score)  +100   - 41)}
                 
                     this.props.dispatch(actionAutreScore)
                     this.props.dispatch(actionPartenaireScore)
                     this.props.dispatch(actionPreneurScore)
                 } else if(this.props.type = "G-Contre"){
-                    const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value:  -((this.props.score  +200   - 41)*2)}
-                    const actionPartenaireScore = { type: "MUTATION_PARTENAIRESCORE", value: -(this.props.score  +200   - 41)}
-                    const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:(this.props.score  +200   - 41)}
+                    const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value:  -(( parseInt(this.props.score)  +200   - 41)*2)}
+                    const actionPartenaireScore = { type: "MUTATION_PARTENAIRESCORE", value: -( parseInt(this.props.score)  +200   - 41)}
+                    const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:( parseInt(this.props.score)  +200   - 41)}
                 
                     this.props.dispatch(actionAutreScore)
                     this.props.dispatch(actionPartenaireScore)
@@ -396,26 +396,26 @@ class InitGame extends Component {
                 }
                 }else{
                 if(this.props.type = "Petite"){
-                    const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: -(this.props.score  +25   - 41)*(this.props.nbJoueur - 1)}
-                    const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:(this.props.score  +25   - 41)}
+                    const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: -( parseInt(this.props.score)  +25   - 41)*(this.props.nbJoueur - 1)}
+                    const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:( parseInt(this.props.score)  +25   - 41)}
                     this.props.dispatch(actionAutreScore)
                     this.props.dispatch(actionPreneurScore)               
                 
                 } else if(this.props.type = "Garde"){
-                    const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: -((this.props.score  +50   - 41)*(this.props.nbJoueur - 1))}
-                    const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:(this.props.score  +50   - 41)}
+                    const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: -(( parseInt(this.props.score)  +50   - 41)*(this.props.nbJoueur - 1))}
+                    const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:( parseInt(this.props.score)  +50   - 41)}
                     this.props.dispatch(actionAutreScore)
                     this.props.dispatch(actionPreneurScore)               
                 
                 } else if(this.props.type = "G-Sans"){
-                    const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value:  -((this.props.score  +100   - 41)*(this.props.nbJoueur - 1))}
-                    const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:(this.props.score  +100   - 41)}
+                    const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value:  -(( parseInt(this.props.score)  +100   - 41)*(this.props.nbJoueur - 1))}
+                    const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:( parseInt(this.props.score)  +100   - 41)}
                     this.props.dispatch(actionAutreScore)
                     this.props.dispatch(actionPreneurScore)               
                 
                 } else if(this.props.type = "G-Contre"){
-                    const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value:  -((this.props.score  +200   - 41)*(this.props.nbJoueur - 1))}
-                    const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:(this.props.score  +200   - 41)}
+                    const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value:  -(( parseInt(this.props.score)  +200   - 41)*(this.props.nbJoueur - 1))}
+                    const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:( parseInt(this.props.score)  +200   - 41)}
                 
                     this.props.dispatch(actionAutreScore)
                     this.props.dispatch(actionPreneurScore)               
@@ -423,37 +423,37 @@ class InitGame extends Component {
                 }
             }
             }else if(this.props.bou == 3){
-                if(this.props.score > 35){
+                if( parseInt(this.props.score) > 35){
                     this.props.victoire = true
                     if(this.props.partenaire != ""){
                     if(this.props.type = "Petite"){
-                        const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: (this.props.score  +25   - 36)*2}
-                        const actionPartenaireScore = { type: "MUTATION_PARTENAIRESCORE", value: this.props.score  +25   - 36}
-                        const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:-(this.props.score  +25   - 36)}
+                        const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: ( parseInt(this.props.score)  +25   - 36)*2}
+                        const actionPartenaireScore = { type: "MUTATION_PARTENAIRESCORE", value:  parseInt(this.props.score)  +25   - 36}
+                        const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:-( parseInt(this.props.score)  +25   - 36)}
                     
                         this.props.dispatch(actionAutreScore)
                         this.props.dispatch(actionPartenaireScore)
                         this.props.dispatch(actionPreneurScore)
                     } else if(this.props.type = "Garde"){
-                        const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: (this.props.score  +50   - 36)*2}
-                        const actionPartenaireScore = { type: "MUTATION_PARTENAIRESCORE", value: this.props.score  +50   - 36}
-                        const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:-(this.props.score  +50   - 36)}
+                        const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: ( parseInt(this.props.score)  +50   - 36)*2}
+                        const actionPartenaireScore = { type: "MUTATION_PARTENAIRESCORE", value:  parseInt(this.props.score)  +50   - 36}
+                        const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:-( parseInt(this.props.score)  +50   - 36)}
                     
                         this.props.dispatch(actionAutreScore)
                         this.props.dispatch(actionPartenaireScore)
                         this.props.dispatch(actionPreneurScore)
                     } else if(this.props.type = "G-Sans"){
-                        const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: (this.props.score  +100   - 36)*2}
-                        const actionPartenaireScore = { type: "MUTATION_PARTENAIRESCORE", value: this.props.score  +100   - 36}
-                        const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:-(this.props.score  +100   - 36)}
+                        const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: ( parseInt(this.props.score)  +100   - 36)*2}
+                        const actionPartenaireScore = { type: "MUTATION_PARTENAIRESCORE", value:  parseInt(this.props.score)  +100   - 36}
+                        const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:-( parseInt(this.props.score)  +100   - 36)}
                     
                         this.props.dispatch(actionAutreScore)
                         this.props.dispatch(actionPartenaireScore)
                         this.props.dispatch(actionPreneurScore)
                     } else if(this.props.type = "G-Contre"){
-                        const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: (this.props.score  +200   - 36)*2}
-                        const actionPartenaireScore = { type: "MUTATION_PARTENAIRESCORE", value: this.props.score  +200   - 36}
-                        const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:-(this.props.score  +200   - 36)}
+                        const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: ( parseInt(this.props.score)  +200   - 36)*2}
+                        const actionPartenaireScore = { type: "MUTATION_PARTENAIRESCORE", value:  parseInt(this.props.score)  +200   - 36}
+                        const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:-( parseInt(this.props.score)  +200   - 36)}
                     
                         this.props.dispatch(actionAutreScore)
                         this.props.dispatch(actionPartenaireScore)
@@ -461,26 +461,26 @@ class InitGame extends Component {
                     }
                 }else{
                     if(this.props.type = "Petite"){
-                        const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: (this.props.score  +25   - 36)*(this.props.nbJoueur - 1)}
-                        const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:-(this.props.score  +25   - 36)}
+                        const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: ( parseInt(this.props.score)  +25   - 36)*(this.props.nbJoueur - 1)}
+                        const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:-( parseInt(this.props.score)  +25   - 36)}
                         this.props.dispatch(actionAutreScore)
                         this.props.dispatch(actionPreneurScore)                   
                     
                     } else if(this.props.type = "Garde"){
-                        const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: (this.props.score  +50   - 36)*(this.props.nbJoueur - 1)}
-                        const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:-(this.props.score  +50   - 36)}
+                        const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: ( parseInt(this.props.score)  +50   - 36)*(this.props.nbJoueur - 1)}
+                        const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:-( parseInt(this.props.score)  +50   - 36)}
                         this.props.dispatch(actionAutreScore)
                         this.props.dispatch(actionPreneurScore)                   
                     
                     } else if(this.props.type = "G-Sans"){
-                        const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: (this.props.score  +100   - 36)*(this.props.nbJoueur - 1)}
-                        const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:-(this.props.score  +100   - 36)}
+                        const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: ( parseInt(this.props.score)  +100   - 36)*(this.props.nbJoueur - 1)}
+                        const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:-( parseInt(this.props.score)  +100   - 36)}
                         this.props.dispatch(actionAutreScore)
                         this.props.dispatch(actionPreneurScore)                   
                     
                     } else if(this.props.type = "G-Contre"){
-                        const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: (this.props.score  +200   - 36)*(this.props.nbJoueur - 1)}
-                        const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:-(this.props.score  +200   - 36)}
+                        const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: ( parseInt(this.props.score)  +200   - 36)*(this.props.nbJoueur - 1)}
+                        const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:-( parseInt(this.props.score)  +200   - 36)}
                     
                         this.props.dispatch(actionAutreScore)
                         this.props.dispatch(actionPreneurScore)                 
@@ -490,33 +490,33 @@ class InitGame extends Component {
                 this.props.victoire = false
                 if(this.props.partenaire != ""){
                     if(this.props.type = "Petite"){
-                        const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: -(this.props.score  +25   - 36)*2}
-                        const actionPartenaireScore = { type: "MUTATION_PARTENAIRESCORE", value: -(this.props.score  +25   - 36)}
-                        const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:(this.props.score  +25   - 36)}
+                        const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: -( parseInt(this.props.score)  +25   - 36)*2}
+                        const actionPartenaireScore = { type: "MUTATION_PARTENAIRESCORE", value: -( parseInt(this.props.score)  +25   - 36)}
+                        const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:( parseInt(this.props.score)  +25   - 36)}
                     
                         this.props.dispatch(actionAutreScore)
                         this.props.dispatch(actionPartenaireScore)
                         this.props.dispatch(actionPreneurScore)
                     } else if(this.props.type = "Garde"){
-                        const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: -((this.props.score  +50   - 36)*2)}
-                        const actionPartenaireScore = { type: "MUTATION_PARTENAIRESCORE", value: -(this.props.score  +50   - 36)}
-                        const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:(this.props.score  +50   - 36)}
+                        const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: -(( parseInt(this.props.score)  +50   - 36)*2)}
+                        const actionPartenaireScore = { type: "MUTATION_PARTENAIRESCORE", value: -( parseInt(this.props.score)  +50   - 36)}
+                        const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:( parseInt(this.props.score)  +50   - 36)}
                     
                         this.props.dispatch(actionAutreScore)
                         this.props.dispatch(actionPartenaireScore)
                         this.props.dispatch(actionPreneurScore)
                     } else if(this.props.type = "G-Sans"){
-                        const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: -((this.props.score  +100   - 36)*2)}
-                        const actionPartenaireScore = { type: "MUTATION_PARTENAIRESCORE", value: -(this.props.score  +100   - 36)}
-                        const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:(this.props.score  +100   - 36)}
+                        const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: -(( parseInt(this.props.score)  +100   - 36)*2)}
+                        const actionPartenaireScore = { type: "MUTATION_PARTENAIRESCORE", value: -( parseInt(this.props.score)  +100   - 36)}
+                        const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:( parseInt(this.props.score)  +100   - 36)}
                     
                         this.props.dispatch(actionAutreScore)
                         this.props.dispatch(actionPartenaireScore)
                         this.props.dispatch(actionPreneurScore)
                     } else if(this.props.type = "G-Contre"){
-                        const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: -((this.props.score  +200   - 36)*2)}
-                        const actionPartenaireScore = { type: "MUTATION_PARTENAIRESCORE", value: -(this.props.score  +200   - 36)}
-                        const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:(this.props.score  +200   - 36)}
+                        const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value: -(( parseInt(this.props.score)  +200   - 36)*2)}
+                        const actionPartenaireScore = { type: "MUTATION_PARTENAIRESCORE", value: -( parseInt(this.props.score)  +200   - 36)}
+                        const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:( parseInt(this.props.score)  +200   - 36)}
                     
                         this.props.dispatch(actionAutreScore)
                         this.props.dispatch(actionPartenaireScore)
@@ -524,26 +524,26 @@ class InitGame extends Component {
                     }
                     }else{
                         if(this.props.type = "Petite"){
-                            const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value:  -(this.props.score  +25    - 56)*(this.props.nbJoueur - 1)}
-                            const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:(this.props.score  +25    - 56)}
+                            const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value:  -( parseInt(this.props.score)  +25    - 56)*(this.props.nbJoueur - 1)}
+                            const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:( parseInt(this.props.score)  +25    - 56)}
                             this.props.dispatch(actionAutreScore)
                             this.props.dispatch(actionPreneurScore)                    
                         
                         } else if(this.props.type = "Garde"){
-                            const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value:  -((this.props.score  +50    - 56)*(this.props.nbJoueur - 1))}
-                            const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:(this.props.score  +50    - 56)}
+                            const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value:  -(( parseInt(this.props.score)  +50    - 56)*(this.props.nbJoueur - 1))}
+                            const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:( parseInt(this.props.score)  +50    - 56)}
                             this.props.dispatch(actionAutreScore)
                             this.props.dispatch(actionPreneurScore)                    
                         
                         } else if(this.props.type = "G-Sans"){
-                            const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value:  -((this.props.score  +100    - 56)*(this.props.nbJoueur - 1))}
-                            const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:(this.props.score  +100    - 56)}
+                            const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value:  -(( parseInt(this.props.score)  +100    - 56)*(this.props.nbJoueur - 1))}
+                            const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:( parseInt(this.props.score)  +100    - 56)}
                             this.props.dispatch(actionAutreScore)
                             this.props.dispatch(actionPreneurScore)
                         
                         } else if(this.props.type = "G-Contre"){
-                            const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value:  -((this.props.score  +200    - 56)*(this.props.nbJoueur - 1))}
-                            const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:(this.props.score  +200    - 56)}
+                            const actionPreneurScore = { type: "MUTATION_PRENEURSCORE", value:  -(( parseInt(this.props.score)  +200    - 56)*(this.props.nbJoueur - 1))}
+                            const actionAutreScore = { type: "MUTATION_AUTRESCORE", value:( parseInt(this.props.score)  +200    - 56)}
                             this.props.dispatch(actionAutreScore)
                             this.props.dispatch(actionPreneurScore)
                         

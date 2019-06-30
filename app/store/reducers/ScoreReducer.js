@@ -1,31 +1,30 @@
 const initialState = {
         nbJoueur : 0,
         joueurs : [],
-        turns : {
-          id : [],
-          preneur : [],
-          roi: [],
-          type : [],  
-          score : [],    
-        },
+        turns : [{
+          id : 0,
+          preneur : "",
+          roi: "",
+          type : "",  
+          score : 0,   
+          victoire : false,
+          preneurScore : 0,
+          partenaireScore : 0,
+          autreScore : 0,
+          nbJoueur : 0
+        }],
         preneur : "",
         partenaire: "",
         roi: "",
         type : "",
-        score: "",
+        score: parseInt(0),
         bou:0,
         id:0,
         buttonTurnView : "Commencer une nouvelle partie",
-        turnsScore : [{
-            victoire : false,
-            preneurScore : 0,
-            partenaireScore : 0,
-            autreScore : 0
-        }],
         victoire : false,
-        preneurScore : 0,
-        partenaireScore : 0,
-        autreScore : 0
+        preneurScore :  parseInt(0),
+        partenaireScore : parseInt(0),
+        autreScore : parseInt(0)
 
 }
 
