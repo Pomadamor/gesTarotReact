@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import { View, Text, Alert} from 'react-native';
+import { View, Text} from 'react-native';
 import { Button } from 'native-base';
 import { connect } from 'react-redux'
 

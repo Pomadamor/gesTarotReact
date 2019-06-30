@@ -11,6 +11,11 @@ class GrillScoreScreen extends Component {
         this.props.dispatch(actionScore)
     }
 
+    bou(nb){
+        const actionBou = { type: "MUTATION_BOU", value: nb}
+        this.props.dispatch(actionBou)
+    }
+
     buttonPartenaire0(){
         if(this.props.partenaire != "Joueur 1"){
             const actionpartenaire1 = { type: "MUTATION_PARTENAIRE", value: "Joueur 1"}
@@ -115,6 +120,47 @@ class GrillScoreScreen extends Component {
                     flexDirection: 'column',  
                     }}>
                         { this.props.nbJoueur > 4  ? withWho : null }
+                </View>
+                <View style={{flex: 1, flexDirection: 'row'}}>
+                    <Button bordered light
+                        backgroundColor={ this.props.bou == 0 ? "steelblue" : null }
+                        style={{flex:1, margin:2}}
+                        onPress={() => this.bou(0)}
+                    >
+                        <View style={{width:"100%", alignItems:"center"}}>
+                            <Text style={{color:"white"}}>Aucun bout</Text>
+                        </View>
+                    </Button> 
+
+
+                    <Button bordered light
+                        backgroundColor={ this.props.bou == 1 ? "steelblue" : null }
+                        style={{flex:1, margin:2}}
+                        onPress={() => this.bou(1)}>
+                        <View style={{width:"100%", alignItems:"center"}}>
+                            <Text style={{color:"white"}}>1 bout</Text>
+                        </View>
+                    </Button>
+
+                    <Button bordered light
+                        backgroundColor={ this.props.bou == 2 ? "steelblue" : null }
+                        style={{flex:1, margin:2}}
+                        onPress={() => this.bou(2)}
+                        >
+                        <View style={{width:"100%", alignItems:"center"}}>
+                            <Text style={{color:"white"}}>2 bout</Text>
+                        </View>
+                    </Button>
+
+                    <Button bordered light
+                        backgroundColor={ this.props.bou == 3 ? "steelblue" : null }
+                        style={{flex:1, margin:2}}
+                        onPress={() => this.bou(3)}
+                        >
+                        <View style={{width:"100%", alignItems:"center"}}>
+                            <Text style={{color:"white"}}>3 bout</Text>
+                        </View>
+                    </Button>
                 </View>
                 <View style={{flex: 1, flexDirection: 'row'}}>
                     <Text style={{color:"white", fontSize:20, marginRight: 20}}>Score</Text>

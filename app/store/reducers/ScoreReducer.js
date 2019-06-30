@@ -13,6 +13,7 @@ const initialState = {
         roi: "",
         type : "",
         score: "",
+        bou:0,
         id:0,
         buttonTurnView : "Commencer une nouvelle partie"
 }
@@ -66,6 +67,12 @@ function toogleScore(state = initialState, action){
         nextState = {
             ...state,
             score: action.value
+        }
+            return nextState
+        case 'MUTATION_BOU':
+        nextState = {
+            ...state,
+            bou: action.value
         }
             return nextState        
         case 'MUTATION_ID':
