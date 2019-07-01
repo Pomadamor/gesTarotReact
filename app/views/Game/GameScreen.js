@@ -14,6 +14,7 @@ class GameScreen extends Component {
   // }
 
   buttonTurn(){
+    console.log("buttonturn", this.props)
     if(this.props.score != 0){
       this.props.turns.push([{
         id : this.props.id,
@@ -28,7 +29,7 @@ class GameScreen extends Component {
         nbJoueur : this.props.nbJoueur
       }])
 
-      console.log(this.props.turns)
+      console.log("buttonturn turns:", this.props.turns)
 
       const actionTurn = { type: "MUTATION_TURN", value: this.props.turns }
 
@@ -86,9 +87,11 @@ class GameScreen extends Component {
 
 
         <InitGame/>
+
         <FlatList
           data={turnBefore}
-          renderItem={({item}) => <BeforeGame turnBefore ={item}/>}
+          keyExtractor={(item) => item.id}
+          renderItem={({item}) => <BeforeGame turnBefore={item}/>}
         />
         <LiveGame/> 
          

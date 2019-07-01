@@ -5,8 +5,11 @@ import { Button } from 'native-base';
 
 class BeforeGame extends Component {
   render(){
-      const turnBefore =  this.props.turns
-      if( this.props.nbJoueur.length>3){
+      console.log("props of before:", this.props);
+      //const turnBefore =  this.props.turns
+      const turnBefore = this.props.turnBefore[0];
+    //   console.log("turnBefore: ", turnBefore.preneur);
+      if( turnBefore.nbJoueur>3){
         joueurFour = <Button bordered light 
                         backgroundColor={  turnBefore.preneur == 'Joueur 4' ? "green" : 'rgba(52, 52, 52, 0.6)'  }
                         onPress={() =>  turnBefore.navigation.navigate("Stat")}
@@ -25,7 +28,7 @@ class BeforeGame extends Component {
           joueurFour = <View></View>
       }
    
-      if( this.props.nbJoueur.length>4){
+      if( turnBefore.joueurs>4){
           joueurFive =    <Button bordered light 
                               backgroundColor={  turnBefore.preneur == 'Joueur 5' ? "green" : 'rgba(52, 52, 52, 0.6)' }
                               onPress={() =>  turnBefore.navigation.navigate("Stat")}
@@ -101,9 +104,4 @@ class BeforeGame extends Component {
     }
   }
 
-  
-const mappropsToProps = (props) => {
-  return props
-}
-
-export default connect(mappropsToProps)(BeforeGame);
+export default (BeforeGame);
