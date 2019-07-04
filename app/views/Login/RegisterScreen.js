@@ -60,7 +60,7 @@ export default class RegisterScreen extends Component {
             <Label style={{
                 color:"white",
                 fontSize: 17, 
-                fontWeight: 'bold'}}>Name</Label>
+                fontWeight: 'bold'}}>Pseudo</Label>
               <Input />
             </Item>
             <Item floatingLabel last>

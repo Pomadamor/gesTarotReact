@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {View} from 'react-native'
 import { Container, Header, Content, Button, ListItem, Text, Icon, Left, Body, Right, Title } from 'native-base';
 
-export default class HomeScreen extends Component {
+export default class MenuScreen extends Component {
   render() {
     return (
       <View style={{

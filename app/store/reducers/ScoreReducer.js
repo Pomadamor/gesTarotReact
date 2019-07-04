@@ -2,18 +2,6 @@ const initialState = {
         nbJoueur : 0,
         joueurs : [],
         turns : [
-        //     {
-        //   id : 0,
-        //   preneur : "",
-        //   roi: "",
-        //   type : "",  
-        //   score : 0,   
-        //   victoire : false,
-        //   preneurScore : 0,
-        //   partenaireScore : 0,
-        //   autreScore : 0,
-        //   nbJoueur : 0
-        // }
     ],
         preneur : "",
         partenaire: "",
