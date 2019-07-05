@@ -25,7 +25,7 @@ class InitGame extends Component {
                                 textAlign: 'center', 
                                 color:"white"}}
                             >
-                                 Joueur 4
+                                 {this.props.pseudo4}
                             </Text>
                         </View>
                     </Button>
@@ -43,7 +43,7 @@ class InitGame extends Component {
                                       textAlign: 'center', 
                                       color:"white"}}
                                   >
-                                      Joueur 5
+                                      {this.props.pseudo5}
                                   </Text>
                               </View>
                           </Button>
@@ -66,7 +66,7 @@ class InitGame extends Component {
             <View style={{width:"100%", alignItems:"center"}}>
             <Text style={{
                       textAlign: 'center', 
-                      color:"white"}}>Joueur 1</Text>
+                      color:"white"}}>{this.props.pseudo}</Text>
             </View>
           </Button>
           <Button bordered light 
@@ -75,7 +75,7 @@ class InitGame extends Component {
             <View style={{width:"100%", alignItems:"center"}}>
             <Text style={{
                       textAlign: 'center', 
-                      color:"white"}}>Joueur 2</Text>
+                      color:"white"}}>{this.props.pseudo2}</Text>
             </View>
           </Button>
           <Button bordered light 
@@ -84,7 +84,7 @@ class InitGame extends Component {
             <View style={{width:"100%", alignItems:"center"}}>
             <Text style={{
                       textAlign: 'center', 
-                      color:"white"}}>Joueur 3</Text>
+                      color:"white"}}>{this.props.pseudo3}</Text>
             </View>
           </Button>
           {joueurFour}
@@ -95,8 +95,16 @@ class InitGame extends Component {
   }
 
   
-const mappropsToProps = (props) => {
-  return props
+const mapStateToProps = state => {
+    return {
+      joueurs : state.toogleScore.joueurs,
+      nbJoueur : state.toogleScore.nbJoueur,
+      pseudo : state.tooglePlayer.pseudo,
+      pseudo5 : state.tooglePlayer.pseudo5,
+      pseudo2 : state.tooglePlayer.pseudo2,
+      pseudo3 : state.tooglePlayer.pseudo3,
+      pseudo4 : state.tooglePlayer.pseudo4
+    }
 }
 
-export default connect(mappropsToProps)(InitGame);
+export default connect(mapStateToProps)(InitGame);

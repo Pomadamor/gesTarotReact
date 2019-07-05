@@ -181,8 +181,13 @@ class GrillScoreScreen extends Component {
     }
 }
 
-const mappropsToProps = (props) => {
-    return props
-  }
-  
-  export default connect(mappropsToProps)(GrillScoreScreen);
+const mapStateToProps = state => {
+    return {
+        partenaire : state.toogleScore.partenaire,
+        score : state.toogleScore.score,
+        nbJoueur : state.toogleScore.nbJoueur,
+        bou : state.toogleScore.bou
+    }
+}
+
+export default connect(mapStateToProps)(GrillScoreScreen);

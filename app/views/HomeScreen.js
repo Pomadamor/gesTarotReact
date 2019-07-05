@@ -5,20 +5,8 @@ import { connect } from 'react-redux'
 
 class HomeScreen extends Component {
 
-  btnChooseThreeJoueur(){
-    const action = { type: "MUTATION_NBJOUEURS", value: 3 }
-    this.props.dispatch(action)
-    this.props.navigation.navigate("Game")
-  }
-
-  btnChooseFourJoueur(){
-    const action = { type: "MUTATION_NBJOUEURS", value: 4 }
-    this.props.dispatch(action)
-    this.props.navigation.navigate("Game")
-  }
-
-  btnChooseFiveJoueur(){
-    const action = { type: "MUTATION_NBJOUEURS", value: 5 }
+  btnChoose(nb){
+    const action = { type: "MUTATION_NBJOUEURS", value: nb }
     this.props.dispatch(action)
     this.props.navigation.navigate("Game")
   }
@@ -96,7 +84,7 @@ class HomeScreen extends Component {
               style={{
                 padding:12,
               }}
-              onPress={() => this.btnChooseThreeJoueur()}>
+              onPress={() => this.btnChoose(nb=3)}>
                 <View>
                   <Image
                     style={{
@@ -122,7 +110,7 @@ class HomeScreen extends Component {
               style={{
                 padding:12,
               }}
-              onPress={() => this.btnChooseFourJoueur()}>
+              onPress={() => this.btnChoose(nb=4)}>
                 <View>
                   <Image
                     style={{
@@ -147,7 +135,7 @@ class HomeScreen extends Component {
               style={{
                 padding:12,
               }}
-              onPress={() => this.btnChooseFiveJoueur()}>
+              onPress={() => this.btnChoose(nb=5)}>
               <View>
                   <Image
                     style={{
@@ -202,8 +190,10 @@ class HomeScreen extends Component {
   };
 }
 
-const mappropsToProps = (props) => {
-  return props
+const mapStateToProps = state => {
+  return {
+      nbJoueur : state.toogleScore.nbJoueur
+  }
 }
 
-export default connect(mappropsToProps)(HomeScreen);
+export default connect(mapStateToProps)(HomeScreen);

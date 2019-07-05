@@ -4,12 +4,14 @@ import { Label, Form, Content, Button, Item, Input} from 'native-base';
 import ImagePicker from 'react-native-image-picker'
 import { connect } from 'react-redux'
 
-class UserScreen extends Component {
+class FriendsPlayersScreen extends Component {
+
+    if (friendUpdate)
 
     constructor(props) {
         super(props)
         this.state = {
-          avatar: require('../../assets/img/icon_user/happy.png')
+          avatar: this.props.avatar
         }
         // this.setState est appelé dans un callback dans showImagePicker, pensez donc bien à binder la fonction _avatarClicked
         this.changePhoto = this.changePhoto.bind(this)
@@ -152,4 +154,4 @@ const mapStateToProps = state => {
     }
   }
   
-  export default connect(mapStateToProps)(UserScreen);
+  export default connect(mapStateToProps)(FriendsPlayersScreen);

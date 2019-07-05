@@ -116,8 +116,22 @@ class GameScreen extends Component {
   }
 
   
-const mappropsToProps = (props) => {
-  return props
+const mapStateToProps = state => {
+    return {
+      turns : state.toogleScore.turns,
+      buttonTurnView : state.toogleScore.buttonTurnView,
+      id : state.toogleScore.id,
+      preneur : state.toogleScore.preneur,
+      roi : state.toogleScore.roi,
+      type : state.toogleScore.type,
+      score : state.toogleScore.score,
+      victoire : state.toogleScore.victoire,
+      preneurScore : state.toogleScore.preneurScore,
+      partenaireScore : state.toogleScore.partenaireScore,
+      autreScore : state.toogleScore.autreScore,
+      nbJoueur : state.toogleScore.nbJoueur
+
+    }
 }
 
-export default connect(mappropsToProps)(GameScreen);
+export default connect(mapStateToProps)(GameScreen)

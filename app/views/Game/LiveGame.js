@@ -652,8 +652,21 @@ class LiveGame extends Component {
   }
 
   
-const mappropsToProps = (props) => {
-  return props
+const mapStateToProps = state => {
+    return {
+        nbJoueur : state.toogleScore.nbJoueur,
+        joueurs : state.toogleScore.joueurs,
+        partenaire : state.toogleScore.partenaire,
+        victoire : state.toogleScore.victoire,
+        score : state.toogleScore.score,
+        type : state.toogleScore.type,
+        roi : state.toogleScore.roi,
+        bou : state.toogleScore.bou,
+        preneur : state.toogleScore.preneur,
+        autreScore : state.toogleScore.autreScore,
+        partenaireScore : state.toogleScore.partenaireScore,
+        preneurScore : state.toogleScore.preneurScore
+    }
 }
 
-export default connect(mappropsToProps)(LiveGame);
+export default connect(mapStateToProps)(LiveGame);

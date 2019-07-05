@@ -286,8 +286,13 @@ const styles = {
   }
 }
 
-const mappropsToProps = (props) => {
-    return props
-  }
-  
-  export default connect(mappropsToProps)(GrillChooseScreen);
+const mapStateToProps = state => {
+    return {
+        nbJoueur : state.toogleScore.nbJoueur,
+        roi : state.toogleScore.roi,
+        type : state.toogleScore.type,
+        preneur : state.toogleScore.preneur,
+    }
+}
+
+export default connect(mapStateToProps)(GrillChooseScreen);

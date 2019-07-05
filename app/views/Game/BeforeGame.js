@@ -1,6 +1,5 @@
 import React, {Component} from "react";
 import { View, Text } from "native-base";
-import { connect } from 'react-redux'
 import { Button } from 'native-base';
 
 class BeforeGame extends Component {

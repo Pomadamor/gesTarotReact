@@ -1,8 +1,7 @@
 const initialState = {
         nbJoueur : 0,
         joueurs : [],
-        turns : [
-    ],
+        turns : [],
         preneur : "",
         partenaire: "",
         roi: "",
@@ -15,7 +14,6 @@ const initialState = {
         preneurScore :  parseInt(0),
         partenaireScore : parseInt(0),
         autreScore : parseInt(0)
-
 }
 
 function toogleScore(state = initialState, action){

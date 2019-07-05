@@ -109,8 +109,10 @@ class ChooseScreen extends Component {
     }
 }
 
-const mappropsToProps = (props) => {
-  return props
+const mapStateToProps = state => {
+  return {
+      nbJoueur : state.toogleScore.nbJoueur
+  }
 }
 
-export default connect(mappropsToProps)(ChooseScreen);
+export default connect(mapStateToProps)(ChooseScreen);

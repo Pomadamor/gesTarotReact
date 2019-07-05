@@ -1,7 +1,7 @@
 const initialState = {
     pseudo : "Joueur 1",
     email: "",
-    avatar: require("./assets/img/happy.png"),
+    avatar: require("../../assets/img/icon_user/happy.png"),
 
     pseudo2 : "Joueur 2",
     email2: "",
@@ -18,6 +18,8 @@ const initialState = {
     pseudo5 : "Joueur 5",
     email5: "",
     avatar5: "pig.png",
+
+    choosePlayer:""
 }
 
 function tooglePlayer(state = initialState, action){
@@ -27,6 +29,12 @@ switch(action.type){
     nextState = {
         ...state,
         pseudo: action.value
+    }
+    return nextState
+    case 'MUTATION_CHOOSE_PLAYERS':
+    nextState = {
+        ...state,
+        choosePlayer: action.value
     }
     return nextState
     default:
