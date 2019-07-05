@@ -13,9 +13,8 @@ import LegalScreen from "./views/menu/LegalScreen";
 import NoteScreen from "./views/menu/NoteScreen";
 import StatScreen from "./views/menu/StatScreen";
 import UserScreen from "./views/menu/UserScreen";
-import MenuScreen from "./views/menu/MenuScreen"
-
-
+import MenuScreen from "./views/menu/MenuScreen";
+import FriendsPlayersScreen from "./views/friends/FriendsPlayersScreen";
 
 const switchNavigator = createSwitchNavigator({
     Loader: LoaderScreen,
@@ -32,8 +31,8 @@ const switchNavigator = createSwitchNavigator({
     Note: NoteScreen,
     Stat: StatScreen,
     User: UserScreen,
-    Menu: MenuScreen
-
+    Menu: MenuScreen,
+    FriendsPlayers: FriendsPlayersScreen
 }, {
     initialRouteName: "Loader"
 });

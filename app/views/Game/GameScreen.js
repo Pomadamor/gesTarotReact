@@ -13,6 +13,13 @@ class GameScreen extends Component {
   //   return true;
   // }
 
+  componentDidMount(){
+    if(this.props.choosePlayer != 0){
+      console.log("test",this.props.choosePlayer)
+      this.props.navigation.navigate("FriendsPlayers")
+    }
+  }
+
   buttonTurn(){
     console.log("buttonturn", this.props)
     if(this.props.score != 0){
@@ -129,8 +136,8 @@ const mapStateToProps = state => {
       preneurScore : state.toogleScore.preneurScore,
       partenaireScore : state.toogleScore.partenaireScore,
       autreScore : state.toogleScore.autreScore,
-      nbJoueur : state.toogleScore.nbJoueur
-
+      nbJoueur : state.toogleScore.nbJoueur,
+      choosePlayer : state.tooglePlayer.choosePlayer
     }
 }
 

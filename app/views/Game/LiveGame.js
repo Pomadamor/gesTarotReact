@@ -559,7 +559,6 @@ class LiveGame extends Component {
       if(this.props.joueurs.length>3){
         joueurFour = <Button bordered light 
                         backgroundColor={ this.props.preneur == 'Joueur 4' ? "green" : 'rgba(52, 52, 52, 0.6)'  }
-                        onPress={() => this.props.navigation.navigate("Stat")}
                         style={{flex:1, height:60, margin:1}} 
                         >
                         <View style={{width:"100%", alignItems:"center"}}>
@@ -578,7 +577,6 @@ class LiveGame extends Component {
       if(this.props.joueurs.length>4){
           joueurFive =    <Button bordered light 
                               backgroundColor={ this.props.preneur == 'Joueur 5' ? "green" : 'rgba(52, 52, 52, 0.6)' }
-                              onPress={() => this.props.navigation.navigate("Stat")}
                               style={{flex:1, height:60, margin:1}} 
                             >
                             <View style={{width:"100%", alignItems:"center"}}>
@@ -607,7 +605,6 @@ class LiveGame extends Component {
           <Button bordered light 
           backgroundColor={ this.props.preneur == 'Joueur 1' ? "green" : 'rgba(52, 52, 52, 0.6)'  }
           backgroundColor={ this.props.partenaire == 'Joueur 1' ? "yellow" : 'rgba(52, 52, 52, 0.6)'}
-          onPress={() => this.props.navigation.navigate("Stat")}
           style={{flex:1, height:60, margin:1}} >
             <View style={{width:"100%", alignItems:"center"}}>
             <Text style={{
@@ -620,7 +617,6 @@ class LiveGame extends Component {
           </Button>
           <Button bordered light 
           backgroundColor={ this.props.preneur == 'Joueur 2' ? "green" : 'rgba(52, 52, 52, 0.6)'  }
-          onPress={() => this.props.navigation.navigate("Stat")}
           style={{flex:1, height:60, margin:1}} >
           <View style={{width:"100%", alignItems:"center"}}>
             <Text style={{
@@ -633,7 +629,6 @@ class LiveGame extends Component {
           </Button>
           <Button bordered light 
           backgroundColor={ this.props.preneur == 'Joueur 3' ? "green" : 'rgba(52, 52, 52, 0.6)'  }
-          onPress={() => this.props.navigation.navigate("Stat")}
           style={{flex:1, height:60, margin:1}} >
             <View style={{width:"100%", alignItems:"center"}}>
             <Text style={{

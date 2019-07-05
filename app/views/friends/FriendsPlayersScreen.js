@@ -6,12 +6,10 @@ import { connect } from 'react-redux'
 
 class FriendsPlayersScreen extends Component {
 
-    if (friendUpdate)
-
     constructor(props) {
         super(props)
         this.state = {
-          avatar: this.props.avatar
+          avatar: this.props.avatar+this.props.choosePlayer
         }
         // this.setState est appelé dans un callback dans showImagePicker, pensez donc bien à binder la fonction _avatarClicked
         this.changePhoto = this.changePhoto.bind(this)
@@ -29,7 +27,7 @@ class FriendsPlayersScreen extends Component {
                 console.log('Photo : ', response.uri )
                 let requireSource = { uri: response.uri }
                 // On crée une action avec l'image prise et on l'envoie au store Redux
-                const action = { type: "SET_AVATAR", value: requireSource }
+                const action = { type: `MUTATION_AVATAR${this.props.choosePlayer}`, value: requireSource }
                 this.props.dispatch(action)
             }
         })
@@ -106,33 +104,11 @@ class FriendsPlayersScreen extends Component {
                             backgroundColor: 'rgba(52, 52, 52, 0.6)',
                             color: "white",
                             padding:20}}>
-                            <Item floatingLabel>
-                            <Label style={{
-                                color:"white",
-                                fontSize: 17, 
-                                fontWeight: 'bold'}}>Email</Label>
-                            {/* <Input onChangeText={(useremail) => this.setState({useremail})}
-                                value={this.state.useremail}/> */}
-                            </Item>
                             <Item floatingLabel last>
                             <Label style={{
                                 color:"white",
                                 fontSize: 17, 
-                                fontWeight: 'bold'}}>Pseudo</Label>
-                            <Input />
-                            </Item>
-                            <Item floatingLabel last>
-                            <Label style={{
-                                color:"white",
-                                fontSize: 17, 
-                                fontWeight: 'bold'}}>Password</Label>
-                            <Input />
-                            </Item>
-                            <Item floatingLabel last>
-                            <Label style={{
-                                color:"white",
-                                fontSize: 17, 
-                                fontWeight: 'bold'}}>Confirm Password</Label>
+                                fontWeight: 'bold'}}>{this.props.pseudo+this.props.choosePlayer}</Label>
                             <Input />
                             </Item>
                             <Button block info style={{ marginTop: 100}} onPress={()=>this.handleRegister()}>
@@ -150,7 +126,17 @@ class FriendsPlayersScreen extends Component {
 
 const mapStateToProps = state => {
     return {
-        avatar : state.tooglePlayer.avatar
+        avatar1 : state.tooglePlayer.avatar1,
+        avatar2 : state.tooglePlayer.avatar2,
+        avatar3 : state.tooglePlayer.avatar3,
+        avatar4 : state.tooglePlayer.avatar4,
+        avatar5 : state.tooglePlayer.avatar5,
+        pseudo1 : state.tooglePlayer.pseudo1,
+        pseudo2 : state.tooglePlayer.pseudo2,
+        pseudo3 : state.tooglePlayer.pseudo3,
+        pseudo4 : state.tooglePlayer.pseudo4,
+        pseudo5 : state.tooglePlayer.pseudo5,
+        choosePlayer : state.tooglePlayer.choosePlayer
     }
   }
   

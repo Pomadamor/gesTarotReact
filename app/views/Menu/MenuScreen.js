@@ -10,14 +10,14 @@ export default class MenuScreen extends Component {
         flexDirection: 'column',
       }}>
         <View style={{flex: 1, flexDirection: 'row'}}>
-          <Button bordered light 
+          {/* <Button bordered light 
           onPress={() => this.props.navigation.navigate("Stat")}
           style={{flex:1, resizeMode:'center', height:"90%", marginTop: 10, marginLeft:10, margin:10, backgroundColor:'rgba(52, 52, 52, 0.6)'}} >
             <View style={{width:"100%", alignItems:"center"}}>
               <Icon active name="ios-stats" />
               <Text>Statistique</Text>
             </View>
-          </Button>
+          </Button> */}
           <Button bordered light style={{flex:1, alignContent:'center', height:"90%", marginTop: 10, marginLeft:10, margin:10, backgroundColor:'rgba(52, 52, 52, 0.6)'}} >
           <View style={{width:"100%", alignItems:"center"}}>
               <Icon active name="beer"/>
@@ -38,14 +38,14 @@ export default class MenuScreen extends Component {
         </View>
 
         <View style={{flex: 1, flexDirection: 'row'}}>
-          <Button bordered light 
+          {/* <Button bordered light 
           onPress={() => this.props.navigation.navigate("Legal")}
           style={{flex:1, resizeMode:'center', height:"90%", marginTop: 10, marginLeft:10, margin:10, backgroundColor:'rgba(52, 52, 52, 0.6)'}} >
           <View style={{width:"100%", alignItems:"center"}}>
               <Icon active name="star" />
               <Text>Information</Text>
             </View>
-          </Button>
+          </Button> */}
           <Button bordered light 
           onPress={() => this.props.navigation.navigate("Legal")}
           style={{flex:1, alignContent:'center', height:"90%", marginTop: 10, marginLeft:10, margin:10, backgroundColor:'rgba(52, 52, 52, 0.6)'}} >
@@ -57,14 +57,14 @@ export default class MenuScreen extends Component {
         </View>
 
         <View style={{flex: 1, flexDirection: 'row'}}>
-          <Button bordered light 
+          {/* <Button bordered light 
           onPress={() => this.props.navigation.navigate("Note")}
           style={{flex:1, resizeMode:'center', height:"90%", marginTop: 10, marginLeft:10, margin:10, backgroundColor:'rgba(52, 52, 52, 0.6)'}} >
           <View style={{width:"100%", alignItems:"center"}}>
               <Icon active name="star" />
               <Text>noter</Text>
             </View>
-          </Button>
+          </Button> */}
           <Button bordered light 
           onPress={() => this.props.navigation.navigate("Choose")}
           style={{flex:1, alignContent:'center', height:"90%", marginTop: 10, marginLeft:10, margin:10, backgroundColor:'rgba(52, 52, 52, 0.6)'}} >

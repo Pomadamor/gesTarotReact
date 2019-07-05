@@ -11,7 +11,6 @@ class BeforeGame extends Component {
       if( turnBefore.nbJoueur>3){
         joueurFour = <Button bordered light 
                         backgroundColor={  turnBefore.preneur == 'Joueur 4' ? "green" : 'rgba(52, 52, 52, 0.6)'  }
-                        onPress={() =>  turnBefore.navigation.navigate("Stat")}
                         style={{flex:1, height:60, margin:1}} 
                         >
                         <View style={{width:"100%", alignItems:"center"}}>
@@ -30,7 +29,6 @@ class BeforeGame extends Component {
       if( turnBefore.joueurs>4){
           joueurFive =    <Button bordered light 
                               backgroundColor={  turnBefore.preneur == 'Joueur 5' ? "green" : 'rgba(52, 52, 52, 0.6)' }
-                              onPress={() =>  turnBefore.navigation.navigate("Stat")}
                               style={{flex:1, height:60, margin:1}} 
                             >
                             <View style={{width:"100%", alignItems:"center"}}>
@@ -59,7 +57,6 @@ class BeforeGame extends Component {
           <Button bordered light 
           backgroundColor={  turnBefore.preneur == 'Joueur 1' ? "green" : 'rgba(52, 52, 52, 0.6)'  }
           backgroundColor={  turnBefore.partenaire == 'Joueur 1' ? "yellow" : 'rgba(52, 52, 52, 0.6)'}
-          onPress={() =>  turnBefore.navigation.navigate("Stat")}
           style={{flex:1, height:60, margin:1}} >
             <View style={{width:"100%", alignItems:"center"}}>
             <Text style={{
@@ -72,7 +69,6 @@ class BeforeGame extends Component {
           </Button>
           <Button bordered light 
           backgroundColor={  turnBefore.preneur == 'Joueur 2' ? "green" : 'rgba(52, 52, 52, 0.6)'  }
-          onPress={() =>  turnBefore.navigation.navigate("Stat")}
           style={{flex:1, height:60, margin:1}} >
           <View style={{width:"100%", alignItems:"center"}}>
             <Text style={{
@@ -85,7 +81,6 @@ class BeforeGame extends Component {
           </Button>
           <Button bordered light 
           backgroundColor={  turnBefore.preneur == 'Joueur 3' ? "green" : 'rgba(52, 52, 52, 0.6)'  }
-          onPress={() =>  turnBefore.navigation.navigate("Stat")}
           style={{flex:1, height:60, margin:1}} >
             <View style={{width:"100%", alignItems:"center"}}>
             <Text style={{
