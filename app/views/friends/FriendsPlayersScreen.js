@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import {View, Text, Image} from 'react-native'
-import { Label, Form, Content, Button, Item, Input} from 'native-base';
+import {View, Text, Image, TextInput} from 'react-native'
+import { Label, Button} from 'native-base';
 import ImagePicker from 'react-native-image-picker'
 import { connect } from 'react-redux'
 
@@ -9,10 +9,39 @@ class FriendsPlayersScreen extends Component {
     constructor(props) {
         super(props)
         this.state = {
-          avatar: this.props.avatar+this.props.choosePlayer
+          avatar1: this.props.avatar1,
+          avatar2: this.props.avatar2,
+          avatar3: this.props.avatar3,
+          avatar4: this.props.avatar4,
+          avatar5: this.props.avatar5
         }
         // this.setState est appelé dans un callback dans showImagePicker, pensez donc bien à binder la fonction _avatarClicked
         this.changePhoto = this.changePhoto.bind(this)
+    }
+    changePseudo1(pseudo){
+        console.log(pseudo)
+        const actionPseudo = { type: "MUTATION_PSEUDO1", value: pseudo}
+        this.props.dispatch(actionPseudo)
+    }
+    changePseudo2(pseudo){
+        console.log(pseudo)
+        const actionPseudo = { type: "MUTATION_PSEUDO2", value: pseudo}
+        this.props.dispatch(actionPseudo)
+    }
+    changePseudo3(pseudo){
+        console.log(pseudo)
+        const actionPseudo = { type: "MUTATION_PSEUDO3", value: pseudo}
+        this.props.dispatch(actionPseudo)
+    }
+    changePseudo4(pseudo){
+        console.log(pseudo)
+        const actionPseudo = { type: "MUTATION_PSEUDO4", value: pseudo}
+        this.props.dispatch(actionPseudo)
+    }
+    changePseudo5(pseudo){
+        console.log(pseudo)
+        const actionPseudo = { type: "MUTATION_PSEUDO5", value: pseudo}
+        this.props.dispatch(actionPseudo)
     }
     
     changePhoto(){
@@ -34,6 +63,116 @@ class FriendsPlayersScreen extends Component {
     }
 
     render() {
+
+
+        if(this.props.nbJoueur>3){
+            joueur4 =
+            <View style={{
+                flex: 1, 
+                flexDirection: 'row',
+                margin:10, 
+                marginTop: 10,
+                backgroundColor:'rgba(52, 52, 52, 0.6)'
+                }}>
+                <View style={{
+                    flex: 1, 
+                    margin:10, 
+                    marginTop: 10,
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    backgroundColor:'white'
+                }}>
+                    <Image
+                        source={this.state.avatar4}
+                        style={{width: '80%', 
+                        height: '80%',
+                        justifyContent: "space-around", 
+                        margin: 10, 
+                        resizeMode: 'contain',
+                        padding: 10,
+                        backgroundColor:'steelblue'}}
+                    />
+                </View>
+                <View style={{
+                    flex: 2
+                }}>
+                    <View style={{
+                        flex: 1, 
+                        flexDirection: 'row',
+                    }}>
+                        <View style={{
+                            flex: 1
+                        }}>
+                            <Text style={{color:"white", fontSize:17, marginTop:10}}>Le pseudo :</Text>
+                        </View>
+                        <View style={{
+                            flex: 1
+                        }}> 
+                            <TextInput
+                                style={{height: 36, width: 80, borderColor: 'white', color: 'white', borderWidth: 1}}
+                                onChangeText={(pseudo) => this.changePseudo4(pseudo)}
+                                value={this.props.pseudo4}
+                            />
+                        </View>
+                    </View>                        
+                </View>
+            </View>
+
+        }else{joueur4 =<View></View>}
+        if(this.props.nbJoueur>4){
+            joueur5 =
+            <View style={{
+                flex: 1, 
+                flexDirection: 'row',
+                margin:10, 
+                marginTop: 10,
+                backgroundColor:'rgba(52, 52, 52, 0.6)'
+            }}>
+                <View style={{
+                    flex: 1, 
+                    margin:10, 
+                    marginTop: 10,
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    backgroundColor:'white'
+                }}>
+                    <Image
+                        source={this.state.avatar5}
+                        style={{width: '80%', 
+                        height: '80%',
+                        justifyContent: "space-around", 
+                        margin: 10, 
+                        resizeMode: 'contain',
+                        padding: 10,
+                        backgroundColor:'steelblue'}}
+                    />
+                </View>
+                <View style={{
+                    flex: 2
+                }}>
+                    <View style={{
+                        flex: 1, 
+                        flexDirection: 'row',
+                    }}>
+                        <View style={{
+                            flex: 1
+                        }}>
+                            <Text style={{color:"white", fontSize:17, marginTop:10}}>Le pseudo :</Text>
+                        </View>
+                        <View style={{
+                            flex: 1
+                        }}> 
+                            <TextInput
+                                style={{height: 36, width: 80, borderColor: 'white', color: 'white', borderWidth: 1}}
+                                onChangeText={(pseudo) => this.changePseudo5(pseudo)}
+                                value={this.props.pseudo5}
+                            />
+                        </View>
+                    </View>                        
+                </View>
+            </View>
+        }else{joueur5 =<View></View>}
+
         return (
             <View style={{
                 flex: 1,
@@ -55,7 +194,7 @@ class FriendsPlayersScreen extends Component {
                         backgroundColor:'white'
                     }}>
                         <Image
-                            source={this.state.avatar}
+                            source={this.state.avatar1}
                             style={{width: '80%', 
                             height: '80%',
                             justifyContent: "space-around", 
@@ -68,57 +207,135 @@ class FriendsPlayersScreen extends Component {
                     <View style={{
                         flex: 2
                     }}>
-                        <Text style={{color:"white", fontSize:17, marginTop:10}}>Modifier l'avatar par une :</Text>
                         <View style={{
                             flex: 1, 
                             flexDirection: 'row',
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                            marginRight: 10
                         }}>
                             <View style={{
                                 flex: 1
                             }}>
-                                <Button block info style={{margin:2}} onPress={()=>this.handleRegister()}>
-                                    <Label style={{
-                                        color:"white",
-                                        fontSize: 17}}>Image</Label>
-                                </Button>
+                                <Text style={{color:"white", fontSize:17, marginTop:10}}>Le pseudo :</Text>
                             </View>
                             <View style={{
                                 flex: 1
                             }}> 
-                                <Button block info style={{margin:2}} onPress={this.changePhoto()}>
-                                    <Label style={{
-                                        color:"white",
-                                        fontSize: 17}}>Photo</Label>
-                                </Button>
+                            <TextInput
+                                style={{height: 36, width: 80, borderColor: 'white', color: 'white', borderWidth: 1}}
+                                onChangeText={(pseudo) => this.changePseudo1(pseudo)}
+                                value={this.props.pseudo1}
+                            />
                             </View>
-                        </View>
+                        </View>                        
                     </View>
                 </View>
-
-                <View style={{flex: 3, flexDirection: 'row'}}>
-                    <Content style={{marginLeft: 16, marginRight: 16}}>
-                        <Form style={{
-                            backgroundColor: 'rgba(52, 52, 52, 0.6)',
-                            color: "white",
-                            padding:20}}>
-                            <Item floatingLabel last>
-                            <Label style={{
-                                color:"white",
-                                fontSize: 17, 
-                                fontWeight: 'bold'}}>{this.props.pseudo+this.props.choosePlayer}</Label>
-                            <Input />
-                            </Item>
-                            <Button block info style={{ marginTop: 100}} onPress={()=>this.handleRegister()}>
-                            <Label style={{
-                                color:"white",
-                                fontSize: 17}}>Valider</Label>
-                        </Button>
-                        </Form>
-                    </Content>
+                <View style={{
+                    flex: 1, 
+                    flexDirection: 'row',
+                    margin:10, 
+                    marginTop: 10,
+                    backgroundColor:'rgba(52, 52, 52, 0.6)'
+                    }}>
+                    <View style={{
+                        flex: 1, 
+                        margin:10, 
+                        marginTop: 10,
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        backgroundColor:'white'
+                    }}>
+                        <Image
+                            source={this.state.avatar2}
+                            style={{width: '80%', 
+                            height: '80%',
+                            justifyContent: "space-around", 
+                            margin: 10, 
+                            resizeMode: 'contain',
+                            padding: 10,
+                            backgroundColor:'steelblue'}}
+                        />
+                    </View>
+                    <View style={{
+                        flex: 2
+                    }}>
+                        <View style={{
+                            flex: 1, 
+                            flexDirection: 'row',
+                        }}>
+                            <View style={{
+                                flex: 1
+                            }}>
+                                <Text style={{color:"white", fontSize:17, marginTop:10}}>Le pseudo :</Text>
+                            </View>
+                            <View style={{
+                                flex: 1
+                            }}> 
+                            <TextInput
+                                style={{height: 36, width: 80, borderColor: 'white', color: 'white', borderWidth: 1}}
+                                onChangeText={(pseudo) => this.changePseudo2(pseudo)}
+                                value={this.props.pseudo2}
+                            />
+                            </View>
+                        </View>                        
+                    </View>
                 </View>
+                <View style={{
+                    flex: 1, 
+                    flexDirection: 'row',
+                    margin:10, 
+                    marginTop: 10,
+                    backgroundColor:'rgba(52, 52, 52, 0.6)'
+                    }}>
+                    <View style={{
+                        flex: 1, 
+                        margin:10, 
+                        marginTop: 10,
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        backgroundColor:'white'
+                    }}>
+                        <Image
+                            source={this.state.avatar3}
+                            style={{width: '80%', 
+                            height: '80%',
+                            justifyContent: "space-around", 
+                            margin: 10, 
+                            resizeMode: 'contain',
+                            padding: 10,
+                            backgroundColor:'steelblue'}}
+                        />
+                    </View>
+                    <View style={{
+                        flex: 2
+                    }}>
+                        <View style={{
+                            flex: 1, 
+                            flexDirection: 'row',
+                        }}>
+                            <View style={{
+                                flex: 1
+                            }}>
+                                <Text style={{color:"white", fontSize:17, marginTop:10}}>Le pseudo :</Text>
+                            </View>
+                            <View style={{
+                                flex: 1
+                            }}> 
+                            <TextInput
+                                style={{height: 36, width: 80, borderColor: 'white', color: 'white', borderWidth: 1}}
+                                onChangeText={(pseudo) => this.changePseudo3(pseudo)}
+                                value={this.props.pseudo3}
+                            />
+                            </View>
+                        </View>                        
+                    </View>
+                </View>
+                {joueur4}
+                {joueur5}
+
+                <Button block info style={{ margin: 20}} onPress={()=>this.props.navigation.navigate("Game")}>
+                            <Label style={{
+                                color:"white",
+                                fontSize: 17}}>Confirmer</Label>
+                </Button>
             </View>
         );
     }
@@ -126,6 +343,7 @@ class FriendsPlayersScreen extends Component {
 
 const mapStateToProps = state => {
     return {
+        nbJoueur : state.tooglePlayer.nbJoueur,
         avatar1 : state.tooglePlayer.avatar1,
         avatar2 : state.tooglePlayer.avatar2,
         avatar3 : state.tooglePlayer.avatar3,

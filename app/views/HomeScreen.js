@@ -8,7 +8,7 @@ class HomeScreen extends Component {
   btnChoose(nb){
     const action = { type: "MUTATION_NBJOUEURS", value: nb }
     this.props.dispatch(action)
-    this.props.navigation.navigate("Game")
+    this.props.navigation.navigate("FriendsPlayers")
   }
 
   render() {

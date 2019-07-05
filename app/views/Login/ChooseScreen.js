@@ -8,13 +8,13 @@ class ChooseScreen extends Component {
     btnChooseThreeJoueur(){
       const action = { type: "MUTATION_NBJOUEURS", value: 3 }
       this.props.dispatch(action)
-      this.props.navigation.navigate("Game")
+      this.props.navigation.navigate("FriendsPlayers")
     }
 
     btnChooseFourJoueur(){
       const action = { type: "MUTATION_NBJOUEURS", value: 4 }
       this.props.dispatch(action)
-      this.props.navigation.navigate("Game")
+      this.props.navigation.navigate("FriendsPlayers")
     }
 
     render(){
