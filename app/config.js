@@ -7,9 +7,7 @@ import GameScreen from "./views/game/GameScreen";
 import GrillChooseScreen from "./views/game/GrillChooseScreen";
 import GrillScoreScreen from "./views/game/GrillScoreScreen";
 import ChooseScreen from "./views/login/ChooseScreen";
-import FriendScreen from "./views/menu/FriendScreen";
 import HistoryScreen from "./views/menu/HistoryScreen";
-import LegalScreen from "./views/menu/LegalScreen";
 import NoteScreen from "./views/menu/NoteScreen";
 import StatScreen from "./views/menu/StatScreen";
 import UserScreen from "./views/menu/UserScreen";
@@ -25,9 +23,7 @@ const switchNavigator = createSwitchNavigator({
     Game: GameScreen,
     GrillChoose: GrillChooseScreen,
     GrillScore: GrillScoreScreen,
-    Friend: FriendScreen,
     History: HistoryScreen,
-    Legal: LegalScreen,
     Note: NoteScreen,
     Stat: StatScreen,
     User: UserScreen,

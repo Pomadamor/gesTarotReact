@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import {View, Text, Image, TextInput} from 'react-native'
+import {View, Text, Image, TextInput, Alert} from 'react-native'
 import { Label, Button} from 'native-base';
 import ImagePicker from 'react-native-image-picker'
 import { connect } from 'react-redux'
+import { BackHandler } from 'react-native'
+
 
 class FriendsPlayersScreen extends Component {
 
@@ -18,6 +20,39 @@ class FriendsPlayersScreen extends Component {
         // this.setState est appelé dans un callback dans showImagePicker, pensez donc bien à binder la fonction _avatarClicked
         this.changePhoto = this.changePhoto.bind(this)
     }
+
+    componentDidMount() {
+    alert(
+        'Pour quittez la partie, il suffit de cliquer sur la touche retour.',
+        [
+            {text: 'Ask me later', onPress: () => console.log('Ask me later pressed')},
+            {
+            text: 'Cancel',
+            onPress: () => console.log('Cancel Pressed'),
+            style: 'cancel',
+            },
+            {text: 'OK', onPress: () => console.log('OK Pressed')},
+        ],
+        {cancelable: false},
+        );
+       
+        BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
+      }
+    
+      componentWillUnmount() {
+        BackHandler.removeEventListener('hardwareBackPress', this.handleBackPress);
+      }
+
+    handleBackPress = () => {
+        if(this.props.verif == true){
+            this.props.navigation.navigate("Home"); // works best when the goBack is async
+            return true;
+        }else{
+            this.props.navigation.navigate("Choose"); // works best when the goBack is async
+            return true;  
+        }
+      }
+
     changePseudo1(pseudo){
         console.log(pseudo)
         const actionPseudo = { type: "MUTATION_PSEUDO1", value: pseudo}
@@ -343,7 +378,7 @@ class FriendsPlayersScreen extends Component {
 
 const mapStateToProps = state => {
     return {
-        nbJoueur : state.tooglePlayer.nbJoueur,
+        nbJoueur : state.toogleScore.nbJoueur,
         avatar1 : state.tooglePlayer.avatar1,
         avatar2 : state.tooglePlayer.avatar2,
         avatar3 : state.tooglePlayer.avatar3,
@@ -354,7 +389,10 @@ const mapStateToProps = state => {
         pseudo3 : state.tooglePlayer.pseudo3,
         pseudo4 : state.tooglePlayer.pseudo4,
         pseudo5 : state.tooglePlayer.pseudo5,
-        choosePlayer : state.tooglePlayer.choosePlayer
+        verif: state.toogleUser.verif,
+        choosePlayer : state.tooglePlayer.choosePlayer,
+        turns : state.toogleScore.turns
+
     }
   }
   

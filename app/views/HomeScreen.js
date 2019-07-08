@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { Button, View, Text, Icon} from 'native-base';
 import { Image } from 'react-native';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
+import { BackHandler } from 'react-native'
+
 
 class HomeScreen extends Component {
 
@@ -9,6 +11,18 @@ class HomeScreen extends Component {
     const action = { type: "MUTATION_NBJOUEURS", value: nb }
     this.props.dispatch(action)
     this.props.navigation.navigate("FriendsPlayers")
+  }
+  componentDidMount() {
+    BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
+  }
+
+  componentWillUnmount() {
+    BackHandler.removeEventListener('hardwareBackPress', this.handleBackPress);
+  }
+
+  handleBackPress = () => {
+    this.props.navigation.navigate("Home"); // works best when the goBack is async
+    return true;
   }
 
   render() {
@@ -192,7 +206,7 @@ class HomeScreen extends Component {
 
 const mapStateToProps = state => {
   return {
-      nbJoueur : state.toogleScore.nbJoueur
+      nbJoueur : state.toogleScore.nbJoueur,
   }
 }
 

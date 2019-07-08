@@ -1,9 +1,9 @@
-const BASE_URL = "https://cciexpress.scalingo.io";
+const BASE_URL = "http://51.15.203.158/api";
 
 export default {
     register: {
         method: "POST",
-        url: `${BASE_URL}/users`
+        url: `${BASE_URL}/user`
     },
     retrieve: {
         method: "GET",

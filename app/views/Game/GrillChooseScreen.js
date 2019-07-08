@@ -109,19 +109,19 @@ class GrillChooseScreen extends Component {
             style={{flex:1, margin:2}}
                               onPress={() => this.buttonPartenaire3()}>
                                 <View style={{width:"100%", alignItems:"center"}}>
-                                <Text style={{color:"white"}}>Joueur 4</Text>
+                                <Text style={{color:"white"}}>{this.props.pseudo4}</Text>
                                 </View>
                               </Button>
         } else {joueurFourAlert= <View></View>}
     
         if(this.props.nbJoueur>4){
-        joueurFiveAlert = <Button bordered light
-        backgroundColor={ this.props.preneur == 'Joueur 5' ? "steelblue" : null }
-        style={{flex:1, margin:2}}
+                            joueurFiveAlert = <Button bordered light
+                            backgroundColor={ this.props.preneur == 'Joueur 5' ? "steelblue" : null }
+                            style={{flex:1, margin:2}}
                             onPress={() => this.buttonPartenaire4()}>
-                            <View style={{width:"100%", alignItems:"center"}}>
-                            <Text style={{color:"white"}}>Joueur 5</Text>
-                            </View> 
+                                <View style={{width:"100%", alignItems:"center"}}>
+                                    <Text style={{color:"white"}}>{this.props.pseudo5}</Text>
+                                </View> 
                             </Button>
         } else {joueurFiveAlert = <View></View>}
         
@@ -177,7 +177,7 @@ class GrillChooseScreen extends Component {
                         onPress={() => this.buttonPartenaire0()}
                     >
                         <View style={{width:"100%", alignItems:"center"}}>
-                            <Text style={{color:"white"}}>Joueur 1</Text>
+                            <Text style={{color:"white"}}>{this.props.pseudo1}</Text>
                         </View>
                     </Button> 
 
@@ -187,7 +187,7 @@ class GrillChooseScreen extends Component {
                         style={{flex:1, margin:2}}
                         onPress={() => this.buttonPartenaire1()}>
                         <View style={{width:"100%", alignItems:"center"}}>
-                            <Text style={{color:"white"}}>Joueur 2</Text>
+                            <Text style={{color:"white"}}>{this.props.pseudo2}</Text>
                         </View>
                     </Button>
 
@@ -197,7 +197,7 @@ class GrillChooseScreen extends Component {
                         onPress={() => this.buttonPartenaire2()}
                         >
                         <View style={{width:"100%", alignItems:"center"}}>
-                            <Text style={{color:"white"}}>Joueur 3</Text>
+                            <Text style={{color:"white"}}>{this.props.pseudo3}</Text>
                         </View>
                     </Button>
 
@@ -288,6 +288,11 @@ const styles = {
 
 const mapStateToProps = state => {
     return {
+        pseudo1 : state.tooglePlayer.pseudo1,
+        pseudo2 : state.tooglePlayer.pseudo2,
+        pseudo3 : state.tooglePlayer.pseudo3,
+        pseudo4 : state.tooglePlayer.pseudo4,
+        pseudo5 : state.tooglePlayer.pseudo5,
         nbJoueur : state.toogleScore.nbJoueur,
         roi : state.toogleScore.roi,
         type : state.toogleScore.type,

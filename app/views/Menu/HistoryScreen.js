@@ -33,7 +33,7 @@ export default class RegisterScreen extends Component {
                 this.setState({ error: message });
             }
         } catch(e){
-            console.log(e);
+            (e);
         }
 
     }

@@ -9,6 +9,8 @@ export default class RegisterScreen extends Component {
     constructor(props){
         super(props);
         this.state = {
+            username:"",
+            phone:"",
             useremail: "",
             userpassword: "",
             error: ""
@@ -16,7 +18,10 @@ export default class RegisterScreen extends Component {
     }
 
     async handleRegister() {
-        const {useremail} = this.state;
+        const {user} = this.state;
+      // const {userphone} = this.state.useremail;
+      // const {userpassword} = this.state.useremail;
+      // const {useremail} = this.state.useremail;
         const {method, url} = apiRoutes.register;
         try {
             const res = await fetch(url, {
@@ -24,7 +29,7 @@ export default class RegisterScreen extends Component {
                 headers: {
                     "content-type": "application/json"
                 },
-                body: JSON.stringify({useremail})
+                body: JSON.stringify({user})
             });
             if(res.ok){
                 const {token} = await res.json();
@@ -35,7 +40,7 @@ export default class RegisterScreen extends Component {
                 this.setState({ error: message });
             }
         } catch(e){
-            console.log(e);
+            (e);
         }
 
     }

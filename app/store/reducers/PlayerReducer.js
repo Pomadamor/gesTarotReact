@@ -1,6 +1,5 @@
 const initialState = {
     pseudo1 : "Joueur 1",
-    email1: "",
     avatar1: require("../../assets/img/icon_user/happy.png"),
 
     pseudo2 : "Joueur 2",
@@ -15,7 +14,14 @@ const initialState = {
     pseudo5 : "Joueur 5",
     avatar5: require("../../assets/img/icon_user/pig.png"),
 
-    choosePlayer: 0
+    choosePlayer: 0,
+    calcul: 0,
+
+    scoreJ1 : 0,
+    scoreJ2 : 0,
+    scoreJ3 : 0,
+    scoreJ4 : 0,
+    scoreJ5 : 0
 }
 
 function tooglePlayer(state = initialState, action){
@@ -85,6 +91,42 @@ switch(action.type){
     nextState = {
         ...state,
         choosePlayer: action.value
+    }
+    return nextState
+    case 'MUTATION_SCORE_J1':
+    nextState = {
+        ...state,
+        scoreJ1: action.value
+    }
+    return nextState
+    case 'MUTATION_SCORE_J2':
+    nextState = {
+        ...state,
+        scoreJ2: action.value
+    }
+    return nextState
+    case 'MUTATION_SCORE_J3':
+    nextState = {
+        ...state,
+        scoreJ3: action.value
+    }
+    return nextState
+    case 'MUTATION_SCORE_J4':
+    nextState = {
+        ...state,
+        scoreJ4: action.value
+    }
+    return nextState
+    case 'MUTATION_SCORE_J5':
+    nextState = {
+        ...state,
+        scoreJ5: action.value
+    }
+    return nextState
+    case 'MUTATION_CALCUL':
+    nextState = {
+        ...state,
+        calcul: action.value
     }
     return nextState
     default:

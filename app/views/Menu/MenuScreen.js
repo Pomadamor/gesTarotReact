@@ -1,15 +1,37 @@
 import React, { Component } from 'react';
-import {View} from 'react-native'
-import { Container, Header, Content, Button, ListItem, Text, Icon, Left, Body, Right, Title } from 'native-base';
+import {View, Linking} from 'react-native'
+import { Button, Text, Icon} from 'native-base';
+import { connect } from 'react-redux';
+import { BackHandler } from 'react-native'
 
-export default class MenuScreen extends Component {
+
+class MenuScreen extends Component {
+  componentDidMount() {
+    BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
+  }
+
+  componentWillUnmount() {
+    BackHandler.removeEventListener('hardwareBackPress', this.handleBackPress);
+  }
+
+  handleBackPress = () => {
+    this.props.navigation.navigate("Home"); // works best when the goBack is async
+    return true;
+  }
+
+  disconnect(){
+    const actionVerif= { type: "MUTATION_VERIF", value: false}
+    this.props.dispatch(actionVerif)
+    this.props.navigation.navigate("Choose")
+  }
+
   render() {
     return (
       <View style={{
         flex: 1,
         flexDirection: 'column',
       }}>
-        <View style={{flex: 1, flexDirection: 'row'}}>
+        {/* <View style={{flex: 1, flexDirection: 'row'}}> */}
           {/* <Button bordered light 
           onPress={() => this.props.navigation.navigate("Stat")}
           style={{flex:1, resizeMode:'center', height:"90%", marginTop: 10, marginLeft:10, margin:10, backgroundColor:'rgba(52, 52, 52, 0.6)'}} >
@@ -18,15 +40,15 @@ export default class MenuScreen extends Component {
               <Text>Statistique</Text>
             </View>
           </Button> */}
-          <Button bordered light style={{flex:1, alignContent:'center', height:"90%", marginTop: 10, marginLeft:10, margin:10, backgroundColor:'rgba(52, 52, 52, 0.6)'}} >
+          {/* <Button bordered light style={{flex:1, alignContent:'center', height:"90%", marginTop: 10, marginLeft:10, margin:10, backgroundColor:'rgba(52, 52, 52, 0.6)'}} >
           <View style={{width:"100%", alignItems:"center"}}>
               <Icon active name="beer"/>
               <Text>Amis</Text>
             </View>
-          </Button>
-        </View>
+          </Button> */}
+        {/* </View> */}
 
-        <View style={{flex: 1, flexDirection: 'row'}}>
+        {/* <View style={{flex: 1, flexDirection: 'row'}}>
           <Button bordered light 
           onPress={() => this.props.navigation.navigate("History")}
           style={{flex:1, resizeMode:'center', height:"90%", marginTop: 10, marginLeft:10, margin:10, backgroundColor:'rgba(52, 52, 52, 0.6)'}} >
@@ -35,19 +57,19 @@ export default class MenuScreen extends Component {
               <Text>Historique des parties</Text>
             </View>
           </Button>
-        </View>
+        </View> */}
 
         <View style={{flex: 1, flexDirection: 'row'}}>
-          {/* <Button bordered light 
-          onPress={() => this.props.navigation.navigate("Legal")}
+          <Button bordered light 
+          onPress={() => {Linking.openURL('http://www.letarot.net/fr/rules.html')}}
           style={{flex:1, resizeMode:'center', height:"90%", marginTop: 10, marginLeft:10, margin:10, backgroundColor:'rgba(52, 52, 52, 0.6)'}} >
           <View style={{width:"100%", alignItems:"center"}}>
               <Icon active name="star" />
-              <Text>Information</Text>
+              <Text>Règle du jeu</Text>
             </View>
-          </Button> */}
+          </Button>
           <Button bordered light 
-          onPress={() => this.props.navigation.navigate("Legal")}
+          onPress={()=>{ Linking.openURL('https://google.com')}}
           style={{flex:1, alignContent:'center', height:"90%", marginTop: 10, marginLeft:10, margin:10, backgroundColor:'rgba(52, 52, 52, 0.6)'}} >
           <View style={{width:"100%", alignItems:"center"}}>
               <Icon active name="beer"/>
@@ -66,7 +88,7 @@ export default class MenuScreen extends Component {
             </View>
           </Button> */}
           <Button bordered light 
-          onPress={() => this.props.navigation.navigate("Choose")}
+          onPress={() => this.disconnect()}
           style={{flex:1, alignContent:'center', height:"90%", marginTop: 10, marginLeft:10, margin:10, backgroundColor:'rgba(52, 52, 52, 0.6)'}} >
           <View style={{width:"100%", alignItems:"center"}}>
               <Icon active name="beer"/>
@@ -77,9 +99,13 @@ export default class MenuScreen extends Component {
       </View>
     );
   }
+} 
 
-  _signOutAsync = async () => {
-    await AsyncStorage.clear();
-    this.props.navigation.navigate('Auth');
-  };
+
+const mapStateToProps = state => {
+  return {
+    verif : state.toogleUser.verif
+  }
 }
+
+export default connect(mapStateToProps)(MenuScreen)

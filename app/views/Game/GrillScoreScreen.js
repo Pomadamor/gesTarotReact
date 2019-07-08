@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
 class GrillScoreScreen extends Component {
 
     changeScore(score){
-        console.log(score)
+        (score)
         const actionScore = { type: "MUTATION_SCORE", value: score}
         this.props.dispatch(actionScore)
     }
@@ -61,7 +61,7 @@ class GrillScoreScreen extends Component {
                             onPress={() => this.buttonPartenaire0()}
                         >
                             <View style={{width:"100%", alignItems:"center"}}>
-                                <Text style={{color:"white"}}>Joueur 1</Text>
+                                <Text style={{color:"white"}}>{this.props.pseudo1}</Text>
                             </View>
                         </Button> 
 
@@ -71,7 +71,7 @@ class GrillScoreScreen extends Component {
                             style={{flex:1, margin:2}}
                             onPress={() => this.buttonPartenaire1()}>
                             <View style={{width:"100%", alignItems:"center"}}>
-                                <Text style={{color:"white"}}>Joueur 2</Text>
+                                <Text style={{color:"white"}}>{this.props.pseudo2}</Text>
                             </View>
                         </Button>
 
@@ -81,7 +81,7 @@ class GrillScoreScreen extends Component {
                             onPress={() => this.buttonPartenaire2()}
                             >
                             <View style={{width:"100%", alignItems:"center"}}>
-                                <Text style={{color:"white"}}>Joueur 3</Text>
+                                <Text style={{color:"white"}}>{this.props.pseudo3}</Text>
                             </View>
                         </Button>
 
@@ -91,7 +91,7 @@ class GrillScoreScreen extends Component {
                                 onPress={() => this.buttonPartenaire3()}
                             >
                                 <View style={{width:"100%", alignItems:"center"}}>
-                                    <Text style={{color:"white"}}>Joueur 4</Text>
+                                    <Text style={{color:"white"}}>{this.props.pseudo4}</Text>
                                 </View>
                             </Button>
 
@@ -101,7 +101,7 @@ class GrillScoreScreen extends Component {
                                 onPress={() => this.buttonPartenaire4()}
                             >
                                 <View style={{width:"100%", alignItems:"center"}}>
-                                    <Text style={{color:"white"}}>Joueur 5</Text>
+                                    <Text style={{color:"white"}}>{this.props.pseudo5}</Text>
                                 </View> 
                             </Button>
                     </View>
@@ -183,6 +183,11 @@ class GrillScoreScreen extends Component {
 
 const mapStateToProps = state => {
     return {
+        pseudo1 : state.tooglePlayer.pseudo1,
+        pseudo2 : state.tooglePlayer.pseudo2,
+        pseudo3 : state.tooglePlayer.pseudo3,
+        pseudo4 : state.tooglePlayer.pseudo4,
+        pseudo5 : state.tooglePlayer.pseudo5,
         partenaire : state.toogleScore.partenaire,
         score : state.toogleScore.score,
         nbJoueur : state.toogleScore.nbJoueur,

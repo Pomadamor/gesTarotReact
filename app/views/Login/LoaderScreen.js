@@ -7,7 +7,7 @@ export default class LoaderScreen extends Component {
     componentDidMount(){
         AsyncStorage.getItem("token").then(token=>{
             if(token){
-                console.log(token);
+                (token);
                 //if token then authenticated so go to home
                 this.props.navigation.navigate("Home");
             } else {

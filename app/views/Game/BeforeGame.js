@@ -4,10 +4,10 @@ import { Button } from 'native-base';
 
 class BeforeGame extends Component {
   render(){
-      console.log("props of before:", this.props);
+      ("props of before:", this.props);
       //const turnBefore =  this.props.turns
       const turnBefore = this.props.turnBefore[0];
-    //   console.log("turnBefore: ", turnBefore.preneur);
+    //   ("turnBefore: ", turnBefore.preneur);
       if( turnBefore.nbJoueur>3){
         joueurFour = <Button bordered light 
                         backgroundColor={  turnBefore.preneur == 'Joueur 4' ? "green" : 'rgba(52, 52, 52, 0.6)'  }

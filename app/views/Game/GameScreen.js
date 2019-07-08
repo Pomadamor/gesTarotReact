@@ -5,6 +5,10 @@ import { Button } from 'native-base';
 import InitGame from "./InitGame";
 import LiveGame from "./LiveGame";
 import BeforeGame from "./BeforeGame";
+import { BackHandler } from 'react-native'
+import CalculScore from "./CalculScore";
+import CalculScoreInviduel from "./CalculScoreInviduel";
+
 
 class GameScreen extends Component {
 
@@ -13,16 +17,27 @@ class GameScreen extends Component {
   //   return true;
   // }
 
-  componentDidMount(){
-    if(this.props.choosePlayer != 0){
-      console.log("test",this.props.choosePlayer)
-      this.props.navigation.navigate("FriendsPlayers")
-    }
+  componentDidMount() {
+    BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
   }
 
+  componentWillUnmount() {
+    BackHandler.removeEventListener('hardwareBackPress', this.handleBackPress);
+  }
+  
+  handleBackPress = () => {
+      this.props.navigation.navigate("FriendsPlayers"); // works best when the goBack is async
+      return true;
+    }
+
   buttonTurn(){
-    console.log("buttonturn", this.props)
     if(this.props.score != 0){
+      const actionId = { type: "MUTATION_ID", value: this.props.id + 1}
+      this.props.dispatch(actionId)
+
+      const actionBtnTurn = { type: "MUTATION_BUTTONTURN", value: `tour n°${this.props.id + 1}`}
+      this.props.dispatch(actionBtnTurn)
+
       this.props.turns.push([{
         id : this.props.id,
         preneur : this.props.preneur,
@@ -33,13 +48,10 @@ class GameScreen extends Component {
         preneurScore : this.props.preneurScore,
         partenaireScore : this.props.partenaireScore,
         autreScore : this.props.autreScore,
-        nbJoueur : this.props.nbJoueur
+        nbJoueur : this.props.nbJoueur,
       }])
 
-      console.log("buttonturn turns:", this.props.turns)
-
       const actionTurn = { type: "MUTATION_TURN", value: this.props.turns }
-
       this.props.dispatch(actionTurn)
 
       const actionScore = { type: "MUTATION_SCORE", value: 0 }
@@ -54,19 +66,9 @@ class GameScreen extends Component {
       this.props.dispatch(actionPartenaire)
       this.props.dispatch(actionRoi)
 
-      this.props.navigation.navigate("GrillScore")
-
-      const actionId = { type: "MUTATION_ID", value: this.props.id + 1}
-      this.props.dispatch(actionId)
-
-      const actionBtnTurn = { type: "MUTATION_BUTTONTURN", value: `tour n°${this.props.id + 1}`}
-      this.props.dispatch(actionBtnTurn)
-
-  
       this.props.navigation.navigate("GrillChoose")
-    }
 
-    if(this.props.score == 0 && this.props.type != ""){
+    } else if(this.props.score == 0 && this.props.type != ""){
         this.props.navigation.navigate("GrillScore")
 
     }else{
@@ -100,6 +102,7 @@ class GameScreen extends Component {
           keyExtractor={(item) => item.id}
           renderItem={({item}) => <BeforeGame turnBefore={item}/>}
         />
+        <CalculScore/>
         <LiveGame/> 
          
         <View style={{flex:0.1, margin:20}}>
@@ -137,7 +140,8 @@ const mapStateToProps = state => {
       partenaireScore : state.toogleScore.partenaireScore,
       autreScore : state.toogleScore.autreScore,
       nbJoueur : state.toogleScore.nbJoueur,
-      choosePlayer : state.tooglePlayer.choosePlayer
+      choosePlayer : state.tooglePlayer.choosePlayer,
+      verif : state.toogleUser.verif
     }
 }
 

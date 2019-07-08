@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import {View, Text, Image} from 'react-native'
 import { Label, Form, Content, Button, Item, Input} from 'native-base';
 import ImagePicker from 'react-native-image-picker'
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
+import { BackHandler } from 'react-native'
+
 
 class UserScreen extends Component {
 
@@ -14,6 +16,19 @@ class UserScreen extends Component {
         // this.setState est appelé dans un callback dans showImagePicker, pensez donc bien à binder la fonction _avatarClicked
         this.changePhoto = this.changePhoto.bind(this)
     }
+
+    componentDidMount() {
+        BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
+      }
+    
+      componentWillUnmount() {
+        BackHandler.removeEventListener('hardwareBackPress', this.handleBackPress);
+      }
+
+    handleBackPress = () => {
+        this.props.navigation.navigate("Home"); // works best when the goBack is async
+        return true;
+      }
     
     changePhoto(){
         ImagePicker.showImagePicker({}, (response) => {
@@ -76,7 +91,7 @@ class UserScreen extends Component {
                             alignItems: 'center',
                             marginRight: 10
                         }}>
-                            <View style={{
+                            {/* <View style={{
                                 flex: 1
                             }}>
                                 <Button block info style={{margin:2}} onPress={()=>this.handleRegister()}>
@@ -84,11 +99,11 @@ class UserScreen extends Component {
                                         color:"white",
                                         fontSize: 17}}>Image</Label>
                                 </Button>
-                            </View>
+                            </View> */}
                             <View style={{
                                 flex: 1
                             }}> 
-                                <Button block info style={{margin:2}} onPress={this.changePhoto()}>
+                                <Button block info style={{margin:2}} onPress={()=>this.changePhoto()}>
                                     <Label style={{
                                         color:"white",
                                         fontSize: 17}}>Photo</Label>
@@ -148,7 +163,7 @@ class UserScreen extends Component {
 
 const mapStateToProps = state => {
     return {
-        avatar : state.tooglePlayer.avatar
+        avatar : state.tooglePlayer.avatar,
     }
   }
   
