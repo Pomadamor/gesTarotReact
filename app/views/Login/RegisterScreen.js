@@ -3,7 +3,6 @@ import { Button, Content, Form, Item, Input, Label } from 'native-base';
 import AsyncStorage from "@react-native-community/async-storage";
 import { BackHandler } from 'react-native'
 
-
 export default class RegisterScreen extends Component {
 
     constructor(props){
@@ -11,36 +10,44 @@ export default class RegisterScreen extends Component {
         this.state = {
             username:"",
             phone:"",
-            useremail: "",
-            userpassword: "",
+            email: "",
+            password: "",
+            password2: "",
             error: ""
         }
     }
 
     async handleRegister() {
-        const {user} = this.state;
-      // const {userphone} = this.state.useremail;
-      // const {userpassword} = this.state.useremail;
-      // const {useremail} = this.state.useremail;
-        const {method, url} = apiRoutes.register;
+      const {username} = this.state.username;
+      const {phone} = this.state.phone
+      const {email} = this.state.email;
+      const {password} = this.state.password;
         try {
-            const res = await fetch(url, {
-                method,
+            const res = await fetch('http://51.15.203.158/api/user', {
+                method : 'POST',
                 headers: {
-                    "content-type": "application/json"
+                  Accept: 'application/json',
+                  'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({user})
+                payload: JSON.stringify({
+                  username: username,
+                  email: email,
+                  phone: phone,
+                  password: password,
+                }),
             });
             if(res.ok){
-                const {token} = await res.json();
-                await AsyncStorage.setItem("token", token);
-                this.props.navigation.navigate("Loader");
+                console.log("RESPONSE TRUE", res)
+                // const {token} = await res.json();
+                // await AsyncStorage.setItem("token", token);
+                // this.props.navigation.navigate("Loader");
             } else {
-                const {message} = await res.json();
-                this.setState({ error: message });
+              console.log("RESPONSE FALSE", res)
+                // const {message} = await res.json();
+                // this.setState({ error: message });
             }
         } catch(e){
-            (e);
+          console.log(e);
         }
 
     }
@@ -61,26 +68,37 @@ export default class RegisterScreen extends Component {
               <Input onChangeText={(useremail) => this.setState({useremail})}
                 value={this.state.useremail}/>
             </Item>
+            <Item floatingLabel>
+            <Label style={{
+                color:"white",
+                fontSize: 17, 
+                fontWeight: 'bold'}}>Phone</Label>
+              <Input onChangeText={(phone) => this.setState({phone})}
+                value={this.state.phone}/>
+            </Item>
             <Item floatingLabel last>
             <Label style={{
                 color:"white",
                 fontSize: 17, 
                 fontWeight: 'bold'}}>Pseudo</Label>
-              <Input />
+              <Input onChangeText={(username) => this.setState({username})}
+                value={this.state.username}/>
             </Item>
             <Item floatingLabel last>
             <Label style={{
                 color:"white",
                 fontSize: 17, 
                 fontWeight: 'bold'}}>Password</Label>
-              <Input />
+              <Input onChangeText={(password) => this.setState({password})}
+                value={this.state.password}/>
             </Item>
             <Item floatingLabel last>
             <Label style={{
                 color:"white",
                 fontSize: 17, 
                 fontWeight: 'bold'}}>Confirm Password</Label>
-              <Input />
+              <Input onChangeText={(password2) => this.setState({password2})}
+                value={this.state.password2}/>
             </Item>
             <Button block info style={{ marginTop: 100}} onPress={()=>this.handleRegister()}>
             <Label style={{

@@ -14,7 +14,7 @@ class LiveGame extends Component {
         for(let i = 1; i <= nbJoueurChoose; i++){
           this.props.joueurs.push(`Joueur ${i}`)
         }
-      }
+    }
 
       if(this.props.joueurs.length>3){
         joueurFour = <Button bordered light 
