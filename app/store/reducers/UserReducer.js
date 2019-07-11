@@ -1,8 +1,10 @@
 const initialState = {
     verif : false,
+    id : "",
     pseudo : "Joueur 1",
     email: "",
     phone:"",
+    token: "",
     avatar: require("../../assets/img/icon_user/happy.png"),
 
 }
@@ -27,6 +29,18 @@ switch(action.type){
     nextState = {
         ...state,
         email: action.value
+    }
+    return nextState
+    case 'MUTATION_TOKEN':
+    nextState = {
+        ...state,
+        token: action.value
+    }
+    return nextState
+    case 'MUTATION_ID':
+    nextState = {
+        ...state,
+        id: action.value
     }
     return nextState
     case 'MUTATION_PHONE':

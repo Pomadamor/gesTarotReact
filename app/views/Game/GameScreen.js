@@ -14,8 +14,6 @@ class GameScreen extends Component {
   componentDidMount() {
     BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
 
-
-    console.log('Error', mapStateToProps)
     const res = CalculScore(this.props.datas)
     res.forEach(item => this.props.dispatch(item))
 
@@ -26,6 +24,8 @@ class GameScreen extends Component {
 
   componentWillUnmount() {
     BackHandler.removeEventListener('hardwareBackPress', this.handleBackPress);
+
+    
   }
 
   handleBackPress = () => {
@@ -102,7 +102,7 @@ class GameScreen extends Component {
 
         <FlatList
           data={turnBefore}
-          keyExtractor={(item) => item.id}
+           keyExtractor={(item) => item.id}
           renderItem={({ item }) => <BeforeGame turnBefore={item} />}
         />
         <LiveGame />
@@ -145,7 +145,12 @@ const mapStateToProps = state => {
     autreScore: state.toogleScore.autreScore,
     nbJoueur: state.toogleScore.nbJoueur,
     choosePlayer: state.tooglePlayer.choosePlayer,
-    verif: state.toogleUser.verif
+    verif: state.toogleUser.verif,
+    scoreJ1 : state.tooglePlayer.scoreJ1,
+    scoreJ2 : state.tooglePlayer.scoreJ2,
+    scoreJ3 : state.tooglePlayer.scoreJ3,
+    scoreJ4 : state.tooglePlayer.scoreJ4,
+    scoreJ5 : state.tooglePlayer.scoreJ5
   }
 
   return { datas, ...datas }

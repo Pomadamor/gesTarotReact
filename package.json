@@ -24,6 +24,7 @@
     "react-navigation": "^3.11.0",
     "react-redux": "^7.1.0",
     "redux": "^4.0.1",
+    "redux-logger": "^3.0.6",
     "rn-bottom-drawer": "^1.4.3",
     "rn-sliding-up-panel": "^2.2.1"
   },

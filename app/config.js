@@ -13,6 +13,9 @@ import StatScreen from "./views/menu/StatScreen";
 import UserScreen from "./views/menu/UserScreen";
 import MenuScreen from "./views/menu/MenuScreen";
 import FriendsPlayersScreen from "./views/friends/FriendsPlayersScreen";
+import DeviceScreen from "./views/ble/DeviceScreen";
+import ScannerScreen from "./views/ble/ScannerScreen";
+
 
 const switchNavigator = createSwitchNavigator({
     Loader: LoaderScreen,
@@ -28,9 +31,16 @@ const switchNavigator = createSwitchNavigator({
     Stat: StatScreen,
     User: UserScreen,
     Menu: MenuScreen,
-    FriendsPlayers: FriendsPlayersScreen
+    FriendsPlayers: FriendsPlayersScreen,
+    Device: DeviceScreen,
+    Scanner: ScannerScreen
 }, {
     initialRouteName: "Loader"
 });
+
+/**
+ * Cette page permet de gérer la navigation de l'application avec loader par defaut
+ * @param switchNavigator gère la navigation
+ */
 
 export default createAppContainer(switchNavigator);

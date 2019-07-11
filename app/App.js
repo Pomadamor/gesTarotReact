@@ -1,8 +1,15 @@
-import React, {Component} from 'react';
+import React from 'react';
 import AppContainer from "./config";
 import {ImageBackground} from "react-native"
 import { Provider } from 'react-redux'
 import Store from "./store/configStore"
+
+/**
+ * Ce fichier permet de gérer la vue centrale de l'application.
+ * @version 0.1
+ * @author Ines
+ */
+
 
 export default class App extends React.Component{
   render() {

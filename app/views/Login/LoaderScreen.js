@@ -7,10 +7,12 @@ export default class LoaderScreen extends Component {
     componentDidMount(){
         AsyncStorage.getItem("token").then(token=>{
             if(token){
-                (token);
+                console.log(token)
                 //if token then authenticated so go to home
                 this.props.navigation.navigate("Home");
             } else {
+                console.log(token)
+
                 //no token so go to register screen
                 this.props.navigation.navigate("Choose");
             }

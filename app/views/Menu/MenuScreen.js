@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import {View, Linking} from 'react-native'
-import { Button, Text, Icon} from 'native-base';
+import { View, Linking } from 'react-native'
+import { Button, Text, Icon } from 'native-base';
 import { connect } from 'react-redux';
 import { BackHandler } from 'react-native'
+import AsyncStorage from "@react-native-community/async-storage";
+
 
 
 class MenuScreen extends Component {
@@ -19,9 +21,10 @@ class MenuScreen extends Component {
     return true;
   }
 
-  disconnect(){
-    const actionVerif= { type: "MUTATION_VERIF", value: false}
+  disconnect() {
+    const actionVerif = { type: "MUTATION_VERIF", value: false }
     this.props.dispatch(actionVerif)
+    AsyncStorage.setItem("token", "")
     this.props.navigation.navigate("Choose")
   }
 
@@ -32,7 +35,7 @@ class MenuScreen extends Component {
         flexDirection: 'column',
       }}>
         {/* <View style={{flex: 1, flexDirection: 'row'}}> */}
-          {/* <Button bordered light 
+        {/* <Button bordered light 
           onPress={() => this.props.navigation.navigate("Stat")}
           style={{flex:1, resizeMode:'center', height:"90%", marginTop: 10, marginLeft:10, margin:10, backgroundColor:'rgba(52, 52, 52, 0.6)'}} >
             <View style={{width:"100%", alignItems:"center"}}>
@@ -40,7 +43,7 @@ class MenuScreen extends Component {
               <Text>Statistique</Text>
             </View>
           </Button> */}
-          {/* <Button bordered light style={{flex:1, alignContent:'center', height:"90%", marginTop: 10, marginLeft:10, margin:10, backgroundColor:'rgba(52, 52, 52, 0.6)'}} >
+        {/* <Button bordered light style={{flex:1, alignContent:'center', height:"90%", marginTop: 10, marginLeft:10, margin:10, backgroundColor:'rgba(52, 52, 52, 0.6)'}} >
           <View style={{width:"100%", alignItems:"center"}}>
               <Icon active name="beer"/>
               <Text>Amis</Text>
@@ -59,26 +62,34 @@ class MenuScreen extends Component {
           </Button>
         </View> */}
 
-        <View style={{flex: 1, flexDirection: 'row'}}>
-          <Button bordered light 
-          onPress={() => {Linking.openURL('http://www.letarot.net/fr/rules.html')}}
-          style={{flex:1, resizeMode:'center', height:"90%", marginTop: 10, marginLeft:10, margin:10, backgroundColor:'rgba(52, 52, 52, 0.6)'}} >
-          <View style={{width:"100%", alignItems:"center"}}>
+        <View style={{ flex: 1, flexDirection: 'row' }}>
+          <Button bordered light
+            onPress={() => { Linking.openURL('http://www.letarot.net/fr/rules.html') }}
+            style={{ flex: 1, resizeMode: 'center', height: "90%", marginTop: 10, marginLeft: 10, margin: 10, backgroundColor: 'rgba(52, 52, 52, 0.6)' }} >
+            <View style={{ width: "100%", alignItems: "center" }}>
               <Icon active name="star" />
               <Text>Règle du jeu</Text>
             </View>
           </Button>
-          <Button bordered light 
-          onPress={()=>{ Linking.openURL('https://google.com')}}
-          style={{flex:1, alignContent:'center', height:"90%", marginTop: 10, marginLeft:10, margin:10, backgroundColor:'rgba(52, 52, 52, 0.6)'}} >
-          <View style={{width:"100%", alignItems:"center"}}>
-              <Icon active name="beer"/>
+          <Button bordered light
+            onPress={() => { Linking.openURL('https://google.com') }}
+            style={{ flex: 1, alignContent: 'center', height: "90%", marginTop: 10, marginLeft: 10, margin: 10, backgroundColor: 'rgba(52, 52, 52, 0.6)' }} >
+            <View style={{ width: "100%", alignItems: "center" }}>
+              <Icon active name="beer" />
               <Text>Mention légales</Text>
             </View>
           </Button>
         </View>
 
-        <View style={{flex: 1, flexDirection: 'row'}}>
+        <View style={{ flex: 1, flexDirection: 'row' }}>
+          <Button bordered light
+            onPress={() => this.props.navigation.navigate("Device")}
+            style={{ flex: 1, resizeMode: 'center', height: "90%", marginTop: 10, marginLeft: 10, margin: 10, backgroundColor: 'rgba(52, 52, 52, 0.6)' }} >
+            <View style={{ width: "100%", alignItems: "center" }}>
+              <Icon active name="star" />
+              <Text>Ble</Text>
+            </View>
+          </Button>
           {/* <Button bordered light 
           onPress={() => this.props.navigation.navigate("Note")}
           style={{flex:1, resizeMode:'center', height:"90%", marginTop: 10, marginLeft:10, margin:10, backgroundColor:'rgba(52, 52, 52, 0.6)'}} >
@@ -87,11 +98,11 @@ class MenuScreen extends Component {
               <Text>noter</Text>
             </View>
           </Button> */}
-          <Button bordered light 
-          onPress={() => this.disconnect()}
-          style={{flex:1, alignContent:'center', height:"90%", marginTop: 10, marginLeft:10, margin:10, backgroundColor:'rgba(52, 52, 52, 0.6)'}} >
-          <View style={{width:"100%", alignItems:"center"}}>
-              <Icon active name="beer"/>
+          <Button bordered light
+            onPress={() => this.disconnect()}
+            style={{ flex: 1, alignContent: 'center', height: "90%", marginTop: 10, marginLeft: 10, margin: 10, backgroundColor: 'rgba(52, 52, 52, 0.6)' }} >
+            <View style={{ width: "100%", alignItems: "center" }}>
+              <Icon active name="beer" />
               <Text>Deconnexion</Text>
             </View>
           </Button>
@@ -99,12 +110,12 @@ class MenuScreen extends Component {
       </View>
     );
   }
-} 
+}
 
 
 const mapStateToProps = state => {
   return {
-    verif : state.toogleUser.verif
+    verif: state.toogleUser.verif
   }
 }
 

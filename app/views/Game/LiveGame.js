@@ -6,16 +6,6 @@ import { Button } from 'native-base';
 class LiveGame extends Component {
   render(){
 
-    console.log("surveillance score", this.props.scoreJ1)
-
-    if ( this.props.joueurs.length == 0 ) {
-        const nbJoueurChoose = this.props.nbJoueur;
-    
-        for(let i = 1; i <= nbJoueurChoose; i++){
-          this.props.joueurs.push(`Joueur ${i}`)
-        }
-    }
-
       if(this.props.joueurs.length>3){
         joueurFour = <Button bordered light 
                         backgroundColor={ this.props.preneur == 'Joueur 4' ? "green" : 'rgba(52, 52, 52, 0.6)'  }

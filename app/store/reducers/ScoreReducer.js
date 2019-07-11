@@ -17,6 +17,7 @@ const initialState = {
 }
 
 function toogleScore(state = initialState, action){
+    console.log("toto", action)
     let nextState
     switch(action.type){
         case 'MUTATION_NBJOUEURS':
