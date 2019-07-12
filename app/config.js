@@ -13,7 +13,6 @@ import StatScreen from "./views/menu/StatScreen";
 import UserScreen from "./views/menu/UserScreen";
 import MenuScreen from "./views/menu/MenuScreen";
 import FriendsPlayersScreen from "./views/friends/FriendsPlayersScreen";
-import DeviceScreen from "./views/ble/DeviceScreen";
 import ScannerScreen from "./views/ble/ScannerScreen";
 
 
@@ -32,7 +31,6 @@ const switchNavigator = createSwitchNavigator({
     User: UserScreen,
     Menu: MenuScreen,
     FriendsPlayers: FriendsPlayersScreen,
-    Device: DeviceScreen,
     Scanner: ScannerScreen
 }, {
     initialRouteName: "Loader"

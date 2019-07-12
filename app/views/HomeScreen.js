@@ -12,6 +12,9 @@ class HomeScreen extends Component {
     this.props.navigation.navigate("FriendsPlayers")
   }
   componentDidMount() {
+    if(this.props.pseudo == ""){
+      
+    }
     BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
   }
 

@@ -24,7 +24,7 @@ class MenuScreen extends Component {
   disconnect() {
     const actionVerif = { type: "MUTATION_VERIF", value: false }
     this.props.dispatch(actionVerif)
-    AsyncStorage.setItem("token", "")
+    AsyncStorage.removeItem("token")
     this.props.navigation.navigate("Choose")
   }
 
@@ -83,7 +83,7 @@ class MenuScreen extends Component {
 
         <View style={{ flex: 1, flexDirection: 'row' }}>
           <Button bordered light
-            onPress={() => this.props.navigation.navigate("Device")}
+            onPress={() => this.props.navigation.navigate("Scanner")}
             style={{ flex: 1, resizeMode: 'center', height: "90%", marginTop: 10, marginLeft: 10, margin: 10, backgroundColor: 'rgba(52, 52, 52, 0.6)' }} >
             <View style={{ width: "100%", alignItems: "center" }}>
               <Icon active name="star" />

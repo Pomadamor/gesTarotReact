@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import { Button, Content, Form, Item, Input, Label } from 'native-base';
 import { BackHandler } from 'react-native'
+import {checkMail, Verifier_Numero_Telephone} from "../../service/VerifInput"
+import { connect } from 'react-redux'
 
-export default class RegisterScreen extends Component {
+class RegisterScreen extends Component {
 
   constructor(props) {
     super(props);
@@ -46,22 +48,17 @@ export default class RegisterScreen extends Component {
       phone == ""|| 
       email == ""|| 
       password == ""){
-      alert(
-        'Veuillez remplir tout les champs.',
-        [
-          {
-            text: 'Cancel',
-            onPress: () => console.log('Cancel Pressed'),
-            style: 'cancel',
-          },
-          { text: 'OK', onPress: () => console.log('OK Pressed') },
-        ],
-        { cancelable: false },
-      );
+      alert('Veuillez remplir tout les champs.');
+    }
+    else if(Verifier_Numero_Telephone(phone) == false)
+    {
+      alert('Le numero de téléphone est incorrect!');
+    }else if(checkMail == false){
+      alert("L'adresse email saisit est incorrect!");
     }
     else {
       try {
-        const res = await fetch('http://51.15.203.158/api/user', {
+        const res = await fetch('https://gestarot-api.lerna.eu/', {
           method: 'POST',
           headers: {
             Accept: 'application/json',
@@ -77,9 +74,8 @@ export default class RegisterScreen extends Component {
         if (res.ok) {
           console.log("RESPONSE TRUE", res)
           this.props.navigation.navigate("Login")
-          // const {token} = await res.json();
-          // await AsyncStorage.setItem("token", token);
-          // this.props.navigation.navigate("Loader");
+          const actionLogin= { type: "MUTATION_PSEUDO", value: true}
+          this.props.dispatch(actionLogin)
         } else {
           console.log("RESPONSE FALSE", res)
         }
@@ -177,3 +173,13 @@ export default class RegisterScreen extends Component {
   }
 
 }
+
+
+const mapStateToProps = state => {
+  return {
+    verif: state.toogleUser.verif,
+    pseudo: state.toogleUser.pseudo,
+  }
+}
+
+export default connect(mapStateToProps)(RegisterScreen)
