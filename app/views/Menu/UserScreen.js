@@ -21,9 +21,12 @@ class UserScreen extends Component {
             password2: "",
             error: ""
         }
-        // this.setState est appelé dans un callback dans showImagePicker, pensez donc bien à binder la fonction _avatarClicked
         this.changePhoto = this.changePhoto.bind(this)
     }
+
+    /**
+* Les trois fonctions suivante permette de gérer le retour du clavier
+*/
 
     componentDidMount() {
         BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
@@ -34,9 +37,13 @@ class UserScreen extends Component {
     }
 
     handleBackPress = () => {
-        this.props.navigation.navigate("Choose"); // works best when the goBack is async
+        this.props.navigation.navigate("Home");
         return true;
     }
+
+        /**
+    * fonction asynchron qui gere la modification du compte
+    */
 
     async update() {
         const phone = this.state.phone
@@ -87,7 +94,9 @@ class UserScreen extends Component {
             });
     }
 
-
+        /**
+    * fonction qui permet de modifier l'image du user par une photo
+    */
     changePhoto() {
         ImagePicker.showImagePicker({}, (response) => {
             if (response.didCancel) {
@@ -99,13 +108,16 @@ class UserScreen extends Component {
             else {
                 console.log('Photo : ', response.uri)
                 let requireSource = { uri: response.uri }
-                // On crée une action avec l'image prise et on l'envoie au store Redux
                 const action = { type: "SET_AVATAR", value: requireSource }
                 this.props.dispatch(action)
                 this.setState({ avatar: requireSource })
             }
         })
     }
+            /**
+    * rendu qui gere l'affichage du detail du compte
+    * La zone commenté dans le code correspond a des amélioration en cour
+    */
 
     render() {
         return (

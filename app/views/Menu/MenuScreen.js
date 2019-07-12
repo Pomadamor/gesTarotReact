@@ -8,6 +8,11 @@ import AsyncStorage from "@react-native-community/async-storage";
 
 
 class MenuScreen extends Component {
+
+  /**
+* Les trois fonctions suivante permette de gérer le retour du clavier
+*/
+
   componentDidMount() {
     BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
   }
@@ -21,12 +26,21 @@ class MenuScreen extends Component {
     return true;
   }
 
+  /**
+* Fonction qui permet au clic de l'utilisateur sur disconnect, de se deconnecter
+*/
+
   disconnect() {
     const actionVerif = { type: "MUTATION_VERIF", value: false }
     this.props.dispatch(actionVerif)
     AsyncStorage.removeItem("token")
     this.props.navigation.navigate("Choose")
   }
+
+  /**
+* ce rendu permet de gérer l'affichage du menu
+* Les zones commentés correspondent à des améliorations en cour
+*/
 
   render() {
     return (

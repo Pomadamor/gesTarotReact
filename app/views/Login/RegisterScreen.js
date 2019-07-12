@@ -19,7 +19,7 @@ class RegisterScreen extends Component {
   }
 
     /**
-   * Cette fonction asynchrone permet d'enregistrer un nouvelle utilisateur
+   * Cette fonction asynchrone permet d'enregistrer un nouvelle utilisateur puis envoi vers login
    */
 
 
@@ -58,7 +58,7 @@ class RegisterScreen extends Component {
     }
     else {
       try {
-        const res = await fetch('https://gestarot-api.lerna.eu/', {
+        const res = await fetch('https://gestarot-api.lerna.eu/api/user', {
           method: 'POST',
           headers: {
             Accept: 'application/json',
@@ -87,7 +87,6 @@ class RegisterScreen extends Component {
 
     /**
    * Affiche le visuelle de l'enregistrement
-   * @param nb défini le nombre de joueur choisi
    */
 
   render() {
@@ -157,6 +156,9 @@ class RegisterScreen extends Component {
   }
 
 
+         /**
+ * Les trois fonctions suivante permette de gérer le retour du clavier
+ */
 
   componentDidMount() {
     BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);

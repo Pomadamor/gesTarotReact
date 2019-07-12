@@ -17,10 +17,12 @@ class FriendsPlayersScreen extends Component {
             avatar4: this.props.avatar4,
             avatar5: this.props.avatar5
         }
-        // this.setState est appelé dans un callback dans showImagePicker, pensez donc bien à binder la fonction _avatarClicked
         this.changePhoto = this.changePhoto.bind(this)
     }
 
+    /**
+     * fonction du cycle de vie qui défini l'affichage d'un alert au démarrage de la vue
+     */
     componentDidMount() {
         alert(
             'Pour quittez la partie, il suffit de cliquer sur la touche retour.',
@@ -39,6 +41,9 @@ class FriendsPlayersScreen extends Component {
         BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
     }
 
+        /**
+     * fonction définissant l'appui sur le bouton retour (avec le BackHandler compris dans le componentDidMount et la fonction suivante)
+     */
     componentWillUnmount() {
         BackHandler.removeEventListener('hardwareBackPress', this.handleBackPress);
     }
@@ -53,32 +58,19 @@ class FriendsPlayersScreen extends Component {
         }
     }
 
-    changePseudo1(pseudo) {
+    /**
+     * fonction changePseudo permet la modification du pseudo a la saisi de l'input concerné
+     */
+    changePseudo(pseudo, id) {
         console.log(pseudo)
-        const actionPseudo = { type: "MUTATION_PSEUDO1", value: pseudo }
+        const actionPseudo = { type: `MUTATION_PSEUDO${id}`, value: pseudo }
         this.props.dispatch(actionPseudo)
     }
-    changePseudo2(pseudo) {
-        console.log(pseudo)
-        const actionPseudo = { type: "MUTATION_PSEUDO2", value: pseudo }
-        this.props.dispatch(actionPseudo)
-    }
-    changePseudo3(pseudo) {
-        console.log(pseudo)
-        const actionPseudo = { type: "MUTATION_PSEUDO3", value: pseudo }
-        this.props.dispatch(actionPseudo)
-    }
-    changePseudo4(pseudo) {
-        console.log(pseudo)
-        const actionPseudo = { type: "MUTATION_PSEUDO4", value: pseudo }
-        this.props.dispatch(actionPseudo)
-    }
-    changePseudo5(pseudo) {
-        console.log(pseudo)
-        const actionPseudo = { type: "MUTATION_PSEUDO5", value: pseudo }
-        this.props.dispatch(actionPseudo)
-    }
-
+   
+    /**
+     * fonction changePseudo permet la modification de l'image a la selection de l'image concerné
+     * Cette fonction n'est pas encore fonctionnel, elle est une amélioration en cours
+     */
     changePhoto() {
         ImagePicker.showImagePicker({}, (response) => {
             if (response.didCancel) {
@@ -90,13 +82,15 @@ class FriendsPlayersScreen extends Component {
             else {
                 console.log('Photo : ', response.uri)
                 let requireSource = { uri: response.uri }
-                // On crée une action avec l'image prise et on l'envoie au store Redux
                 const action = { type: `MUTATION_AVATAR${this.props.choosePlayer}`, value: requireSource }
                 this.props.dispatch(action)
             }
         })
     }
 
+    /**
+     * Ce rendu affiche la grill des joueur, permettant le choix de leur pseudo ainsi que l'aperçu de leur image
+     */
     render() {
 
 
@@ -147,8 +141,8 @@ class FriendsPlayersScreen extends Component {
                             }}>
                                 <TextInput
                                     style={{ height: 36, width: 80, borderColor: 'white', color: 'white', borderWidth: 1 }}
-                                    onChangeText={(pseudo) => this.changePseudo4(pseudo)}
-                                    value={this.props.pseudo4}
+                                    onChangeText={(pseudo) => this.changePseudo(pseudo, id=5)}
+                                    value={this.props.pseudo}
                                 />
                             </View>
                         </View>
@@ -203,8 +197,8 @@ class FriendsPlayersScreen extends Component {
                             }}>
                                 <TextInput
                                     style={{ height: 36, width: 80, borderColor: 'white', color: 'white', borderWidth: 1 }}
-                                    onChangeText={(pseudo) => this.changePseudo5(pseudo)}
-                                    value={this.props.pseudo5}
+                                    onChangeText={(pseudo) => this.changePseudo(pseudo, id = 5)}
+                                    value={this.props.pseudo}
                                 />
                             </View>
                         </View>
@@ -262,8 +256,8 @@ class FriendsPlayersScreen extends Component {
                             }}>
                                 <TextInput
                                     style={{ height: 36, width: 80, borderColor: 'white', color: 'white', borderWidth: 1 }}
-                                    onChangeText={(pseudo) => this.changePseudo1(pseudo)}
-                                    value={this.props.pseudo1}
+                                    onChangeText={(pseudo) => this.changePseudo(pseudo, id = 1)}
+                                    value={this.props.pseudo}
                                 />
                             </View>
                         </View>
@@ -314,8 +308,8 @@ class FriendsPlayersScreen extends Component {
                             }}>
                                 <TextInput
                                     style={{ height: 36, width: 80, borderColor: 'white', color: 'white', borderWidth: 1 }}
-                                    onChangeText={(pseudo) => this.changePseudo2(pseudo)}
-                                    value={this.props.pseudo2}
+                                    onChangeText={(pseudo) => this.changePseudo(pseudo, id=2)}
+                                    value={this.props.pseudo}
                                 />
                             </View>
                         </View>
@@ -366,8 +360,8 @@ class FriendsPlayersScreen extends Component {
                             }}>
                                 <TextInput
                                     style={{ height: 36, width: 80, borderColor: 'white', color: 'white', borderWidth: 1 }}
-                                    onChangeText={(pseudo) => this.changePseudo3(pseudo)}
-                                    value={this.props.pseudo3}
+                                    onChangeText={(pseudo) => this.changePseudo(pseudo, id=3)}
+                                    value={this.props.pseudo}
                                 />
                             </View>
                         </View>

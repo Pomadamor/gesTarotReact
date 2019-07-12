@@ -3,6 +3,10 @@ import { View, Text } from "native-base";
 import { Button } from 'native-base';
 
 class BeforeGame extends Component {
+
+
+  /**
+s */
   render(){
       ("props of before:", this.props);
       //const turnBefore =  this.props.turns

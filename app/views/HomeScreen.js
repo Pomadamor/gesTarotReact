@@ -6,14 +6,24 @@ import { BackHandler } from 'react-native'
 
 class HomeScreen extends Component {
 
+    /**
+   * Cette fonction permet de gérer l'action qui se passe au clic du bouton de "demarrer une partie" vers la prochaine vue
+   * @param nb défini le nombre de joueur choisi
+   */
+
+
   btnChoose(nb) {
     const action = { type: "MUTATION_NBJOUEURS", value: nb }
     this.props.dispatch(action)
     this.props.navigation.navigate("FriendsPlayers")
   }
+
+         /**
+ * Les trois fonctions suivante permette de gérer le retour du clavier
+ */
   componentDidMount() {
     if(this.props.pseudo == ""){
-      
+
     }
     BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
   }
@@ -23,12 +33,16 @@ class HomeScreen extends Component {
   }
 
   handleBackPress = () => {
-    this.props.navigation.navigate("Home"); // works best when the goBack is async
+    this.props.navigation.navigate("Home")
     return true;
   }
 
+
+           /**
+ * Ce render gere l'affichage de la vue central de l'application
+ */
+
   render() {
-    console.log("LALALALLALA")
     return (
       <View style={{
         flex: 1,

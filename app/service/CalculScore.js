@@ -1,6 +1,8 @@
+/**
+   * Fonction qui permet de calculer 
+   * les scores des differents types de joueurs en fonction du score défini dans la grillScore
+   */
 export function CalculScore(datas){
-
-    console.log ("test datas", datas)
 
     const result =[]
     
@@ -29,19 +31,11 @@ export function CalculScore(datas){
                     { type: "MUTATION_PARTENAIRESCORE", value:  parseInt(datas.score) - valueBou + valuePrise},
                     { type: "MUTATION_AUTRESCORE", value: -( parseInt(datas.score) - valueBou+ valuePrise)}
                 )
-                // this.props.dispatch(actionAutreScore)
-                // this.props.dispatch(actionPartenaireScore)
-                // this.props.dispatch(actionPreneurScore)
+
             } else{
                 result.push(
-                { type: "MUTATION_PRENEURSCORE", value:  -(( parseInt(datas.score)-valueBou+valuePrise)*2)},
-                { type: "MUTATION_PARTENAIRESCORE", value:  -(parseInt(datas.score) - valueBou + valuePrise)},
-                { type: "MUTATION_AUTRESCORE", value: parseInt(datas.score) + valuePrise - valueBou}    
+  
                 )
-                
-                // this.props.dispatch(actionAutreScore)
-                // this.props.dispatch(actionPartenaireScore)
-                // this.props.dispatch(actionPreneurScore)
             }
         }
     }

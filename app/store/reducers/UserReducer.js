@@ -9,6 +9,9 @@ const initialState = {
 
 }
 
+/**
+   * Fonction qui gere les mutations du reducer user
+   */
 function toogleUser(state = initialState, action){
 let nextState
 switch(action.type){

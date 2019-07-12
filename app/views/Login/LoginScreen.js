@@ -19,6 +19,10 @@ class LoginScreen extends Component {
     }
   }
 
+  /**
+ * La fonction ci-dessous est commenter car c'est en voit d'amélioration
+ */
+
   // async login() {
 
   //   const data = {
@@ -87,6 +91,9 @@ class LoginScreen extends Component {
   //   }
   // }
 
+         /**
+ * Cette fonction est l'action du bouton login qui permet de se connecter a l'api login, dispatcher le user avec le token puis retourner vers loader
+ */
 
   async login() {
     const phone = this.state.phone
@@ -135,6 +142,10 @@ class LoginScreen extends Component {
       });
   }
 
+         /**
+ * Ce rendu affiche la vue login
+ * Les parties commenter sont en cour d'amélioration
+ */
 
   render() {
     const { error } = this.state;
@@ -199,6 +210,10 @@ class LoginScreen extends Component {
                 }}>Mot de passe oublié ?</Label> */}
     </Content>
   }
+
+         /**
+ * Les trois fonctions suivante permette de gérer le retour du clavier
+ */
 
   componentDidMount() {
     BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);

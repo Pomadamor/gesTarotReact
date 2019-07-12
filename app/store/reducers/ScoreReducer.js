@@ -16,6 +16,9 @@ const initialState = {
         autreScore : parseInt(0)
 }
 
+/**
+   * Fonction qui gere les mutations du reducer score
+   */
 function toogleScore(state = initialState, action){
     console.log("toto", action)
     let nextState

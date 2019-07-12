@@ -11,21 +11,25 @@ import { CalculScoreIndividuel } from "../../service/CalculScoreInviduel";
 
 class GameScreen extends Component {
 
+  /**
+   * fonction qui permet avec les deux suivante de géré le retour clavier
+   * ainsi que de les resultat récupéré dans le service calculScore
+   */
   componentDidMount() {
     BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
 
     const res = CalculScore(this.props.datas)
     res.forEach(item => this.props.dispatch(item))
 
-    const resC = CalculScoreIndividuel(this.props.datas)
-    resC.forEach(item => this.props.dispatch(item))
+    // const resC = CalculScoreIndividuel(this.props.datas)
+    // resC.forEach(item => this.props.dispatch(item))
 
   }
 
   componentWillUnmount() {
     BackHandler.removeEventListener('hardwareBackPress', this.handleBackPress);
 
-    
+
   }
 
   handleBackPress = () => {
@@ -33,6 +37,10 @@ class GameScreen extends Component {
     return true;
   }
 
+  /**
+   * bouton permettant de naviguer entre les differentes grilles selon l'état d'avancement de la partie
+   *  et de modifier les valeurs en fonction des champs rempli
+   */
   buttonTurn() {
     if (this.props.score != 0) {
       const actionId = { type: "MUTATION_ID", value: this.props.id + 1 }
@@ -87,6 +95,9 @@ class GameScreen extends Component {
   }
 
 
+  /**
+   * ce rendu affiche le contenant de la grill, ainsi que le bouton de navigation
+   */
 
   render() {
     turnBefore = this.props.turns
@@ -102,7 +113,7 @@ class GameScreen extends Component {
 
         <FlatList
           data={turnBefore}
-           keyExtractor={(item) => item.id}
+          keyExtractor={(item) => item.id}
           renderItem={({ item }) => <BeforeGame turnBefore={item} />}
         />
         <LiveGame />
@@ -146,11 +157,11 @@ const mapStateToProps = state => {
     nbJoueur: state.toogleScore.nbJoueur,
     choosePlayer: state.tooglePlayer.choosePlayer,
     verif: state.toogleUser.verif,
-    scoreJ1 : state.tooglePlayer.scoreJ1,
-    scoreJ2 : state.tooglePlayer.scoreJ2,
-    scoreJ3 : state.tooglePlayer.scoreJ3,
-    scoreJ4 : state.tooglePlayer.scoreJ4,
-    scoreJ5 : state.tooglePlayer.scoreJ5
+    scoreJ1: state.tooglePlayer.scoreJ1,
+    scoreJ2: state.tooglePlayer.scoreJ2,
+    scoreJ3: state.tooglePlayer.scoreJ3,
+    scoreJ4: state.tooglePlayer.scoreJ4,
+    scoreJ5: state.tooglePlayer.scoreJ5
   }
 
   return { datas, ...datas }

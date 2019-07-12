@@ -5,8 +5,6 @@ import { Button } from "native-base";
 
 class ChooseScreen extends Component {
 
-
-
   /**
    * Cette fonction permet de gérer l'action qui se passe au clic du bouton de "demarrer une partie" vers la prochaine vue
    * @param nb défini le nombre de joueur choisi
@@ -19,7 +17,7 @@ class ChooseScreen extends Component {
   }
 
   /**
-   * Ce render met en place la vue initial en l'absence de connection
+   * Ce render met en place la vue initial en l'absence de connection avec authentification, inscription, etc
   */
 
   render() {

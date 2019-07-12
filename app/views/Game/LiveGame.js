@@ -4,6 +4,10 @@ import { connect } from 'react-redux'
 import { Button } from 'native-base';
 
 class LiveGame extends Component {
+
+    /**
+ * ce rendu affiche la ligne de score du tour en cour
+ */
   render(){
 
       if(this.props.joueurs.length>3){

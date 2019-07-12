@@ -24,6 +24,10 @@ const initialState = {
     scoreJ5 : 0
 }
 
+/**
+   * Fonction qui gere les mutations du reducer player
+   */
+
 function tooglePlayer(state = initialState, action){
 let nextState
 switch(action.type){

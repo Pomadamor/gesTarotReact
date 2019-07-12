@@ -3,6 +3,9 @@ const initialState = {
     totalPoint: 0
 }
 
+/**
+   * Fonction qui gere les mutations du reducer calulScore
+   */
 function toogleCalcul(state = initialState, action) {
     let nextState
     switch (action.type) {

@@ -1,6 +1,10 @@
 import apiRoutes from "./api-routes";
 import AsyncStorage from "@react-native-community/async-storage";
 
+
+/**
+   * Fonction qui permet d'enregistrer au niveau de l'api
+   */
 export function RegisterUser(data = null) {
   const { url, method, headers } = apiRoutes.register;
   return fetch(url, {
@@ -32,6 +36,9 @@ export function RegisterUser(data = null) {
     .catch((error) => console.log(error))
 }
 
+/**
+   * Fonction qui permet de se logger au niveau de l'api
+   */
 export function LoginUser(data) {
 
   const { url, method, headers } = apiRoutes.login;
@@ -51,6 +58,9 @@ export function LoginUser(data) {
     .catch((error) => console.log(error))
 }
 
+/**
+   * Fonction qui permet de supprimer un user au niveau de l'api
+   */
 export function DeleteUser(data) {
   const { url, method, headers } = apiRoutes.remove;
   return fetch(url, {
@@ -61,6 +71,9 @@ export function DeleteUser(data) {
     .catch((error) => console.log(error))
 }
 
+/**
+   * Fonction qui permet de modifier un user au niveau de l'api
+   */
 export function UpdateUser(data) {
   const { url, method, headers } = apiRoutes.update;
   return fetch(url, {
@@ -71,6 +84,9 @@ export function UpdateUser(data) {
     .catch((error) => console.log(error))
 }
 
+/**
+   * Fonction qui permet de voir le detail d'un user au niveau de l'api
+   */
 export function DetailsUser(data) {
   const { url, method, headers } = apiRoutes.details;
 
