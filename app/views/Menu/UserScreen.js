@@ -29,6 +29,7 @@ class UserScreen extends Component {
 */
 
     componentDidMount() {
+        console.log("this.props.id", this.props.id)
         BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
     }
 

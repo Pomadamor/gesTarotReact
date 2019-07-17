@@ -3,13 +3,14 @@ import { Button, View, Text, Icon } from 'native-base';
 import { Image } from 'react-native';
 import { connect } from 'react-redux';
 import { BackHandler } from 'react-native'
+import UserScreen from './menu/UserScreen';
 
 class HomeScreen extends Component {
 
-    /**
-   * Cette fonction permet de gérer l'action qui se passe au clic du bouton de "demarrer une partie" vers la prochaine vue
-   * @param nb défini le nombre de joueur choisi
-   */
+  /**
+ * Cette fonction permet de gérer l'action qui se passe au clic du bouton de "demarrer une partie" vers la prochaine vue
+ * @param nb défini le nombre de joueur choisi
+ */
 
 
   btnChoose(nb) {
@@ -18,11 +19,11 @@ class HomeScreen extends Component {
     this.props.navigation.navigate("FriendsPlayers")
   }
 
-         /**
- * Les trois fonctions suivante permette de gérer le retour du clavier
- */
+  /**
+* Les trois fonctions suivante permette de gérer le retour du clavier
+*/
   componentDidMount() {
-    if(this.props.pseudo == ""){
+    if (this.props.pseudo == "") {
 
     }
     BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
@@ -38,9 +39,9 @@ class HomeScreen extends Component {
   }
 
 
-           /**
- * Ce render gere l'affichage de la vue central de l'application
- */
+  /**
+* Ce render gere l'affichage de la vue central de l'application
+*/
 
   render() {
     return (
@@ -61,7 +62,7 @@ class HomeScreen extends Component {
             >
               <Image
                 onPress={() => this.props.navigation.navigate("User")}
-                source={{ uri: 'https://upload.wikimedia.org/wikipedia/commons/2/2e/Oudlers1910.PNG' }} style={{ height: 90, width: 90, marginTop: 5, marginLeft: 5, marginRight: 5 }} />
+                source={this.props.avatar} style={{ height: 90, backgroundColor:"steelblue", width: 90, marginTop: 5, marginLeft: 5, marginRight: 5 }} />
               <View style={{
                 margin: 10,
                 fontSize: 17,
@@ -74,14 +75,7 @@ class HomeScreen extends Component {
                     fontSize: 17,
                     color: "white",
                     fontWeight: 'bold'
-                  }}>Lerna</Text>
-                <Text
-                  onPress={() => this.props.navigation.navigate("User")}
-                  style={{
-                    fontSize: 17,
-                    marginTop: 4,
-                    color: "white",
-                  }}>% de victoire</Text>
+                  }}>{this.props.pseudo}</Text>
               </View>
             </View>
             <View style={{ flex: 1, height: 50 }} />
@@ -223,7 +217,9 @@ class HomeScreen extends Component {
 const mapStateToProps = state => {
   return {
     nbJoueur: state.toogleScore.nbJoueur,
+    avatar: state.toogleUser.avatar,
+    pseudo: state.toogleUser.pseudo,
   }
 }
 
-export default connect(mapStateToProps)(HomeScreen);
+export default connect(mapStateToProps)(HomeScreen, UserScreen);
