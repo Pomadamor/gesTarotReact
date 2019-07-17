@@ -47,7 +47,7 @@ class ChooseScreen extends Component {
               "Veuillez choisir le nombre de joueur. Pour jouer à 5, une inscription est nescessaire !",
               [
                 {
-                  text: 'Cancel',
+                  text: 'Annuler',
                   onPress: () => console.log('Ask me later pressed')
                 },
                 {

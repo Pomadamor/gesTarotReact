@@ -105,6 +105,7 @@ class RegisterScreen extends Component {
             fontWeight: 'bold'
           }}>Email</Label>
           <Input onChangeText={(email) => this.setState({ email })}
+            style={{color: "white"}}
             value={this.state.email} />
         </Item>
         <Item floatingLabel>
@@ -114,6 +115,7 @@ class RegisterScreen extends Component {
             fontWeight: 'bold'
           }}>téléphone</Label>
           <Input onChangeText={(phone) => this.setState({ phone })}
+            style={{color: "white"}}
             value={this.state.phone} />
         </Item>
         <Item floatingLabel last>
@@ -123,6 +125,7 @@ class RegisterScreen extends Component {
             fontWeight: 'bold'
           }}>Pseudo</Label>
           <Input onChangeText={(username) => this.setState({ username })}
+            style={{color: "white"}}
             value={this.state.username} />
         </Item>
         <Item floatingLabel last>
@@ -132,6 +135,7 @@ class RegisterScreen extends Component {
             fontWeight: 'bold'
           }}>Mot de passe</Label>
           <Input secureTextEntry={true}
+            style={{color: "white"}}
             onChangeText={(password) => this.setState({ password })}
             value={this.state.password} />
         </Item>
