@@ -84,12 +84,14 @@ const styles = {
     backgroundColor: 'rgba(52, 52, 52, 0.6)'
   },
   textCat: {
+    margin:20,
     fontSize: 30,
     fontWeight: 'bold',
     color: "white",
   },
   detailCat:
   {
+    marginBottom:20,
     marginLeft: 40,
     marginRight: 40,
     fontSize: 17,

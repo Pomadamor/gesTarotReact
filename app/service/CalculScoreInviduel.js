@@ -3,6 +3,8 @@ import { View } from "native-base";
 import { connect } from 'react-redux'
 
  class CalculScoreIndividuel extends Component {
+
+    
   render(){
     // console.log("PPPLLLOOOPPP0",this.props.calcul)
     // // if(this.props.calcul = 0){
