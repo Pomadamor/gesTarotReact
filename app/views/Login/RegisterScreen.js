@@ -112,7 +112,7 @@ class RegisterScreen extends Component {
             color: "white",
             fontSize: 17,
             fontWeight: 'bold'
-          }}>Phone</Label>
+          }}>téléphone</Label>
           <Input onChangeText={(phone) => this.setState({ phone })}
             value={this.state.phone} />
         </Item>
@@ -130,7 +130,7 @@ class RegisterScreen extends Component {
             color: "white",
             fontSize: 17,
             fontWeight: 'bold'
-          }}>Password</Label>
+          }}>Mot de passe</Label>
           <Input secureTextEntry={true}
             onChangeText={(password) => this.setState({ password })}
             value={this.state.password} />
@@ -140,7 +140,7 @@ class RegisterScreen extends Component {
             color: "white",
             fontSize: 17,
             fontWeight: 'bold'
-          }}>Confirm Password</Label>
+          }}>Confirmer le mot de passe</Label>
           <Input secureTextEntry={true}
             onChangeText={(password2) => this.setState({ password2 })}
             value={this.state.password2} />
