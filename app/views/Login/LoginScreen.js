@@ -19,9 +19,9 @@ class LoginScreen extends Component {
     }
   }
 
-  /**
- * La fonction ci-dessous est commenter car c'est en voit d'amélioration
- */
+ /**
+* Cette fonction est l'action du bouton login qui permet de se connecter a l'api login, dispatcher le user avec le token puis retourner vers loader
+*/
 
   async login() {
 
@@ -56,28 +56,35 @@ class LoginScreen extends Component {
         }),
       }).then((response) => response.json())
         .then((responseJson) => {
-          console.log("TRRRUUUEEE", responseJson)
-          const id = { type: "MUTATION_ID", value: responseJson.id }
-          const email = { type: "MUTATION_EMAIL", value: responseJson.email }
-          const phone = { type: "MUTATION_PHONE", value: responseJson.phone }
-          const api_token = { type: "MUTATION_TOKEN", value: responseJson.api_token }
-          const actionVerif = { type: "MUTATION_VERIF", value: true }
-          this.props.dispatch(actionVerif)
-          this.props.dispatch(id)
-          this.props.dispatch(email)
-          this.props.dispatch(phone)
-          this.props.dispatch(api_token)
-          console.log(responseJson.api_token)
+          if(responseJson.status == 'error'){
+            console.log ("YOUPIE")
+            alert('Votre identifiant ou votre mot de passe est incorrect.');
+          }
+          else{
+            console.log("TRRRUUUEEE", responseJson)
+            const id = { type: "MUTATION_ID", value: responseJson.id }
+            const email = { type: "MUTATION_EMAIL", value: responseJson.email }
+            const phone = { type: "MUTATION_PHONE", value: responseJson.phone }
+            const api_token = { type: "MUTATION_TOKEN", value: responseJson.api_token }
+            const actionVerif = { type: "MUTATION_VERIF", value: true }
+            this.props.dispatch(actionVerif)
+            this.props.dispatch(id)
+            this.props.dispatch(email)
+            this.props.dispatch(phone)
+            this.props.dispatch(api_token)
+            console.log(responseJson.api_token)
+  
+            const token = responseJson.api_token;
+            console.log(token)
+  
+            AsyncStorage.setItem("token", token)
+            this.props.navigation.navigate("Loader");
+  
+            // await AsyncStorage.setItem("token", token);
+            // this.props.navigation.navigate("Loader");
+            return responseJson;
+          }
 
-          const token = responseJson.api_token;
-          console.log(token)
-
-          AsyncStorage.setItem("token", token)
-          this.props.navigation.navigate("Loader");
-
-          // await AsyncStorage.setItem("token", token);
-          // this.props.navigation.navigate("Loader");
-          return responseJson;
         })
         .catch((error) => {
           console.error(error);
@@ -86,55 +93,6 @@ class LoginScreen extends Component {
       alert('Les informations saisis sont incorrect.');
     }
   }
-
-  /**
-* Cette fonction est l'action du bouton login qui permet de se connecter a l'api login, dispatcher le user avec le token puis retourner vers loader
-*/
-
-  // async login() {
-  //   const phone = this.state.phone
-  //   const email = this.state.email;
-  //   const password = this.state.password;
-
-  //   fetch('https://gestarot-api.lerna.eu/api/user/login', {
-  //     method: 'POST',
-  //     headers: {
-  //       Accept: 'application/json',
-  //       'Content-Type': 'application/json',
-  //     },
-  //     body: JSON.stringify({
-  //       "email": email,
-  //       "phone": phone,
-  //       "password": password
-  //     }),
-  //   }).then((response) => response.json())
-  //     .then((responseJson) => {
-  //       console.log("TEST1", responseJson)
-  //       const id = { type: "MUTATION_ID", value: responseJson.id }
-  //       const email = { type: "MUTATION_EMAIL", value: responseJson.email }
-  //       const phone = { type: "MUTATION_PHONE", value: responseJson.phone }
-  //       const api_token = { type: "MUTATION_TOKEN", value: responseJson.api_token }
-  //       const actionVerif = { type: "MUTATION_VERIF", value: true }
-  //       this.props.dispatch(actionVerif)
-  //       this.props.dispatch(id)
-  //       this.props.dispatch(email)
-  //       this.props.dispatch(phone)
-  //       this.props.dispatch(api_token)
-  //       console.log(responseJson.api_token)
-
-  //       const token = responseJson.api_token;
-  //       console.log(token)
-
-  //       AsyncStorage.setItem("token", token)
-  //       this.props.navigation.navigate("Loader");
-
-  //       return responseJson;
-
-  //     })
-  //     .catch((error) => {
-  //       console.error(error);
-  //     });
-  // }
 
   /**
 * Ce rendu affiche la vue login
@@ -157,6 +115,7 @@ class LoginScreen extends Component {
             fontWeight: 'bold'
           }}>Email ou téléphone</Label>
           <Input onChangeText={(identifiant) => this.setState({ identifiant })}
+            style={{color: "white"}}
             value={this.state.identifiant} />
         </Item>
 
@@ -167,6 +126,7 @@ class LoginScreen extends Component {
             fontWeight: 'bold'
           }}>Password</Label>
           <Input secureTextEntry={true}
+            style={{color: "white"}}
             onChangeText={(password) => this.setState({ password })}
             value={this.state.password} />
         </Item>

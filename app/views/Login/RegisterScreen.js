@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Button, Content, Form, Item, Input, Label } from 'native-base';
 import { BackHandler } from 'react-native'
-import {checkMail, Verifier_Numero_Telephone} from "../../service/VerifInput"
+import { checkMail, Verifier_Numero_Telephone } from "../../service/VerifInput"
 import { connect } from 'react-redux'
 
 class RegisterScreen extends Component {
@@ -13,14 +13,13 @@ class RegisterScreen extends Component {
       phone: "",
       email: "",
       password: "",
-      password2: "",
       error: ""
     }
   }
 
-    /**
-   * Cette fonction asynchrone permet d'enregistrer un nouvelle utilisateur puis envoi vers login
-   */
+  /**
+ * Cette fonction asynchrone permet d'enregistrer un nouvelle utilisateur puis envoi vers login
+ */
 
 
   async handleRegister() {
@@ -43,17 +42,17 @@ class RegisterScreen extends Component {
         { cancelable: false },
       );
     }
-    else if(
-      username == "" || 
-      phone == ""|| 
-      email == ""|| 
-      password == ""){
+    if (
+      username == "" ||
+      phone == "" ||
+      email == "" ||
+      password == "") {
       alert('Veuillez remplir tout les champs.');
     }
-    else if(Verifier_Numero_Telephone(phone) == false)
-    {
+    if (Verifier_Numero_Telephone(phone) == false) {
       alert('Le numero de téléphone est incorrect!');
-    }else if(checkMail == false){
+    }
+    if (checkMail(email) == false) {
       alert("L'adresse email saisit est incorrect!");
     }
     else {
@@ -74,7 +73,7 @@ class RegisterScreen extends Component {
         if (res.ok) {
           console.log("RESPONSE TRUE", res)
           this.props.navigation.navigate("Login")
-          const actionLogin= { type: "MUTATION_PSEUDO", value: true}
+          const actionLogin = { type: "MUTATION_PSEUDO", value: true }
           this.props.dispatch(actionLogin)
         } else {
           console.log("RESPONSE FALSE", res)
@@ -85,9 +84,9 @@ class RegisterScreen extends Component {
     }
   }
 
-    /**
-   * Affiche le visuelle de l'enregistrement
-   */
+  /**
+ * Affiche le visuelle de l'enregistrement
+ */
 
   render() {
     const { error } = this.state;
@@ -105,7 +104,7 @@ class RegisterScreen extends Component {
             fontWeight: 'bold'
           }}>Email</Label>
           <Input onChangeText={(email) => this.setState({ email })}
-            style={{color: "white"}}
+            style={{ color: "white" }}
             value={this.state.email} />
         </Item>
         <Item floatingLabel>
@@ -115,37 +114,38 @@ class RegisterScreen extends Component {
             fontWeight: 'bold'
           }}>téléphone</Label>
           <Input onChangeText={(phone) => this.setState({ phone })}
-            style={{color: "white"}}
+            style={{ color: "white" }}
             value={this.state.phone} />
         </Item>
-        <Item floatingLabel last>
+        <Item floatingLabel>
           <Label style={{
             color: "white",
             fontSize: 17,
             fontWeight: 'bold'
           }}>Pseudo</Label>
           <Input onChangeText={(username) => this.setState({ username })}
-            style={{color: "white"}}
+            style={{ color: "white" }}
             value={this.state.username} />
         </Item>
-        <Item floatingLabel last>
+        <Item floatingLabel>
           <Label style={{
             color: "white",
             fontSize: 17,
             fontWeight: 'bold'
           }}>Mot de passe</Label>
           <Input secureTextEntry={true}
-            style={{color: "white"}}
+            style={{ color: "white" }}
             onChangeText={(password) => this.setState({ password })}
             value={this.state.password} />
         </Item>
-        <Item floatingLabel last>
+        <Item floatingLabel>
           <Label style={{
             color: "white",
             fontSize: 17,
             fontWeight: 'bold'
           }}>Confirmer le mot de passe</Label>
           <Input secureTextEntry={true}
+            style={{ color: "white" }}
             onChangeText={(password2) => this.setState({ password2 })}
             value={this.state.password2} />
         </Item>
@@ -160,9 +160,9 @@ class RegisterScreen extends Component {
   }
 
 
-         /**
- * Les trois fonctions suivante permette de gérer le retour du clavier
- */
+  /**
+* Les trois fonctions suivante permette de gérer le retour du clavier
+*/
 
   componentDidMount() {
     BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
