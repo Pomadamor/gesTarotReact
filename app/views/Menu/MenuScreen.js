@@ -48,8 +48,8 @@ class MenuScreen extends Component {
         flex: 1,
         flexDirection: 'column',
       }}>
-        <View style={{flex: 1, flexDirection: 'row'}}>
-        {/* <Button bordered light 
+        <View style={{ flex: 1, flexDirection: 'row' }}>
+          {/* <Button bordered light 
           onPress={() => this.props.navigation.navigate("Stat")}
           style={{flex:1, resizeMode:'center', height:"90%", marginTop: 10, marginLeft:10, margin:10, backgroundColor:'rgba(52, 52, 52, 0.6)'}} >
             <View style={{width:"100%", alignItems:"center"}}>
@@ -57,19 +57,19 @@ class MenuScreen extends Component {
               <Text>Statistique</Text>
             </View>
           </Button> */}
-        <Button bordered light style={{flex:1, alignContent:'center', height:"90%", marginTop: 10, marginLeft:10, margin:10, backgroundColor:'rgba(52, 52, 52, 0.6)'}} >
-          <View style={{width:"100%", alignItems:"center"}}>
-              <Icon active name="beer"/>
+          <Button bordered light style={{ flex: 1, alignContent: 'center', height: "90%", marginTop: 10, marginLeft: 10, margin: 10, backgroundColor: 'rgba(52, 52, 52, 0.6)' }} >
+            <View style={{ width: "100%", alignItems: "center" }}>
+              <Icon active name="beer" />
               <Text>Amis</Text>
             </View>
-          </Button> */}
+          </Button>
         </View>
 
-         <View style={{flex: 1, flexDirection: 'row'}}>
-          <Button bordered light 
-          onPress={() => this.props.navigation.navigate("History")}
-          style={{flex:1, resizeMode:'center', height:"90%", marginTop: 10, marginLeft:10, margin:10, backgroundColor:'rgba(52, 52, 52, 0.6)'}} >
-          <View style={{width:"100%", alignItems:"center"}}>
+        <View style={{ flex: 1, flexDirection: 'row' }}>
+          <Button bordered light
+            onPress={() => this.props.navigation.navigate("History")}
+            style={{ flex: 1, resizeMode: 'center', height: "90%", marginTop: 10, marginLeft: 10, margin: 10, backgroundColor: 'rgba(52, 52, 52, 0.6)' }} >
+            <View style={{ width: "100%", alignItems: "center" }}>
               <Icon active name="ios-stats" />
               <Text>Historique des parties</Text>
             </View>

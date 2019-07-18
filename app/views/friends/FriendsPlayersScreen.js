@@ -24,20 +24,6 @@ class FriendsPlayersScreen extends Component {
      * fonction du cycle de vie qui défini l'affichage d'un alert au démarrage de la vue
      */
     componentDidMount() {
-        alert(
-            'Pour quittez la partie, il suffit de cliquer sur la touche retour.',
-            [
-                { text: 'Ask me later', onPress: () => console.log('Ask me later pressed') },
-                {
-                    text: 'Cancel',
-                    onPress: () => console.log('Cancel Pressed'),
-                    style: 'cancel',
-                },
-                { text: 'OK', onPress: () => console.log('OK Pressed') },
-            ],
-            { cancelable: false },
-        );
-
         BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
     }
 
