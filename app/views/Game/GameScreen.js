@@ -7,7 +7,6 @@ import LiveGame from "./LiveGame";
 import BeforeGame from "./BeforeGame";
 import { BackHandler } from 'react-native'
 import { CalculScore } from "../../service/CalculScore";
-import { CalculScoreIndividuel } from "../../service/CalculScoreInviduel";
 
 class GameScreen extends Component {
 
@@ -16,14 +15,27 @@ class GameScreen extends Component {
    * ainsi que de les resultat récupéré dans le service calculScore
    */
   componentDidMount() {
+    
+
     BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
 
-    const res = CalculScore(this.props.datas)
-    res.forEach(item => this.props.dispatch(item))
+     const res = CalculScore(this.props.datas)
+     console.log("test x",res)
 
-    // const resC = CalculScoreIndividuel(this.props.datas)
-    // resC.forEach(item => this.props.dispatch(item))
+     actionScoreJ1 = res[0]
+     actionScoreJ2 = res[1]
+     actionScoreJ3 = res[2]
+     actionScoreJ4 = res[3]
+     actionScoreJ5 = res[4]
+    console.log("test z",actionScoreJ2)
 
+    if (actionScoreJ1 != undefined) {
+      this.props.dispatch(actionScoreJ1)
+      this.props.dispatch(actionScoreJ2)
+      this.props.dispatch(actionScoreJ3)
+      this.props.dispatch(actionScoreJ4)
+      this.props.dispatch(actionScoreJ5)
+    }
   }
 
   componentWillUnmount() {
@@ -52,14 +64,18 @@ class GameScreen extends Component {
       this.props.turns.push([{
         id: this.props.id,
         preneur: this.props.preneur,
+        partenaire: this.props.partenaire,
         roi: this.props.roi,
         type: this.props.type,
         score: this.props.score,
         victoire: this.props.victoire,
-        preneurScore: this.props.preneurScore,
-        partenaireScore: this.props.partenaireScore,
         autreScore: this.props.autreScore,
         nbJoueur: this.props.nbJoueur,
+        scoreJ1: this.props.scoreJ1,
+        scoreJ2: this.props.scoreJ2,
+        scoreJ3: this.props.scoreJ3,
+        scoreJ4: this.props.scoreJ4,
+        scoreJ5: this.props.scoreJ5,
       }])
 
       const actionTurn = { type: "MUTATION_TURN", value: this.props.turns }
@@ -146,6 +162,7 @@ const mapStateToProps = state => {
     buttonTurnView: state.toogleScore.buttonTurnView,
     id: state.toogleScore.id,
     preneur: state.toogleScore.preneur,
+    partenaire: state.toogleScore.partenaire,
     roi: state.toogleScore.roi,
     type: state.toogleScore.type,
     score: state.toogleScore.score,

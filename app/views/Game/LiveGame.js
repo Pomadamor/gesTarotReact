@@ -10,9 +10,14 @@ class LiveGame extends Component {
  */
   render(){
 
+    console.log("----------------", this.props.scoreJ1)
+
       if(this.props.joueurs.length>3){
         joueurFour = <Button bordered light 
-                        backgroundColor={ this.props.preneur == 'Joueur 4' ? "green" : 'rgba(52, 52, 52, 0.6)'  }
+                        backgroundColor={  
+                          turnBefore.preneur == 'Joueur 4' ? "lightgreen" 
+                          : turnBefore.partenaire == 'Joueur 4' ? "moccasin" 
+                          :'rgba(52, 52, 52, 0.6)'  }
                         style={{flex:1, height:60, margin:1}} 
                         >
                         <View style={{width:"100%", alignItems:"center"}}>
@@ -27,7 +32,10 @@ class LiveGame extends Component {
    
       if(this.props.joueurs.length>4){
           joueurFive =    <Button bordered light 
-                              backgroundColor={ this.props.preneur == 'Joueur 5' ? "green" : 'rgba(52, 52, 52, 0.6)' }
+                              backgroundColor={  
+                                turnBefore.preneur == 'Joueur 5' ? "lightgreen" 
+                                : turnBefore.partenaire == 'Joueur 5' ? "moccasin" 
+                                :'rgba(52, 52, 52, 0.6)'  }
                               style={{flex:1, height:60, margin:1}} 
                             >
                             <View style={{width:"100%", alignItems:"center"}}>
@@ -40,6 +48,7 @@ class LiveGame extends Component {
           joueurFive = <View></View>
       }
   
+
       return (
           <View style={{flexDirection: 'row'}}>
           <Button bordered light 
@@ -51,8 +60,11 @@ class LiveGame extends Component {
             </View>
           </Button>
           <Button bordered light 
-          backgroundColor={ this.props.preneur == 'Joueur 1' ? "green" : 'rgba(52, 52, 52, 0.6)'  }
-          backgroundColor={ this.props.partenaire == 'Joueur 1' ? "yellow" : 'rgba(52, 52, 52, 0.6)'}
+          backgroundColor={  
+            turnBefore.preneur == 'Joueur 1' ? "lightgreen" 
+            : turnBefore.partenaire == 'Joueur 1' ? "moccasin" 
+            :'rgba(52, 52, 52, 0.6)'  }
+          // backgroundColor={ this.props.partenaire == 'Joueur 1' ? "yellow" : 'rgba(52, 52, 52, 0.6)'}
           style={{flex:1, height:60, margin:1}} >
             <View style={{width:"100%", alignItems:"center"}}>
             <Text style={{
@@ -61,7 +73,10 @@ class LiveGame extends Component {
             </View>
           </Button>
           <Button bordered light 
-          backgroundColor={ this.props.preneur == 'Joueur 2' ? "green" : 'rgba(52, 52, 52, 0.6)'  }
+          backgroundColor={  
+            turnBefore.preneur == 'Joueur 2' ? "lightgreen" 
+            : turnBefore.partenaire == 'Joueur 3' ? "moccasin" 
+            :'rgba(52, 52, 52, 0.6)'  }
           style={{flex:1, height:60, margin:1}} >
           <View style={{width:"100%", alignItems:"center"}}>
             <Text style={{
@@ -70,7 +85,10 @@ class LiveGame extends Component {
             </View>
           </Button>
           <Button bordered light 
-          backgroundColor={ this.props.preneur == 'Joueur 3' ? "green" : 'rgba(52, 52, 52, 0.6)'  }
+          backgroundColor={  
+            turnBefore.preneur == 'Joueur 3' ? "lightgreen" 
+            : turnBefore.partenaire == 'Joueur 3' ? "moccasin" 
+            :'rgba(52, 52, 52, 0.6)'  }
           style={{flex:1, height:60, margin:1}} >
             <View style={{width:"100%", alignItems:"center"}}>
             <Text style={{

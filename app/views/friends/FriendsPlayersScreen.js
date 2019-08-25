@@ -111,14 +111,19 @@ class FriendsPlayersScreen extends Component {
                         />
                     </View>
                     <View style={{
-                        flex: 2
+                        flex: 2,
+                        alignItems: "center",
+                        alignContent: 'center' 
                     }}>
                         <View style={{
                             flex: 1,
                             flexDirection: 'row',
+                            alignItems: "center" ,
+                            alignContent: 'center'
                         }}>
                             <View style={{
-                                flex: 1
+                                flex: 1,
+                                alignItems: "center" 
                             }}>
                                 <Text style={{ color: "white", fontSize: 17, marginTop: 10 }}>Le pseudo :</Text>
                             </View>
@@ -172,6 +177,8 @@ class FriendsPlayersScreen extends Component {
                         <View style={{
                             flex: 1,
                             flexDirection: 'row',
+                            alignItems: "center" ,
+                            alignContent: 'center'
                         }}>
                             <View style={{
                                 flex: 1
@@ -231,6 +238,8 @@ class FriendsPlayersScreen extends Component {
                         <View style={{
                             flex: 1,
                             flexDirection: 'row',
+                            alignItems: "center" ,
+                            alignContent: 'center'
                         }}>
                             <View style={{
                                 flex: 1
@@ -283,6 +292,8 @@ class FriendsPlayersScreen extends Component {
                         <View style={{
                             flex: 1,
                             flexDirection: 'row',
+                            alignItems: "center" ,
+                            alignContent: 'center'
                         }}>
                             <View style={{
                                 flex: 1
@@ -335,6 +346,8 @@ class FriendsPlayersScreen extends Component {
                         <View style={{
                             flex: 1,
                             flexDirection: 'row',
+                            alignItems: "center" ,
+                            alignContent: 'center'
                         }}>
                             <View style={{
                                 flex: 1

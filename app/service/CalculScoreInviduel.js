@@ -1,117 +1,75 @@
-import React, {Component} from "react";
-import { View } from "native-base";
-import { connect } from 'react-redux'
+export function CalculScoreIndividuel(dataIn) {
 
- class CalculScoreIndividuel extends Component {
+  console.log("test calculScoreIndividuel", dataIn)
 
-    
-  render(){
-    // console.log("PPPLLLOOOPPP0",this.props.calcul)
-    // // if(this.props.calcul = 0){
-    //     console.log("PPPLLLOOOPPP")
-    //     if(this.props.preneur == 'Joueur 1'){
-    //         console.log("PPPLLLOOOPPP3",this.props.preneurScore)
-    //         const actionScore1 = { type: "MUTATION_SCORE_J1", value:(this.props.scoreJ1 + this.props.preneurScore)}
-    //         this.props.dispatch(actionScore1)
-    //         // const actionCalcul = { type: "MUTATION_CALCUL", value:this.props.calcul+1}
-    //         // this.props.dispatch(actionCalcul)
-    //     } else if(this.props.partenaire == 'Joueur 1'){
-    //         const actionScore1 = { type: "MUTATION_SCORE_J1", value:(this.props.scoreJ1 + this.props.partenaireScore)}
-    //         this.props.dispatch(actionScore1)
-    //     } else if(this.props.partenaire == 'Joueur 1' && this.props.preneur == 'Joueur 1'){
-    //         const actionScore1 = { type: "MUTATION_SCORE_J1", value:this.props.this.props.scoreJ1 + this.props.partenaireScore + this.props.partenaireScore }
-    //         this.props.dispatch(actionScore1) 
-    //    }
+  
+  // preneur = dataIn.preneur
+  // partenaire = dataIn.partenaire
 
-    //      if(this.props.preneur == 'Joueur 2'){
-    //         this.props.scoreJ2 = this.props.scoreJ2 + this.props.preneurScore
-    //         const actionScore2 = { type: "MUTATION_SCORE_J2", value:this.props.scoreJ2}
-    //         this.props.dispatch(actionScore2)
-    //         const actionCalcul = { type: "MUTATION_CALCUL", value:1}
-    //         this.props.dispatch(actionCalcul)
-    //     } else if(this.props.partenaire == 'Joueur 2'){
-    //         this.props.scoreJ2 = this.props.scoreJ2 + this.props.partenaireScore
-    //         const actionScore2 = { type: "MUTATION_SCORE_J2", value:this.props.scoreJ2}
-    //         this.props.dispatch(actionScore2)
-    //         const actionCalcul = { type: "MUTATION_CALCUL", value:1}
-    //         this.props.dispatch(actionCalcul)
-    //     } else if(this.props.partenaire == 'Joueur 2' && this.props.preneur == 'Joueur 2'){
-    //         this.props.scoreJ2 = this.props.scoreJ2 + this.props.partenaireScore + this.props.partenaireScore
-    //         const actionScore2 = { type: "MUTATION_SCORE_J2", value:this.props.scoreJ2}
-    //         this.props.dispatch(actionScore2) 
-    //         const actionCalcul = { type: "MUTATION_CALCUL", value:1}
-    //         this.props.dispatch(actionCalcul)
-    //     }
+  // score["Joueur 1"] = dataIn.scoreJ1
+  // score["Joueur 2"] = ...
+  // score["Joueur 3"] = ..
+  // score["Joueur 4"] = ..
+  // score["Joueur 5"] = ..
 
-    //      if(this.props.preneur == 'Joueur 3'){
-    //         this.props.scoreJ3 = this.props.scoreJ3 + this.props.preneurScore
-    //         const actionScore3 = { type: "MUTATION_SCORE_J3", value:this.props.scoreJ3}
-    //         this.props.dispatch(actionScore3)
-    //     } else if(this.props.partenaire == 'Joueur 3'){
-    //         this.props.scoreJ3 = this.props.scoreJ3 + this.props.partenaireScore
-    //         const actionScore3 = { type: "MUTATION_SCORE_J3", value:this.props.scoreJ3}
-    //         this.props.dispatch(actionScore3)
-    //     } else if(this.props.partenaire == 'Joueur 3' && this.props.preneur == 'Joueur 3'){
-    //         this.props.scoreJ3 = this.props.scoreJ3 + this.props.partenaireScore + this.props.partenaireScore 
-    //         const actionScore3 = { type: "MUTATION_SCORE_J3", value:this.props.scoreJ3}
-    //         this.props.dispatch(actionScore3)
-    //     }
-    //     if(this.props.preneur == 'Joueur 4'){
-    //         this.props.scoreJ4 = this.props.scoreJ4 + this.props.preneurScore
-    //         const actionScore4 = { type: "MUTATION_SCORE_J3", value:this.props.scoreJ4}
-    //         this.props.dispatch(actionScore4)
-    //     } else if(this.props.partenaire == 'Joueur 4'){
-    //         this.props.scoreJ4 = this.props.scoreJ4 + this.props.partenaireScore
-    //         const actionScore4 = { type: "MUTATION_SCORE_J3", value:this.props.scoreJ4}
-    //         this.props.dispatch(actionScore4)
-    //     } else if(this.props.partenaire == 'Joueur 4' && this.props.preneur == 'Joueur 4'){
-    //         this.props.scoreJ4 = this.props.scoreJ4 + this.props.partenaireScore + this.props.partenaireScore 
-    //         const actionScore4 = { type: "MUTATION_SCORE_J3", value:this.props.scoreJ4}
-    //         this.props.dispatch(actionScore4)
-    //     }
-    //     if(this.props.preneur == 'Joueur 5'){
-    //         this.props.scoreJ5 = this.props.scoreJ5 + this.props.preneurScore
-    //         const actionScore5 = { type: "MUTATION_SCORE_J5", value:this.props.scoreJ5}
-    //         this.props.dispatch(actionScore5)
-    //     } else if(this.props.partenaire == 'Joueur 5'){
-    //         this.props.scoreJ5 = this.props.scoreJ5 + this.props.partenaireScore
-    //         const actionScore5 = { type: "MUTATION_SCORE_J5", value:this.props.scoreJ5}
-    //         this.props.dispatch(actionScore5)
-    //     } else if(this.props.partenaire == 'Joueur 5' && this.props.preneur == 'Joueur 5'){
-    //         this.props.scoreJ5 = this.props.scoreJ5 + this.props.partenaireScore + this.props.partenaireScore
-    //         const actionScore5 = { type: "MUTATION_SCORE_J5", value:this.props.scoreJ5}
-    //         this.props.dispatch(actionScore5)
-    //     // }
-    // }
-    //     return (
-    //         <View style={{flexDirection: 'row'}}>
-    //         </View>
-    //     )
-    }
-  }
+  // autres = score
 
- const mapStateToProps = state => {
-    return {
-        calcul : state.tooglePlayer.calcul,
-        nbJoueur : state.toogleScore.nbJoueur,
-        joueurs : state.toogleScore.joueurs,
-        partenaire : state.toogleScore.partenaire,
-        victoire : state.toogleScore.victoire,
-        score : state.toogleScore.score,
-        type : state.toogleScore.type,
-        roi : state.toogleScore.roi,
-        bou : state.toogleScore.bou,
-        preneur : state.toogleScore.preneur,
-        autreScore : state.toogleScore.autreScore,
-        partenaireScore : state.toogleScore.partenaireScore,
-        preneurScore : state.toogleScore.preneurScore,
-        scoreJ1 : state.tooglePlayer.scoreJ1,
-        scoreJ2 : state.tooglePlayer.scoreJ2,
-        scoreJ3 : state.tooglePlayer.scoreJ3,
-        scoreJ4 : state.tooglePlayer.scoreJ4,
-        scoreJ5 : state.tooglePlayer.scoreJ5
+  // delete autres[dataIn.preneur]
+  // delete autres[dataIn.partenaire]
 
-     }
+  // score[preneur] += 2*scorebase
+  // score[partenaire] += scorebase
+
+//   preneur = dataIn.preneurScore
+//   partenaire = dataIn.partenaireScore
+//   autre = dataIn.autreScore
+
+//   score["Joueur 1"] = dataIn.scoreJ1
+//   score["Joueur 2"] = dataIn.scoreJ2
+//   score["Joueur 3"] = dataIn.scoreJ3
+//   score["Joueur 4"] = dataIn.scoreJ4
+//   score["Joueur 5"] = dataIn.scoreJ5
+
+//   const result = []
+
+//   if (dataIn.preneurScore != 0) {
+//     if (dataIn.preneur == dataIn.partenaire) {
+//       const TYPESPRENEUR = {
+//         "Joueur 1": dataIn.scoreJ1 + dataIn.preneurScore + dataIn.partenaireScore,
+//         "Joueur 2": dataIn.scoreJ2 + dataIn.preneurScore + dataIn.partenaireScore,
+//         "Joueur 3": dataIn.scoreJ3 + dataIn.preneurScore + dataIn.partenaireScore,
+//         "Joueur 4": dataIn.scoreJ4 + dataIn.preneurScore + dataIn.partenaireScore,
+//         "Joueur 5": dataIn.scoreJ5 + dataIn.preneurScore + dataIn.partenaireScore,
+//       }
+//       valuePreneur = TYPESPREUNEUR[dataIn.preneur]
+//       valuePartenaire = TYPESPARTENAIRE[dataIn.partenaire]
+//     } else {
+//       const TYPESPRENEUR = {
+//         "Joueur 1": dataIn.scoreJ1 + dataIn.preneurScore,
+//         "Joueur 2": dataIn.scoreJ2 + dataIn.preneurScore,
+//         "Joueur 3": dataIn.scoreJ2 + dataIn.preneurScore,
+//         "Joueur 4": dataIn.scoreJ3 + dataIn.preneurScore,
+//         "Joueur 5": dataIn.scoreJ4 + dataIn.preneurScore
+//       }
+
+//       const TYPESPARTENAIRE = {
+//         "Joueur 1": dataIn.scoreJ1 + dataIn.partenaireScore,
+//         "Joueur 2": dataIn.scoreJ2 + dataIn.partenaireScore,
+//         "Joueur 3": dataIn.scoreJ2 + dataIn.partenaireScore,
+//         "Joueur 4": dataIn.scoreJ3 + dataIn.partenaireScore,
+//         "Joueur 5": dataIn.scoreJ4 + dataIn.partenaireScore
+//       }
+//       valuePreneur = TYPESPREUNEUR[dataIn.preneur]
+//       valuePartenaire = TYPESPARTENAIRE[dataIn.partenaire]
+//     }
+
+
+
+//     result.push({
+//       actionPreneur: { type: "MUTATION_PRENEURSCORE", value: valuePreneur },
+//       actionPartenaire: { type: "MUTATION_PARTENAIRESCORE", value: valuePartenaire },
+//       actionAutre: { type: "MUTATION_AUTRESCORE", value: valueAutre },
+//     })
+//   }
+//   return result
 }
-
- export default connect(mapStateToProps)(CalculScoreIndividuel); 
