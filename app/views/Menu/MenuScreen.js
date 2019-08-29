@@ -57,7 +57,9 @@ class MenuScreen extends Component {
               <Text>Statistique</Text>
             </View>
           </Button> */}
-          <Button bordered light style={{ flex: 1, alignContent: 'center', height: "90%", marginTop: 10, marginLeft: 10, margin: 10, backgroundColor: 'rgba(52, 52, 52, 0.6)' }} >
+          <Button bordered light 
+            onPress={() => this.props.navigation.navigate("Friends")}
+            style={{ flex: 1, alignContent: 'center', height: "90%", marginTop: 10, marginLeft: 10, margin: 10, backgroundColor: 'rgba(52, 52, 52, 0.6)' }} >
             <View style={{ width: "100%", alignItems: "center" }}>
               <Icon active name="beer" />
               <Text>Amis</Text>
