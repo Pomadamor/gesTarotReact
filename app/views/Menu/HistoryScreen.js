@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, FlatList } from 'react-native'
+import { View, FlatList, Alert } from 'react-native'
 import { Button, Text, Icon } from 'native-base';
 import { connect } from 'react-redux';
 import { BackHandler } from 'react-native'
@@ -45,58 +45,63 @@ class HistoryScreen extends Component {
         flex: 1,
         flexDirection: 'column',
       }}>
-        <View style={{ flex: 1, flexDirection: 'row' }}>
+        <View style={{ flex: 1, margin:20, flexDirection: 'row' }}>
             <FlatList
                 data={[
                     {
-                        date: '01/01/42',
-                        name: "En cours",
+                    name: 'midi',
+                    subtitle: '01/01/42'
                     },
                     {
-                        date: '01/01/42',
-                        name: "name",
+                    name: 'soir',
+                    subtitle: '01/01/42'
                     },
                     {
-                        date: '01/01/42',
-                        name: "name",
+                    name: 'week-end',
+                    subtitle: '01/01/42'
                     },
                     {
-                        date: '01/01/42',
-                        name: "name",
+                    name: 'pro',
+                    subtitle: '01/01/42'
                     },
                     {
-                        date: '01/01/42',
-                        name: "name",
+                    name: 'famille',
+                    subtitle: '01/01/42'
                     },
                     {
-                        date: '01/01/42',
-                        name: "name",
+                    name: 'autre',
+                    subtitle: '01/01/42'
                     }
                 ]}
                 renderItem={({item}) => 
-                <View style={{ flex: 1,alignContent: 'center', padding: 15, height: "90%", marginTop: 10, marginLeft: 10, margin: 10, backgroundColor: 'rgba(52, 52, 52, 0.6)' , flexDirection: 'row' }}>
+                <View style={{ flex: 1,
+                // alignContent: 'center', padding: 15, height: "90%", marginTop: 10, marginLeft: 10, margin: 10, backgroundColor: 'rgba(52, 52, 52, 0.6)' , flexDirection: 'row' 
+                }}>
                     <View style={{flex:1}}>
                         <ListItem
+                             onPress={() => Alert.alert(
+                              'Attention',
+                              "Que souhaites-tu faire ?",
+                              [
+                                {
+                                  text: 'Annuler',
+                                  onPress: () => console.log('Ask me later pressed')
+                                },
+                                {
+                                  text: 'Modifier',
+                                  onPress: () => console.log('Ask me later pressed')
+                                },
+                                {
+                                  text: 'Supprimer',
+                                  onPress: () => console.log('Ask me later pressed')
+                                }
+                              ],
+                              { cancelable: true },
+                            )}
                             roundAvatar
-                            title={item.date}
-                            subtitle={item.name}
-                        />
+                            title={item.name}
+                            subtitle={item.subtitle}                        />
                     </View>
-                    <View style={{flex:0.2}}>
-                    <Button rounded light
-                        onPress={() => this.props.navigation.navigate("Menu")}
-                        style={{
-                        backgroundColor: 'gray',
-                        margin: 4,
-                        }}>
-                        <Icon
-                        active name="arrow-forward"
-                        style={{
-                            color: 'white',
-                        }}
-                        />
-                    </Button>
-                    </View>  
                 </View>
 
                 }
@@ -108,10 +113,10 @@ class HistoryScreen extends Component {
   }
 }
 
-
 const mapStateToProps = state => {
   return {
-    verif: state.toogleUser.verif
+      avatar: state.toogleUser.avatar,
+      id: state.toogleUser.id,
   }
 }
 

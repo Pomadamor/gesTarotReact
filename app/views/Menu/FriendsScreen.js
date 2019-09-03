@@ -45,7 +45,7 @@ class FriendsScreen extends Component {
         flex: 1,
         flexDirection: 'column',
       }}>
-        <View style={{ flex: 1, flexDirection: 'row' }}>
+        <View style={{ flex: 1, margin:20, flexDirection: 'row' }}>
             <FlatList
                 data={[
                     {
@@ -85,41 +85,13 @@ class FriendsScreen extends Component {
                 }}>
                     <View style={{flex:1}}>
                         <ListItem
+                            onPress={() => this.props.navigation.navigate("Friend")}
                             roundAvatar
                             title={item.name}
                             subtitle={item.subtitle}
                             avatar={{uri:item.avatar_url}}
-                        >
-                            <Button rounded light
-                                onPress={() => this.props.navigation.navigate("Menu")}
-                                style={{
-                                backgroundColor: 'gray',
-                                margin: 4,
-                                }}>
-                                <Icon
-                                active name="arrow-forward"
-                                style={{
-                                    color: 'white',
-                                }}
-                                />
-                            </Button>
-                        </ListItem>
-                    </View>
-                    {/* <View style={{flex:0.2}}>
-                    <Button rounded light
-                        onPress={() => this.props.navigation.navigate("Menu")}
-                        style={{
-                        backgroundColor: 'gray',
-                        margin: 4,
-                        }}>
-                        <Icon
-                        active name="arrow-forward"
-                        style={{
-                            color: 'white',
-                        }}
                         />
-                    </Button>
-                    </View>   */}
+                    </View>
                 </View>
 
                 }
@@ -131,7 +103,7 @@ class FriendsScreen extends Component {
             </View>
             <View style={{flex:0.2}}>
                 <Button rounded light
-                    onPress={() => this.props.navigation.navigate("User")}
+                    onPress={() => this.props.navigation.navigate("Friend")}
                     style={{
                     backgroundColor: 'steelblue',
                     margin: 4,

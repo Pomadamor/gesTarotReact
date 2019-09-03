@@ -144,12 +144,13 @@ class UserScreen extends Component {
                         <Image
                             source={this.state.avatar}
                             style={{
-                                width: '100%',
-                                height: '100%',
+                                width: '80%',
+                                height: '80%',
                                 justifyContent: "space-around",
-                                // margin: 10,
+                                margin: 10,
                                 resizeMode: 'contain',
-                                // padding: 10,
+                                padding: 10,
+                                backgroundColor: 'steelblue'
                             }}
                         />
                     </View>
@@ -164,15 +165,6 @@ class UserScreen extends Component {
                             alignItems: 'center',
                             marginRight: 10
                         }}>
-                            {/* <View style={{
-                                flex: 1
-                            }}>
-                                <Button block info style={{margin:2}} onPress={()=>this.handleRegister()}>
-                                    <Label style={{
-                                        color:"white",
-                                        fontSize: 17}}>Image</Label>
-                                </Button>
-                            </View> */}
                             <View style={{
                                 flex: 1
                             }}>
@@ -220,26 +212,6 @@ class UserScreen extends Component {
                                 }}>Pseudo</Label>
                                 <Input onChangeText={(username) => this.setState({ username })}
                                     value={this.state.username} />
-                            </Item>
-                            <Item floatingLabel last>
-                                <Label style={{
-                                    color: "white",
-                                    fontSize: 17,
-                                    fontWeight: 'bold'
-                                }}>Password</Label>
-                                <Input secureTextEntry={true}
-                                    onChangeText={(password) => this.setState({ password })}
-                                    value={this.state.password} />
-                            </Item>
-                            <Item floatingLabel last>
-                                <Label style={{
-                                    color: "white",
-                                    fontSize: 17,
-                                    fontWeight: 'bold'
-                                }}>Confirm Password</Label>
-                                <Input secureTextEntry={true}
-                                    onChangeText={(password2) => this.setState({ password2 })}
-                                    value={this.state.password2} />
                             </Item>
                             <Button block info style={{ marginTop: 100 }} onPress={() => this.update()}>
                                 <Label style={{

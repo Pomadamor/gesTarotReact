@@ -11,6 +11,7 @@ import UserScreen from "./views/menu/UserScreen";
 import MenuScreen from "./views/menu/MenuScreen";
 import FriendsPlayersScreen from "./views/friends/FriendsPlayersScreen";
 import FriendsScreen from "./views/menu/FriendsScreen"
+import FriendScreen from "./views/menu/FriendScreen"
 import HistoryScreen from "./views/menu/HistoryScreen"
 
 
@@ -27,6 +28,7 @@ const switchNavigator = createSwitchNavigator({
     Menu: MenuScreen,
     FriendsPlayers: FriendsPlayersScreen,
     Friends: FriendsScreen,
+    Friend: FriendScreen,
     History: HistoryScreen
 }, {
     initialRouteName: "Loader"

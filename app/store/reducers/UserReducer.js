@@ -5,7 +5,7 @@ const initialState = {
     email: "",
     phone:"",
     token: "",
-    avatar: require("../../assets/img/icon_user/happy.png"),
+    avatar: require("../../assets/img/img_user/moi.png"),
 
 }
 

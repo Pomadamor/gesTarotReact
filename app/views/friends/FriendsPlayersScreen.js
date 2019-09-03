@@ -106,7 +106,7 @@ class FriendsPlayersScreen extends Component {
                                 margin: 10,
                                 resizeMode: 'contain',
                                 padding: 10,
-                                backgroundColor: 'steelblue'
+                                backgroundColor: 'mistyrose'
                             }}
                         />
                     </View>
@@ -167,7 +167,7 @@ class FriendsPlayersScreen extends Component {
                                 margin: 10,
                                 resizeMode: 'contain',
                                 padding: 10,
-                                backgroundColor: 'steelblue'
+                                backgroundColor: 'moccasin'
                             }}
                         />
                     </View>
@@ -228,7 +228,7 @@ class FriendsPlayersScreen extends Component {
                                 margin: 10,
                                 resizeMode: 'contain',
                                 padding: 10,
-                                backgroundColor: 'steelblue'
+                                backgroundColor: 'paleturquoise'
                             }}
                         />
                     </View>
@@ -282,7 +282,7 @@ class FriendsPlayersScreen extends Component {
                                 margin: 10,
                                 resizeMode: 'contain',
                                 padding: 10,
-                                backgroundColor: 'steelblue'
+                                backgroundColor: 'lightgreen'
                             }}
                         />
                     </View>
@@ -336,7 +336,7 @@ class FriendsPlayersScreen extends Component {
                                 margin: 10,
                                 resizeMode: 'contain',
                                 padding: 10,
-                                backgroundColor: 'steelblue'
+                                backgroundColor: 'lightsteelblue'
                             }}
                         />
                     </View>

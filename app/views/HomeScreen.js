@@ -62,7 +62,7 @@ class HomeScreen extends Component {
             >
               <Image
                 onPress={() => this.props.navigation.navigate("User")}
-                source={this.props.avatar} style={{ height: 90, backgroundColor:"steelblue", width: 90, marginTop: 5, marginLeft: 5, marginRight: 5 }} />
+                source={this.props.avatar} style={{ height: 90, backgroundColor:"antiquewhite", width: 90, marginTop: 5, marginLeft: 5, marginRight: 5 }} />
               <View style={{
                 margin: 10,
                 fontSize: 17,
@@ -189,7 +189,7 @@ class HomeScreen extends Component {
         </View>
 
         <View style={{ height: 60, flexDirection: 'row' }}>
-          <View style={{ flex: 1, height: 50 }}>
+          {/* <View style={{ flex: 1, height: 50 }}>
             <Button rounded light
               style={{
                 margin: 4,
@@ -207,7 +207,7 @@ class HomeScreen extends Component {
               }}>
               <Text>Noter</Text>
             </Button>
-          </View>
+          </View> */}
         </View>
       </View>
     );
