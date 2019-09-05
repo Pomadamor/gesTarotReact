@@ -1,7 +1,7 @@
 import AsyncStorage from "@react-native-community/async-storage";
 
 const BASE_URL = "https://gestarot-api.lerna.eu/api";
-const token = AsyncStorage.getItem("token")
+const token = AsyncStorage.getItem("STORAGE_TOKEN")
 
 
 /**

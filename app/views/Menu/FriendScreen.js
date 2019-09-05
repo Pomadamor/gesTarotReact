@@ -13,7 +13,7 @@ class UserScreen extends Component {
 
         this.state = {
             avatar: this.props.avatar,
-            token: AsyncStorage.getItem("token"),
+            token: AsyncStorage.getItem("STORAGE_TOKEN"),
             username: "",
             phone: "",
             email: "",

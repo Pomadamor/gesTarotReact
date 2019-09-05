@@ -3,7 +3,7 @@ import { Button, View, Text, Icon } from 'native-base';
 import { Image } from 'react-native';
 import { connect } from 'react-redux';
 import { BackHandler } from 'react-native'
-import UserScreen from './menu/UserScreen';
+import UserScreen from './Menu/UserScreen';
 
 class HomeScreen extends Component {
 
@@ -23,9 +23,6 @@ class HomeScreen extends Component {
 * Les trois fonctions suivante permette de gérer le retour du clavier
 */
   componentDidMount() {
-    if (this.props.pseudo == "") {
-
-    }
     BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
   }
 
@@ -76,6 +73,12 @@ class HomeScreen extends Component {
                     color: "white",
                     fontWeight: 'bold'
                   }}>{this.props.pseudo}</Text>
+                 <Text
+                  onPress={() => this.props.navigation.navigate("User")}
+                  style={{
+                    fontSize: 15,
+                    color: "white",
+                  }}>Version Bêta</Text>
               </View>
             </View>
             <View style={{ flex: 1, height: 50 }} />

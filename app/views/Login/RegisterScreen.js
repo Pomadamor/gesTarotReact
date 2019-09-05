@@ -72,11 +72,20 @@ class RegisterScreen extends Component {
         });
         if (res.ok) {
           console.log("RESPONSE TRUE", res)
-          this.props.navigation.navigate("Login")
-          const actionLogin = { type: "MUTATION_PSEUDO", value: true }
+
+          const actionPhone = { type: "MUTATION_PHONE", value: phone }
+          const actionEmail = { type: "MUTATION_EMAIL", value: email }
+          const actionLogin = { type: "MUTATION_PSEUDO", value: username }
+
           this.props.dispatch(actionLogin)
+          this.props.dispatch(actionEmail)
+          this.props.dispatch(actionPhone)
+
+          this.props.navigation.navigate("Login")
+
         } else {
           console.log("RESPONSE FALSE", res)
+          alert("Le numéro de téléphone ou l'email existe déjà.");
         }
       } catch (e) {
         console.log(e);
@@ -100,8 +109,7 @@ class RegisterScreen extends Component {
         <Item floatingLabel>
           <Label style={{
             color: "white",
-            fontSize: 17,
-            fontWeight: 'bold'
+            fontSize: 17
           }}>Email</Label>
           <Input onChangeText={(email) => this.setState({ email })}
             style={{ color: "white" }}
@@ -110,9 +118,8 @@ class RegisterScreen extends Component {
         <Item floatingLabel>
           <Label style={{
             color: "white",
-            fontSize: 17,
-            fontWeight: 'bold'
-          }}>téléphone</Label>
+            fontSize: 17
+          }}>Téléphone</Label>
           <Input onChangeText={(phone) => this.setState({ phone })}
             style={{ color: "white" }}
             value={this.state.phone} />
@@ -120,8 +127,7 @@ class RegisterScreen extends Component {
         <Item floatingLabel>
           <Label style={{
             color: "white",
-            fontSize: 17,
-            fontWeight: 'bold'
+            fontSize: 17
           }}>Pseudo</Label>
           <Input onChangeText={(username) => this.setState({ username })}
             style={{ color: "white" }}
@@ -130,9 +136,8 @@ class RegisterScreen extends Component {
         <Item floatingLabel>
           <Label style={{
             color: "white",
-            fontSize: 17,
-            fontWeight: 'bold'
-          }}>Mot de passe</Label>
+            fontSize: 17
+            }}>Mot de passe</Label>
           <Input secureTextEntry={true}
             style={{ color: "white" }}
             onChangeText={(password) => this.setState({ password })}
@@ -141,9 +146,8 @@ class RegisterScreen extends Component {
         <Item floatingLabel>
           <Label style={{
             color: "white",
-            fontSize: 17,
-            fontWeight: 'bold'
-          }}>Confirmer le mot de passe</Label>
+            fontSize: 17
+            }}>Confirmer le mot de passe</Label>
           <Input secureTextEntry={true}
             style={{ color: "white" }}
             onChangeText={(password2) => this.setState({ password2 })}

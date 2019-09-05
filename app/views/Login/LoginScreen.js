@@ -13,7 +13,7 @@ class LoginScreen extends Component {
     this.state = {
       // identifiant: "",
       email: '',
-      phone: '',
+      phone: 'Email ou téléphone',
       password: "",
       error: ""
     }
@@ -41,7 +41,57 @@ class LoginScreen extends Component {
     if (data.identifiant == "" || data.password == "") {
       alert('Veuillez remplir tout les champs.');
     }
-    else if (Verifier_Numero_Telephone(data.identifiant) == true || checkMail(data.identifiant) == true) {
+    else if (Verifier_Numero_Telephone(data.identifiant) == true || this.props.phone != ""){
+      data.phone = this.props.phone
+      if (data.phone == "" ){
+        data.phone = data.identifiant
+      }
+      console.log("JUSQU'ICI CA FONCTIONNE", data)
+      fetch('https://gestarot-api.lerna.eu/api/user/login', {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          "email": data.email,
+          "phone": data.phone,
+          "password": data.password
+        }),
+      }).then((response) => response.json())
+        .then((responseJson) => {
+          if(responseJson.status == 'error'){
+            console.log ("YOUPIE")
+            alert('Votre identifiant ou votre mot de passe est incorrect.');
+          }
+          else{
+            console.log("TRRRUUUEEE", responseJson)
+            const id = { type: "MUTATION_ID", value: responseJson.id }
+            // const pseudo = { type: "MUTATION_PSEUDO", value: responseJson.username }
+            const email = { type: "MUTATION_EMAIL", value: responseJson.email }
+            const phone = { type: "MUTATION_PHONE", value: responseJson.phone }
+            const api_token = { type: "MUTATION_TOKEN", value: responseJson.api_token }
+            const actionVerif = { type: "MUTATION_VERIF", value: true }
+            this.props.dispatch(actionVerif)
+            this.props.dispatch(id)
+            this.props.dispatch(email)
+            // this.props.dispatch(pseudo)
+            this.props.dispatch(phone)
+            this.props.dispatch(api_token)
+            console.log(responseJson.api_token)
+  
+            const token = responseJson.api_token;
+            console.log(token)
+  
+            AsyncStorage.setItem("token", token)
+            this.props.navigation.navigate("Loader");
+            return responseJson;
+          }
+        })
+    }
+    else if (checkMail(data.identifiant) == true) {
+      data.email = data.identifiant
+      
       console.log("JUSQU'ICI CA FONCTIONNE", data)
       fetch('https://gestarot-api.lerna.eu/api/user/login', {
         method: 'POST',
@@ -72,16 +122,14 @@ class LoginScreen extends Component {
             this.props.dispatch(email)
             this.props.dispatch(phone)
             this.props.dispatch(api_token)
-            console.log(responseJson.api_token)
   
-            const token = responseJson.api_token;
-            console.log(token)
-  
-            AsyncStorage.setItem("token", token)
+            AsyncStorage.setItem("STORAGE_TOKEN", responseJson.api_token)
+            AsyncStorage.setItem("STORAGE_ID", responseJson.id )
+            // AsyncStorage.setItem("STORAGE_PSEUDO", responseJson.pseudo )
+            AsyncStorage.setItem("STORAGE_EMAIL", responseJson.email )
+            AsyncStorage.setItem("STORAGE_PHONE", responseJson.phone )
+
             this.props.navigation.navigate("Loader");
-  
-            // await AsyncStorage.setItem("token", token);
-            // this.props.navigation.navigate("Loader");
             return responseJson;
           }
 
@@ -89,6 +137,7 @@ class LoginScreen extends Component {
         .catch((error) => {
           console.error(error);
         });
+      
     } else {
       alert('Les informations saisis sont incorrect.');
     }
@@ -98,6 +147,11 @@ class LoginScreen extends Component {
 * Ce rendu affiche la vue login
 * Les parties commenter sont en cour d'amélioration
 */
+  componentWillMount(){
+    if(this.props.phone != ""){
+      this.state.phone = this.props.phone
+    }
+  }
 
   render() {
     const { error } = this.state;
@@ -112,19 +166,17 @@ class LoginScreen extends Component {
           <Label style={{
             color: "white",
             fontSize: 17,
-            fontWeight: 'bold'
-          }}>Email ou téléphone</Label>
+          }}>{this.state.phone}</Label>
           <Input onChangeText={(identifiant) => this.setState({ identifiant })}
             style={{color: "white"}}
             value={this.state.identifiant} />
         </Item>
 
-        <Item floatingLabel last>
+        <Item floatingLabel>
           <Label style={{
             color: "white",
             fontSize: 17,
-            fontWeight: 'bold'
-          }}>Password</Label>
+          }}>Mot de passe</Label>
           <Input secureTextEntry={true}
             style={{color: "white"}}
             onChangeText={(password) => this.setState({ password })}

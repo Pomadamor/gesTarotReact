@@ -85,17 +85,15 @@ const styles = {
   },
   textCat: {
     margin:20,
-    fontSize: 30,
+    fontSize: 20,
     fontWeight: 'bold',
+    flex: 0.4,
     color: "white",
   },
   detailCat:
   {
-    marginBottom:20,
-    marginLeft: 40,
-    marginRight: 40,
-    fontSize: 17,
-    textAlign: 'justify',
+    margin:20,
+    flex: 1,
     color: "white"
   },
 }

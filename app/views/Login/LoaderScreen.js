@@ -9,7 +9,7 @@ export default class LoaderScreen extends Component {
  */
 
     componentDidMount() {
-        AsyncStorage.getItem("token").then(token => {
+        AsyncStorage.getItem("STORAGE_TOKEN").then(token => {
             if (token) {
                 console.log(token)
                 //if token then authenticated so go to home

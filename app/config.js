@@ -1,21 +1,24 @@
 import {createSwitchNavigator, createAppContainer} from "react-navigation";
-import LoaderScreen from "./views/login/LoaderScreen";
+import createAnimatedSwitchNavigator from 'react-navigation-animated-switch';
+import { Transition } from 'react-native-reanimated';
+import React from 'react';
+import LoaderScreen from "./views/Login/LoaderScreen";
 import HomeScreen from "./views/HomeScreen";
-import RegisterScreen from "./views/login/RegisterScreen";
-import LoginScreen from "./views/login/LoginScreen";
-import GameScreen from "./views/game/GameScreen";
-import GrillChooseScreen from "./views/game/GrillChooseScreen";
-import GrillScoreScreen from "./views/game/GrillScoreScreen";
-import ChooseScreen from "./views/login/ChooseScreen";
-import UserScreen from "./views/menu/UserScreen";
-import MenuScreen from "./views/menu/MenuScreen";
+import RegisterScreen from "./views/Login/RegisterScreen";
+import LoginScreen from "./views/Login/LoginScreen";
+import GameScreen from "./views/Game/GameScreen";
+import GrillChooseScreen from "./views/Game/GrillChooseScreen";
+import GrillScoreScreen from "./views/Game/GrillScoreScreen";
+import ChooseScreen from "./views/Login/ChooseScreen";
+import UserScreen from "./views/Menu/UserScreen";
+import MenuScreen from "./views/Menu/MenuScreen";
 import FriendsPlayersScreen from "./views/friends/FriendsPlayersScreen";
-import FriendsScreen from "./views/menu/FriendsScreen"
-import FriendScreen from "./views/menu/FriendScreen"
-import HistoryScreen from "./views/menu/HistoryScreen"
+import FriendsScreen from "./views/Menu/FriendsScreen"
+import FriendScreen from "./views/Menu/FriendScreen"
+import HistoryScreen from "./views/Menu/HistoryScreen"
 
 
-const switchNavigator = createSwitchNavigator({
+const switchNavigator = createAnimatedSwitchNavigator({
     Loader: LoaderScreen,
     Home: HomeScreen,
     Choose: ChooseScreen,
@@ -30,6 +33,17 @@ const switchNavigator = createSwitchNavigator({
     Friends: FriendsScreen,
     Friend: FriendScreen,
     History: HistoryScreen
+},{
+    transition: (
+        <Transition.Together>
+          <Transition.Out
+            type="slide-bottom"
+            durationMs={400}
+            interpolation="easeIn"
+          />
+          <Transition.In type="fade" durationMs={500} />
+        </Transition.Together>
+      ),
 }, {
     initialRouteName: "Loader"
 });
