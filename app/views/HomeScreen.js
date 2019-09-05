@@ -87,7 +87,7 @@ class HomeScreen extends Component {
                 onPress={() => this.props.navigation.navigate("Menu")}
                 style={{
                   backgroundColor: 'steelblue',
-                  margin: 4,
+                  margin: 0,
                 }}>
                 <Icon
                   active name="arrow-forward"
@@ -102,92 +102,67 @@ class HomeScreen extends Component {
         </View>
 
         <View style={{ height: 100 }}>
+
           <View style={{ flex: 1, flexDirection: 'row' }}>
-            <View style={{
-              flex: 1,
-              margin: 4,
-              paddingTop: 30,
-              height: 100,
-              backgroundColor: 'rgba(52, 52, 52, 0.7)',
-            }}>
-              <Button transparent light
-                style={{
-                  padding: 12,
-                }}
-                onPress={() => this.btnChoose(nb = 3)}>
-                <View>
-                  <Image
+            <Button bordered light
+              onPress={() => this.btnChoose(nb = 3)}
+              style={{ flex: 1, resizeMode: 'center', height: "100%", marginTop: 10, margin: 10, backgroundColor: 'rgba(52, 52, 52, 0.6)' }} >
+              <View style={{ width: "100%", alignItems: "center" }}>
+                <Image
                     style={{
                       tintColor: "#FFFFFF",
                       height: 50,
                       width: 100,
                       resizeMode: 'center',
-                      paddingRight: 10
                     }}
                     source={require('../assets/img/joueurs_three.png')}
                   />
-                  <Text style={{
+                <Text style={{
                     fontSize: 17,
                     textAlign: 'center',
-                    color: "white"
-                  }}
-                  >Jouer à 3</Text>
-                </View>
+                    color: "white"}}>Jouer à 3</Text>
+              </View>
+            </Button>
 
-              </Button>
-            </View>
-            <View style={{ flex: 1, margin: 4, paddingTop: 30, height: 100, backgroundColor: 'rgba(52, 52, 52, 0.8)' }}>
-              <Button transparent light
-                style={{
-                  padding: 12,
-                }}
-                onPress={() => this.btnChoose(nb = 4)}>
-                <View>
-                  <Image
+            <Button bordered light
+              onPress={() => this.btnChoose(nb = 4)}
+              style={{ flex: 1, resizeMode: 'center', height: "130%", marginBottom: 50, backgroundColor: 'rgba(52, 52, 52, 0.6)' }} >
+              <View style={{ width: "100%", alignItems: "center" }}>
+                <Image
                     style={{
                       tintColor: "#FFFFFF",
                       height: 50,
                       width: 100,
                       resizeMode: 'center',
-                      paddingRight: 10
                     }}
                     source={require('../assets/img/joueurs_four.png')}
                   />
-                  <Text style={{
+                <Text style={{
                     fontSize: 17,
                     textAlign: 'center',
-                    color: "white"
-                  }}
-                  >Jouer à 4</Text>
-                </View>
-              </Button>
-            </View>
-            <View style={{ flex: 1, margin: 4, paddingTop: 30, height: 100, backgroundColor: 'rgba(52, 52, 52, 0.9)' }}>
-              <Button transparent light
-                style={{
-                  padding: 12,
-                }}
-                onPress={() => this.btnChoose(nb = 5)}>
-                <View>
-                  <Image
+                    color: "white"}}>Jouer à 4</Text>
+              </View>
+            </Button>
+
+            <Button bordered light
+              onPress={() => this.btnChoose(nb = 5)}
+              style={{ flex: 1, resizeMode: 'center', height: "100%", marginTop: 10, margin: 10, backgroundColor: 'rgba(52, 52, 52, 0.6)' }} >
+              <View style={{ width: "100%", alignItems: "center" }}>
+                <Image
                     style={{
                       tintColor: "#FFFFFF",
                       height: 50,
                       width: 100,
                       resizeMode: 'center',
-                      paddingRight: 10
                     }}
                     source={require('../assets/img/joueurs_five.png')}
                   />
-                  <Text style={{
+                <Text style={{
                     fontSize: 17,
                     textAlign: 'center',
-                    color: "white"
-                  }}
-                  >Jouer à 5</Text>
-                </View>
-              </Button>
-            </View>
+                    color: "white"}}>Jouer à 5</Text>
+              </View>
+            </Button>
           </View>
         </View>
 
