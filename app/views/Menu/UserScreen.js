@@ -13,11 +13,13 @@ class UserScreen extends Component {
 
         this.state = {
             avatar: this.props.avatar,
-            token: AsyncStorage.getItem("STORAGE_TOKEN"),
+            color: "blue",
+            img: require("../../assets/img/icon_user/cat.png"),
+            token: this.props.token,
             username: "",
-            // username: AsyncStorage.getItem("STORAGE_PSEUDO"),
-            phone: AsyncStorage.getItem("STORAGE_PHONE"),
-            email: AsyncStorage.getItem("STORAGE_EMAIL"),
+            // username: this.props.username,
+            phone: this.props.phone,
+            email: this.props.email,
             password: "",
             password2: "",
             error: ""
@@ -182,6 +184,12 @@ class UserScreen extends Component {
                                         color: "white",
                                         fontSize: 17
                                     }}>Photo</Label>
+                                </Button>
+                                <Button block info style={{ margin: 2 }} onPress={() => this.changePhoto()}>
+                                    <Label style={{
+                                        color: "white",
+                                        fontSize: 17
+                                    }}>Image</Label>
                                 </Button>
                             </View>
                         </View>

@@ -111,6 +111,18 @@ class LoginScreen extends Component {
             alert('Votre identifiant ou votre mot de passe est incorrect.');
           }
           else{
+            const token = responseJson.api_token
+            const STORAGE_ID = responseJson.id
+            // STORAGE_PSEUDO = responseJson.pseudo
+            const STORAGE_EMAIL = responseJson.email
+            const STORAGE_PHONE = responseJson.phone
+
+            AsyncStorage.setItem("token", token)
+            AsyncStorage.setItem("STORAGE_ID", STORAGE_ID )
+            // AsyncStorage.setItem("STORAGE_PSEUDO", STORAGE_PSEUDO )
+            AsyncStorage.setItem("STORAGE_EMAIL", STORAGE_EMAIL )
+            AsyncStorage.setItem("STORAGE_PHONE", STORAGE_PHONE )
+            
             console.log("TRRRUUUEEE", responseJson)
             const id = { type: "MUTATION_ID", value: responseJson.id }
             const email = { type: "MUTATION_EMAIL", value: responseJson.email }
@@ -122,12 +134,7 @@ class LoginScreen extends Component {
             this.props.dispatch(email)
             this.props.dispatch(phone)
             this.props.dispatch(api_token)
-  
-            AsyncStorage.setItem("STORAGE_TOKEN", responseJson.api_token)
-            AsyncStorage.setItem("STORAGE_ID", responseJson.id )
-            // AsyncStorage.setItem("STORAGE_PSEUDO", responseJson.pseudo )
-            AsyncStorage.setItem("STORAGE_EMAIL", responseJson.email )
-            AsyncStorage.setItem("STORAGE_PHONE", responseJson.phone )
+
 
             this.props.navigation.navigate("Loader");
             return responseJson;

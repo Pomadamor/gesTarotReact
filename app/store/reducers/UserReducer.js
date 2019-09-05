@@ -1,14 +1,54 @@
+import AsyncStorage from "@react-native-community/async-storage";
+
 const initialState = {
     verif : false,
     id : "",
-    pseudo : "Joueur 1",
+    pseudo : "Joueur",
     email: "",
     phone:"",
     token: "",
+    color: "blue",
     avatar: require("../../assets/img/img_user/moi.png"),
-
 }
 
+AsyncStorage.getItem("STORAGE_PHONE").then(phone => {
+    if (phone) {
+        initialState.phone = phone
+        console.log(phone, "la")
+    } else {
+        console.log("Pas de phone enregistrer", phone)
+    }
+})
+
+AsyncStorage.getItem("token").then(token => {
+    if (token) {
+        initialState.token = token
+        console.log(token, "la")
+        //if token then authenticated so go to home
+    } else {
+        console.log(AsyncStorage.getItem("token"), "la")
+        console.log("la", token)
+    }
+})
+
+AsyncStorage.getItem("STORAGE_EMAIL").then(email => {
+    if (email) {
+        initialState.email = email
+        console.log(email, "la")
+    } else {
+        console.log("Pas de phone enregistrer", email)
+    }
+})
+
+// AsyncStorage.getItem("STORAGE_PSEUDO").then(pseudo => {
+//     if (pseudo) {
+//         initialState.pseudo = pseudo
+//         console.log(pseudo, "la")
+//         //if token then authenticated so go to home
+//     } else {
+//         console.log("la", pseudo)
+//     }
+// })
 /**
    * Fonction qui gere les mutations du reducer user
    */
