@@ -19,19 +19,8 @@ class FriendsScreen extends Component {
   }
 
   handleBackPress = () => {
-    this.props.navigation.navigate("Home"); // works best when the goBack is async
+    this.props.navigation.navigate("Menu"); // works best when the goBack is async
     return true;
-  }
-
-  /**
-* Fonction qui permet au clic de l'utilisateur sur disconnect, de se deconnecter
-*/
-
-  disconnect() {
-    const actionVerif = { type: "MUTATION_VERIF", value: false }
-    this.props.dispatch(actionVerif)
-    AsyncStorage.removeItem("token")
-    this.props.navigation.navigate("Choose")
   }
 
   /**

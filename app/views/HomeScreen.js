@@ -19,6 +19,44 @@ class HomeScreen extends Component {
     this.props.navigation.navigate("FriendsPlayers")
   }
 
+  componentWillMount(){
+    console.log("joueur pseudo", this.props.joueur)
+    if (this.props.pseudo == "Joueur" || this.props.pseudo == undefined ) {
+
+    fetch('https://gestarot-api.lerna.eu/api/logged_user', {
+      method: 'GET',
+      headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+          'api-token': this.props.token
+        },
+      }).then((response) => response.json())
+          .then((responseJson) => {
+              if(responseJson.status == 'error'){
+                  console.log ("ERROR", responseJson.status)
+                  alert('Vérifier votre connexion internet, avant de cliquer sur OK');
+                  this.props.navigation.navigate("loader");
+              }
+              else{
+                  console.log("PPPLLLOOOPPP", responseJson)
+                  var user = responseJson["user"]
+                  const id = { type: "MUTATION_ID", value: user.id }
+                  const pseudo = { type: "MUTATION_PSEUDO", value: user.username }
+                  const email = { type: "MUTATION_EMAIL", value: user.email }
+                  const phone = { type: "MUTATION_PHONE", value: user.phone }
+                  const actionVerif = { type: "MUTATION_VERIF", value: true }
+                  this.props.dispatch(actionVerif)
+                  this.props.dispatch(id)
+                  this.props.dispatch(email)
+                  this.props.dispatch(pseudo)
+                  this.props.dispatch(phone)
+                  console.log("plop", responseJson["user"])
+
+                  return responseJson;
+              }
+          })
+      }
+    }
   /**
 * Les trois fonctions suivante permette de gérer le retour du clavier
 */
@@ -198,6 +236,7 @@ const mapStateToProps = state => {
     avatar: state.toogleUser.avatar,
     pseudo: state.toogleUser.pseudo,
     color: state.toogleUser.color,
+    token: state.toogleUser.token,
   }
 }
 

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, Image } from 'react-native'
+import { checkMail, Verifier_Numero_Telephone } from "../../service/VerifInput"
 import { Label, Form, Content, Button, Item, Input } from 'native-base';
 import ImagePicker from 'react-native-image-picker'
 import { connect } from 'react-redux';
@@ -13,10 +14,9 @@ class UserScreen extends Component {
 
         this.state = {
             avatar: this.props.avatar,
-            color: "blue",
+            color: this.props.color,
             token: this.props.token,
-            username: "",
-            // username: this.props.username,
+            username: this.props.pseudo,
             phone: this.props.phone,
             email: this.props.email,
             password: "",
@@ -48,53 +48,104 @@ class UserScreen extends Component {
     * fonction asynchron qui gere la modification du compte
     */
 
-    async update() {
-        const phone = this.state.phone
-        const email = this.state.email;
-        const password = this.state.password;
+    async update(){
 
-        console.log("TEST2", this.props.id)
-
-        fetch(` https://gestarot-api.lerna.eu/api/user/${this.props.id}`, {
-            method: 'POST',
-            headers: {
-                Accept: 'application/json',
-                'Content-Type': 'application/json',
-                'token': this.state.token
-            },
-            body: JSON.stringify({
-                "username": username,
-                "email": email,
-                "phone": phone,
-                "password": password
-            }),
-        }).then((response) => response.json())
-            .then((responseJson) => {
-                console.log("TEST1", responseJson)
-                const id = { type: "MUTATION_ID", value: responseJson.id }
-                const email = { type: "MUTATION_EMAIL", value: responseJson.email }
-                const phone = { type: "MUTATION_PHONE", value: responseJson.phone }
-                const api_token = { type: "MUTATION_TOKEN", value: responseJson.api_token }
-                const actionVerif = { type: "MUTATION_VERIF", value: true }
-                this.props.dispatch(actionVerif)
-                this.props.dispatch(id)
-                this.props.dispatch(email)
-                this.props.dispatch(phone)
-                this.props.dispatch(api_token)
-                console.log(responseJson.api_token)
-
-                const token = responseJson.api_token;
-                console.log(token)
-
-                AsyncStorage.setItem("token", token)
-                this.props.navigation.navigate("Loader");
-
-                return responseJson;
-
-            })
-            .catch((error) => {
-                console.error(error);
-            });
+            const username = this.state.username;
+            const phone = this.state.phone
+            const email = this.state.email;
+            const password = this.state.password;
+            const token = this.props.token
+        
+            if (password != this.state.password2) {
+              alert(
+                'Veuillez saisir deux mots de passe identique.',
+                [
+                  {
+                    text: 'Cancel',
+                    onPress: () => console.log('Cancel Pressed'),
+                    style: 'cancel',
+                  },
+                  { text: 'OK', onPress: () => console.log('OK Pressed') },
+                ],
+                { cancelable: false },
+              );
+            }
+            if (Verifier_Numero_Telephone(phone) == false) {
+              alert('Le numero de téléphone est incorrect!');
+            }
+            if (checkMail(email) == false) {
+              alert("L'adresse email saisit est incorrect!");
+            }
+            else {
+                if (password != ""){
+                    try {
+                        const res = await fetch('https://gestarot-api.lerna.eu/api/logged_user', {
+                        method: 'POST',
+                        headers: {
+                            Accept: 'application/json',
+                            'Content-Type': 'application/json',
+                            'api-token':token
+                        },
+                        body: JSON.stringify({
+                            "username": username,
+                            "email": email,
+                            "phone": phone,
+                            "password":password
+                        })
+                    });
+                    if (res.ok) {
+                        console.log("RESPONSE TRUE", res)
+                
+                        const actionPhone = { type: "MUTATION_PHONE", value: phone }
+                        const actionEmail = { type: "MUTATION_EMAIL", value: email }
+                        const actionLogin = { type: "MUTATION_PSEUDO", value: username }
+                
+                        this.props.dispatch(actionLogin)
+                        this.props.dispatch(actionEmail)
+                        this.props.dispatch(actionPhone)
+                        
+                    } else {
+                        console.log("RESPONSE FALSE", res.error)
+                        alert("Le numéro de téléphone ou l'email existe déjà.");
+                    }
+                } catch (e) {
+                console.log(e);
+                }
+                }else{
+                    try {
+                        const res = await fetch('https://gestarot-api.lerna.eu/api/logged_user', {
+                        method: 'POST',
+                        headers: {
+                            Accept: 'application/json',
+                            'Content-Type': 'application/json',
+                            'api-token':token
+                        },
+                        body: JSON.stringify({
+                            "username": username,
+                            "email": email,
+                            "phone": phone,
+                        })
+                    });      
+                    if (res.ok) {
+                        console.log("RESPONSE TRUE", res)
+                
+                        const actionPhone = { type: "MUTATION_PHONE", value: phone }
+                        const actionEmail = { type: "MUTATION_EMAIL", value: email }
+                        const actionLogin = { type: "MUTATION_PSEUDO", value: username }
+                
+                        this.props.dispatch(actionLogin)
+                        this.props.dispatch(actionEmail)
+                        this.props.dispatch(actionPhone)
+                        
+                    } else {
+                        console.log("RESPONSE FALSE", res.error)
+                        alert("Le numéro de téléphone ou l'email existe déjà.");
+                    }
+                } catch (e) {
+                console.log(e);
+                }            
+            }
+        }
     }
 
         /**
@@ -141,7 +192,7 @@ class UserScreen extends Component {
                         marginTop: 10,
                         justifyContent: 'center',
                         alignItems: 'center',
-                        backgroundColor: 'white'
+                        backgroundColor:this.state.color
                     }}>
                         <Image
                             source={this.state.avatar}
@@ -197,50 +248,72 @@ class UserScreen extends Component {
                                 <Label style={{
                                     color: "white",
                                     fontSize: 17,
-                                    fontWeight: 'bold'
                                 }}>Email</Label>
-                                <Input onChangeText={(email) => this.setState({ email })}
+                                <Input 
+                                    style={{
+                                        color: "white",
+                                        fontSize: 17,
+                                    }}
+                                    onChangeText={(email) => this.setState({ email })}
                                     value={this.state.email} />
+                            </Item>
+                            <Item floatingLabel>
+                                <Label style={{
+                                        color: "white",
+                                        fontSize: 17,
+                                    }}>Téléphone</Label>
+                                <Input 
+                                    style={{
+                                        color: "white",
+                                        fontSize: 17,
+                                    }}
+                                    onChangeText={(phone) => this.setState({ phone })}
+                                    value={this.state.phone} />
                             </Item>
                             <Item floatingLabel>
                                 <Label style={{
                                     color: "white",
                                     fontSize: 17,
-                                    fontWeight: 'bold'
-                                }}>Phone</Label>
-                                <Input onChangeText={(phone) => this.setState({ phone })}
-                                    value={this.state.phone} />
-                            </Item>
-                            <Item floatingLabel last>
-                                <Label style={{
-                                    color: "white",
-                                    fontSize: 17,
-                                    fontWeight: 'bold'
                                 }}>Pseudo</Label>
-                                <Input onChangeText={(username) => this.setState({ username })}
+                                <Input 
+                                    style={{
+                                        color: "white",
+                                        fontSize: 17,
+                                    }}
+                                    onChangeText={(username) => this.setState({ username })}
                                     value={this.state.username} />
                             </Item>
-                            <Item floatingLabel last>
+                            <Item floatingLabel>
                                 <Label style={{
                                     color: "white",
                                     fontSize: 17,
-                                    fontWeight: 'bold'
-                                }}>Password</Label>
-                                <Input secureTextEntry={true}
+                                }}>Mot de passe</Label>
+                                <Input 
+                                    style={{
+                                        color: "white",
+                                        fontSize: 17,
+                                    }}
+                                
+                                    secureTextEntry={true}
                                     onChangeText={(password) => this.setState({ password })}
                                     value={this.state.password} />
                             </Item>
-                            <Item floatingLabel last>
+                            <Item floatingLabel>
                                 <Label style={{
                                     color: "white",
                                     fontSize: 17,
-                                    fontWeight: 'bold'
-                                }}>Confirm Password</Label>
-                                <Input secureTextEntry={true}
+                                }}>Confirmation du mot de passe</Label>
+                                <Input 
+                                    style={{
+                                        color: "white",
+                                        fontSize: 17,
+                                    }}
+                                
+                                sec ureTextEntry={true}
                                     onChangeText={(password2) => this.setState({ password2 })}
                                     value={this.state.password2} />
                             </Item>
-                            <Button block info style={{ marginTop: 100 }} onPress={() => this.update()}>
+                            <Button block info style={{ marginTop: 50 }} onPress={() => this.update()}>
                                 <Label style={{
                                     color: "white",
                                     fontSize: 17
@@ -259,6 +332,10 @@ const mapStateToProps = state => {
         avatar: state.toogleUser.avatar,
         id: state.toogleUser.id,
         color: state.toogleUser.color,
+        pseudo: state.toogleUser.pseudo,
+        email: state.toogleUser.email,
+        phone: state.toogleUser.phone,
+        token: state.toogleUser.token
     }
 }
 

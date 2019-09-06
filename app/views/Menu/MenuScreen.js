@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Linking } from 'react-native'
+import { View, Linking, Image } from 'react-native'
 import { Button, Text, Icon } from 'native-base';
 import { connect } from 'react-redux';
 import { BackHandler } from 'react-native'
@@ -49,19 +49,18 @@ class MenuScreen extends Component {
         flexDirection: 'column',
       }}>
         <View style={{ flex: 1, flexDirection: 'row' }}>
-          {/* <Button bordered light 
-          onPress={() => this.props.navigation.navigate("Stat")}
-          style={{flex:1, resizeMode:'center', height:"90%", marginTop: 10, marginLeft:10, margin:10, backgroundColor:'rgba(52, 52, 52, 0.6)'}} >
-            <View style={{width:"100%", alignItems:"center"}}>
-              <Icon active name="ios-stats" />
-              <Text>Statistique</Text>
-            </View>
-          </Button> */}
           <Button bordered light 
             onPress={() => this.props.navigation.navigate("Friends")}
             style={{ flex: 1, alignContent: 'center', height: "90%", marginTop: 10, marginLeft: 10, margin: 10, backgroundColor: 'rgba(52, 52, 52, 0.6)' }} >
             <View style={{ width: "100%", alignItems: "center" }}>
-              <Icon active name="beer" />
+               <Image
+                    style={{
+                      tintColor: "#FFFFFF",
+                      resizeMode: 'center',
+                      height: 17
+                    }}
+                    source={require('../../assets/img/joueurs_five.png')}
+                  />
               <Text>Amis</Text>
             </View>
           </Button>
@@ -72,7 +71,14 @@ class MenuScreen extends Component {
             onPress={() => this.props.navigation.navigate("History")}
             style={{ flex: 1, resizeMode: 'center', height: "90%", marginTop: 10, marginLeft: 10, margin: 10, backgroundColor: 'rgba(52, 52, 52, 0.6)' }} >
             <View style={{ width: "100%", alignItems: "center" }}>
-              <Icon active name="ios-stats" />
+            <Image
+                    style={{
+                      tintColor: "#FFFFFF",
+                      resizeMode: 'center',
+                      height: 24
+                    }}
+                    source={require('../../assets/img/history.png')}
+                  />
               <Text>Historique des parties</Text>
             </View>
           </Button>
@@ -91,7 +97,14 @@ class MenuScreen extends Component {
             onPress={() => { Linking.openURL('https://google.com') }}
             style={{ flex: 1, alignContent: 'center', height: "90%", marginTop: 10, marginLeft: 10, margin: 10, backgroundColor: 'rgba(52, 52, 52, 0.6)' }} >
             <View style={{ width: "100%", alignItems: "center" }}>
-              <Icon active name="beer" />
+            <Image
+                    style={{
+                      tintColor: "#FFFFFF",
+                      resizeMode: 'center',
+                      height: 24
+                    }}
+                    source={require('../../assets/img/files.png')}
+                  />
               <Text>Mention légales</Text>
             </View>
           </Button>
@@ -111,7 +124,14 @@ class MenuScreen extends Component {
             onPress={() => this.disconnect()}
             style={{ flex: 1, alignContent: 'center', height: "90%", marginTop: 10, marginLeft: 10, margin: 10, backgroundColor: 'rgba(52, 52, 52, 0.6)' }} >
             <View style={{ width: "100%", alignItems: "center" }}>
-              <Icon active name="beer" />
+            <Image
+                    style={{
+                      tintColor: "#FFFFFF",
+                      resizeMode: 'center',
+                      height: 24
+                    }}
+                    source={require('../../assets/img/exit.png')}
+                  />
               <Text>Deconnexion</Text>
             </View>
           </Button>
