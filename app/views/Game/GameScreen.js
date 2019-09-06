@@ -132,6 +132,7 @@ class GameScreen extends Component {
           keyExtractor={(item) => item.id}
           renderItem={({ item }) => <BeforeGame turnBefore={item} />}
         />
+        
         <LiveGame />
 
         <View style={{ flex: 0.1, margin: 20 }}>

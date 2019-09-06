@@ -13,11 +13,13 @@ import ChooseScreen from "./views/Login/ChooseScreen";
 import UserScreen from "./views/Menu/UserScreen";
 import MenuScreen from "./views/Menu/MenuScreen";
 import FriendsPlayersScreen from "./views/friends/FriendsPlayersScreen";
-import FriendsScreen from "./views/Menu/FriendsScreen"
-import FriendScreen from "./views/Menu/FriendScreen"
+import FriendsScreen from "./views/Menu/Friends/FriendsScreen"
+import FriendScreen from "./views/Menu/Friends/FriendScreen"
 import HistoryScreen from "./views/Menu/HistoryScreen"
 import ImageScreen from "./views/Personnalisation/ImageScreen"
 import ColorScreen from "./views/Personnalisation/ColorScreen"
+import FriendsSaveScreen from "./views/Menu/Friends/FriendsSaveScreen"
+import AddFriendScreen from "./views/Menu/Friends/AddFriendScreen"
 
 const switchNavigator = createAnimatedSwitchNavigator({
     Loader: LoaderScreen,
@@ -35,7 +37,9 @@ const switchNavigator = createAnimatedSwitchNavigator({
     Friend: FriendScreen,
     History: HistoryScreen,
     Image: ImageScreen,
-    Color: ColorScreen
+    Color: ColorScreen,
+    FriendsSave: FriendsSaveScreen,
+    AddFriend: AddFriendScreen
 },{
     transition: (
         <Transition.Together>
