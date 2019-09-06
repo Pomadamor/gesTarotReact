@@ -14,7 +14,6 @@ class UserScreen extends Component {
         this.state = {
             avatar: this.props.avatar,
             color: "blue",
-            img: require("../../assets/img/icon_user/cat.png"),
             token: this.props.token,
             username: "",
             // username: this.props.username,
@@ -112,7 +111,7 @@ class UserScreen extends Component {
             else {
                 console.log('Photo : ', response.uri)
                 let requireSource = { uri: response.uri }
-                const action = { type: "SET_AVATAR", value: requireSource }
+                const action = { type: "MUTATION_AVATAR", value: requireSource }
                 this.props.dispatch(action)
                 this.setState({ avatar: requireSource })
             }
@@ -167,15 +166,6 @@ class UserScreen extends Component {
                             alignItems: 'center',
                             marginRight: 10
                         }}>
-                            {/* <View style={{
-                                flex: 1
-                            }}>
-                                <Button block info style={{margin:2}} onPress={()=>this.handleRegister()}>
-                                    <Label style={{
-                                        color:"white",
-                                        fontSize: 17}}>Image</Label>
-                                </Button>
-                            </View> */}
                             <View style={{
                                 flex: 1
                             }}>
@@ -185,7 +175,7 @@ class UserScreen extends Component {
                                         fontSize: 17
                                     }}>Photo</Label>
                                 </Button>
-                                <Button block info style={{ margin: 2 }} onPress={() => this.changePhoto()}>
+                                <Button block info style={{ margin: 2 }} onPress={() => this.props.navigation.navigate("Image")}>
                                     <Label style={{
                                         color: "white",
                                         fontSize: 17
@@ -268,6 +258,7 @@ const mapStateToProps = state => {
     return {
         avatar: state.toogleUser.avatar,
         id: state.toogleUser.id,
+        color: state.toogleUser.color,
     }
 }
 

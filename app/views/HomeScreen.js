@@ -52,14 +52,14 @@ class HomeScreen extends Component {
             <View
               style={{
                 flex: 2,
-                height: 100,
+                height: 70,
                 flexDirection: 'row',
                 backgroundColor: 'rgba(52, 52, 52, 0.6)'
               }}
             >
               <Image
                 onPress={() => this.props.navigation.navigate("User")}
-                source={this.props.avatar} style={{ height: 90, backgroundColor:"antiquewhite", width: 90, marginTop: 5, marginLeft: 5, marginRight: 5 }} />
+                source={this.props.avatar} style={{ height: 60, backgroundColor:this.props.color, width: 60, marginTop: 5, marginLeft: 5, marginRight: 5 }} />
               <View style={{
                 margin: 10,
                 fontSize: 17,
@@ -197,6 +197,7 @@ const mapStateToProps = state => {
     nbJoueur: state.toogleScore.nbJoueur,
     avatar: state.toogleUser.avatar,
     pseudo: state.toogleUser.pseudo,
+    color: state.toogleUser.color,
   }
 }
 
