@@ -9,10 +9,10 @@ function toogleFriends(state = initialState, action){
 console.log("toto", action)
 let nextState
 switch(action.type){
-    case 'MUTATION_TURNS':
+    case 'MUTATION_FRIENDS':
     nextState = {
         ...state,
-        turns: [...state.turns, action.value]
+        friends: [...state.friends, action.value]
     }
     return nextState
     default:

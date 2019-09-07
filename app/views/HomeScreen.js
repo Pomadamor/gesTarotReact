@@ -20,6 +20,7 @@ class HomeScreen extends Component {
   }
 
   componentWillMount(){
+    const token = this.props.token
     console.log("joueur pseudo", this.props.joueur)
     if (this.props.pseudo == "Joueur" || this.props.pseudo == undefined ) {
 
@@ -28,14 +29,14 @@ class HomeScreen extends Component {
       headers: {
           Accept: 'application/json',
           'Content-Type': 'application/json',
-          'api-token': this.props.token
+          'api-token': token
         },
       }).then((response) => response.json())
           .then((responseJson) => {
               if(responseJson.status == 'error'){
                   console.log ("ERROR", responseJson.status)
                   alert('Vérifier votre connexion internet, avant de cliquer sur OK');
-                  this.props.navigation.navigate("loader");
+                  this.props.navigation.navigate("Choose");
               }
               else{
                   console.log("PPPLLLOOOPPP", responseJson)

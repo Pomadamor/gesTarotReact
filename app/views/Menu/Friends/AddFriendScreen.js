@@ -2,22 +2,21 @@ import React, { Component } from "react";
 import { BackHandler } from 'react-native'
 import { Button, Content, Form, Item, Input, Label } from 'native-base';
 import { connect } from 'react-redux'
-import AsyncStorage from "@react-native-community/async-storage";
 import { checkMail, Verifier_Numero_Telephone } from "../../../service/VerifInput"
 
 
 class AddFriendScreen extends Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      // identifiant: "",
-      email: '',
-      phone: 'Email ou téléphone',
-      password: "",
-      error: ""
+    constructor(props) {
+        super(props);
+        this.state = {
+        identifiant: "",
+        email: '',
+        phone: '',
+        pseudo: "",
+        error: ""
+        }
     }
-  }
 
  /**
 * Cette fonction est l'action du bouton login qui permet de se connecter a l'api login, dispatcher le user avec le token puis retourner vers loader
@@ -42,23 +41,20 @@ class AddFriendScreen extends Component {
     if (data.identifiant == "" || data.password == "") {
       alert('Veuillez remplir tout les champs.');
     }
-    else if (Verifier_Numero_Telephone(data.identifiant) == true || this.props.phone != ""){
-      data.phone = this.props.phone
-      if (data.phone == "" ){
+    else if (Verifier_Numero_Telephone(data.identifiant) == true){
         data.phone = data.identifiant
-      }
       console.log("JUSQU'ICI CA FONCTIONNE", data)
       fetch('https://gestarot-api.lerna.eu/api/logged_user/friends', {
         method: 'POST',
         headers: {
           Accept: 'application/json',
           'Content-Type': 'application/json',
-          'api-token': token
+          'api-token': data.token
         },
         body: JSON.stringify({
           "email": data.email,
           "phone": data.phone,
-          "pseudo": data.pseudo
+        //   "pseudo": data.pseudo
         }),
       }).then((response) => response.json())
         .then((responseJson) => {
@@ -100,12 +96,12 @@ class AddFriendScreen extends Component {
         headers: {
           Accept: 'application/json',
           'Content-Type': 'application/json',
-          'api-token': token
+          'api-token': data.token
         },
         body: JSON.stringify({
           "email": data.email,
           "phone": data.phone,
-          "pseudo": data.pseudo
+        //   "pseudo": data.pseudo
         }),
       }).then((response) => response.json())
         .then((responseJson) => {
@@ -115,25 +111,7 @@ class AddFriendScreen extends Component {
           }
           else{
             console.log("TRRRUUUEEE", responseJson)
-            // const id = { type: "MUTATION_ID", value: responseJson.id }
-            // // const pseudo = { type: "MUTATION_PSEUDO", value: responseJson.username }
-            // const email = { type: "MUTATION_EMAIL", value: responseJson.email }
-            // const phone = { type: "MUTATION_PHONE", value: responseJson.phone }
-            // const api_token = { type: "MUTATION_TOKEN", value: responseJson.api_token }
-            // const actionVerif = { type: "MUTATION_VERIF", value: true }
-            // this.props.dispatch(actionVerif)
-            // this.props.dispatch(id)
-            // this.props.dispatch(email)
-            // // this.props.dispatch(pseudo)
-            // this.props.dispatch(phone)
-            // this.props.dispatch(api_token)
-            // console.log(responseJson.api_token)
-  
-            // const token = responseJson.api_token;
-            // console.log(token)
-  
-            // AsyncStorage.setItem("token", token)
-            // this.props.navigation.navigate("Loader");
+            this.props.navigation.navigate("Friends");
             return responseJson;
           }
 
@@ -170,7 +148,7 @@ class AddFriendScreen extends Component {
           <Label style={{
             color: "white",
             fontSize: 17,
-          }}>{this.state.phone}</Label>
+          }}>Email ou téléphone</Label>
           <Input onChangeText={(identifiant) => this.setState({ identifiant })}
             style={{color: "white"}}
             value={this.state.identifiant} />
@@ -180,11 +158,11 @@ class AddFriendScreen extends Component {
           <Label style={{
             color: "white",
             fontSize: 17,
-          }}>Pseudos</Label>
+          }}>Pseudo</Label>
           <Input
             style={{color: "white"}}
-            onChangeText={(password) => this.setState({ pseudo })}
-            value={this.state.password} />
+            onChangeText={(pseudo) => this.setState({ pseudo })}
+            value={this.state.pseudo} />
         </Item>
         <Button block info style={{ marginTop: 100 }} onPress={() => this.add()}>
           <Label style={{

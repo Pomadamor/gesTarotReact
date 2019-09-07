@@ -3,19 +3,57 @@ import { View, FlatList, Alert } from 'react-native'
 import { Button, Text, Icon } from 'native-base';
 import { connect } from 'react-redux';
 import { BackHandler } from 'react-native'
+import FriendsSave from './FriendsSaveScreen'
 
 class FriendsScreen extends Component {
 
+    componentWillMount(){
+      console.log("verif token", this.props.token)
+        const token = this.props.token
+        fetch('https://gestarot-api.lerna.eu/api/logged_user/friends', {
+              method: 'GET',
+              headers: {
+                  Accept: 'application/json',
+                  'Content-Type': 'application/json',
+                  'api-token': token
+              },
+          }).then((response) => response.json())
+              .then((responseJson) => {
+                  if(responseJson.status == 'error'){
+                      console.log ("ERROR", responseJson.status)
+                      alert('Vérifier votre connexion internet, avant de cliquer sur OK');
+                  }
+                  else{
+                      console.log("PPPLLLOOOPPP", responseJson)
 
-  componentWillMount(){
-    console.log("FRIENDS", this.props.friends)
+                      if(responseJson.length > 0){
+                        var responseFriends = responseJson["friends"]
+                        var nbFriend = responseJson["friends"] + 1
+  
+                        for (var i = 0; i < nbFriend; i++) {
+                          this.props.friends.push([{
+                            id: responseFriends[i].id,
+                            username: responseFriends[i].username,
+                            email: responseFriends[i].email,
+                            phone: responseFriends[i].phone,
+                          }])
+                        }
+  
+                        const action = { type: "MUTATION_FRIENDS", value: this.props.friends }
+                        this.props.dispatch(action)
+                        console.log("je veux savoir", this.props.friends)
+  
+                      }
+                      return responseJson;
+                  }
+              })
+    }
+
+  componentDidMount() {
     if(this.props.friends.length == 0){
       console.log("PLOP", this.props.friends)
       alert("Vous n'avez encore enregistré aucun ami, cliquer sur le plus pour y remédier.");
     }
-  }
-
-  componentDidMount() {
     BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
   }
 
@@ -35,7 +73,11 @@ class FriendsScreen extends Component {
 */
 
   render() {
-    friendsSave = this.props.friends
+    if(this.props.friends != [] || this.props.friends != undefined){
+      friendsSave = this.props.friends
+    }else{
+      friendsSave = []
+    }
 
     return (
       <View style={{
@@ -74,7 +116,8 @@ class FriendsScreen extends Component {
 const mapStateToProps = state => {
   return {
     verif: state.toogleUser.verif,
-    friends: state.toogleFriends.friends
+    friends: state.toogleFriends.friends,
+    token: state.toogleUser.token
   }
 }
 
