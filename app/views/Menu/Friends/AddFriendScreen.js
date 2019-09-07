@@ -23,12 +23,13 @@ class AddFriendScreen extends Component {
 */
 
   async add() {
+    console.log("test add friend 0")
 
     const data = {
         identifiant: this.state.identifiant,
         pseudo: this.state.pseudo,
-        email: '',
-        phone: '',
+        email: this.state.email,
+        phone: this.state.phone,
         token: this.props.token
     }
     if (Verifier_Numero_Telephone(data.identifiant) == true) {
@@ -54,7 +55,7 @@ class AddFriendScreen extends Component {
         body: JSON.stringify({
           "email": data.email,
           "phone": data.phone,
-        //   "pseudo": data.pseudo
+          "username": data.pseudo
         }),
       }).then((response) => response.json())
         .then((responseJson) => {
@@ -64,25 +65,7 @@ class AddFriendScreen extends Component {
           }
           else{
             console.log("TRRRUUUEEE", responseJson)
-            // const id = { type: "MUTATION_ID", value: responseJson.id }
-            // // const pseudo = { type: "MUTATION_PSEUDO", value: responseJson.username }
-            // const email = { type: "MUTATION_EMAIL", value: responseJson.email }
-            // const phone = { type: "MUTATION_PHONE", value: responseJson.phone }
-            // const api_token = { type: "MUTATION_TOKEN", value: responseJson.api_token }
-            // const actionVerif = { type: "MUTATION_VERIF", value: true }
-            // this.props.dispatch(actionVerif)
-            // this.props.dispatch(id)
-            // this.props.dispatch(email)
-            // // this.props.dispatch(pseudo)
-            // this.props.dispatch(phone)
-            // this.props.dispatch(api_token)
-            // console.log(responseJson.api_token)
-  
-            // const token = responseJson.api_token;
-            // console.log(token)
-  
-            // AsyncStorage.setItem("token", token)
-            // this.props.navigation.navigate("Loader");
+            this.props.navigation.navigate("Friends");
             return responseJson;
           }
         })
@@ -101,7 +84,7 @@ class AddFriendScreen extends Component {
         body: JSON.stringify({
           "email": data.email,
           "phone": data.phone,
-        //   "pseudo": data.pseudo
+          "username": data.pseudo
         }),
       }).then((response) => response.json())
         .then((responseJson) => {

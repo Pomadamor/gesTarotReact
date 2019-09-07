@@ -13,7 +13,7 @@ class UserScreen extends Component {
 
         this.state = {
             avatar: this.props.avatar,
-            token: AsyncStorage.getItem("STORAGE_TOKEN"),
+            token: this.props.token,
             username: "",
             phone: "",
             email: "",
@@ -230,6 +230,7 @@ class UserScreen extends Component {
 const mapStateToProps = state => {
     return {
         avatar: state.toogleUser.avatar,
+        token: state.toogleUser.token,
         id: state.toogleUser.id,
     }
 }

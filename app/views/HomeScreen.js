@@ -21,7 +21,6 @@ class HomeScreen extends Component {
 
   componentWillMount(){
     const token = this.props.token
-    console.log("joueur pseudo", this.props.joueur)
     if (this.props.pseudo == "Joueur" || this.props.pseudo == undefined ) {
 
     fetch('https://gestarot-api.lerna.eu/api/logged_user', {
@@ -39,7 +38,7 @@ class HomeScreen extends Component {
                   this.props.navigation.navigate("Choose");
               }
               else{
-                  console.log("PPPLLLOOOPPP", responseJson)
+                  console.log("detail response user", responseJson)
                   var user = responseJson["user"]
                   const id = { type: "MUTATION_ID", value: user.id }
                   const pseudo = { type: "MUTATION_PSEUDO", value: user.username }
@@ -59,14 +58,35 @@ class HomeScreen extends Component {
                   this.props.dispatch(pseudo)
                   this.props.dispatch(phone)
 
-                  console.log("plop", user.image)
-                  console.log("plop", this.props.image)
-
-
                   return responseJson;
               }
           })
-      }
+
+          fetch('https://gestarot-api.lerna.eu/api/logged_user/friends', {
+            method: 'GET',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+                'api-token': token
+            },
+            }).then((response) => response.json())
+              .then((responseJson) => {
+                  if(responseJson.status == 'error'){
+                      console.log ("ERROR", responseJson.status)
+                      alert('Vérifier votre connexion internet, avant de cliquer sur OK');
+                  }
+                  else{
+                      console.log("detail response friends", responseJson)
+
+                      if(responseJson["friends"].length > 0){
+                        const actionFriends = { type: "MUTATION_FRIENDS", value: responseJson["friends"]}
+                        this.props.dispatch(actionFriends)
+                      }
+                      return responseJson;
+                  }
+              })
+              console.log("test home 002", this.props.friends)
+        }
     }
   /**
 * Les trois fonctions suivante permette de gérer le retour du clavier
@@ -91,7 +111,6 @@ class HomeScreen extends Component {
 
   render() {
     if( this.props.avatar != ""){
-      console.log("test home 1", this.props.image)
       this.props.image = this.props.avatar
     }
 
@@ -254,6 +273,7 @@ const mapStateToProps = state => {
     color: state.toogleUser.color,
     image: state.toogleUser.image,
     token: state.toogleUser.token,
+    friends: state.toogleFriends.friends,
   }
 }
 

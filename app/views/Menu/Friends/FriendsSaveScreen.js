@@ -4,21 +4,22 @@ import { Alert } from 'react-native';
 
 class FriendsSave extends Component {
   render(){
-      ("props of before:", this.props);
-      //const friendsSave =  this.props.turns
-      const friendsSave = this.props.friendsSave[0];
-    //   ("friendsSave: ", friendsSave.preneur);
+    //   ("props of before:", this.props);
+    //   const friendsSave = this.props.friendsSave[0];
     
     console.log("FRIENDS", friendsSave)
+    console.log("FRIENDS 1", friendsSave["username"])
+    console.log("FRIENDS 3", this.props.friendsSave.username)
+    // console.log("FRIENDS 1", this.props.friendsSave[0])
       return (
             <View style={{flexDirection: 'row'}}>
                 <Button bordered light 
                 backgroundColor= 'rgba(52, 52, 52, 0.6)'
-                style={{flex:1, height:60, margin:1}} >
+                style={{flex:0.3, height:60, margin:1}} >
                     <View style={{width:"100%", alignItems:"center"}}>
                     <Text style={{
                             textAlign: 'center', 
-                            color:"white"}}>avatar</Text>
+                            color:"white"}}>En attente</Text>
                     </View>
                 </Button>
                 <Button bordered light 
@@ -27,7 +28,7 @@ class FriendsSave extends Component {
                 <View style={{width:"100%", alignItems:"center"}}>
                     <Text style={{
                             textAlign: 'center', 
-                            color:"white"}}>pseudo</Text>
+                            color:"white"}}>{this.props.friendsSave.username}</Text>
                     </View>
                 </Button>
             </View>

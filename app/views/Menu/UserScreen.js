@@ -175,7 +175,6 @@ class UserScreen extends Component {
 
     render() {
         if( this.state.avatar != ""){
-            console.log("test home 1", this.props.image)
             this.state.image = this.state.avatar
           }
 
