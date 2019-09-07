@@ -5,7 +5,6 @@ import { Label, Form, Content, Button, Item, Input } from 'native-base';
 import ImagePicker from 'react-native-image-picker'
 import { connect } from 'react-redux';
 import { BackHandler } from 'react-native'
-import AsyncStorage from "@react-native-community/async-storage";
 
 class UserScreen extends Component {
 
@@ -13,6 +12,7 @@ class UserScreen extends Component {
         super(props)
 
         this.state = {
+            image: this.props.image,
             avatar: this.props.avatar,
             color: this.props.color,
             token: this.props.token,
@@ -174,6 +174,11 @@ class UserScreen extends Component {
     */
 
     render() {
+        if( this.state.avatar != ""){
+            console.log("test home 1", this.props.image)
+            this.state.image = this.state.avatar
+          }
+
         return (
             <View style={{
                 flex: 1,
@@ -195,7 +200,7 @@ class UserScreen extends Component {
                         backgroundColor:this.state.color
                     }}>
                         <Image
-                            source={this.state.avatar}
+                            source={this.state.image}
                             style={{
                                 width: '100%',
                                 height: '100%',
@@ -330,6 +335,7 @@ class UserScreen extends Component {
 const mapStateToProps = state => {
     return {
         avatar: state.toogleUser.avatar,
+        image: state.toogleUser.image,
         id: state.toogleUser.id,
         color: state.toogleUser.color,
         pseudo: state.toogleUser.pseudo,

@@ -12,7 +12,7 @@ class ImageScreen extends Component {
 */
 
   btnChoose(logo) {
-    const action = { type: "MUTATION_AVATAR", value: logo }
+    const action = { type: "MUTATION_IMAGE", value: logo }
     this.props.dispatch(action)
     this.props.navigation.navigate("Color")
   }
@@ -273,7 +273,8 @@ class ImageScreen extends Component {
 
 const mapStateToProps = state => {
   return {
-    verif: state.toogleUser.verif
+    verif: state.toogleUser.verif,
+    image: state.toogleUser.image
   }
 }
 

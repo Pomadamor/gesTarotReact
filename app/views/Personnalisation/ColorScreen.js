@@ -10,10 +10,62 @@ class ColorScreen extends Component {
 * Les trois fonctions suivante permette de gérer le retour du clavier
 */
 
-  btnChoose(color) {
-    const action = { type: "MUTATION_COLOR", value: color }
-    this.props.dispatch(action)
-    this.props.navigation.navigate("Home")
+  async btnChoose(couleur) {
+      const token = this.props.token
+      const image = this.props.image
+      const color = couleur
+  
+      try {
+        console.log('test color', image, color)
+          const res = await fetch('https://gestarot-api.lerna.eu/api/logged_user', {
+              method: 'POST',
+              headers: {
+                  Accept: 'application/json',
+                  'Content-Type': 'application/json',
+                  'api-token':token
+              },
+              body: JSON.stringify({
+                  "color":color,
+                  "image":image
+              })
+          });
+          if (res.ok) {
+              console.log("RESPONSE TRUE", res)
+      
+              const action = { type: "MUTATION_COLOR", value: color }
+              this.props.dispatch(action)
+              this.props.navigation.navigate("Home")
+
+          } else {
+              console.log("RESPONSE FALSE", res.error)
+              alert("Le numéro de téléphone ou l'email existe déjà.");
+          }
+      } catch (e) {
+      console.log(e);          
+      }
+
+      fetch('https://gestarot-api.lerna.eu/api/logged_user', {
+      method: 'GET',
+      headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+          'api-token': token
+        },
+      }).then((response) => response.json())
+          .then((responseJson) => {
+              if(responseJson.status == 'error'){
+                  console.log ("ERROR", responseJson.status)
+                  alert('Vérifier votre connexion internet, avant de cliquer sur OK');
+                  this.props.navigation.navigate("Choose");
+              }
+              else{
+                  console.log("PPPLLLIIIPPP", responseJson)
+
+                  console.log("plip", responseJson["user"])
+
+                  return responseJson;
+              }
+          })
   }
 
   componentDidMount() {
@@ -47,7 +99,7 @@ class ColorScreen extends Component {
                 },
                 {
                 text: 'Oui',
-                onPress: () => this.btnChoose(color = "aquamarine")
+                onPress: () => this.btnChoose(couleur = "aquamarine")
                 }
             ],
             { cancelable: true },
@@ -65,7 +117,7 @@ class ColorScreen extends Component {
                     },
                     {
                     text: 'Oui',
-                    onPress: () => this.btnChoose(color = "brown")
+                    onPress: () => this.btnChoose(couleur = "brown")
                     }
                 ],
                 { cancelable: true },
@@ -85,7 +137,7 @@ class ColorScreen extends Component {
                     },
                     {
                     text: 'Oui',
-                    onPress: () => this.btnChoose(color = "coral")
+                    onPress: () => this.btnChoose(couleur = "coral")
                     }
                 ],
                 { cancelable: true },
@@ -102,7 +154,7 @@ class ColorScreen extends Component {
                     },
                     {
                     text: 'Oui',
-                    onPress: () => this.btnChoose(color = "lightblue")
+                    onPress: () => this.btnChoose(couleur = "lightblue")
                     }
                 ],
                 { cancelable: true },
@@ -122,7 +174,7 @@ class ColorScreen extends Component {
                     },
                     {
                     text: 'Oui',
-                    onPress: () => this.btnChoose(color = "lemonchiffon")
+                    onPress: () => this.btnChoose(couleur = "lemonchiffon")
                     }
                 ],
                 { cancelable: true },
@@ -139,7 +191,7 @@ class ColorScreen extends Component {
                     },
                     {
                     text: 'Oui',
-                    onPress: () => this.btnChoose(color = "lightpink")
+                    onPress: () => this.btnChoose(couleur = "lightpink")
                     }
                 ],
                 { cancelable: true },
@@ -160,7 +212,7 @@ class ColorScreen extends Component {
                     },
                     {
                     text: 'Oui',
-                    onPress: () => this.btnChoose(color = 'mistyrose')
+                    onPress: () => this.btnChoose(couleur = 'mistyrose')
                     }
                 ],
                 { cancelable: true },
@@ -178,7 +230,7 @@ class ColorScreen extends Component {
                     },
                     {
                     text: 'Oui',
-                    onPress: () => this.btnChoose(color = "silver")
+                    onPress: () => this.btnChoose(couleur = "silver")
                     }
                 ],
                 { cancelable: true },
@@ -193,7 +245,10 @@ class ColorScreen extends Component {
 
 const mapStateToProps = state => {
   return {
-    verif: state.toogleUser.verif
+    token: state.toogleUser.token,
+    verif: state.toogleUser.verif,
+    color: state.toogleUser.color,
+    image: state.toogleUser.image,
   }
 }
 

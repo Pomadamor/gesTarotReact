@@ -8,7 +8,8 @@ const initialState = {
     phone:"",
     token: "",
     color: "antiquewhite",
-    avatar: require("../../assets/img/icon_user/cat.png"),
+    image: require("../../assets/img/icon_user/cat.png"),
+    avatar: "",
 }
 
 AsyncStorage.getItem("STORAGE_PHONE").then(phone => {
@@ -71,6 +72,18 @@ switch(action.type){
     nextState = {
         ...state,
         avatar: action.value
+    }
+    return nextState
+    case 'MUTATION_IMAGE':
+    nextState = {
+        ...state,
+        image: action.value
+    }
+    return nextState
+    case 'MUTATION_COLOR':
+    nextState = {
+        ...state,
+        color: action.value
     }
     return nextState
     case 'MUTATION_EMAIL':

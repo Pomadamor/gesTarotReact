@@ -46,12 +46,22 @@ class HomeScreen extends Component {
                   const email = { type: "MUTATION_EMAIL", value: user.email }
                   const phone = { type: "MUTATION_PHONE", value: user.phone }
                   const actionVerif = { type: "MUTATION_VERIF", value: true }
+                  const avatar = { type: "MUTATION_AVATAR", value: user.avatar }
+                  const color = { type: "MUTATION_COLOR", value: user.color }
+                  const image = { type: "MUTATION_IMAGE", value: parseInt(user.image) }
+
+                  this.props.dispatch(color)
+                  this.props.dispatch(avatar)
+                  this.props.dispatch(image)
                   this.props.dispatch(actionVerif)
                   this.props.dispatch(id)
                   this.props.dispatch(email)
                   this.props.dispatch(pseudo)
                   this.props.dispatch(phone)
-                  console.log("plop", responseJson["user"])
+
+                  console.log("plop", user.image)
+                  console.log("plop", this.props.image)
+
 
                   return responseJson;
               }
@@ -80,6 +90,11 @@ class HomeScreen extends Component {
 */
 
   render() {
+    if( this.props.avatar != ""){
+      console.log("test home 1", this.props.image)
+      this.props.image = this.props.avatar
+    }
+
     return (
       <View style={{
         flex: 1,
@@ -98,7 +113,7 @@ class HomeScreen extends Component {
             >
               <Image
                 onPress={() => this.props.navigation.navigate("User")}
-                source={this.props.avatar} style={{ height: 60, backgroundColor:this.props.color, width: 60, marginTop: 5, marginLeft: 5, marginRight: 5 }} />
+                source={this.props.image} style={{ height: 60, backgroundColor:this.props.color, width: 60, marginTop: 5, marginLeft: 5, marginRight: 5 }} />
               <View style={{
                 margin: 10,
                 fontSize: 17,
@@ -237,6 +252,7 @@ const mapStateToProps = state => {
     avatar: state.toogleUser.avatar,
     pseudo: state.toogleUser.pseudo,
     color: state.toogleUser.color,
+    image: state.toogleUser.image,
     token: state.toogleUser.token,
   }
 }
