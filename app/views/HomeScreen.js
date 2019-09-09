@@ -110,9 +110,6 @@ class HomeScreen extends Component {
 */
 
   render() {
-    if( this.props.avatar != ""){
-      this.props.image = this.props.avatar
-    }
 
     return (
       <View style={{
@@ -132,7 +129,7 @@ class HomeScreen extends Component {
             >
               <Image
                 onPress={() => this.props.navigation.navigate("User")}
-                source={this.props.image} style={{ height: 60, backgroundColor:this.props.color, width: 60, marginTop: 5, marginLeft: 5, marginRight: 5 }} />
+                source={this.props.avatar} style={{ height: 60, backgroundColor:this.props.color, width: 60, marginTop: 5, marginLeft: 5, marginRight: 5 }} />
               <View style={{
                 margin: 10,
                 fontSize: 17,

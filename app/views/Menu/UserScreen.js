@@ -174,10 +174,6 @@ class UserScreen extends Component {
     */
 
     render() {
-        if( this.state.avatar != ""){
-            this.state.image = this.state.avatar
-          }
-
         return (
             <View style={{
                 flex: 1,
@@ -199,7 +195,7 @@ class UserScreen extends Component {
                         backgroundColor:this.state.color
                     }}>
                         <Image
-                            source={this.state.image}
+                            source={this.state.avatar}
                             style={{
                                 width: '100%',
                                 height: '100%',

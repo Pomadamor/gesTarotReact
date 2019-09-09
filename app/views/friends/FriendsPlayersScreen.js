@@ -11,7 +11,9 @@ class FriendsPlayersScreen extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            avatar1: this.props.avatar1,
+            avatar: this.props.avatar,
+            image: this.props.image,
+            color: this.props.color,
             avatar2: this.props.avatar2,
             avatar3: this.props.avatar3,
             avatar4: this.props.avatar4,
@@ -78,7 +80,12 @@ class FriendsPlayersScreen extends Component {
      * Ce rendu affiche la grill des joueur, permettant le choix de leur pseudo ainsi que l'aperçu de leur image
      */
     render() {
+        console.log("ici", this.state.avatar)
+        if (this.state.avatar == "" || this.state.avatar == null){
+            this.state.avatar = this.props.image
+            console.log("ici 1", this.state.avatar)
 
+        }
 
         if (this.props.nbJoueur > 3) {
             joueur4 =
@@ -220,7 +227,7 @@ class FriendsPlayersScreen extends Component {
                         backgroundColor: 'white'
                     }}>
                         <Image
-                            source={this.state.avatar1}
+                            source={this.state.avatar}
                             style={{
                                 width: '80%',
                                 height: '80%',
@@ -228,7 +235,7 @@ class FriendsPlayersScreen extends Component {
                                 margin: 10,
                                 resizeMode: 'contain',
                                 padding: 10,
-                                backgroundColor: 'paleturquoise'
+                                backgroundColor:this.props.color
                             }}
                         />
                     </View>
@@ -244,7 +251,7 @@ class FriendsPlayersScreen extends Component {
                             <View style={{
                                 flex: 1
                             }}>
-                                <Text style={{ color: "white", fontSize: 17, marginTop: 10 }}>Le pseudo :</Text>
+                                <Text style={{ color: "white", fontSize: 17, marginTop: 10 }}>Ton pseudo :</Text>
                             </View>
                             <View style={{
                                 flex: 1
@@ -291,23 +298,21 @@ class FriendsPlayersScreen extends Component {
                     }}>
                         <View style={{
                             flex: 1,
-                            flexDirection: 'row',
+                            // flexDirection: 'row',
                             alignItems: "center" ,
                             alignContent: 'center'
                         }}>
                             <View style={{
                                 flex: 1
                             }}>
-                                <Text style={{ color: "white", fontSize: 17, marginTop: 10 }}>Le pseudo :</Text>
-                            </View>
-                            <View style={{
-                                flex: 1
-                            }}>
+                                <Text style={{ color: "white", fontSize: 17, marginTop: 10 }}>Choisi un pseudo :</Text>
                                 <TextInput
-                                    style={{ height: 36, width: 80, borderColor: 'white', color: 'white', borderWidth: 1 }}
+                                    style={{borderColor: 'white', color: 'white' }}
                                     onChangeText={(pseudo) => this.changePseudo(pseudo, id=2)}
-                                    value={this.props.pseudo}
+                                    value={this.props.pseudo2}
                                 />
+                                <Text style={{ color: "white", fontSize: 17, marginTop: 10 }}>Ou selectionne:</Text>
+                                <Button style={{ flex:1}}><Label>Un ami</Label></Button>
                             </View>
                         </View>
                     </View>
@@ -383,7 +388,7 @@ class FriendsPlayersScreen extends Component {
 const mapStateToProps = state => {
     return {
         nbJoueur: state.toogleScore.nbJoueur,
-        avatar1: state.tooglePlayer.avatar1,
+        avatar: state.toogleUser.avatar,
         avatar2: state.tooglePlayer.avatar2,
         avatar3: state.tooglePlayer.avatar3,
         avatar4: state.tooglePlayer.avatar4,
@@ -393,6 +398,9 @@ const mapStateToProps = state => {
         pseudo3: state.tooglePlayer.pseudo3,
         pseudo4: state.tooglePlayer.pseudo4,
         pseudo5: state.tooglePlayer.pseudo5,
+        image: state.toogleUser.image,
+        pseudo: state.toogleUser.pseudo,
+        color: state.toogleUser.color,
         verif: state.toogleUser.verif,
         choosePlayer: state.tooglePlayer.choosePlayer,
         turns: state.toogleScore.turns
