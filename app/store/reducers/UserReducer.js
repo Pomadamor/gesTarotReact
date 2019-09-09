@@ -9,15 +9,42 @@ const initialState = {
     token: "",
     color: "antiquewhite",
     image: require("../../assets/img/icon_user/cat.png"),
-    avatar: "",
+    avatar: require("../../assets/img/icon_user/cat.png"),
 }
 
-AsyncStorage.getItem("STORAGE_PHONE").then(phone => {
-    if (phone) {
-        initialState.phone = phone
-        console.log(phone, "la")
+AsyncStorage.getItem("color").then(color => {
+    if (color) {
+        initialState.color = color
+        console.log(color, "color la")
     } else {
-        console.log("Pas de phone enregistrer", phone)
+        console.log("Pas de color enregistrer", color)
+    }
+})
+
+AsyncStorage.getItem("pseudo").then(pseudo => {
+    if (pseudo) {
+        initialState.pseudo = pseudo
+        console.log(pseudo, "pseudo la")
+    } else {
+        console.log("Pas de pseudo enregistrer", pseudo)
+    }
+})
+
+AsyncStorage.getItem("image").then(image => {
+    if (image) {
+        initialState.image = image
+        console.log(image, "image la")
+    } else {
+        console.log("Pas de image enregistrer", image)
+    }
+})
+
+AsyncStorage.getItem("avatar").then(avatar => {
+    if (avatar) {
+        initialState.avatar = avatar
+        console.log(avatar, "avatar la")
+    } else {
+        console.log("Pas de avatar enregistrer", avatar)
     }
 })
 
@@ -31,25 +58,6 @@ AsyncStorage.getItem("token").then(token => {
         console.log("la", token)
     }
 })
-
-AsyncStorage.getItem("STORAGE_EMAIL").then(email => {
-    if (email) {
-        initialState.email = email
-        console.log(email, "la")
-    } else {
-        console.log("Pas de phone enregistrer", email)
-    }
-})
-
-// AsyncStorage.getItem("STORAGE_PSEUDO").then(pseudo => {
-//     if (pseudo) {
-//         initialState.pseudo = pseudo
-//         console.log(pseudo, "la")
-//         //if token then authenticated so go to home
-//     } else {
-//         console.log("la", pseudo)
-//     }
-// })
 /**
    * Fonction qui gere les mutations du reducer user
    */

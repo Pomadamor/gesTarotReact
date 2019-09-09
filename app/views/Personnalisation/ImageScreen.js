@@ -4,7 +4,6 @@ import { Button, Text, Icon } from 'native-base';
 import { connect } from 'react-redux';
 import { BackHandler } from 'react-native'
 import AsyncStorage from "@react-native-community/async-storage";
-import { Avatar } from 'react-native-elements';
 
 class ImageScreen extends Component {
 
@@ -15,6 +14,10 @@ class ImageScreen extends Component {
   btnChoose(logo) {
     const action = { type: "MUTATION_IMAGE", value: logo }
     const actionAvatar = { type: "MUTATION_AVATAR", value: logo }
+
+    AsyncStorage.setItem("image", logo)
+    AsyncStorage.setItem("avatar", logo)
+
     this.props.dispatch(action)
     this.props.dispatch(actionAvatar)
     this.props.navigation.navigate("Color")

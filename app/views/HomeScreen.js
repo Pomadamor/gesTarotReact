@@ -38,19 +38,35 @@ class HomeScreen extends Component {
                   this.props.navigation.navigate("Choose");
               }
               else{
-                  console.log("detail response user", responseJson)
-                  var user = responseJson["user"]
+                var user = responseJson["user"]
+                console.log("detail user", user)
+                console.log("detail user 1", user.avatar)
+
+
+                if(user.avatar == null){
+
+                  console.log("detail user 2")
+
+                  const avatar = { type: "MUTATION_AVATAR", value: parseInt(user.image)}
+                  this.props.dispatch(avatar)
+
+                  console.log("detail user 3", this.props.avatar)
+                }else{
+
+                  const avatar = { type: "MUTATION_AVATAR", value: user.avatar }
+                  this.props.dispatch(avatar)
+                }
+                  console.log("detail response user", user)
+
                   const id = { type: "MUTATION_ID", value: user.id }
                   const pseudo = { type: "MUTATION_PSEUDO", value: user.username }
                   const email = { type: "MUTATION_EMAIL", value: user.email }
                   const phone = { type: "MUTATION_PHONE", value: user.phone }
                   const actionVerif = { type: "MUTATION_VERIF", value: true }
-                  const avatar = { type: "MUTATION_AVATAR", value: user.avatar }
-                  const color = { type: "MUTATION_COLOR", value: user.color }
+                  // const color = { type: "MUTATION_COLOR", value: user.color }
                   const image = { type: "MUTATION_IMAGE", value: parseInt(user.image) }
 
-                  this.props.dispatch(color)
-                  this.props.dispatch(avatar)
+                  // this.props.dispatch(color)
                   this.props.dispatch(image)
                   this.props.dispatch(actionVerif)
                   this.props.dispatch(id)

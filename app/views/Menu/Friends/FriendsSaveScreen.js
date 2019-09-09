@@ -23,6 +23,21 @@ class FriendsSave extends Component {
                     </View>
                 </Button>
                 <Button bordered light 
+                    onPress={() => Alert.alert(
+                      'Attention',
+                      "Êtes-vous sur de vouloir supprimer cette ami ?",
+                      [
+                        {
+                          text: 'Annuler',
+                          onPress: () => console.log('Annulation de la suppression')
+                        },
+                        {
+                          text: 'Supprimer',
+                          onPress: () => console.log("Faire l'appel api pour la suppression d'amis")
+                        }
+                      ],
+                      { cancelable: true },
+                    )}
                     backgroundColor='rgba(52, 52, 52, 0.6)'
                     style={{flex:1, height:60, margin:1}} >
                 <View style={{width:"100%", alignItems:"center"}}>

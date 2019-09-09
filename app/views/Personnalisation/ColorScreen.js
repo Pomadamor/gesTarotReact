@@ -3,6 +3,7 @@ import { View, Alert } from 'react-native'
 import { Button } from 'native-base';
 import { connect } from 'react-redux';
 import { BackHandler } from 'react-native'
+import AsyncStorage from "@react-native-community/async-storage";
 
 class ColorScreen extends Component {
 
@@ -30,8 +31,8 @@ class ColorScreen extends Component {
               })
           });
           if (res.ok) {
-              console.log("RESPONSE TRUE", res)
-      
+              console.log("RESPONSE TRUE", couleur)
+              AsyncStorage.setItem("color", couleur)
               const action = { type: "MUTATION_COLOR", value: color }
               this.props.dispatch(action)
               this.props.navigation.navigate("Home")

@@ -5,6 +5,8 @@ import { Label, Form, Content, Button, Item, Input } from 'native-base';
 import ImagePicker from 'react-native-image-picker'
 import { connect } from 'react-redux';
 import { BackHandler } from 'react-native'
+import AsyncStorage from "@react-native-community/async-storage";
+
 
 class UserScreen extends Component {
 
@@ -133,6 +135,8 @@ class UserScreen extends Component {
                         const actionEmail = { type: "MUTATION_EMAIL", value: email }
                         const actionLogin = { type: "MUTATION_PSEUDO", value: username }
                 
+                        AsyncStorage.setItem("pseudo", username)
+                        
                         this.props.dispatch(actionLogin)
                         this.props.dispatch(actionEmail)
                         this.props.dispatch(actionPhone)
@@ -162,6 +166,7 @@ class UserScreen extends Component {
             else {
                 console.log('Photo : ', response.uri)
                 let requireSource = { uri: response.uri }
+                AsyncStorage.setItem("avatar", requireSource)
                 const action = { type: "MUTATION_AVATAR", value: requireSource }
                 this.props.dispatch(action)
                 this.setState({ avatar: requireSource })
