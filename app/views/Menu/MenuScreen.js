@@ -31,6 +31,19 @@ class MenuScreen extends Component {
 */
 
   disconnect() {
+    removeFew = async () => {
+      const keys = ['token', 'pseudo', 'color', 'image', 'avatar']
+      try {
+        await AsyncStorage.multiRemove(keys)
+      } catch(e) {
+        console.log('echecs suppressions storage')
+
+      }
+    
+      console.log('Done')
+    }
+
+
     const actionVerif = { type: "MUTATION_VERIF", value: false }
     this.props.dispatch(actionVerif)
     AsyncStorage.removeItem("token")
