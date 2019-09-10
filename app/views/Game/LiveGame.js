@@ -87,7 +87,7 @@ class LiveGame extends Component {
           <Button bordered light 
           backgroundColor={  
             turnBefore.preneur == 'Joueur 3' ? "lightgreen" 
-            : friendsSave.partenaire == 'Joueur 3' ? "moccasin" 
+            : turnBefore.partenaire == 'Joueur 3' ? "moccasin" 
             :'rgba(52, 52, 52, 0.6)'  }
           style={{flex:1, height:60, margin:1}} >
             <View style={{width:"100%", alignItems:"center"}}>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Image } from 'react-native'
+import { View, Image} from 'react-native'
 import { checkMail, Verifier_Numero_Telephone } from "../../service/VerifInput"
 import { Label, Form, Content, Button, Item, Input } from 'native-base';
 import ImagePicker from 'react-native-image-picker'
@@ -180,81 +180,73 @@ class UserScreen extends Component {
 
     render() {
         return (
-            <View style={{
-                flex: 1,
-                flexDirection: 'column',
-            }}>
-                <View style={{
-                    flex: 1,
-                    flexDirection: 'row',
-                    margin: 10,
-                    marginTop: 10,
-                    backgroundColor: 'rgba(52, 52, 52, 0.6)'
-                }}>
-                    <View style={{
-                        flex: 1,
-                        margin: 10,
-                        marginTop: 10,
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        backgroundColor:this.state.color
+            <View style={{ flex: 1, flexDirection: 'row' }}>
+                <Content style={{ margin: 20 }}>
+                    <Form style={{
+                        backgroundColor: 'rgba(52, 52, 52, 0.6)',
+                        color: "white",
+                        padding: 20
                     }}>
-                        <Image
-                            source={this.state.avatar}
-                            style={{
-                                width: '100%',
-                                height: '100%',
-                                justifyContent: "space-around",
-                                // margin: 10,
-                                resizeMode: 'contain',
-                                // padding: 10,
-                            }}
-                        />
-                    </View>
-                    <View style={{
-                        flex: 2
-                    }}>
-                        <Text style={{ color: "white", fontSize: 17, marginTop: 10 }}>Modifier l'avatar par une :</Text>
                         <View style={{
                             flex: 1,
                             flexDirection: 'row',
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                            marginRight: 10
                         }}>
+                            <View style={{
+                                flex: 1,
+                                marginRight:10,
+                                marginLeft:10,
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                                backgroundColor:this.state.color
+                            }}>
+                                <Image
+                                    source={this.state.avatar}
+                                    style={{
+                                        width: '100%',
+                                        height: '100%',
+                                        justifyContent: "space-around",
+                                        // margin: 10,
+                                        resizeMode: 'contain',
+                                        // padding: 10,
+                                    }}
+                                />
+                            </View>
                             <View style={{
                                 flex: 1
                             }}>
-                                <Button block info style={{ margin: 2 }} onPress={() => this.changePhoto()}>
-                                    <Label style={{
-                                        color: "white",
-                                        fontSize: 17
-                                    }}>Photo</Label>
-                                </Button>
-                                <Button block info style={{ margin: 2 }} onPress={() => this.props.navigation.navigate("Image")}>
-                                    <Label style={{
-                                        color: "white",
-                                        fontSize: 17
-                                    }}>Image</Label>
-                                </Button>
+                                <View style={{
+                                    flex: 1,
+                                    flexDirection: 'row',
+                                    justifyContent: 'center',
+                                    alignItems: 'center',
+                                    marginRight: 10
+                                }}>
+                                    <View style={{
+                                        flex: 1
+                                    }}>
+                                        <Button block info style={{ margin: 2 }} onPress={() => this.changePhoto()}>
+                                            <Label style={{
+                                                color: "white",
+                                                fontSize: 17
+                                            }}>Photo</Label>
+                                        </Button>
+                                        <Button block info style={{ margin: 2 }} onPress={() => this.props.navigation.navigate("Image")}>
+                                            <Label style={{
+                                                color: "white",
+                                                fontSize: 17
+                                            }}>Image</Label>
+                                        </Button>
+                                    </View>
+                                </View>
                             </View>
                         </View>
-                    </View>
-                </View>
-
-                <View style={{ flex: 3, flexDirection: 'row' }}>
-                    <Content style={{ marginLeft: 16, marginRight: 16 }}>
-                        <Form style={{
-                            backgroundColor: 'rgba(52, 52, 52, 0.6)',
-                            color: "white",
-                            padding: 20
-                        }}>
                             <Item floatingLabel>
                                 <Label style={{
                                     color: "white",
                                     fontSize: 17,
                                 }}>Email</Label>
                                 <Input 
+                                    keyboardType={"email-address"}
                                     style={{
                                         color: "white",
                                         fontSize: 17,
@@ -272,6 +264,7 @@ class UserScreen extends Component {
                                         color: "white",
                                         fontSize: 17,
                                     }}
+                                    keyboardType={"phone-pad"}
                                     onChangeText={(phone) => this.setState({ phone })}
                                     value={this.state.phone} />
                             </Item>
@@ -327,7 +320,6 @@ class UserScreen extends Component {
                         </Form>
                     </Content>
                 </View>
-            </View>
         );
     }
 }

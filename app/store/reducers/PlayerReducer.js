@@ -4,15 +4,19 @@ const initialState = {
 
     pseudo2 : "Joueur 2",
     avatar2: require("../../assets/img/icon_user/cat.png"),
+    color2:"lightgreen",
 
     pseudo3 : "Joueur 3",
     avatar3: require("../../assets/img/icon_user/dog.png"),
+    color3:"lightsteelblue",
 
     pseudo4 : "Joueur 4",
     avatar4: require("../../assets/img/icon_user/sheep.png"),
+    color4:"moccasin",
 
     pseudo5 : "Joueur 5",
     avatar5: require("../../assets/img/icon_user/pig.png"),
+    color5:"mistyrose",
 
     choosePlayer: 0,
     calcul: 0,

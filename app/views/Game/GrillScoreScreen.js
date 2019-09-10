@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, Text, TextInput } from 'react-native';
+import { View, Text, TextInput, Picker } from 'react-native';
 import { Button, Label, Content, Item, Form, Input } from 'native-base';
 import { connect } from 'react-redux'
 
@@ -15,15 +15,22 @@ class GrillScoreScreen extends Component {
     }
 
     btnValid() {
-        console.log("this.state.bou", this.state.bou)
+        if(this.state.score >90 || this.state.score < 1){
+            alert("Attention, votre score ne peut être correct.")
+        }else{
+            console.log("this.state.bou", this.state.bou)
 
-        const actionScore = { type: "MUTATION_SCORE", value: this.state.score }
-        const actionBou = { type: "MUTATION_BOU", value: this.state.bou }
-        const actionpartenaire = { type: "MUTATION_PARTENAIRE", value: this.state.partenaire }
-        this.props.dispatch(actionScore)
-        this.props.dispatch(actionBou)
-        this.props.dispatch(actionpartenaire)
-        this.props.navigation.navigate("Game")
+            const actionScore = { type: "MUTATION_SCORE", value: this.state.score }
+            const actionBou = { type: "MUTATION_BOU", value: this.state.bou }
+            const actionpartenaire = { type: "MUTATION_PARTENAIRE", value: this.state.partenaire }
+            this.props.dispatch(actionScore)
+            this.props.dispatch(actionBou)
+            this.props.dispatch(actionpartenaire)
+            this.props.navigation.navigate("Game")
+        }
+
+
+
     }
 
     render() {
@@ -157,8 +164,10 @@ class GrillScoreScreen extends Component {
                             fontSize: 17,
                             fontWeight: 'bold'
                         }}>Score :</Label>
-                        <Input secureTextEntry={true}
+ 
+                        <Input
                             style={{ color: "white" }}
+                            keyboardType={"number-pad"}
                             onChangeText={(score) => this.setState({ score })}
                             value={this.state.score} />
 

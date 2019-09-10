@@ -112,6 +112,7 @@ class RegisterScreen extends Component {
             fontSize: 17
           }}>Email</Label>
           <Input onChangeText={(email) => this.setState({ email })}
+            keyboardType={"email-address"}
             style={{ color: "white" }}
             value={this.state.email} />
         </Item>
@@ -122,6 +123,7 @@ class RegisterScreen extends Component {
           }}>Téléphone</Label>
           <Input onChangeText={(phone) => this.setState({ phone })}
             style={{ color: "white" }}
+            keyboardType={"phone-pad"}
             value={this.state.phone} />
         </Item>
         <Item floatingLabel>
