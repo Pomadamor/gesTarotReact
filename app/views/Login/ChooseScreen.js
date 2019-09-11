@@ -5,6 +5,20 @@ import { Button } from "native-base";
 
 class ChooseScreen extends Component {
 
+  componentDidMount(){
+    Alert.alert(
+      'Description',
+      "Cette application va vous permettre de calculer plus facilement vos points. Vous voulez reprendre la partie que vous aviez commencée le week-end dernier ? C'est possible ! Toutes vos parties sont sauvegardées et vous pouvez les reprendre quand vous voulez. Avec Compteur de points au Tarot, vous pouvez compter les points de vos parties à 3, 4 ou 5 joueurs.",
+      [
+        {
+          text: 'OK',
+          onPress: () => console.log('Ask me later pressed')
+        }
+      ],
+      { cancelable: true },
+    )
+  }
+
   /**
    * Cette fonction permet de gérer l'action qui se passe au clic du bouton de "demarrer une partie" vers la prochaine vue
    * @param nb défini le nombre de joueur choisi

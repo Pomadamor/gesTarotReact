@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Image} from 'react-native'
+import { View, Image, Alert} from 'react-native'
 import { checkMail, Verifier_Numero_Telephone } from "../../service/VerifInput"
 import { Label, Form, Content, Button, Item, Input } from 'native-base';
 import ImagePicker from 'react-native-image-picker'
@@ -311,7 +311,24 @@ class UserScreen extends Component {
                                     onChangeText={(password2) => this.setState({ password2 })}
                                     value={this.state.password2} />
                             </Item>
-                            <Button block info style={{ marginTop: 50 }} onPress={() => this.update()}>
+                            <Button block info style={{ marginTop: 50 }} 
+                            onPress={() => Alert.alert(
+                                'Attention',
+                                "Confimer les modifications faites.",
+                                [
+                                  {
+                                    text: 'Annuler',
+                                    onPress: () => console.log('Ask me later pressed')
+                                  },
+                                  
+                                  {
+                                    text: 'Ok',
+                                    onPress: () => this.update()
+                                  }
+                                ],
+                                { cancelable: true },
+                                )}
+                            >
                                 <Label style={{
                                     color: "white",
                                     fontSize: 17
