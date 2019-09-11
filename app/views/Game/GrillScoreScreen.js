@@ -9,7 +9,7 @@ class GrillScoreScreen extends Component {
         super(props)
         this.state = {
             score: "",
-            bou: "",
+            bou: 0,
             partenaire: ""
         }
     }
