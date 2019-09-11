@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { View, Text, FlatList, ScrollView } from "react-native";
+import { View, Text, FlatList, ScrollView, Alert } from "react-native";
 import { connect } from 'react-redux'
-import { Button } from 'native-base';
+import { Button, Icon } from 'native-base';
 import InitGame from "./InitGame";
 import LiveGame from "./LiveGame";
 import BeforeGame from "./BeforeGame";
@@ -37,6 +37,41 @@ class GameScreen extends Component {
       this.props.dispatch(actionScoreJ5)
     }
   }
+
+  btnSupprimer(){
+      const actionId = { type: "MUTATION_ID", value: "" }
+      const actionBtnTurn = { type: "MUTATION_BUTTONTURN", value: "Démarer" }
+      const actionTurn = { type: "MUTATION_TURN", value: [] }
+      const actionScore = { type: "MUTATION_SCORE", value: 0 }
+      const actionType = { type: "MUTATION_TYPE", value: "" }
+      const actionPreneur = { type: "MUTATION_PRENEUR", value: "" }
+      const actionPartenaire = { type: "MUTATION_PARTENAIRE", value: "" }
+      const actionRoi = { type: "MUTATION_ROI", value: "" }
+      const actionScoreJ1 = { type: "MUTATION_SCORE_J1", value: ""}
+      const actionScoreJ2 = { type: "MUTATION_SCORE_J2", value: ""}
+      const actionScoreJ3 = { type: "MUTATION_SCORE_J3", value: ""}
+      const actionScoreJ4 = { type: "MUTATION_SCORE_J4", value: ""}
+      const actionScoreJ5 = { type: "MUTATION_SCORE_J5", value: ""}
+
+      this.props.dispatch(actionId)
+      this.props.dispatch(actionBtnTurn)
+      this.props.dispatch(actionTurn)
+      this.props.dispatch(actionScore)
+      this.props.dispatch(actionType)
+      this.props.dispatch(actionPreneur)
+      this.props.dispatch(actionPartenaire)
+      this.props.dispatch(actionRoi)
+      this.props.dispatch(actionScoreJ1)
+      this.props.dispatch(actionScoreJ2)
+      this.props.dispatch(actionScoreJ3)
+      this.props.dispatch(actionScoreJ4)
+      this.props.dispatch(actionScoreJ5)
+
+      this.props.navigation.navigate("Home")
+  }
+
+  btnSauvegarder(){}
+
 
   componentWillUnmount() {
     BackHandler.removeEventListener('hardwareBackPress', this.handleBackPress);
@@ -87,6 +122,7 @@ class GameScreen extends Component {
       const actionPartenaire = { type: "MUTATION_PARTENAIRE", value: "" }
       const actionRoi = { type: "MUTATION_ROI", value: "" }
 
+
       this.props.dispatch(actionScore)
       this.props.dispatch(actionType)
       this.props.dispatch(actionPreneur)
@@ -135,9 +171,10 @@ class GameScreen extends Component {
           
           <LiveGame />
 
-          <View style={{ flex: 0.1, margin: 20 }}>
+          <View style={{ flex: 0.1, flexDirection:'row'}}>
 
             <Button block info
+              style={{ flex: 1, margin: 10  }}
               onPress={() => this.buttonTurn()}
             >
               <Text
@@ -148,6 +185,30 @@ class GameScreen extends Component {
               >
                 {this.props.buttonTurnView}
               </Text>
+            </Button>
+            <Button danger
+              style={{ flex: 0.2, margin: 10  }}
+              onPress={() => Alert.alert(
+                'Attention',
+                "Souhaites-tu sauvegarder la partie pour la continuer plutard ou pas ?",
+                [
+                  {
+                    text: 'Annuler',
+                    onPress: () => console.log('Ask me later pressed')
+                  },
+                  {
+                    text: 'Supprimer',
+                    onPress: () => this.btnSupprimer()
+                  },
+                  {
+                    text: 'Sauvegarder',
+                    onPress: () => this.btnSauvegarder()
+                  }
+                ],
+                { cancelable: true },
+                )}
+              >
+              <Icon active name="exit"/>
             </Button>
           </View>
         </ScrollView>
