@@ -40,31 +40,43 @@ export function CalculScore(datas){
 
         console.log("ValuePrise " + valuePrise)
 
-        const AUTRES = {
-            "Joueur 1" : parseInt(datas.score) - valueBou+ valuePrise,
-            "Joueur 2" : parseInt(datas.score) - valueBou+ valuePrise,
-            "Joueur 3" : parseInt(datas.score) - valueBou+ valuePrise,
-            "Joueur 4" : parseInt(datas.score) - valueBou+ valuePrise,
-            "Joueur 5" : parseInt(datas.score) - valueBou+ valuePrise
+        if(datas.score >= valueBou){
+            const AUTRES = {
+                "Joueur 1" : -(parseInt(datas.score) - valueBou+ valuePrise),
+                "Joueur 2" : -(parseInt(datas.score) - valueBou+ valuePrise),
+                "Joueur 3" : -(parseInt(datas.score) - valueBou+ valuePrise),
+                "Joueur 4" : -(parseInt(datas.score) - valueBou+ valuePrise),
+                "Joueur 5" : -(parseInt(datas.score) - valueBou+ valuePrise)
+            }
+            AUTRES[datas.preneur] = (parseInt(datas.score) - valueBou + valuePrise)*2
+            AUTRES[datas.partenaire] = parseInt(datas.score) - valueBou + valuePrise
+
+            result.push(
+                actionScoreJ1 = { type: "MUTATION_SCORE_J1", value: SCORE["Joueur 1"] + AUTRES["Joueur 1"]},
+                actionScoreJ2 = { type: "MUTATION_SCORE_J2", value: SCORE["Joueur 2"] + AUTRES["Joueur 2"]},
+                actionScoreJ3 = { type: "MUTATION_SCORE_J3", value: SCORE["Joueur 3"] + AUTRES["Joueur 3"]},
+                actionScoreJ4 = { type: "MUTATION_SCORE_J4", value: SCORE["Joueur 4"] + AUTRES["Joueur 4"]},
+                actionScoreJ5 = { type: "MUTATION_SCORE_J5", value: SCORE["Joueur 5"] + AUTRES["Joueur 5"]}
+            )
+        }else{
+            const AUTRES = {
+                "Joueur 1" : (parseInt(datas.score) - valueBou+ valuePrise),
+                "Joueur 2" : (parseInt(datas.score) - valueBou+ valuePrise),
+                "Joueur 3" : (parseInt(datas.score) - valueBou+ valuePrise),
+                "Joueur 4" : (parseInt(datas.score) - valueBou+ valuePrise),
+                "Joueur 5" : (parseInt(datas.score) - valueBou+ valuePrise)
+            }
+            AUTRES[datas.preneur] = -((parseInt(datas.score) - valueBou + valuePrise)*2)
+            AUTRES[datas.partenaire] = -(parseInt(datas.score) - valueBou + valuePrise)
+
+            result.push(
+                actionScoreJ1 = { type: "MUTATION_SCORE_J1", value: SCORE["Joueur 1"] + AUTRES["Joueur 1"]},
+                actionScoreJ2 = { type: "MUTATION_SCORE_J2", value: SCORE["Joueur 2"] + AUTRES["Joueur 2"]},
+                actionScoreJ3 = { type: "MUTATION_SCORE_J3", value: SCORE["Joueur 3"] + AUTRES["Joueur 3"]},
+                actionScoreJ4 = { type: "MUTATION_SCORE_J4", value: SCORE["Joueur 4"] + AUTRES["Joueur 4"]},
+                actionScoreJ5 = { type: "MUTATION_SCORE_J5", value: SCORE["Joueur 5"] + AUTRES["Joueur 5"]}
+            )
         }
-        AUTRES[datas.preneur] = (parseInt(datas.score) - valueBou + valuePrise)*2
-        AUTRES[datas.partenaire] = parseInt(datas.score) - valueBou + valuePrise
-
-        // AUTRE = parseInt(datas.score) - valueBou+ valuePrise
-
-        console.log("score 1", SCORE)
-        console.log("score 2", AUTRES)
-
-        console
-
-        result.push(
-            actionScoreJ1 = { type: "MUTATION_SCORE_J1", value: SCORE["Joueur 1"] + AUTRES["Joueur 1"]},
-            actionScoreJ2 = { type: "MUTATION_SCORE_J2", value: SCORE["Joueur 2"] + AUTRES["Joueur 2"]},
-            actionScoreJ3 = { type: "MUTATION_SCORE_J3", value: SCORE["Joueur 3"] + AUTRES["Joueur 3"]},
-            actionScoreJ4 = { type: "MUTATION_SCORE_J4", value: SCORE["Joueur 4"] + AUTRES["Joueur 4"]},
-            actionScoreJ5 = { type: "MUTATION_SCORE_J5", value: SCORE["Joueur 5"] + AUTRES["Joueur 5"]}
-        )
-
     }
     console.log("test y",result)
     return result
