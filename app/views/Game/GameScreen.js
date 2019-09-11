@@ -15,6 +15,13 @@ class GameScreen extends Component {
    * ainsi que de les resultat récupéré dans le service calculScore
    */
   componentDidMount() {
+    console.log("point general", this.props)
+
+    console.log('test info pour parti', 
+      this.props.pseudo2, 
+      this.props.pseudo3,
+      this.props.pseudo4, 
+      this.props.pseudo5)
     
 
     BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
@@ -39,7 +46,6 @@ class GameScreen extends Component {
   }
 
   btnSupprimer(){
-      const actionId = { type: "MUTATION_ID", value: "" }
       const actionBtnTurn = { type: "MUTATION_BUTTONTURN", value: "Démarer" }
       const actionTurn = { type: "MUTATION_TURN", value: [] }
       const actionScore = { type: "MUTATION_SCORE", value: 0 }
@@ -53,7 +59,6 @@ class GameScreen extends Component {
       const actionScoreJ4 = { type: "MUTATION_SCORE_J4", value: ""}
       const actionScoreJ5 = { type: "MUTATION_SCORE_J5", value: ""}
 
-      this.props.dispatch(actionId)
       this.props.dispatch(actionBtnTurn)
       this.props.dispatch(actionTurn)
       this.props.dispatch(actionScore)
@@ -121,8 +126,8 @@ class GameScreen extends Component {
       const actionPreneur = { type: "MUTATION_PRENEUR", value: "" }
       const actionPartenaire = { type: "MUTATION_PARTENAIRE", value: "" }
       const actionRoi = { type: "MUTATION_ROI", value: "" }
-
-
+      const actionNb = { type: "MUTATION_NBJOUEURS", value: 0 }
+      this.props.dispatch(actionNb)
       this.props.dispatch(actionScore)
       this.props.dispatch(actionType)
       this.props.dispatch(actionPreneur)
@@ -222,6 +227,11 @@ class GameScreen extends Component {
 const mapStateToProps = state => {
 
   const datas = {
+    pseudo : state.toogleUser.pseudo,
+    pseudo2 : state.tooglePlayer.pseudo2,
+    pseudo3 : state.tooglePlayer.pseudo3,
+    pseudo4 : state.tooglePlayer.pseudo4,
+    pseudo5 : state.tooglePlayer.pseudo5,
     turns: state.toogleScore.turns,
     buttonTurnView: state.toogleScore.buttonTurnView,
     id: state.toogleScore.id,

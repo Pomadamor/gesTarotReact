@@ -58,7 +58,7 @@ class GrillScoreScreen extends Component {
                 style={{ flex: 1, margin: 2 }}
                 onPress={() => this.setState({ partenaire: "Joueur 2" })}>
                 <View style={{ width: "100%", alignItems: "center" }}>
-                    <Text style={{ color: "white" }}>{this.props.pseudo2}</Text>
+                    <Text style={{ color: "white" }}>{this.props.pseudo2.username}</Text>
                 </View>
             </Button>
 
@@ -68,7 +68,7 @@ class GrillScoreScreen extends Component {
                 onPress={() => this.setState({ partenaire: "Joueur 3" })}
             >
                 <View style={{ width: "100%", alignItems: "center" }}>
-                    <Text style={{ color: "white" }}>{this.props.pseudo3}</Text>
+                    <Text style={{ color: "white" }}>{this.props.pseudo3.username}</Text>
                 </View>
             </Button>
 
@@ -78,7 +78,7 @@ class GrillScoreScreen extends Component {
                 onPress={() => this.setState({ partenaire: "Joueur 4" })}
             >
                 <View style={{ width: "100%", alignItems: "center" }}>
-                    <Text style={{ color: "white" }}>{this.props.pseudo4}</Text>
+                    <Text style={{ color: "white" }}>{this.props.pseudo4.username}</Text>
                 </View>
             </Button>
 
@@ -88,7 +88,7 @@ class GrillScoreScreen extends Component {
                 onPress={() => this.setState({ partenaire: "Joueur 5" })}
             >
                 <View style={{ width: "100%", alignItems: "center" }}>
-                    <Text style={{ color: "white" }}>{this.props.pseudo5}</Text>
+                    <Text style={{ color: "white" }}>{this.props.pseudo5.username}</Text>
                 </View>
             </Button>
         </View>

@@ -109,7 +109,7 @@ class GrillChooseScreen extends Component {
             style={{flex:1, margin:2}}
                               onPress={() => this.buttonPartenaire3()}>
                                 <View style={{width:"100%", alignItems:"center"}}>
-                                <Text style={{color:"white"}}>{this.props.pseudo4}</Text>
+                                <Text style={{color:"white"}}>{this.props.pseudo4.username}</Text>
                                 </View>
                               </Button>
         } else {joueurFourAlert= <View></View>}
@@ -120,7 +120,7 @@ class GrillChooseScreen extends Component {
                             style={{flex:1, margin:2}}
                             onPress={() => this.buttonPartenaire4()}>
                                 <View style={{width:"100%", alignItems:"center"}}>
-                                    <Text style={{color:"white"}}>{this.props.pseudo5}</Text>
+                                    <Text style={{color:"white"}}>{this.props.pseudo5.username}</Text>
                                 </View> 
                             </Button>
         } else {joueurFiveAlert = <View></View>}
@@ -187,7 +187,7 @@ class GrillChooseScreen extends Component {
                         style={{flex:1, margin:2}}
                         onPress={() => this.buttonPartenaire1()}>
                         <View style={{width:"100%", alignItems:"center"}}>
-                            <Text style={{color:"white"}}>{this.props.pseudo2}</Text>
+                            <Text style={{color:"white"}}>{this.props.pseudo2.username}</Text>
                         </View>
                     </Button>
 
@@ -197,7 +197,7 @@ class GrillChooseScreen extends Component {
                         onPress={() => this.buttonPartenaire2()}
                         >
                         <View style={{width:"100%", alignItems:"center"}}>
-                            <Text style={{color:"white"}}>{this.props.pseudo3}</Text>
+                            <Text style={{color:"white"}}>{this.props.pseudo3.username}</Text>
                         </View>
                     </Button>
 

@@ -29,7 +29,7 @@ class InitGame extends Component {
             color: "white"
           }}
           >
-            {this.props.pseudo4}
+            {this.props.pseudo4.username}
           </Text>
         </View>
       </Button>
@@ -48,7 +48,7 @@ class InitGame extends Component {
             color: "white"
           }}
           >
-            {this.props.pseudo5}
+            {this.props.pseudo5.username}
           </Text>
         </View>
       </Button>
@@ -69,11 +69,11 @@ class InitGame extends Component {
           style={{ flex: 1, height: 80, margin: 1, backgroundColor: 'rgba(52, 52, 52, 0.6)' }}
         >
           <View style={{ width: "100%", alignItems: "center" }}>
-            <Image source={this.props.avatar1} />
+            <Image source={this.props.avatar} />
             <Text style={{
               textAlign: 'center',
               color: "white"
-            }}>{this.props.pseudo1}
+            }}>{this.props.pseudo}
             </Text>
           </View>
         </Button>
@@ -84,7 +84,7 @@ class InitGame extends Component {
             <Text style={{
               textAlign: 'center',
               color: "white"
-            }}>{this.props.pseudo2}</Text>
+            }}>{this.props.pseudo2.username}</Text>
           </View>
         </Button>
         <Button bordered light
@@ -94,7 +94,7 @@ class InitGame extends Component {
             <Text style={{
               textAlign: 'center',
               color: "white"
-            }}>{this.props.pseudo3}</Text>
+            }}>{this.props.pseudo3.username}</Text>
           </View>
         </Button>
         {joueurFour}
@@ -109,12 +109,12 @@ const mapStateToProps = state => {
   return {
     joueurs: state.toogleScore.joueurs,
     nbJoueur: state.toogleScore.nbJoueur,
-    avatar1: state.tooglePlayer.avatar1,
+    avatar: state.toogleUser.avatar,
     avatar2: state.tooglePlayer.avatar2,
     avatar3: state.tooglePlayer.avatar3,
     avatar4: state.tooglePlayer.avatar4,
     avatar5: state.tooglePlayer.avatar5,
-    pseudo1: state.tooglePlayer.pseudo1,
+    pseudo: state.toogleUser.pseudo,
     pseudo5: state.tooglePlayer.pseudo5,
     pseudo2: state.tooglePlayer.pseudo2,
     pseudo3: state.tooglePlayer.pseudo3,

@@ -92,7 +92,7 @@ class ColorScreen extends Component {
           <Button bordered light
             onPress={() => Alert.alert(
             "Choix de l'image",
-            "Êtes-vous sur de vouloir choisir le mouton comme avatar ?",
+            "Êtes-vous sur de vouloir de l'aquarine comme couleur ?",
             [
                 {
                 text: 'Non',
@@ -110,7 +110,7 @@ class ColorScreen extends Component {
           <Button bordered light 
             onPress={() => Alert.alert(
                 "Choix de l'image",
-                "Êtes-vous sur de vouloir choisir le bébé comme avatar ?",
+                "Êtes-vous sur de vouloir du brown comme couleur ?",
                 [
                     {
                     text: 'Non',
@@ -130,7 +130,7 @@ class ColorScreen extends Component {
           <Button bordered light
             onPress={() => Alert.alert(
                 "Choix de l'image",
-                "Êtes-vous sur de vouloir choisir le chat comme avatar ?",
+                "Êtes-vous sur de vouloir de coral comme couleur ?",
                 [
                     {
                     text: 'Non',
@@ -147,7 +147,7 @@ class ColorScreen extends Component {
           <Button bordered light
             onPress={() => Alert.alert(
                 "Choix de l'image",
-                "Êtes-vous sur de vouloir choisir le chien comme avatar ?",
+                "Êtes-vous sur de vouloir du lighblue comme couleur ?",
                 [
                     {
                     text: 'Non',
@@ -159,7 +159,8 @@ class ColorScreen extends Component {
                     }
                 ],
                 { cancelable: true },
-                )}            style={{ flex: 1, alignContent: 'center', height: "90%", marginTop: 10, marginLeft: 10, margin: 10, backgroundColor: "lightblue" }} >
+                )}            
+                style={{ flex: 1, alignContent: 'center', height: "90%", marginTop: 10, marginLeft: 10, margin: 10, backgroundColor: "lightblue" }} >
           </Button>
         </View>
 
@@ -167,7 +168,7 @@ class ColorScreen extends Component {
           <Button bordered light
             onPress={() => Alert.alert(
                 "Choix de l'image",
-                "Êtes-vous sur de vouloir choisir le diable comme avatar ?",
+                "Êtes-vous sur de vouloir de lemonchiffon comme couleur ?",
                 [
                     {
                     text: 'Non',
@@ -179,12 +180,13 @@ class ColorScreen extends Component {
                     }
                 ],
                 { cancelable: true },
-                )}            style={{ flex: 1, resizeMode: 'center', height: "90%", marginTop: 10, marginLeft: 10, margin: 10, backgroundColor: 'lemonchiffon' }} >
+                )}            
+                style={{ flex: 1, resizeMode: 'center', height: "90%", marginTop: 10, marginLeft: 10, margin: 10, backgroundColor: 'lemonchiffon' }} >
           </Button>
           <Button bordered light
             onPress={() => Alert.alert(
                 "Choix de l'image",
-                "Êtes-vous sur de vouloir choisir le bonhomme comme avatar ?",
+                "Êtes-vous sur de vouloir du lightpink comme couleur ?",
                 [
                     {
                     text: 'Non',
@@ -205,7 +207,7 @@ class ColorScreen extends Component {
           <Button bordered light 
             onPress={() => Alert.alert(
                 "Choix de l'image",
-                "Êtes-vous sur de vouloir choisir le cochon comme avatar ?",
+                "Êtes-vous sur de vouloir du mistyrose comme couleur ?",
                 [
                     {
                     text: 'Non',
@@ -223,7 +225,7 @@ class ColorScreen extends Component {
           <Button bordered light
             onPress={() => Alert.alert(
                 "Choix de l'image",
-                "Êtes-vous sur de vouloir choisir le pirate comme avatar ?",
+                "Êtes-vous sur de vouloir du silver comme couleur ?",
                 [
                     {
                     text: 'Non',
@@ -235,7 +237,8 @@ class ColorScreen extends Component {
                     }
                 ],
                 { cancelable: true },
-                )}            style={{ flex: 1, alignContent: 'center', height: "90%", marginTop: 10, marginLeft: 10, margin: 10, backgroundColor: 'silver' }} >
+                )}           
+                style={{ flex: 1, alignContent: 'center', height: "90%", marginTop: 10, marginLeft: 10, margin: 10, backgroundColor: 'silver' }} >
           </Button>
         </View>
       </View>
