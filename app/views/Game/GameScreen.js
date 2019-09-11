@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, Text, FlatList } from "react-native";
+import { View, Text, FlatList, ScrollView } from "react-native";
 import { connect } from 'react-redux'
 import { Button } from 'native-base';
 import InitGame from "./InitGame";
@@ -124,32 +124,34 @@ class GameScreen extends Component {
         flexDirection: 'column',
       }}>
 
-
         <InitGame />
+        <ScrollView>
 
-        <FlatList
-          data={turnBefore}
-          keyExtractor={(item) => item.id}
-          renderItem={({ item }) => <BeforeGame turnBefore={item} />}
-        />
-        
-        <LiveGame />
+          <FlatList
+            data={turnBefore}
+            keyExtractor={(item) => item.id}
+            renderItem={({ item }) => <BeforeGame turnBefore={item} />}
+          />
+          
+          <LiveGame />
 
-        <View style={{ flex: 0.1, margin: 20 }}>
+          <View style={{ flex: 0.1, margin: 20 }}>
 
-          <Button block info
-            onPress={() => this.buttonTurn()}
-          >
-            <Text
-              style={{
-                textAlign: 'center',
-                color: "white"
-              }}
+            <Button block info
+              onPress={() => this.buttonTurn()}
             >
-              {this.props.buttonTurnView}
-            </Text>
-          </Button>
-        </View>
+              <Text
+                style={{
+                  textAlign: 'center',
+                  color: "white"
+                }}
+              >
+                {this.props.buttonTurnView}
+              </Text>
+            </Button>
+          </View>
+        </ScrollView>
+
       </View>
     )
   }

@@ -3283,6 +3283,10 @@ locate-path@^3.0.0:
     p-locate "^3.0.0"
     path-exists "^3.0.0"
 
+lodash.isequal@^4.5.0:
+  version "4.5.0"
+  resolved "https://registry.yarnpkg.com/lodash.isequal/-/lodash.isequal-4.5.0.tgz#415c4478f2bcc30120c22ce10ed3226f7d3e18e0"
+
 lodash.pad@^4.1.0:
   version "4.5.1"
   resolved "https://registry.yarnpkg.com/lodash.pad/-/lodash.pad-4.5.1.tgz#4330949a833a7c8da22cc20f6a26c4d59debba70"
@@ -4557,6 +4561,12 @@ react-native-material-menu@^0.4.2:
   resolved "https://registry.yarnpkg.com/react-native-material-menu/-/react-native-material-menu-0.4.2.tgz#1dc39c1744ef65d5e536badd5e4d6d640b1f43da"
   dependencies:
     prop-types "^15.6.0"
+
+react-native-picker-select@^6.3.3:
+  version "6.3.3"
+  resolved "https://registry.yarnpkg.com/react-native-picker-select/-/react-native-picker-select-6.3.3.tgz#ea4d20a385041a2f4ead3eb3398b08511d7d6c2a"
+  dependencies:
+    lodash.isequal "^4.5.0"
 
 react-native-popup-menu@^0.15.6:
   version "0.15.6"

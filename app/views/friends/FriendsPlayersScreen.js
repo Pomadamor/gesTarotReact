@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, Image, TextInput, Alert } from 'react-native'
 import { Label, Form, Content, Button } from 'native-base';
-
+import RNPickerSelect from 'react-native-picker-select';
 import ImagePicker from 'react-native-image-picker'
 import { connect } from 'react-redux'
 import { BackHandler } from 'react-native'
@@ -12,6 +12,10 @@ class FriendsPlayersScreen extends Component {
     constructor(props) {
         super(props)
         this.state = {
+            choix2: '',
+            choix3: '',
+            choix4: '',
+            choix5: '',
             avatar: this.props.avatar,
             image: this.props.image,
             color: this.props.color,
@@ -77,10 +81,20 @@ class FriendsPlayersScreen extends Component {
         })
     }
 
+    choisirPseudo(nb){}
+
     /**
      * Ce rendu affiche la grill des joueur, permettant le choix de leur pseudo ainsi que l'aperçu de leur image
      */
     render() {
+
+        i = 0
+        var player = []
+        while ( i < this.props.friends[0].length ){
+            player.push({ label: this.props.friends[0][i].username, value: this.props.friends[0][i], color:"powderblue"})
+            i++
+        }
+
         if (this.props.nbJoueur > 3) {
             joueur4 =
                 <View>
@@ -98,7 +112,7 @@ class FriendsPlayersScreen extends Component {
                             style={{ marginTop: 12}}
                             >
                                 <Image
-                                onPress={() => this.props.navigation.navigate("User")}
+                                onPress={() => this.props.navigation.navigate("Image")}
                                 source={this.props.avatar4} style={{ height: 70, backgroundColor:this.props.color4, width: 60 }} />  
                             </Button>
                             <View style={{
@@ -113,25 +127,57 @@ class FriendsPlayersScreen extends Component {
                                     fontSize: 17,
                                     color: "white"
                                 }}>Joueur 4</Text>
-                                <TextInput
-                                    style={{ height: 36, fontWeight: 'bold', width: 80, borderColor: 'white', color: 'white'}}
-                                    onChangeText={(pseudo) => this.changePseudo(pseudo, id=4)}
-                                    value={this.props.pseudo4}
-                                />
+                                
+                                  <Text 
+                                    style = {this.state.choix4 == '' ? 
+                                    {
+                                        alignItems:"center",
+                                        color: "white"
+                                    }:
+                                    {display:'none'}}
+                                    >Nom : Joueur 4</Text>  
+                                <View>
+                                    <TextInput
+                                        style = {this.state.choix4 == 'choosePseudo4' ? 
+                                        {
+                                            height: 36, fontWeight: 'bold', width: 80, borderColor: 'white', color: 'white'
+                                        }:
+                                        {display:'none'}}
+                                        onChangeText={(pseudo) => this.changePseudo(pseudo, id=4)}
+                                        value={this.props.pseudo5}
+                                    />
+                                </View>
+                                
+                                <View>
+                                    { this.state.choix4
+                                    ? 
+                                    <RNPickerSelect
+                                        placeholder={{
+                                            label: 'Selectionner',
+                                            value: null,
+                                        }}
+                                        style = {this.state.choix4 == 'chooseAmi4' ? 
+                                        {}:{display:'none'}}
+                                        onValueChange={(value) => console.log(value)}
+                                        items={player}
+                                    />
+                                    :<View/>
+                                    }   
+                                </View>
                             </View>
                             <Button transparent
                             style={{ marginTop: 12, position: "absolute", right:10}}
                             onPress={() => Alert.alert(
                                 'Attention',
-                                "Pour choisir un ami parmis la liste cliquer sur continuer, sinon vous pouvez modifier le joueur en cliquant sur son image ou son pseudo.",
+                                "Personnalisé le joueur.",
                                 [
                                     {
-                                    text: 'Annuler',
-                                    onPress: () => console.log('Annulation de la suppression')
+                                    text: 'Choisir un pseudo',
+                                    onPress: () => this.setState({ choix4: "choosePseudo4"})
                                     },
                                     {
-                                    text: 'Continuer',
-                                    onPress: () => console.log("Faire l'appel api pour la suppression d'amis")
+                                    text: 'Selectionner un ami',
+                                    onPress: () => this.setState({ choix4: "chooseAmi4"})
                                     }
                                 ],
                                 { cancelable: true },
@@ -146,64 +192,96 @@ class FriendsPlayersScreen extends Component {
         if (this.props.nbJoueur > 4) {
             joueur5 =
             <View>
-        <View
-            style={{
-            flex: 2,
-            height: 70,
-            flexDirection: 'row',
-            backgroundColor: 'rgba(52, 52, 52, 0.6)',
-            borderWidth: 0.5,
-            borderColor: '#d6d7da',
-        }}
-        >
-        <Button 
-            style={{ marginTop: 12}}
-            >
-                <Image
-                onPress={() => this.props.navigation.navigate("User")}
-                source={this.props.avatar5} style={{ height: 70, backgroundColor:this.props.color5, width: 60 }} />  
-            </Button>
-            <View style={{
-                margin: 10,
-                fontSize: 17,
-                height: 100,
-                width: 100
-            }}>
-                <Text
+            <View
                 style={{
-                    alignItems:"center",
-                    fontSize: 17,
-                    color: "white"
-                }}>Joueur 5</Text>
-                <TextInput
-                    style={{ height: 36, fontWeight: 'bold', width: 80, borderColor: 'white', color: 'white'}}
-                    onChangeText={(pseudo) => this.changePseudo(pseudo, id=5)}
-                    value={this.props.pseudo5}
-                />
-            </View>
-            <Button transparent
-            style={{ marginTop: 12, position: "absolute", right:10}}
-            onPress={() => Alert.alert(
-                'Attention',
-                "Pour choisir un ami parmis la liste cliquer sur continuer, sinon vous pouvez modifier le joueur en cliquant sur son image ou son pseudo.",
-                [
-                    {
-                    text: 'Annuler',
-                    onPress: () => console.log('Annulation de la suppression')
-                    },
-                    {
-                    text: 'Continuer',
-                    onPress: () => console.log("Faire l'appel api pour la suppression d'amis")
-                    }
-                ],
-                { cancelable: true },
-                )}
+                flex: 2,
+                height: 70,
+                flexDirection: 'row',
+                backgroundColor: 'rgba(52, 52, 52, 0.6)',
+                borderWidth: 0.5,
+                borderColor: '#d6d7da',
+            }}
             >
-                <Image
-                source={require("../../assets/img/edit.png")} style={{ height: 25, width:25, tintColor: "#FFFFFF" }} />  
-            </Button>
-        </View>
-        </View>
+                <Button 
+                style={{ marginTop: 12}}
+                >
+                    <Image
+                    onPress={() => this.props.navigation.navigate("Image")}
+                    source={this.props.avatar5} style={{ height: 70, backgroundColor:this.props.color5, width: 60 }} />  
+                </Button>
+                <View style={{
+                    margin: 10,
+                    fontSize: 17,
+                    height: 100,
+                    width: 200
+                }}>
+                    <Text
+                    style={{
+                        alignItems:"center",
+                        fontSize: 17,
+                        color: "white"
+                    }}>Joueur 5</Text>
+                    
+                    <Text 
+                    style = {this.state.choix5 == '' ? 
+                    {
+                        alignItems:"center",
+                        color: "white"
+                    }:
+                    {display:'none'}}
+                    >Nom : Joueur 5</Text>  
+
+                    <TextInput
+                        style = {this.state.choix5 == 'choosePseudo5' ? 
+                        {
+                            height: 36, fontWeight: 'bold', width: 80, borderColor: 'white', color: 'white'
+                        }:
+                        {display:'none'}}
+                        onChangeText={(pseudo) => this.changePseudo(pseudo, id=5)}
+                        value={this.props.pseudo5}
+                    />
+                    
+                    <View>
+                        { this.state.choix5 
+                        ? 
+                        <RNPickerSelect
+                            placeholder={{
+                                label: 'Selectionner',
+                                value: null,
+                            }}
+                            style = {this.state.choix5 == 'chooseAmi5' ? 
+                            {}:{display:'none'}}
+                            onValueChange={(value) => console.log(value)}
+                            items={player}
+                        />
+                        :<View/>
+                        }   
+                    </View>
+                </View>
+                <Button transparent
+                style={{ marginTop: 12, position: "absolute", right:10}}
+                onPress={() => Alert.alert(
+                    'Attention',
+                    "Personnalisé le joueur 5.",
+                    [
+                        {
+                        text: 'Choisir un pseudo',
+                        onPress: () => this.setState({ choix5: "choosePseudo5"})
+                        },
+                        {
+                        text: 'Selectionner un ami',
+                        onPress: () => this.setState({ choix5: "chooseAmi5"})
+                        }
+                    ],
+                    { cancelable: true },
+                    )}
+                >
+                    <Image
+                    source={require("../../assets/img/edit.png")} style={{ height: 25, width:25, tintColor: "#FFFFFF" }} />  
+                </Button>
+            </View>
+    </View>
+
         } else { joueur5 = <View></View> }
 
         return (
@@ -274,30 +352,63 @@ class FriendsPlayersScreen extends Component {
                                     fontSize: 17,
                                     color: "white"
                                 }}>Joueur 2</Text>
-                                <TextInput
-                                    style={{ height: 36, fontWeight: 'bold', width: 80, borderColor: 'white', color: 'white'}}
-                                    onChangeText={(pseudo) => this.changePseudo(pseudo, id=2)}
-                                    value={this.props.pseudo2}
-                                />
+                                <Text 
+                                    style = {this.state.choix2 == '' ? 
+                                    {
+                                        alignItems:"center",
+                                        color: "white"
+                                    }:
+                                    {display:'none'}}
+                                    >Nom : Joueur 2</Text>  
+                                <View>
+                                    <TextInput
+                                        style = {this.state.choix2 == 'choosePseudo2' ? 
+                                        {
+                                            height: 36, fontWeight: 'bold', width: 80, borderColor: 'white', color: 'white'
+                                        }:
+                                        {display:'none'}}
+                                        onChangeText={(pseudo) => this.changePseudo(pseudo, id=2)}
+                                        value={this.props.pseudo2}
+                                    />
+                                </View>
+                                
+                                <View>
+                                    { this.state.choix2
+                                    ? 
+                                    <RNPickerSelect
+                                        placeholder={{
+                                            label: 'Selectionner',
+                                            value: null,
+                                        }}
+                                        style = {this.state.choix2 == 'chooseAmi2' ? 
+                                        {}:{display:'none'}}
+                                        onValueChange={(value) => console.log(value)}
+                                        items={player}
+                                    />
+                                    :<View/>
+                                    }   
+                                </View>
                             </View>
                             <Button transparent
                             style={{ marginTop: 12, position: "absolute", right:10}}
                             onPress={() => Alert.alert(
                                 'Attention',
-                                "Pour choisir un ami parmis la liste cliquer sur continuer, sinon vous pouvez modifier le joueur en cliquant sur son image ou son pseudo.",
+                                "Personnalisé le joueur.",
                                 [
                                     {
-                                    text: 'Annuler',
-                                    onPress: () => console.log('Annulation de la suppression')
+                                    text: 'Choisir un pseudo',
+                                    onPress: () => this.setState({ choix2: "choosePseudo2"})
                                     },
                                     {
-                                    text: 'Continuer',
-                                    onPress: () => console.log("Faire l'appel api pour la suppression d'amis")
+                                    text: 'Selectionner un ami',
+                                    onPress: () => this.setState({ choix2: "chooseAmi2"})
                                     }
                                 ],
                                 { cancelable: true },
                                 )}
                             >
+
+
                                 <Image
                                 source={require("../../assets/img/edit.png")} style={{ height: 25, width:25, tintColor: "#FFFFFF" }} />  
                             </Button>
@@ -331,25 +442,56 @@ class FriendsPlayersScreen extends Component {
                                     fontSize: 17,
                                     color: "white"
                                 }}>Joueur 3</Text>
-                                <TextInput
-                                    style={{ height: 36, fontWeight: 'bold', width: 80, borderColor: 'white', color: 'white'}}
-                                    onChangeText={(pseudo) => this.changePseudo(pseudo, id=3)}
-                                    value={this.props.pseudo3}
-                                />
+                                <Text 
+                                    style = {this.state.choix3 == '' ? 
+                                    {
+                                        alignItems:"center",
+                                        color: "white"
+                                    }:
+                                    {display:'none'}}
+                                    >Nom : Joueur 3</Text>  
+                                <View>
+                                    <TextInput
+                                        style = {this.state.choix3 == 'choosePseudo3' ? 
+                                        {
+                                            height: 36, fontWeight: 'bold', width: 80, borderColor: 'white', color: 'white'
+                                        }:
+                                        {display:'none'}}
+                                        onChangeText={(pseudo) => this.changePseudo(pseudo, id=3)}
+                                        value={this.props.pseudo5}
+                                    />
+                                </View>
+                                
+                                <View>
+                                    { this.state.choix3 
+                                    ? 
+                                    <RNPickerSelect
+                                        placeholder={{
+                                            label: 'Selectionner',
+                                            value: null,
+                                        }}
+                                        style = {this.state.choix3 == 'chooseAmi3' ? 
+                                        {}:{display:'none'}}
+                                        onValueChange={(value) => console.log(value)}
+                                        items={player}
+                                    />
+                                    :<View/>
+                                    }   
+                                </View>
                             </View>
                             <Button transparent
                             style={{ marginTop: 12, position: "absolute", right:10}}
                             onPress={() => Alert.alert(
                                 'Attention',
-                                "Pour choisir un ami parmis la liste cliquer sur continuer, sinon vous pouvez modifier le joueur en cliquant sur son image ou son pseudo.",
+                                "Personnalisé le joueur.",
                                 [
                                     {
-                                    text: 'Annuler',
-                                    onPress: () => console.log('Annulation de la suppression')
+                                    text: 'Choisir un pseudo',
+                                    onPress: () => this.setState({ choix3: "choosePseudo3"})
                                     },
                                     {
-                                    text: 'Continuer',
-                                    onPress: () => console.log("Faire l'appel api pour la suppression d'amis")
+                                    text: 'Selectionner un ami',
+                                    onPress: () => this.setState({ choix3: "chooseAmi3"})
                                     }
                                 ],
                                 { cancelable: true },
@@ -378,6 +520,7 @@ class FriendsPlayersScreen extends Component {
 
 const mapStateToProps = state => {
     return {
+        friends: state.toogleFriends.friends,
         nbJoueur: state.toogleScore.nbJoueur,
         avatar: state.toogleUser.avatar,
         avatar2: state.tooglePlayer.avatar2,
