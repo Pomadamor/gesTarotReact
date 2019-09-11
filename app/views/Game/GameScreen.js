@@ -98,7 +98,7 @@ class GameScreen extends Component {
       const actionId = { type: "MUTATION_ID", value: this.props.id + 1 }
       this.props.dispatch(actionId)
 
-      const actionBtnTurn = { type: "MUTATION_BUTTONTURN", value: `tour n°${this.props.id + 1}` }
+      const actionBtnTurn = { type: "MUTATION_BUTTONTURN", value: `Continuer` }
       this.props.dispatch(actionBtnTurn)
 
       this.props.turns.push([{
@@ -143,7 +143,7 @@ class GameScreen extends Component {
       const actionId = { type: "MUTATION_ID", value: this.props.id + 1 }
       this.props.dispatch(actionId)
 
-      const actionBtnTurn = { type: "MUTATION_BUTTONTURN", value: `tour n°${this.props.id + 1}` }
+      const actionBtnTurn = { type: "MUTATION_BUTTONTURN", value: `Continuer` }
       this.props.dispatch(actionBtnTurn)
 
 
