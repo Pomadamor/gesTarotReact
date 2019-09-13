@@ -5,14 +5,28 @@ import { Button } from 'native-base';
 class BeforeGame extends Component {
 
 
-  /**
-s */
+    /**
+     * Create a point.
+     * @param {number} x - The x value.
+     * @param {number} y - The y value.
+     */
   render(){
-      ("props of before:", this.props);
       //const turnBefore =  this.props.turns
-      const turnBefore = this.props.turnBefore[0];
-    //   ("turnBefore: ", turnBefore.preneur);
-      if( turnBefore.nbJoueur>3){
+      // console.log("TURNBERFORE",this.props.turnBefore[0])
+      const turnBefore = this.props.turnBefore;
+    // //   ("turnBefore: ", turnBefore.preneur);
+    // console.log("TURNBERFORE NBJOUEUR",turnBefore.nbJoueur)
+    // console.log("TURNBERFORE PRENEUR",turnBefore.preneur)
+    // console.log("TURNBERFORE PARTENAIRE",turnBefore.partenaire)
+    // console.log("TURNBERFORE SCOREJ1",toString(turnBefore.scoreJ1))
+    // console.log("TURNBERFORE SCOREJ2",turnBefore.scoreJ2.toString())
+    // console.log("TURNBERFORE SCOREJ3",turnBefore.scoreJ3)
+    // console.log("TURNBERFORE TYPE",turnBefore.type)
+    // console.log("TURNBERFORE ROI",turnBefore.roi)
+
+
+
+      if( turnBefore.nbJoueur){
         joueurFour = <Button bordered light 
                         backgroundColor={  
                           turnBefore.preneur == 'Joueur 4' ? "lightgreen" 
@@ -23,7 +37,7 @@ s */
                         <View style={{width:"100%", alignItems:"center"}}>
                         <Text style={{
                                 textAlign: 'center', 
-                                color:"white"}}>{  turnBefore.scoreJ4 }</Text>
+                                color:"white"}}>{  turnBefore.scoreJ4.toString() }</Text>
                         </View>
                     </Button>
       } else {
@@ -41,7 +55,7 @@ s */
                             <View style={{width:"100%", alignItems:"center"}}>
                             <Text style={{
                                     textAlign: 'center', 
-                                    color:"white"}}>{  turnBefore.scoreJ5 }</Text>
+                                    color:"white"}}>{  turnBefore.scoreJ5.toString() }</Text>
                             </View>
                           </Button>
       } else {
@@ -67,7 +81,7 @@ s */
             <View style={{width:"100%", alignItems:"center"}}>
             <Text style={{
                       textAlign: 'center', 
-                      color:"white"}}>{  turnBefore.scoreJ1 }</Text>
+                      color:"white"}}>{  turnBefore.scoreJ1.toString() }</Text>
             </View>
           </Button>
           <Button bordered light 
@@ -79,7 +93,7 @@ s */
           <View style={{width:"100%", alignItems:"center"}}>
             <Text style={{
                       textAlign: 'center', 
-                      color:"white"}}>{  turnBefore.scoreJ2 }</Text>
+                      color:"white"}}>{  turnBefore.scoreJ2.toString() }</Text>
             </View>
           </Button>
           <Button bordered light 
@@ -91,7 +105,7 @@ s */
             <View style={{width:"100%", alignItems:"center"}}>
             <Text style={{
                       textAlign: 'center', 
-                      color:"white"}}>{  turnBefore.scoreJ3 }</Text>
+                      color:"white"}}>{  turnBefore.scoreJ3.toString() }</Text>
             </View>
           </Button>
           {joueurFour}

@@ -59,17 +59,30 @@ class FriendsPlayersScreen extends Component {
      */
     changePseudo(pseudo, id) {
         console.log("name pseudo", pseudo)
-         if(typeof pseudo == 'string' || pseudo instanceof String){
+        console.log("name pseudo", this.props.pseudo2.username)
+        console.log("name pseudo", this.props.pseudo3.username)
+        console.log("name pseudo", this.props.pseudo4.username)
+        console.log("name pseudo", this.props.pseudo5.username)
+
+
+        if(typeof pseudo == 'string' || pseudo instanceof String){
             console.log("cest une string", pseudo)
 
             const actionPseudo = { type: `MUTATION_PSEUDO${id}`, value: {username : pseudo} }
             this.props.dispatch(actionPseudo)
 
-         }else{
-            const actionPseudo = { type: `MUTATION_PSEUDO${id}`, value: pseudo }
-            this.props.dispatch(actionPseudo)
-         }
-        
+        }else{
+            if(this.props.pseudo2 == pseudo ||
+                this.props.pseudo3 == pseudo ||
+                this.props.pseudo4 == pseudo ||
+                this.props.pseudo5 == pseudo 
+                ){
+                    alert("Vous ne pouvez pas ajouter deux fois le même ami.")
+                }else{
+                    const actionPseudo = { type: `MUTATION_PSEUDO${id}`, value: pseudo }
+                    this.props.dispatch(actionPseudo)
+                }
+        }
     }
    
     /**

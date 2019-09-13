@@ -157,8 +157,16 @@ class GameScreen extends Component {
    */
 
   render() {
-    turnBefore = this.props.turns
-    console.log("plop", this.props.turns)
+    // turnBefore = this.props.turns
+    // console.log("plop", this.props.turns)
+
+    turnBefore = this.props
+    console.log("ploploplop", this.props.turns)
+    console.log("ploploplop", this.props.turns[0])
+    if (this.props.turns[0] != undefined){
+      console.log("ploploplop", this.props.turns[0][0])
+      turnBefore = this.props.turns[0]
+    }
 
     return (
       <View style={{

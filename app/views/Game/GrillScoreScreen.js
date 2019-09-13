@@ -28,9 +28,6 @@ class GrillScoreScreen extends Component {
             this.props.dispatch(actionpartenaire)
             this.props.navigation.navigate("Game")
         }
-
-
-
     }
 
     render() {
