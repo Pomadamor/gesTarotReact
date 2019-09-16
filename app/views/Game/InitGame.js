@@ -20,12 +20,13 @@ class InitGame extends Component {
 
     if (this.props.joueurs.length > 3) {
       joueurFour = <Button bordered light
-        style={{ flex: 1, height: 80, margin: 1, backgroundColor: 'rgba(52, 52, 52, 0.6)' }}
+        style={{ flex: 1, height: 100, margin: 1, backgroundColor: 'rgba(52, 52, 52, 0.6)' }}
       >
         <View style={{ width: "100%", alignItems: "center" }}>
           <Image source={this.props.avatar4} />
           <Text style={{
             textAlign: 'center',
+            textTransform: 'lowercase',
             color: "white"
           }}
           >
@@ -39,12 +40,13 @@ class InitGame extends Component {
 
     if (this.props.joueurs.length > 4) {
       joueurFive = <Button bordered light
-        style={{ flex: 1, height: 80, margin: 1, backgroundColor: 'rgba(52, 52, 52, 0.6)' }}
+        style={{ flex: 1, height: 100, margin: 1, backgroundColor: 'rgba(52, 52, 52, 0.6)' }}
       >
         <View style={{ width: "100%", alignItems: "center" }}>
           <Image source={this.props.avatar5} />
           <Text style={{
             textAlign: 'center',
+            textTransform: 'lowercase',
             color: "white"
           }}
           >
@@ -59,40 +61,43 @@ class InitGame extends Component {
     return (
       <View style={{ flexDirection: 'row' }}>
         <Button bordered light
-          style={{ flex: 1, height: 80, margin: 1, backgroundColor: 'rgba(52, 52, 52, 0.6)' }}
+          style={{ flex: 1, height: 100, margin: 1, backgroundColor: 'rgba(52, 52, 52, 0.6)' }}
         >
           <View style={{ width: "100%", alignItems: "center" }}>
             <Text style={{ color: "white" }}>Info</Text>
           </View>
         </Button>
         <Button bordered light
-          style={{ flex: 1, height: 80, margin: 1, backgroundColor: 'rgba(52, 52, 52, 0.6)' }}
+          style={{ flex: 1, height: 100, margin: 1, backgroundColor: 'rgba(52, 52, 52, 0.6)' }}
         >
           <View style={{ width: "100%", alignItems: "center" }}>
             <Image source={this.props.avatar} />
             <Text style={{
               textAlign: 'center',
+              textTransform: 'lowercase',
               color: "white"
             }}>{this.props.pseudo}
             </Text>
           </View>
         </Button>
         <Button bordered light
-          style={{ flex: 1, height: 80, margin: 1, backgroundColor: 'rgba(52, 52, 52, 0.6)' }} >
+          style={{ flex: 1, height: 100, margin: 1, backgroundColor: 'rgba(52, 52, 52, 0.6)' }} >
           <View style={{ width: "100%", alignItems: "center" }}>
             <Image source={this.props.avatar2} />
             <Text style={{
               textAlign: 'center',
+              textTransform: 'lowercase',
               color: "white"
             }}>{this.props.pseudo2.username}</Text>
           </View>
         </Button>
         <Button bordered light
-          style={{ flex: 1, height: 80, margin: 1, backgroundColor: 'rgba(52, 52, 52, 0.6)' }} >
+          style={{ flex: 1, height: 100, margin: 1, backgroundColor: 'rgba(52, 52, 52, 0.6)' }} >
           <View style={{ width: "100%", alignItems: "center" }}>
             <Image source={this.props.avatar3} />
             <Text style={{
               textAlign: 'center',
+              textTransform: 'lowercase',
               color: "white"
             }}>{this.props.pseudo3.username}</Text>
           </View>

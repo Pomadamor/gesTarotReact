@@ -35,9 +35,15 @@ class BeforeGame extends Component {
                         style={{flex:1, height:60, margin:1}} 
                         >
                         <View style={{width:"100%", alignItems:"center"}}>
-                        <Text style={{
-                                textAlign: 'center', 
-                                color:"white"}}>{  turnBefore.scoreJ4.toString() }</Text>
+                        <Text 
+                        style={  
+                          turnBefore.preneur == 'Joueur 4' ? {textAlign: 'center', 
+                          color:"white", fontWeight:'bold' ,textDecorationLine: 'underline'} 
+                          : turnBefore.partenaire == 'Joueur 4' ? {textAlign: 'center', 
+                          color:"white", fontWeight:'bold'}
+                          :{textAlign: 'center', 
+                          color:"white"}  } >
+                        {  turnBefore.scoreJ4.toString() }</Text>
                         </View>
                     </Button>
       } else {
@@ -53,9 +59,13 @@ class BeforeGame extends Component {
                               style={{flex:1, height:60, margin:1}} 
                             >
                             <View style={{width:"100%", alignItems:"center"}}>
-                            <Text style={{
-                                    textAlign: 'center', 
-                                    color:"white"}}>{  turnBefore.scoreJ5.toString() }</Text>
+                            <Text style={  
+                          turnBefore.preneur == 'Joueur 5' ? {textAlign: 'center', 
+                          color:"white", fontWeight:'bold' ,textDecorationLine: 'underline'} 
+                          : turnBefore.partenaire == 'Joueur 5' ? {textAlign: 'center', 
+                          color:"white", fontWeight:'bold'}
+                          :{textAlign: 'center', 
+                          color:"white"}  } >{  turnBefore.scoreJ5.toString() }</Text>
                             </View>
                           </Button>
       } else {
@@ -65,11 +75,10 @@ class BeforeGame extends Component {
       return (
           <View style={{flexDirection: 'row'}}>
           <Button bordered light 
-          style={{flex:1, height:60, margin:1, backgroundColor:'rgba(52, 52, 52, 0.6)'}} >
-            <View style={{width:"100%", alignItems:"center"}}>
-              <Text></Text>
-              <Text style={{color:"white"}}>{ turnBefore.type}</Text>
-              <Text style={{color:"white"}}>{ turnBefore.roi}</Text>
+          style={{flex:1, height:60, backgroundColor:'rgba(52, 52, 52, 0.6)'}} >
+            <View style={{width:"100%"}}>
+              <Text style={{flex:1,color:"white"}}>{ turnBefore.type}</Text>
+              <Text style={{flex:1,color:"white"}}>{ turnBefore.roi}</Text>
             </View>
           </Button>
           <Button bordered light 
@@ -79,9 +88,13 @@ class BeforeGame extends Component {
             :'rgba(52, 52, 52, 0.6)'  }
           style={{flex:1, height:60, margin:1}} >
             <View style={{width:"100%", alignItems:"center"}}>
-            <Text style={{
-                      textAlign: 'center', 
-                      color:"white"}}>{  turnBefore.scoreJ1.toString() }</Text>
+            <Text style={  
+                          turnBefore.preneur == 'Joueur 1' ? {textAlign: 'center', 
+                          color:"white", fontWeight:'bold' ,textDecorationLine: 'underline'} 
+                          : turnBefore.partenaire == 'Joueur 1' ? {textAlign: 'center', 
+                          color:"white", fontWeight:'bold'}
+                          :{textAlign: 'center', 
+                          color:"white"}  } >{  turnBefore.scoreJ1.toString() }</Text>
             </View>
           </Button>
           <Button bordered light 
@@ -91,9 +104,13 @@ class BeforeGame extends Component {
               :'rgba(52, 52, 52, 0.6)'  }
             style={{flex:1, height:60, margin:1}} >
           <View style={{width:"100%", alignItems:"center"}}>
-            <Text style={{
-                      textAlign: 'center', 
-                      color:"white"}}>{  turnBefore.scoreJ2.toString() }</Text>
+            <Text style={  
+                          turnBefore.preneur == 'Joueur 2' ? {textAlign: 'center', 
+                          color:"white", fontWeight:'bold' ,textDecorationLine: 'underline'} 
+                          : turnBefore.partenaire == 'Joueur 2' ? {textAlign: 'center', 
+                          color:"white", fontWeight:'bold'}
+                          :{textAlign: 'center', 
+                          color:"white"}  } >{  turnBefore.scoreJ2.toString() }</Text>
             </View>
           </Button>
           <Button bordered light 
@@ -103,9 +120,13 @@ class BeforeGame extends Component {
             :'rgba(52, 52, 52, 0.6)'  }
           style={{flex:1, height:60, margin:1}} >
             <View style={{width:"100%", alignItems:"center"}}>
-            <Text style={{
-                      textAlign: 'center', 
-                      color:"white"}}>{  turnBefore.scoreJ3.toString() }</Text>
+            <Text style={  
+                          turnBefore.preneur == 'Joueur 3' ? {textAlign: 'center', 
+                          color:"white", fontWeight:'bold' ,textDecorationLine: 'underline'} 
+                          : turnBefore.partenaire == 'Joueur 3' ? {textAlign: 'center', 
+                          color:"white", fontWeight:'bold'}
+                          :{textAlign: 'center', 
+                          color:"white"}  } >{  turnBefore.scoreJ3.toString() }</Text>
             </View>
           </Button>
           {joueurFour}

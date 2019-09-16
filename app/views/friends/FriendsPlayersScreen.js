@@ -166,9 +166,10 @@ class FriendsPlayersScreen extends Component {
                                 <TextInput
                                     style = {this.state.choix4 == false ? 
                                     {
-                                        height: 36, fontWeight: 'bold', width: 80, borderColor: 'white', color: 'white'
+                                        height: 36, fontWeight: 'bold', width: 80, borderColor: 'white', color: 'white', textTransform: 'lowercase'
                                     }:
                                     {display:'none'}}
+                                    maxLength={6}
                                     onChangeText={(pseudo) => this.changePseudo(pseudo, id=4)}
                                     value={this.props.pseudo4.username}
                                 />

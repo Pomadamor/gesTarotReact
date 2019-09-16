@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { View, Text, TextInput, Picker } from 'react-native';
 import { Button, Label, Content, Item, Form, Input } from 'native-base';
 import { connect } from 'react-redux'
+import { BackHandler } from 'react-native'
 
 class GrillScoreScreen extends Component {
 
@@ -13,6 +14,20 @@ class GrillScoreScreen extends Component {
             partenaire: ""
         }
     }
+
+    componentDidMount() {
+        BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
+      }
+    
+      componentWillUnmount() {
+        BackHandler.removeEventListener('hardwareBackPress', this.handleBackPress);
+      }
+    
+      handleBackPress = () => {
+        alert('Veuillez renseigner tout les champs pour pouvoir continuer.')
+        return true;
+      }
+
 
     btnValid() {
         if(this.state.score >90 || this.state.score < 1){

@@ -2,8 +2,22 @@ import React, {Component} from "react";
 import { View, Text} from 'react-native';
 import { Button } from 'native-base';
 import { connect } from 'react-redux'
+import { BackHandler } from 'react-native'
 
 class GrillChooseScreen extends Component {
+
+    componentDidMount() {
+        BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
+      }
+    
+      componentWillUnmount() {
+        BackHandler.removeEventListener('hardwareBackPress', this.handleBackPress);
+      }
+    
+      handleBackPress = () => {
+        alert('Veuillez renseigner tout les champs pour pouvoir continuer.')
+        return true;
+      }
 
     buttonValiderGrill(){
         if(this.props.nbJoueur>4 && this.props.roi == "" ){
