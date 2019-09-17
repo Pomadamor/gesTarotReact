@@ -12,7 +12,7 @@ class LiveGame extends Component {
 
     console.log("----------------", this.props.scoreJ1)
 
-      if(this.props.joueurs.length>3){
+      if(this.props.nbJoueur>3){
         joueurFour = <Button bordered light 
                         backgroundColor={  
                           turnBefore.preneur == 'Joueur 4' ? "lightgreen" 
@@ -30,7 +30,7 @@ class LiveGame extends Component {
           joueurFour = <View></View>
       }
    
-      if(this.props.joueurs.length>4){
+      if(this.props.nbJoueur>4){
           joueurFive =    <Button bordered light 
                               backgroundColor={  
                                 turnBefore.preneur == 'Joueur 5' ? "lightgreen" 

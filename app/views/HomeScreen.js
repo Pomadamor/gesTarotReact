@@ -4,6 +4,7 @@ import { Image } from 'react-native';
 import { connect } from 'react-redux';
 import { BackHandler } from 'react-native'
 import UserScreen from './Menu/UserScreen';
+import AsyncStorage from "@react-native-community/async-storage";
 
 class HomeScreen extends Component {
 
@@ -57,7 +58,7 @@ class HomeScreen extends Component {
                   this.props.dispatch(avatar)
                 }
                   console.log("detail response user", user)
-                  AsyncStorage.setItem("avatar", parseInt(user.image))
+                  AsyncStorage.setItem("avatar", user.image)
                   AsyncStorage.setItem("pseudo", user.username)
 
                   const id = { type: "MUTATION_ID", value: user.id }
@@ -79,8 +80,9 @@ class HomeScreen extends Component {
                   return responseJson;
               }
           })
+        }
 
-          fetch('https://gestarot-api.lerna.eu/api/logged_user/friends', {
+        fetch('https://gestarot-api.lerna.eu/api/logged_user/friends', {
             method: 'GET',
             headers: {
                 Accept: 'application/json',
@@ -104,7 +106,6 @@ class HomeScreen extends Component {
                   }
               })
               console.log("test home 002", this.props.friends)
-        }
     }
   /**
 * Les trois fonctions suivante permette de gérer le retour du clavier
@@ -166,7 +167,7 @@ class HomeScreen extends Component {
                   style={{
                     fontSize: 15,
                     color: "white",
-                  }}>Version Bêta</Text>
+                  }}>Version Beta</Text>
               </View>
             </View>
             <View style={{ flex: 1, height: 50 }} />

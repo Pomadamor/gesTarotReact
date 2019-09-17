@@ -18,7 +18,7 @@ class InitGame extends Component {
       }
     }
 
-    if (this.props.joueurs.length > 3) {
+    if (this.props.nbJoueur > 3) {
       joueurFour = <Button bordered light
         style={{ flex: 1, height: 100, margin: 1, backgroundColor: 'rgba(52, 52, 52, 0.6)' }}
       >
@@ -38,7 +38,7 @@ class InitGame extends Component {
       joueurFour = <View></View>
     }
 
-    if (this.props.joueurs.length > 4) {
+    if (this.props.nbJoueur > 4) {
       joueurFive = <Button bordered light
         style={{ flex: 1, height: 100, margin: 1, backgroundColor: 'rgba(52, 52, 52, 0.6)' }}
       >

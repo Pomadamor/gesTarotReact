@@ -111,12 +111,19 @@ class FriendsPlayersScreen extends Component {
      */
     render() {
 
-        i = 0
+       
         var player = []
-        while ( i < this.props.friends[0].length ){
-            player.push({ label: this.props.friends[0][i].username, value: this.props.friends[0][i], color: "powderblue"})
-            i++
+        console.log("test erreur friends", this.props.friends.length)
+        if(this.props.friends.length > 0){
+            console.log("test ca passe la")
+
+            i = 0
+            while ( i < this.props.friends[0].length ){
+                player.push({ label: this.props.friends[0][i].username, value: this.props.friends[0][i], color: "powderblue"})
+                i++
+            }
         }
+        
 
         if (this.props.nbJoueur > 3) {
             joueur4 =
