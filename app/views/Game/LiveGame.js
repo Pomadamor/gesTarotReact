@@ -3,11 +3,35 @@ import { View, Text, Button } from "native-base";
 import { connect } from 'react-redux'
 import { Image } from 'react-native';
 
+/**
+ * Component permet d'afficher dans la grille de score la ligne de score du tour en cour.
+ */
+
+
 class LiveGame extends Component {
 
-    /**
- * ce rendu affiche la ligne de score du tour en cour
- */
+   /**
+   * ce rendu affiche le contenant des valeurs en cour de modification
+
+    * @param {Int} score 
+    * 
+    * @param {string} preneur
+    * @param {string} partenaire
+    * @param {string} roi
+    * @param {Int} scoreJ1 
+    * @param {Int} scoreJ2 
+    * @param {Int} scoreJ3 
+    * @param {Int} scoreJ4
+    * @param {Int} scoreJ5
+    * @param {Int} nbJoueur
+    * @param {string} type
+    * @param {Int} score
+    * @param {Int} bou
+    * @param {Int} preneurScore
+    * @param {Int} partenaireScore
+    * @param {Int} autreScore
+    */
+
   render(){
 
     console.log("----------------", this.props.scoreJ1)

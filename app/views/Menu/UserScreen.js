@@ -8,6 +8,10 @@ import { BackHandler } from 'react-native'
 import AsyncStorage from "@react-native-community/async-storage";
 
 
+/**
+ * Component permet de gérer l'affichage de la vue de personnalisation de l'utilisateur.
+ */
+
 class UserScreen extends Component {
 
     constructor(props) {
@@ -46,8 +50,13 @@ class UserScreen extends Component {
         return true;
     }
 
-        /**
+    /**
     * fonction asynchron qui gere la modification du compte
+    * @param {string} username 
+    * @param {string} phone 
+    * @param {string} email 
+    * @param {string} password 
+    * @param {string} token 
     */
 
     async update(){
@@ -152,7 +161,7 @@ class UserScreen extends Component {
         }
     }
 
-        /**
+    /**
     * fonction qui permet de modifier l'image du user par une photo
     */
     changePhoto() {

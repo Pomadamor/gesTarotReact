@@ -6,7 +6,9 @@ import { BackHandler } from 'react-native'
 import AsyncStorage from "@react-native-community/async-storage";
 import { List, ListItem } from 'react-native-elements'
 
-
+/**
+ * Component permet de gérer l'affichage de la vue d'historique.
+ */
 
 class HistoryScreen extends Component {
 
@@ -25,6 +27,7 @@ class HistoryScreen extends Component {
 
   /**
 * Fonction qui permet au clic de l'utilisateur sur disconnect, de se deconnecter
+$@param 
 */
 
   disconnect() {

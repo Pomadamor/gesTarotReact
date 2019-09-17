@@ -8,12 +8,18 @@ import BeforeGame from "./BeforeGame";
 import { BackHandler } from 'react-native'
 import { CalculScore } from "../../service/CalculScore";
 
+/**
+ * Component général permet d'afficher dans le tableau des scores
+ */
+
 class GameScreen extends Component {
 
-  /**
-   * fonction qui permet avec les deux suivante de géré le retour clavier
-   * ainsi que de les resultat récupéré dans le service calculScore
-   */
+
+    /**
+    * fonction qui permet avec les deux suivante de géré le retour clavier
+    * ainsi que de les resultat récupéré dans le service calculScore
+    */
+
   componentDidMount() {
     console.log("point general", this.props)
 
@@ -44,6 +50,27 @@ class GameScreen extends Component {
       this.props.dispatch(actionScoreJ5)
     }
   }
+
+    /**
+     * Fonction btnSupprimer permet de supprimer la partie en cour et revenir a la vue de départ.
+ 
+     */
+
+    /**
+    * Fonction btnSupprimer permet de supprimer la partie en cour et revenir a la vue de départ.
+    * @param {string} buttonTurn 
+    * @param {array} turn 
+    * @param {Int} score 
+    * @param {string} preneur
+    * @param {string} partenaire
+    * @param {string} roi
+    * @param {Int} scoreJ1 
+    * @param {Int} scoreJ2 
+    * @param {Int} scoreJ3 
+    * @param {Int} scoreJ4
+    * @param {Int} scoreJ5
+    * @param {Int} nbJoueur
+    */
 
   btnSupprimer(){
       const actionBtnTurn = { type: "MUTATION_BUTTONTURN", value: "Démarer" }
@@ -76,6 +103,21 @@ class GameScreen extends Component {
       this.props.navigation.navigate("Home")
   }
 
+    /**
+     * Fonction btnSauvegarder permet de sauvegarder la partie en cour et ainsi l'ajouter a l'historique
+    * @param {string} buttonTurn 
+    * @param {array} turn 
+    * @param {Int} score 
+    * @param {string} preneur
+    * @param {string} partenaire
+    * @param {string} roi
+    * @param {Int} scoreJ1 
+    * @param {Int} scoreJ2 
+    * @param {Int} scoreJ3 
+    * @param {Int} scoreJ4
+    * @param {Int} scoreJ5
+    * @param {Int} nbJoueur
+    */
   btnSauvegarder(){}
 
 
@@ -91,9 +133,20 @@ class GameScreen extends Component {
   }
 
   /**
-   * bouton permettant de naviguer entre les differentes grilles selon l'état d'avancement de la partie
-   *  et de modifier les valeurs en fonction des champs rempli
-   */
+   * bouton permettant de naviguer entre les differentes grilles selon l'état d'avancement de la partie et de modifier les valeurs en fonction des champs rempli
+    * @param {string} buttonTurn 
+    * @param {array} turn 
+    * @param {Int} score 
+    * @param {string} preneur
+    * @param {string} partenaire
+    * @param {string} roi
+    * @param {Int} scoreJ1 
+    * @param {Int} scoreJ2 
+    * @param {Int} scoreJ3 
+    * @param {Int} scoreJ4
+    * @param {Int} scoreJ5
+    * @param {Int} nbJoueur
+    */
   buttonTurn() {
     if (this.props.score != 0) {
       const actionId = { type: "MUTATION_ID", value: this.props.id + 1 }
@@ -152,13 +205,38 @@ class GameScreen extends Component {
   }
 
 
+
+
   /**
    * ce rendu affiche le contenant de la grill, ainsi que le bouton de navigation
-   */
+    * @param {string} buttonTurn 
+    * @param {array} turn 
+    * @param {Int} score 
+    * @param {string} preneur
+    * @param {string} partenaire
+    * @param {string} roi
+    * @param {Int} scoreJ1 
+    * @param {Int} scoreJ2 
+    * @param {Int} scoreJ3 
+    * @param {Int} scoreJ4
+    * @param {Int} scoreJ5
+    * @param {Int} nbJoueur
+    * @param {string} pseudo
+    * @param {string} pseudo2
+    * @param {string} pseudo3
+    * @param {string} pseudo4
+    * @param {string} pseudo5
+    * @param {Int} id
+    * @param {string} type
+    * @param {Int} score
+    * @param {Int} bou
+    * @param {Int} preneurScore
+    * @param {Int} partenaireScore
+    * @param {Int} autreScore
+    * @param {string} choosePlayer
+    */
 
   render() {
-    // turnBefore = this.props.turns
-    // console.log("plop", this.props.turns)
 
     turnBefore = this.props
     console.log("ploploplop 1", this.props.turns)

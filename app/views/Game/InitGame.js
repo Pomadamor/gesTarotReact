@@ -3,11 +3,28 @@ import { View, Text, Button } from "native-base";
 import { connect } from 'react-redux'
 import { Image } from 'react-native';
 
+
+/**
+ * Component permet d'afficher la premiere ligne du tableau game
+ */
+
 class InitGame extends Component {
 
-  /**
- * ce rendu affiche la premier ligne du tableau game
- */
+   /**
+   * ce rendu afficher la ligne de details des joueur
+    * @param {string} avatar 
+    * @param {string} avatar2 
+    * @param {string} avatar3 
+    * @param {string} avatar4
+    * @param {string} avatar5
+    * @param {Int} nbJoueur
+    * @param {string} pseudo
+    * @param {string} pseudo2
+    * @param {string} pseudo3
+    * @param {string} pseudo4
+    * @param {string} pseudo5
+    */
+
   render() {
 
     if (this.props.joueurs.length == 0) {

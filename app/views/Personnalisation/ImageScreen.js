@@ -5,6 +5,10 @@ import { connect } from 'react-redux';
 import { BackHandler } from 'react-native'
 import AsyncStorage from "@react-native-community/async-storage";
 
+/**
+ * Component permet de gérer l'affichage de la vue permettant de modifier l'image de l'utilisateur.
+ */
+
 class ImageScreen extends Component {
 
   /**

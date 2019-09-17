@@ -4,7 +4,9 @@ import { Button, Content, Form, Item, Input, Label } from 'native-base';
 import { connect } from 'react-redux'
 import { checkMail, Verifier_Numero_Telephone } from "../../../service/VerifInput"
 
-
+/**
+ * Component permet de gérer l'affichage de la vue d'ajout d'un nouvel ami.
+ */
 class AddFriendScreen extends Component {
 
     constructor(props) {
@@ -20,6 +22,10 @@ class AddFriendScreen extends Component {
 
  /**
 * Cette fonction est l'action du bouton login qui permet de se connecter a l'api login, dispatcher le user avec le token puis retourner vers loader
+  * @param {string} pseudo
+  * @param {string} email
+  * @param {string} phone
+  * @param {string} token
 */
 
   async add() {
@@ -108,15 +114,20 @@ class AddFriendScreen extends Component {
     }
   }
 
-  /**
-* Ce rendu affiche la vue login
-* Les parties commenter sont en cour d'amélioration
-*/
   componentWillMount(){
     if(this.props.phone != ""){
       this.state.phone = this.props.phone
     }
   }
+
+     /**
+    * rendu qui permet de présenter un formulaire d'ajout d'ami
+    * @param {string} email
+    * @param {string} phone
+    * @param {string} pseudo
+    * @param {string} token
+    */
+
 
   render() {
     const { error } = this.state;
@@ -164,7 +175,7 @@ class AddFriendScreen extends Component {
   }
 
   /**
-* Les trois fonctions suivante permette de gérer le retour du clavier
+* Les trois fonctions suivante permette de gérer le retour du clavier vers les amies
 */
 
   componentDidMount() {
@@ -176,7 +187,7 @@ class AddFriendScreen extends Component {
   }
 
   handleBackPress = () => {
-    this.props.navigation.navigate("Friends"); // works best when the goBack is async
+    this.props.navigation.navigate("Friends"); 
     return true;
   }
 }

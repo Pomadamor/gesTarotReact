@@ -2,15 +2,16 @@ import React, {Component} from "react";
 import { View, Text, Button } from "native-base";
 import { Alert } from 'react-native';
 
+/**
+ * Component permet de gérer l'affichage de la grille des amis.
+ */
+
 class FriendsSave extends Component {
   render(){
-    //   ("props of before:", this.props);
-    //   const friendsSave = this.props.friendsSave[0];
     
     console.log("FRIENDS", friendsSave)
     console.log("FRIENDS 1", friendsSave["username"])
     console.log("FRIENDS 3", this.props.friendsSave.username)
-    // console.log("FRIENDS 1", this.props.friendsSave[0])
       return (
             <View style={{flexDirection: 'row'}}>
                 <Button bordered light 

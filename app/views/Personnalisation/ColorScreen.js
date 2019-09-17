@@ -5,11 +5,12 @@ import { connect } from 'react-redux';
 import { BackHandler } from 'react-native'
 import AsyncStorage from "@react-native-community/async-storage";
 
+/**
+ * Component permet de gérer l'affichage de la vue permettant du modifier la couleur de l'utilisateur.
+ */
+
 class ColorScreen extends Component {
 
-  /**
-* Les trois fonctions suivante permette de gérer le retour du clavier
-*/
 
   async btnChoose(couleur) {
       const token = this.props.token
@@ -68,6 +69,10 @@ class ColorScreen extends Component {
               }
           })
   }
+
+  /**
+  * Les trois fonctions suivante permette de gérer le retour du clavier vers l'image
+  */
 
   componentDidMount() {
     BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);

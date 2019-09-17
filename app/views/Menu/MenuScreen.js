@@ -6,6 +6,10 @@ import { BackHandler } from 'react-native'
 import AsyncStorage from "@react-native-community/async-storage";
 
 
+/**
+ * Component permet de gérer l'affichage de la vue du menu.
+ */
+
 
 class MenuScreen extends Component {
 
@@ -27,7 +31,12 @@ class MenuScreen extends Component {
   }
 
   /**
-* Fonction qui permet au clic de l'utilisateur sur disconnect, de se deconnecter
+* Fonction qui permet au clic de l'utilisateur sur disconnect, de se deconnecter et d'effacer les données stocker
+* @param {string} token 
+* @param {string} pseudo 
+* @param {string} color 
+* @param {string} image 
+* @param {string} avatar 
 */
 
   disconnect() {
@@ -124,15 +133,6 @@ class MenuScreen extends Component {
         </View>
 
         <View style={{ flex: 1, flexDirection: 'row' }}>
-
-          {/* <Button bordered light 
-          onPress={() => this.props.navigation.navigate("Note")}
-          style={{flex:1, resizeMode:'center', height:"90%", marginTop: 10, marginLeft:10, margin:10, backgroundColor:'rgba(52, 52, 52, 0.6)'}} >
-          <View style={{width:"100%", alignItems:"center"}}>
-              <Icon active name="star" />
-              <Text>noter</Text>
-            </View>
-          </Button> */}
           <Button bordered light
             onPress={() => this.disconnect()}
             style={{ flex: 1, alignContent: 'center', height: "90%", marginTop: 10, marginLeft: 10, margin: 10, backgroundColor: 'rgba(52, 52, 52, 0.6)' }} >

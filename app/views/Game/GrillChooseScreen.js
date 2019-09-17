@@ -4,7 +4,12 @@ import { Button } from 'native-base';
 import { connect } from 'react-redux'
 import { BackHandler } from 'react-native'
 
+/**
+ * Component général permet d'afficher la grille de choix du type de prise, avec qui, etc.
+ */
+
 class GrillChooseScreen extends Component {
+
 
     componentDidMount() {
         BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
@@ -14,11 +19,17 @@ class GrillChooseScreen extends Component {
         BackHandler.removeEventListener('hardwareBackPress', this.handleBackPress);
       }
     
+    /**
+     * Fonction handleBackPress permet d'empecher le retour arrière depuis le clavier
+     */
       handleBackPress = () => {
         alert('Veuillez renseigner tout les champs pour pouvoir continuer.')
         return true;
       }
 
+    /**
+     * Fonction buttonValiderGrill permet de valider les choix fait
+     */
     buttonValiderGrill(){
         if(this.props.nbJoueur>4 && this.props.roi == "" ){
             alert('Veuillez faire un choix pour chacune des catégories');
@@ -34,6 +45,13 @@ class GrillChooseScreen extends Component {
             this.props.navigation.navigate("Game")
         }
     }
+
+    /**
+     * Fonction buttonPreneur permet de definir le preneur.
+     *
+     * @param {int} nb
+     * 
+     */
 
     buttonPartenaire0(){
         if(this.props.preneur != "Joueur 1"){
@@ -66,24 +84,45 @@ class GrillChooseScreen extends Component {
         }
     }
 
+    /**
+     * Fonction buttonKingCoeur permet de définir le roi appelé par coeur.
+     * @param {string} Coeur
+     */
+
+
     buttonKingCoeur(){
         if(this.props.roi != "Coeur"){
             const actionCoeur = { type: "MUTATION_ROI", value: "Coeur"}
             this.props.dispatch(actionCoeur)
         }
     }
+
+    /**
+     * Fonction buttonKingTrefle permet de définir le roi appelé par trefle.
+     * @param {string} Trefle
+     */
     buttonKingTrefle(){
         if(this.props.roi != "Trefle"){
             const actionTrefle = { type: "MUTATION_ROI", value: "Trefle"}
             this.props.dispatch(actionTrefle)
         }
     }
+
+    /**
+     * Fonction buttonKingPique permet de définir le roi appelé par pique.
+     * @param {string} Pique
+     */
     buttonKingPique(){
         if(this.props.roi != "Pique"){
             const actionPique = { type: "MUTATION_ROI", value: "Pique"}
             this.props.dispatch(actionPique)
         }
     }
+
+    /**
+     * Fonction buttonKingCarreau permet de définir le roi appelé par carreau.
+     * @param {string} Carreau
+     */
     buttonKingCarreau(){
         if(this.props.roi != "Carreau"){
             const actionCarreau = { type: "MUTATION_ROI", value: "Carreau"}
@@ -91,30 +130,64 @@ class GrillChooseScreen extends Component {
         }
     }
 
+    /**
+     * Fonction buttonTypeP permet de définir le type de prise par petite.
+     * @param {string} petite
+     */
     buttonTypeP(){
         if(this.props.type != "Petite"){
             const actionPetite = { type: "MUTATION_TYPE", value: "Petite"}
             this.props.dispatch(actionPetite)
         }
     }
+
+    /**
+     * Fonction buttonTypeG permet de définir le type de prise par Garde.
+     * @param {string} garde
+     */
+
     buttonTypeG(){
         if(this.props.type != "Garde"){
             const actionGarde = { type: "MUTATION_TYPE", value: "Garde"}
             this.props.dispatch(actionGarde)
         }
     }
+
+    /**
+     * Fonction buttonTypeGS permet de définir le type de prise par garde sans.
+     * @param {string} gardeSans
+     */
     buttonTypeGS(){
         if(this.props.type != "G-Sans"){
             const actionGS = { type: "MUTATION_TYPE", value: "G-Sans"}
             this.props.dispatch(actionGS)
         }
     }
+
+    /**
+     * Fonction buttonTypeGC permet de définir le type de prise par garde contre.
+     * @param {string} gardeContre
+     */
     buttonTypeGC(){
         if(this.props.type != "G-Contre"){
             const actionGC = { type: "MUTATION_TYPE", value: "G-Contre"}
             this.props.dispatch(actionGC)
         }
     }
+
+
+    /**
+    * Ce rendu affiche la grill du choix d'initialisation du tour
+    * @param {string} preneur 
+    * @param {Int} nbJoueur 
+    * @param {string} roi
+    * @param {string} type
+    * @param {string} pseudo 
+    * @param {string} pseudo2 
+    * @param {string} pseudo3 
+    * @param {string} pseudo4
+    * @param {string} pseudo5
+    */
 
     render(){
         if(this.props.nbJoueur>3){

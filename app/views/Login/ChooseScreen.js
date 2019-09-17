@@ -3,7 +3,16 @@ import { ImageBackground, View, Text, Alert } from 'react-native';
 import { connect } from "react-redux"
 import { Button } from "native-base";
 
+
+/**
+ * Component permet d'afficher la vue du choix du type d'authentification, il s'agit de la premiere vue à la premiere connexion.
+ */
+
 class ChooseScreen extends Component {
+
+  /**
+ * Component permet d'afficher une animation de départ pour donner une descrition de l'application.
+ */
 
   componentDidMount(){
     Alert.alert(
@@ -29,10 +38,6 @@ class ChooseScreen extends Component {
     this.props.dispatch(action)
     this.props.navigation.navigate("FriendsPlayers")
   }
-
-  /**
-   * Ce render met en place la vue initial en l'absence de connection avec authentification, inscription, etc
-  */
 
   render() {
     return (

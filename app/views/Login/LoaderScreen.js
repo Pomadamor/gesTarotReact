@@ -2,11 +2,11 @@ import React, { Component } from "react";
 import { ActivityIndicator, View } from "react-native";
 import AsyncStorage from "@react-native-community/async-storage";
 
-export default class LoaderScreen extends Component {
 
-    /**
- * Cette fonction permet de gérer ce qui se passe a l'arriver sur ce fichier puis rediriger vers le bon endroit
+/**
+ * Component permet de gérer ce qui se passe a l'arriver sur ce fichier puis rediriger vers le bon endroit
  */
+export default class LoaderScreen extends Component {
 
     componentDidMount() {
         AsyncStorage.getItem("token").then(token => {

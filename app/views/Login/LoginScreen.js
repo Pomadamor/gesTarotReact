@@ -6,6 +6,10 @@ import AsyncStorage from "@react-native-community/async-storage";
 import { checkMail, Verifier_Numero_Telephone } from "../../service/VerifInput"
 
 
+/**
+ * Component permet de gérer l'affichage de la vue d'authentification quand on possède déjà un compte.
+ */
+
 class LoginScreen extends Component {
 
   constructor(props) {
@@ -21,6 +25,9 @@ class LoginScreen extends Component {
 
  /**
 * Cette fonction est l'action du bouton login qui permet de se connecter a l'api login, dispatcher le user avec le token puis retourner vers loader
+* @param {string} email
+* @param {string} phone
+* @param {string} token
 */
 
   async login() {
@@ -150,15 +157,18 @@ class LoginScreen extends Component {
     }
   }
 
-  /**
-* Ce rendu affiche la vue login
-* Les parties commenter sont en cour d'amélioration
-*/
   componentWillMount(){
     if(this.props.phone != ""){
       this.state.phone = this.props.phone
     }
   }
+
+   /**
+    * rendu qui permet de présenter un formulaire d'authentification
+  * @param {string} email
+  * @param {string} phone
+  * @param {string} token
+  */
 
   render() {
     const { error } = this.state;
@@ -196,12 +206,6 @@ class LoginScreen extends Component {
           }}>VALIDER</Label>
         </Button>
       </Form>
-      {/* <Label style={{
-                fontSize: 20,
-                textAlign: "center",
-                marginTop:20, 
-                color: 'black'
-                }}>Mot de passe oublié ?</Label> */}
     </Content>
   }
 
@@ -218,7 +222,7 @@ class LoginScreen extends Component {
   }
 
   handleBackPress = () => {
-    this.props.navigation.navigate("Choose"); // works best when the goBack is async
+    this.props.navigation.navigate("Choose"); 
     return true;
   }
 }

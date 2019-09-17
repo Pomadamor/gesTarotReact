@@ -4,6 +4,10 @@ import { BackHandler } from 'react-native'
 import { checkMail, Verifier_Numero_Telephone } from "../../service/VerifInput"
 import { connect } from 'react-redux'
 
+
+/**
+ * Component permet de gérer l'affichage de la vue d'inscription.
+ */
 class RegisterScreen extends Component {
 
   constructor(props) {
@@ -19,6 +23,10 @@ class RegisterScreen extends Component {
 
   /**
  * Cette fonction asynchrone permet d'enregistrer un nouvelle utilisateur puis envoi vers login
+  * @param {string} pseudo
+  * @param {string} email
+  * @param {string} phone
+  * @param {string} token
  */
 
 
@@ -95,7 +103,11 @@ class RegisterScreen extends Component {
 
   /**
  * Affiche le visuelle de l'enregistrement
- */
+  * @param {string} pseudo
+  * @param {string} email
+  * @param {string} phone
+  * @param {string} token
+  */
 
   render() {
     const { error } = this.state;

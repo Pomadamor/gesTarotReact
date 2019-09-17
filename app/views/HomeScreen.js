@@ -6,6 +6,11 @@ import { BackHandler } from 'react-native'
 import UserScreen from './Menu/UserScreen';
 import AsyncStorage from "@react-native-community/async-storage";
 
+
+/**
+ * Component permet de gérer l'affichage de la vue pricipale de l'application permettant la création de parti, l'acces au menu ou au détail utilisateur.
+ */
+
 class HomeScreen extends Component {
 
   /**

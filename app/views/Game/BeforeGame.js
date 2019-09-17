@@ -2,27 +2,30 @@ import React, {Component} from "react";
 import { View, Text, Button } from "native-base";
 import { Image } from 'react-native';
 
+/**
+ * Component permet d'afficher dans le tableau des scores les tours précédents
+ */
+
+
 class BeforeGame extends Component {
 
-
     /**
-     * Create a point.
-     * @param {number} x - The x value.
-     * @param {number} y - The y value.
-     */
+    * Ce rendu affiche la grill des tours précedant avec leurs détails
+    * @param {string} preneur 
+    * @param {string} partenaire 
+    * @param {Int} nbJoueur 
+    * @param {string} roi
+    * @param {string} type
+    * @param {Int} scoreJ1 
+    * @param {Int} scoreJ2 
+    * @param {Int} scoreJ3 
+    * @param {Int} scoreJ4
+    * @param {Int} scoreJ5
+    */
+
   render(){
-      //const turnBefore =  this.props.turns
       console.log("TURNBERFORE",this.props.turnBefore[0])
       const turnBefore = this.props.turnBefore[0];
-    // //   ("turnBefore: ", turnBefore.preneur);
-    // console.log("TURNBERFORE NBJOUEUR",turnBefore.nbJoueur)
-    // console.log("TURNBERFORE PRENEUR",turnBefore.preneur)
-    // console.log("TURNBERFORE PARTENAIRE",turnBefore.partenaire)
-    // console.log("TURNBERFORE SCOREJ1",toString(turnBefore.scoreJ1))
-    // console.log("TURNBERFORE SCOREJ2",turnBefore.scoreJ2.toString())
-    // console.log("TURNBERFORE SCOREJ3",turnBefore.scoreJ3)
-    // console.log("TURNBERFORE TYPE",turnBefore.type)
-    // console.log("TURNBERFORE ROI",turnBefore.roi)
 
 
 

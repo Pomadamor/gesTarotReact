@@ -1,6 +1,5 @@
 /**
-   * Fonction qui permet de calculer 
-   * les scores des differents types de joueurs en fonction du score défini dans la grillScore
+   * Fonction qui permet de calculer les scores des differents types de joueurs en fonction du score défini dans la grillScore
    */
 export function CalculScore(datas){
 

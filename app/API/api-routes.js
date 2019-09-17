@@ -1,11 +1,10 @@
-import AsyncStorage from "@react-native-community/async-storage";
 
 const BASE_URL = "https://gestarot-api.lerna.eu/api";
 
 
 /**
    * Fonction qui permet de définir les détail d'envoi a l'api
-   */
+*/
 export default {
     register: {
         method: "POST",

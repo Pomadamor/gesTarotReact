@@ -6,6 +6,11 @@ import ImagePicker from 'react-native-image-picker'
 import { connect } from 'react-redux'
 import { BackHandler } from 'react-native'
 
+/**
+ * Component général permet d'afficher la vue du choix des joueurs avant de démarrer une partie ( ou de modifier les joueurs pendant la partie ).
+ */
+
+
 class FriendsPlayersScreen extends Component {
 
     constructor(props) {
@@ -33,12 +38,17 @@ class FriendsPlayersScreen extends Component {
         BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
     }
 
-        /**
+    /**
      * fonction définissant l'appui sur le bouton retour (avec le BackHandler compris dans le componentDidMount et la fonction suivante)
      */
     componentWillUnmount() {
         BackHandler.removeEventListener('hardwareBackPress', this.handleBackPress);
     }
+
+    /**
+     * Fonction handleBackPress : si retour en arriere supressions du nombre de joueur et retour à la vue principale
+    */
+
 
     handleBackPress = () => {
         if (this.props.verif == true) {
@@ -54,9 +64,15 @@ class FriendsPlayersScreen extends Component {
         }
     }
 
-    /**
-     * fonction changePseudo permet la modification du pseudo a la saisi de l'input concerné
+
+     /**
+     * Fonction changePseudo permet la modification du pseudo a la saisi de l'input concerné
+     *
+     * @param {string} pseudo
+     * @param {string} id
+     * @public
      */
+
     changePseudo(pseudo, id) {
         console.log("name pseudo", pseudo)
         console.log("name pseudo", this.props.pseudo2.username)
@@ -107,8 +123,26 @@ class FriendsPlayersScreen extends Component {
     }
 
     /**
-     * Ce rendu affiche la grill des joueur, permettant le choix de leur pseudo ainsi que l'aperçu de leur image
-     */
+     * Ce rendu affiche la grill des joueurs, permettant le choix de leur pseudo ainsi que l'aperçu de leurs images
+    * @param {string} pseudo 
+    * @param {string} color 
+    * @param {string} avatar 
+    * @param {string} pseudo2
+    * @param {string} color2
+    * @param {string} avatar2 
+    * @param {string} pseudo3
+    * @param {string} color3
+    * @param {string} avatar3
+    * @param {string} pseudo4
+    * @param {string} color4
+    * @param {string} avatar4
+    * @param {string} pseudo5
+    * @param {string} color5
+    * @param {string} avatar5
+    * @param {string} nbJoueur
+    * @param {string} friends
+    */
+
     render() {
 
        

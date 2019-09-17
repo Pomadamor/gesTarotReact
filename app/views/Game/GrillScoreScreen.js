@@ -4,6 +4,11 @@ import { Button, Label, Content, Item, Form, Input } from 'native-base';
 import { connect } from 'react-redux'
 import { BackHandler } from 'react-native'
 
+
+/**
+ * Component général permet d'afficher la grille de choix du type du partenaire (ou pas), nombre de bout et score.
+ */
+
 class GrillScoreScreen extends Component {
 
     constructor(props) {
@@ -29,6 +34,13 @@ class GrillScoreScreen extends Component {
       }
 
 
+    /**
+     * Fonction btnValid permet de valider les choix de la grill ainsi que de verifier que les scores soit réellement possible.
+    * @param {Int} score
+    * @param {Int} bou
+    * @param {Int} partenaireScore
+     */
+
     btnValid() {
         if(this.state.score >90 || this.state.score < 1){
             alert("Attention, votre score ne peut être correct.")
@@ -44,6 +56,20 @@ class GrillScoreScreen extends Component {
             this.props.navigation.navigate("Game")
         }
     }
+
+    /**
+    * ce rendu affiche la grill de choix de finalisation d'un tour de jeux
+    * @param {Int} score 
+    * @param {string} partenaire
+    * @param {Int} nbJoueur
+    * @param {string} pseudo
+    * @param {string} pseudo2
+    * @param {string} pseudo3
+    * @param {string} pseudo4
+    * @param {string} pseudo5
+    * @param {Int} score
+    * @param {Int} bou
+    */
 
     render() {
         titleWithWho = <Text style={{

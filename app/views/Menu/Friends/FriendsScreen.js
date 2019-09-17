@@ -5,6 +5,10 @@ import { connect } from 'react-redux';
 import { BackHandler } from 'react-native'
 import FriendsSave from './FriendsSaveScreen'
 
+/**
+ * Component permet de gérer l'affichage de la vue des amis (ou pas).
+ */
+
 class FriendsScreen extends Component {
 
   constructor(props) {
@@ -26,12 +30,7 @@ class FriendsScreen extends Component {
     this.props.navigation.navigate("Menu"); // works best when the goBack is async
     return true;
   }
-
   
-  /**
-* ce rendu permet de gérer l'affichage du menu
-* Les zones commentés correspondent à des améliorations en cour
-*/
 
   render() {
       friendsSave = this.state.friends[0]
