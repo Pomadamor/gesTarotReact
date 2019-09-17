@@ -12,11 +12,12 @@ class ImageScreen extends Component {
 */
 
   btnChoose(logo) {
+    console.log("logo",logo)
     const action = { type: "MUTATION_IMAGE", value: logo }
     const actionAvatar = { type: "MUTATION_AVATAR", value: logo }
 
-    AsyncStorage.setItem("image", logo)
-    AsyncStorage.setItem("avatar", logo)
+    AsyncStorage.setItem("image", logo.toString())
+    AsyncStorage.setItem("avatar", logo.toString())
 
     this.props.dispatch(action)
     this.props.dispatch(actionAvatar)

@@ -32,8 +32,8 @@ AsyncStorage.getItem("pseudo").then(pseudo => {
 
 AsyncStorage.getItem("image").then(image => {
     if (image) {
-        initialState.image = image
-        console.log(image, "image la")
+        initialState.image = parseInt(image)
+        console.log(parseInt(image), "image la")
     } else {
         console.log("Pas de image enregistrer", image)
     }
@@ -41,7 +41,7 @@ AsyncStorage.getItem("image").then(image => {
 
 AsyncStorage.getItem("avatar").then(avatar => {
     if (avatar) {
-        initialState.avatar = avatar
+        initialState.avatar = parseInt(avatar)
         console.log(avatar, "avatar la")
     } else {
         console.log("Pas de avatar enregistrer", avatar)

@@ -57,6 +57,8 @@ class HomeScreen extends Component {
                   this.props.dispatch(avatar)
                 }
                   console.log("detail response user", user)
+                  AsyncStorage.setItem("avatar", parseInt(user.image))
+                  AsyncStorage.setItem("pseudo", user.username)
 
                   const id = { type: "MUTATION_ID", value: user.id }
                   const pseudo = { type: "MUTATION_PSEUDO", value: user.username }

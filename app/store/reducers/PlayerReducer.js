@@ -1,20 +1,20 @@
 const initialState = {
-    pseudo1 : "Joueur 1",
+    pseudo1 : "J-1",
     avatar1: require("../../assets/img/icon_user/happy.png"),
 
-    pseudo2 : {username : "Joueur 2"},
+    pseudo2 : {username : "J-2"},
     avatar2: require("../../assets/img/icon_user/cat.png"),
     color2:"lightgreen",
 
-    pseudo3 : {username : "Joueur 3"},
+    pseudo3 : {username : "J-3"},
     avatar3: require("../../assets/img/icon_user/dog.png"),
     color3:"lightsteelblue",
 
-    pseudo4 : {username : "Joueur 4"},
+    pseudo4 : {username : "J-4"},
     avatar4: require("../../assets/img/icon_user/sheep.png"),
     color4:"moccasin",
 
-    pseudo5 : {username : "Joueur 5"},
+    pseudo5 : {username : "J-5"},
     avatar5: require("../../assets/img/icon_user/pig.png"),
     color5:"mistyrose",
 

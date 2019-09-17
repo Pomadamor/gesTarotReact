@@ -163,16 +163,21 @@ class FriendsPlayersScreen extends Component {
                                     items={player}
                                 />
                                 :
-                                <TextInput
-                                    style = {this.state.choix4 == false ? 
-                                    {
-                                        height: 36, fontWeight: 'bold', width: 80, borderColor: 'white', color: 'white', textTransform: 'lowercase'
-                                    }:
-                                    {display:'none'}}
-                                    maxLength={6}
-                                    onChangeText={(pseudo) => this.changePseudo(pseudo, id=4)}
-                                    value={this.props.pseudo4.username}
-                                />
+                                <View style={{flexDirection: 'row',}}>
+                                <Image
+                                    source={require("../../assets/img/edit.png")} style={{ height: 15, width:15, marginTop: 5, tintColor: "#FFFFFF" }} />  
+                                
+                                    <TextInput
+                                        style = {this.state.choix4 == false ? 
+                                        {
+                                            height: 36, textDecorationLine: 'underline', textDecorationLine: 'underline', fontWeight: 'bold', width: 80, borderColor: 'white', color: 'white', textTransform: 'lowercase'
+                                        }:
+                                        {display:'none'}}
+                                        maxLength={6}
+                                        onChangeText={(pseudo) => this.changePseudo(pseudo, id=4)}
+                                        value={this.props.pseudo4.username}
+                                    />
+                                </View>
                                 }   
                             </View>
                         </View>
@@ -180,7 +185,7 @@ class FriendsPlayersScreen extends Component {
                         style={{ marginTop: 12, position: "absolute", right:10}}
                         onPress={() => Alert.alert(
                             'Attention',
-                            "Personnalisé le joueur.",
+                            "Personnaliser le joueur.",
                             [
                                 {
                                 text: 'Choisir un pseudo',
@@ -245,17 +250,24 @@ class FriendsPlayersScreen extends Component {
                             items={player}
                         />
                         :
+                        <View style={{flexDirection: 'row',}}>
+                                <Image
+                                    source={require("../../assets/img/edit.png")} style={{ height: 15, width:15, marginTop: 5, tintColor: "#FFFFFF" }} />  
+                                
                         <TextInput
                             style = {{
-                                height: 36, 
+                                height: 36,
+                                textDecorationLine: 'underline', 
                                 fontWeight: 'bold',
                                 width: 80, 
                                 borderColor: 'white', 
                                 color: 'white'
                             }}
+                            maxLength={6}
                             onChangeText={(pseudo) => this.changePseudo(pseudo, id=5)}
                             value={this.props.pseudo5.username}
                         />
+                        </View>
                         }   
                     </View>
                     </View>
@@ -263,7 +275,7 @@ class FriendsPlayersScreen extends Component {
                     style={{ marginTop: 12, position: "absolute", right:10}}
                     onPress={() => Alert.alert(
                         'Attention',
-                        "Personnalisé le joueur.",
+                        "Personnaliser le joueur.",
                         [
                             {
                             text: 'Choisir un pseudo',
@@ -365,17 +377,23 @@ class FriendsPlayersScreen extends Component {
                                         onValueChange={(pseudo) => this.changePseudo(pseudo, id=2)}
                                         items={player}
                                     />
-                                    :<TextInput
+                                    :<View style={{flexDirection: 'row',}}>
+                                    <Image
+                                        source={require("../../assets/img/edit.png")} style={{ height: 15, width:15, marginTop: 5, tintColor: "#FFFFFF" }} />  
+                                    <TextInput
                                         style = {{
                                             height: 36, 
+                                            textDecorationLine: 'underline',
                                             fontWeight: 'bold', 
                                             width: 80, 
                                             borderColor: 'white', 
                                             color: 'white'
                                         }}
+                                        maxLength={6}
                                         onChangeText={(pseudo) => this.changePseudo(pseudo, id=2)}
                                         value={this.props.pseudo2.username}
                                     />
+                                    </View>
                                     }   
                                 </View>
                             </View>
@@ -383,7 +401,7 @@ class FriendsPlayersScreen extends Component {
                             style={{ marginTop: 12, position: "absolute", right:10}}
                             onPress={() => Alert.alert(
                                 'Attention',
-                                "Personnalisé le joueur.",
+                                "Personnaliser le joueur.",
                                 [
                                     {
                                     text: 'Choisir un pseudo',
@@ -444,15 +462,19 @@ class FriendsPlayersScreen extends Component {
                                     items={player}
                                 />
                                 :
+                                <View style={{flexDirection: 'row',}}>
+                                <Image
+                                    source={require("../../assets/img/edit.png")} style={{ height: 15, width:15, marginTop: 5, tintColor: "#FFFFFF" }} />  
                                 <TextInput
                                     style = {this.state.choix3 == false ? 
                                     {
-                                        height: 36, fontWeight: 'bold', width: 80, borderColor: 'white', color: 'white'
+                                        height: 36, textDecorationLine: 'underline', fontWeight: 'bold', width: 80, borderColor: 'white', color: 'white'
                                     }:
                                     {display:'none'}}
+                                    maxLength={6}
                                     onChangeText={(pseudo) => this.changePseudo(pseudo, id=3)}
                                     value={this.props.pseudo3.username}
-                                />
+                                /></View>
                                 }   
                             </View>
                         </View>
@@ -460,7 +482,7 @@ class FriendsPlayersScreen extends Component {
                         style={{ marginTop: 12, position: "absolute", right:10}}
                         onPress={() => Alert.alert(
                             'Attention',
-                            "Personnalisé le joueur.",
+                            "Personnaliser le joueur.",
                             [
                                 {
                                 text: 'Choisir un pseudo',
