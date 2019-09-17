@@ -60,7 +60,7 @@ class GrillScoreScreen extends Component {
                 onPress={() => this.setState({ partenaire: "Joueur 1" })}
             >
                 <View style={{ width: "100%", alignItems: "center" }}>
-                    <Text style={{ color: "white", overflow : 'scroll' }}>{this.props.pseudo1}</Text>
+                    <Text style={{ color: "white", overflow : 'scroll' }}>{this.props.pseudo}</Text>
                 </View>
             </Button>
 
@@ -200,7 +200,7 @@ class GrillScoreScreen extends Component {
 const mapStateToProps = state => {
     return {
         type: state.toogleScore.type,
-        pseudo1: state.tooglePlayer.pseudo1,
+        pseudo: state.toogleUser.pseudo,
         pseudo2: state.tooglePlayer.pseudo2,
         pseudo3: state.tooglePlayer.pseudo3,
         pseudo4: state.tooglePlayer.pseudo4,

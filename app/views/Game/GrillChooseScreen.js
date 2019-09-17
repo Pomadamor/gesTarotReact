@@ -191,7 +191,7 @@ class GrillChooseScreen extends Component {
                         onPress={() => this.buttonPartenaire0()}
                     >
                         <View style={{width:"100%", alignItems:"center"}}>
-                            <Text style={{color:"white"}}>{this.props.pseudo1}</Text>
+                            <Text style={{color:"white"}}>{this.props.pseudo}</Text>
                         </View>
                     </Button> 
 
@@ -302,7 +302,7 @@ const styles = {
 
 const mapStateToProps = state => {
     return {
-        pseudo1 : state.tooglePlayer.pseudo1,
+        pseudo : state.toogleUser.pseudo,
         pseudo2 : state.tooglePlayer.pseudo2,
         pseudo3 : state.tooglePlayer.pseudo3,
         pseudo4 : state.tooglePlayer.pseudo4,

@@ -58,7 +58,8 @@ class GameScreen extends Component {
       const actionScoreJ3 = { type: "MUTATION_SCORE_J3", value: ""}
       const actionScoreJ4 = { type: "MUTATION_SCORE_J4", value: ""}
       const actionScoreJ5 = { type: "MUTATION_SCORE_J5", value: ""}
-
+      const actionNb = { type: "MUTATION_NBJOUEURS", value: 0 }
+      this.props.dispatch(actionNb)
       this.props.dispatch(actionBtnTurn)
       this.props.dispatch(actionTurn)
       this.props.dispatch(actionScore)
@@ -126,8 +127,7 @@ class GameScreen extends Component {
       const actionPreneur = { type: "MUTATION_PRENEUR", value: "" }
       const actionPartenaire = { type: "MUTATION_PARTENAIRE", value: "" }
       const actionRoi = { type: "MUTATION_ROI", value: "" }
-      const actionNb = { type: "MUTATION_NBJOUEURS", value: 0 }
-      this.props.dispatch(actionNb)
+
       this.props.dispatch(actionScore)
       this.props.dispatch(actionType)
       this.props.dispatch(actionPreneur)
@@ -161,11 +161,13 @@ class GameScreen extends Component {
     // console.log("plop", this.props.turns)
 
     turnBefore = this.props
-    console.log("ploploplop", this.props.turns)
-    console.log("ploploplop", this.props.turns[0])
+    console.log("ploploplop 1", this.props.turns)
+    console.log("ploploplop 2", this.props.turns[0])
+    console.log("ploploplop 3", this.props.turns[1])
+
     if (this.props.turns[0] != undefined){
-      console.log("ploploplop", this.props.turns[0][0])
-      turnBefore = this.props.turns[0]
+      console.log("ploploplop 4", this.props.turns[0][0])
+      turnBefore = this.props.turns
     }
 
     return (

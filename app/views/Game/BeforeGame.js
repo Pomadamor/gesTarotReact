@@ -1,6 +1,6 @@
 import React, {Component} from "react";
-import { View, Text } from "native-base";
-import { Button } from 'native-base';
+import { View, Text, Button } from "native-base";
+import { Image } from 'react-native';
 
 class BeforeGame extends Component {
 
@@ -12,8 +12,8 @@ class BeforeGame extends Component {
      */
   render(){
       //const turnBefore =  this.props.turns
-      // console.log("TURNBERFORE",this.props.turnBefore[0])
-      const turnBefore = this.props.turnBefore;
+      console.log("TURNBERFORE",this.props.turnBefore[0])
+      const turnBefore = this.props.turnBefore[0];
     // //   ("turnBefore: ", turnBefore.preneur);
     // console.log("TURNBERFORE NBJOUEUR",turnBefore.nbJoueur)
     // console.log("TURNBERFORE PRENEUR",turnBefore.preneur)
@@ -76,9 +76,16 @@ class BeforeGame extends Component {
           <View style={{flexDirection: 'row'}}>
           <Button bordered light 
           style={{flex:1, height:60, backgroundColor:'rgba(52, 52, 52, 0.6)'}} >
-            <View style={{width:"100%"}}>
+          <View style={{ width: "100%", alignItems: "center" }}>
               <Text style={{flex:1,color:"white"}}>{ turnBefore.type}</Text>
-              <Text style={{flex:1,color:"white"}}>{ turnBefore.roi}</Text>
+              <Image style={{flex:1,color:"white", height:10, width:20}}
+              source={
+                this.props.roi == 'Coeur' ? require("../../assets/img/icon_carte/cards-heart.png") 
+              : this.props.roi == 'Trefle' ? require("../../assets/img/icon_carte/cards-club.png")
+              : this.props.roi == 'Carreau' ? require("../../assets/img/icon_carte/cards-diamond.png")
+              : this.props.roi == 'Pique' ? require("../../assets/img/icon_carte/cards-spade.png")
+              : null
+              } />
             </View>
           </Button>
           <Button bordered light 
