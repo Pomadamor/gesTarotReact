@@ -77,13 +77,13 @@ class BeforeGame extends Component {
           <Button bordered light 
           style={{flex:1, height:60, backgroundColor:'rgba(52, 52, 52, 0.6)'}} >
           <View style={{ width: "100%", alignItems: "center" }}>
-              <Text style={{flex:1,color:"white"}}>{ turnBefore.type}</Text>
-              <Image style={{flex:1,color:"white", height:10, width:20}}
+              <Text style={{flex:1, color:"white"}}>{ turnBefore.type}</Text>
+              <Image style={{flex:1, height:10, width:20}}
               source={
-                this.props.roi == 'Coeur' ? require("../../assets/img/icon_carte/cards-heart.png") 
-              : this.props.roi == 'Trefle' ? require("../../assets/img/icon_carte/cards-club.png")
-              : this.props.roi == 'Carreau' ? require("../../assets/img/icon_carte/cards-diamond.png")
-              : this.props.roi == 'Pique' ? require("../../assets/img/icon_carte/cards-spade.png")
+                turnBefore.roi == 'Coeur' ? require("../../assets/img/icon_carte/cards-heart.png") 
+              : turnBefore.roi == 'Trefle' ? require("../../assets/img/icon_carte/cards-club.png")
+              : turnBefore.roi == 'Carreau' ? require("../../assets/img/icon_carte/cards-diamond.png")
+              : turnBefore.roi == 'Pique' ? require("../../assets/img/icon_carte/cards-spade.png")
               : null
               } />
             </View>

@@ -63,8 +63,8 @@ class LiveGame extends Component {
           <Button bordered light 
           style={{flex:1, height:60, backgroundColor:'rgba(52, 52, 52, 0.6)'}} >
           <View style={{ width: "100%", alignItems: "center" }}>
-              <Text style={{flex:1,color:"white", fontSize:15}}>{ this.props.type}</Text>
-              <Image style={{flex:1,color:"white", height:10, width:20}}
+              <Text style={{flex:1, color:"white", fontSize:15}}>{ this.props.type}</Text>
+              <Image style={{flex:1, height:10, width:20}}
               source={
                 this.props.roi == 'Coeur' ? require("../../assets/img/icon_carte/cards-heart.png") 
               : this.props.roi == 'Trefle' ? require("../../assets/img/icon_carte/cards-club.png")
