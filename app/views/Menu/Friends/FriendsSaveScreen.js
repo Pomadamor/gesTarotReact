@@ -34,7 +34,25 @@ class FriendsSave extends Component {
                         },
                         {
                           text: 'Supprimer',
-                          onPress: () => console.log("Faire l'appel api pour la suppression d'amis")
+                          onPress: () => fetch('https://gestarot-api.lerna.eu/api/logged_user/friends/'+friendsSave.id, {
+                            method: 'DELETE',
+                            headers: {
+                                Accept: 'application/json',
+                                'Content-Type': 'application/json',
+                                'api-token': token
+                            },
+                            }).then((response) => response.json())
+                              .then((responseJson) => {
+                                  if(responseJson.status == 'error'){
+                                      console.log ("ERROR", responseJson.status)
+                                      alert('Vérifier votre connexion internet, avant de cliquer sur OK');
+                                  }
+                                  else{
+                                      console.log("Party supprimer", responseJson)
+                                      this.props.navigation.navigate("Home")
+                                      return responseJson;
+                                  }
+                              })
                         }
                       ],
                       { cancelable: true },

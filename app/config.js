@@ -14,7 +14,8 @@ import UserScreen from "./views/Menu/UserScreen";
 import MenuScreen from "./views/Menu/MenuScreen";
 import FriendsPlayersScreen from "./views/friends/FriendsPlayersScreen";
 import FriendsScreen from "./views/Menu/Friends/FriendsScreen"
-import HistoryScreen from "./views/Menu/HistoryScreen"
+import HistoryScreen from "./views/Menu/History/HistoryScreen"
+import HistoryGrillScreen from "./views/Menu/History/HistoryGrillScreen"
 import ImageScreen from "./views/Personnalisation/ImageScreen"
 import ColorScreen from "./views/Personnalisation/ColorScreen"
 import FriendsSaveScreen from "./views/Menu/Friends/FriendsSaveScreen"
@@ -34,6 +35,7 @@ const switchNavigator = createAnimatedSwitchNavigator({
     FriendsPlayers: FriendsPlayersScreen,
     Friends: FriendsScreen,
     History: HistoryScreen,
+    HistoryGrill: HistoryGrillScreen,
     Image: ImageScreen,
     Color: ColorScreen,
     FriendsSave: FriendsSaveScreen,
