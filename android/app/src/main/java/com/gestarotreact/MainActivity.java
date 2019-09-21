@@ -5,6 +5,8 @@ import com.facebook.react.ReactActivityDelegate;
 import com.facebook.react.ReactRootView;
 import org.devio.rn.splashscreen.SplashScreen;
 import com.swmansion.gesturehandler.react.RNGestureHandlerEnabledRootView;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import android.os.Bundle;
 
@@ -12,6 +14,9 @@ public class MainActivity extends ReactActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         SplashScreen.show(this);  // here
+        FirebaseApp.initializeApp(this);
+        FirebaseMessaging.getInstance().subscribeToTopic("lerna");
+
         super.onCreate(savedInstanceState);
     }
     /**

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, Text, FlatList, ScrollView, Alert } from "react-native";
+import { View, Text, FlatList, ScrollView, Alert, Share } from "react-native";
 import { connect } from 'react-redux'
 import { Button, Icon } from 'native-base';
 import InitGame from "./InitGame";
@@ -101,6 +101,33 @@ class GameScreen extends Component {
       this.props.dispatch(actionScoreJ5)
 
       this.props.navigation.navigate("Home")
+  }
+
+
+  /**
+   * btnPartager
+   */
+  async btnPartager() {
+    try {
+      const result = await Share.share({
+        message: "Score J1 : 1337",
+        title: "Partage des scores de Gestarot :"
+      }, {
+        dialogTitle : "Partage :"
+      });
+
+      if (result.action === Share.sharedAction) {
+        if (result.activityType) {
+          // shared with activity type of result.activityType
+        } else {
+          // shared
+        }
+      } else if (result.action === Share.dismissedAction) {
+        // dismissed
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
   }
 
     /**
@@ -258,7 +285,7 @@ class GameScreen extends Component {
 
           <FlatList
             data={turnBefore}
-            keyExtractor={(item) => item.id}
+            keyExtractor={(item) => (item.id).toString()}
             renderItem={({ item }) => <BeforeGame turnBefore={item} />}
           />
           
@@ -286,8 +313,8 @@ class GameScreen extends Component {
                 "Souhaites-tu sauvegarder la partie pour la continuer plutard ou pas ?",
                 [
                   {
-                    text: 'Annuler',
-                    onPress: () => console.log('Ask me later pressed')
+                    text: 'Partager',
+                    onPress: () => this.btnPartager()
                   },
                   {
                     text: 'Supprimer',

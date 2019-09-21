@@ -1,14 +1,33 @@
 /**
  * @format
  */
-
+import { CalculScore } from "../app/service/CalculScore"
 import 'react-native';
-import React from 'react';
-import App from '../app/App';
-
-// Note: test renderer must be required after react-native.
-import renderer from 'react-test-renderer';
 
 it('renders correctly', () => {
-  renderer.create(<App />);
+
+  const datasTest = {
+    type: "Petite",
+    bou: 2,
+    scoreJ1: 50,
+    scoreJ2: -25,
+    scoreJ3: -25,
+    scoreJ4: 0,
+    scoreJ5: 0,
+    score: 41,
+    preneur: "Joueur 1",
+    partenaire: ""
+  }
+
+  const result = ([{ type: 'MUTATION_SCORE_J1', value: 100 },
+  { type: 'MUTATION_SCORE_J2', value: -50 },
+  { type: 'MUTATION_SCORE_J3', value: -50 },
+  { type: 'MUTATION_SCORE_J4', value: -25 },
+  { type: 'MUTATION_SCORE_J5', value: -25 }]).toString()
+
+  expect(
+    CalculScore(
+      datasTest
+    ).toString()).toBe(result)
+
 });
