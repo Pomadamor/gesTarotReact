@@ -18,7 +18,7 @@ export default class LoaderScreen extends Component {
                 console.log(AsyncStorage.getItem("token"), "la")
                 console.log("la", token)
                 //no token so go to register screen
-                this.props.navigation.navigate("Choose");
+                this.props.navigation.navigate("Animation");
             }
         })
     }
