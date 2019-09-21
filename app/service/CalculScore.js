@@ -9,7 +9,7 @@ export function CalculScore(datas){
          "Petite": 25,
          "Garde" : 50,
          "G-Sans" : 100,
-         "G-Contre" : 200
+         "G-Co." : 200
     }
     valuePrise = TYPESPRISE[datas.type]
 
@@ -51,11 +51,11 @@ export function CalculScore(datas){
             AUTRES[datas.partenaire] = parseInt(datas.score) - valueBou + valuePrise
 
             result.push(
-                actionScoreJ1 = { type: "MUTATION_SCORE_J1", value: SCORE["Joueur 1"] + AUTRES["Joueur 1"]},
-                actionScoreJ2 = { type: "MUTATION_SCORE_J2", value: SCORE["Joueur 2"] + AUTRES["Joueur 2"]},
-                actionScoreJ3 = { type: "MUTATION_SCORE_J3", value: SCORE["Joueur 3"] + AUTRES["Joueur 3"]},
-                actionScoreJ4 = { type: "MUTATION_SCORE_J4", value: SCORE["Joueur 4"] + AUTRES["Joueur 4"]},
-                actionScoreJ5 = { type: "MUTATION_SCORE_J5", value: SCORE["Joueur 5"] + AUTRES["Joueur 5"]}
+                actionScoreJ1 = { type: "MUTATION_SCORE_J1", value: (SCORE["Joueur 1"] + AUTRES["Joueur 1"]).toString()},
+                actionScoreJ2 = { type: "MUTATION_SCORE_J2", value: (SCORE["Joueur 2"] + AUTRES["Joueur 2"]).toString()},
+                actionScoreJ3 = { type: "MUTATION_SCORE_J3", value: (SCORE["Joueur 3"] + AUTRES["Joueur 3"]).toString()},
+                actionScoreJ4 = { type: "MUTATION_SCORE_J4", value: (SCORE["Joueur 4"] + AUTRES["Joueur 4"]).toString()},
+                actionScoreJ5 = { type: "MUTATION_SCORE_J5", value: (SCORE["Joueur 5"] + AUTRES["Joueur 5"]).toString()}
             )
         }else{
             const AUTRES = {
@@ -69,11 +69,11 @@ export function CalculScore(datas){
             AUTRES[datas.partenaire] = -(parseInt(datas.score) - valueBou + valuePrise)
 
             result.push(
-                actionScoreJ1 = { type: "MUTATION_SCORE_J1", value: SCORE["Joueur 1"] + AUTRES["Joueur 1"]},
-                actionScoreJ2 = { type: "MUTATION_SCORE_J2", value: SCORE["Joueur 2"] + AUTRES["Joueur 2"]},
-                actionScoreJ3 = { type: "MUTATION_SCORE_J3", value: SCORE["Joueur 3"] + AUTRES["Joueur 3"]},
-                actionScoreJ4 = { type: "MUTATION_SCORE_J4", value: SCORE["Joueur 4"] + AUTRES["Joueur 4"]},
-                actionScoreJ5 = { type: "MUTATION_SCORE_J5", value: SCORE["Joueur 5"] + AUTRES["Joueur 5"]}
+                actionScoreJ1 = { type: "MUTATION_SCORE_J1", value: (SCORE["Joueur 1"] + AUTRES["Joueur 1"]).toString()},
+                actionScoreJ2 = { type: "MUTATION_SCORE_J2", value: (SCORE["Joueur 2"] + AUTRES["Joueur 2"]).toString()},
+                actionScoreJ3 = { type: "MUTATION_SCORE_J3", value: (SCORE["Joueur 3"] + AUTRES["Joueur 3"]).toString()},
+                actionScoreJ4 = { type: "MUTATION_SCORE_J4", value: (SCORE["Joueur 4"] + AUTRES["Joueur 4"]).toString()},
+                actionScoreJ5 = { type: "MUTATION_SCORE_J5", value: (SCORE["Joueur 5"] + AUTRES["Joueur 5"]).toString()}
             )
         }
     }

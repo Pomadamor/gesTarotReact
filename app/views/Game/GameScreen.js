@@ -155,7 +155,7 @@ class GameScreen extends Component {
       const actionBtnTurn = { type: "MUTATION_BUTTONTURN", value: `Continuer` }
       this.props.dispatch(actionBtnTurn)
 
-      this.props.turns.push([{
+      this.props.turns.push({
         id: this.props.id,
         preneur: this.props.preneur,
         partenaire: this.props.partenaire,
@@ -170,7 +170,7 @@ class GameScreen extends Component {
         scoreJ3: this.props.scoreJ3,
         scoreJ4: this.props.scoreJ4,
         scoreJ5: this.props.scoreJ5,
-      }])
+      })
 
       const actionTurn = { type: "MUTATION_TURN", value: this.props.turns }
       this.props.dispatch(actionTurn)
@@ -244,7 +244,7 @@ class GameScreen extends Component {
     console.log("ploploplop 3", this.props.turns[1])
 
     if (this.props.turns[0] != undefined){
-      console.log("ploploplop 4", this.props.turns[0][0])
+      console.log("ploploplop 4", this.props.turns[0])
       turnBefore = this.props.turns
     }
 

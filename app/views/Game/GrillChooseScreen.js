@@ -169,8 +169,8 @@ class GrillChooseScreen extends Component {
      * @param {string} gardeContre
      */
     buttonTypeGC(){
-        if(this.props.type != "G-Contre"){
-            const actionGC = { type: "MUTATION_TYPE", value: "G-Contre"}
+        if(this.props.type != "G-Co."){
+            const actionGC = { type: "MUTATION_TYPE", value: "G-Co."}
             this.props.dispatch(actionGC)
         }
     }
@@ -330,12 +330,12 @@ class GrillChooseScreen extends Component {
                     </Button>
 
                     <Button bordered light
-                        backgroundColor={ this.props.type == 'G-Contre' ? "steelblue" : null }
+                        backgroundColor={ this.props.type == 'G-Co.' ? "steelblue" : null }
                         style={{flex:1, margin:2}}
                         onPress={() => this.buttonTypeGC()}
                     >
                         <View style={{width:"100%", alignItems:"center"}}>
-                            <Text style={{color:"white"}}> G-Contre</Text>
+                            <Text style={{color:"white"}}> G-Co.</Text>
                         </View>
                     </Button>
                 </View>

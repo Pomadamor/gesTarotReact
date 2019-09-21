@@ -24,12 +24,13 @@ class BeforeGame extends Component {
     */
 
   render(){
-      console.log("TURNBERFORE",this.props.turnBefore[0])
-      const turnBefore = this.props.turnBefore[0];
+      console.log("TURNBERFORE",this.props.turnBefore)
+      console.log("TURNBERFORE 1",this.props.turnBefore.nbJoueur)
+      console.log("TURNBERFORE 1",turnBefore.nbJoueur)
 
+      turnBefore = this.props.turnBefore
 
-
-      if( turnBefore.nbJoueur){
+      if( turnBefore.nbJoueur > 3){
         joueurFour = <Button bordered light 
                         backgroundColor={  
                           turnBefore.preneur == 'Joueur 4' ? "lightgreen" 
@@ -46,7 +47,7 @@ class BeforeGame extends Component {
                           color:"white", fontWeight:'bold'}
                           :{textAlign: 'center', 
                           color:"white"}  } >
-                        {  turnBefore.scoreJ4.toString() }</Text>
+                        {  turnBefore.scoreJ4 }</Text>
                         </View>
                     </Button>
       } else {
@@ -68,7 +69,7 @@ class BeforeGame extends Component {
                           : turnBefore.partenaire == 'Joueur 5' ? {textAlign: 'center', 
                           color:"white", fontWeight:'bold'}
                           :{textAlign: 'center', 
-                          color:"white"}  } >{  turnBefore.scoreJ5.toString() }</Text>
+                          color:"white"}  } >{  turnBefore.scoreJ5 }</Text>
                             </View>
                           </Button>
       } else {
@@ -104,7 +105,7 @@ class BeforeGame extends Component {
                           : turnBefore.partenaire == 'Joueur 1' ? {textAlign: 'center', 
                           color:"white", fontWeight:'bold'}
                           :{textAlign: 'center', 
-                          color:"white"}  } >{  turnBefore.scoreJ1.toString() }</Text>
+                          color:"white"}  } >{  turnBefore.scoreJ1 }</Text>
             </View>
           </Button>
           <Button bordered light 
@@ -120,7 +121,7 @@ class BeforeGame extends Component {
                           : turnBefore.partenaire == 'Joueur 2' ? {textAlign: 'center', 
                           color:"white", fontWeight:'bold'}
                           :{textAlign: 'center', 
-                          color:"white"}  } >{  turnBefore.scoreJ2.toString() }</Text>
+                          color:"white"}  } >{  turnBefore.scoreJ2 }</Text>
             </View>
           </Button>
           <Button bordered light 
@@ -136,7 +137,7 @@ class BeforeGame extends Component {
                           : turnBefore.partenaire == 'Joueur 3' ? {textAlign: 'center', 
                           color:"white", fontWeight:'bold'}
                           :{textAlign: 'center', 
-                          color:"white"}  } >{  turnBefore.scoreJ3.toString() }</Text>
+                          color:"white"}  } >{  turnBefore.scoreJ3 }</Text>
             </View>
           </Button>
           {joueurFour}

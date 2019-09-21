@@ -40,8 +40,7 @@ class HomeScreen extends Component {
           .then((responseJson) => {
               if(responseJson.status == 'error'){
                   console.log ("ERROR", responseJson.status)
-                  alert('Vérifier votre connexion internet, avant de cliquer sur OK');
-                  this.props.navigation.navigate("Choose");
+                  // this.props.navigation.navigate("Choose");
               }
               else{
                 var user = responseJson["user"]
@@ -98,7 +97,6 @@ class HomeScreen extends Component {
               .then((responseJson) => {
                   if(responseJson.status == 'error'){
                       console.log ("ERROR", responseJson.status)
-                      alert('Vérifier votre connexion internet, avant de cliquer sur OK');
                   }
                   else{
                       console.log("detail response friends", responseJson)

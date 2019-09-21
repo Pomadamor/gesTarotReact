@@ -4487,6 +4487,10 @@ react-is@^16.7.0, react-is@^16.8.1, react-is@^16.8.3, react-is@^16.8.4, react-is
   version "16.8.6"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.8.6.tgz#5bbc1e2d29141c9fbdfed456343fe2bc430a6a16"
 
+react-native-app-intro-slider@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/react-native-app-intro-slider/-/react-native-app-intro-slider-3.0.0.tgz#c3620b967503ce410b3d767252392bb6fb2edf97"
+
 react-native-ble-manager@^6.6.8:
   version "6.6.8"
   resolved "https://registry.yarnpkg.com/react-native-ble-manager/-/react-native-ble-manager-6.6.8.tgz#bc85406f9aad0f539c7c7416ae19354c45572f70"

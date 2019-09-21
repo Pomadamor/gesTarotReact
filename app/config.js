@@ -10,6 +10,7 @@ import GameScreen from "./views/Game/GameScreen";
 import GrillChooseScreen from "./views/Game/GrillChooseScreen";
 import GrillScoreScreen from "./views/Game/GrillScoreScreen";
 import ChooseScreen from "./views/Login/ChooseScreen";
+import AnimationScreen from "./views/Login/AnimationScreen";
 import UserScreen from "./views/Menu/UserScreen";
 import MenuScreen from "./views/Menu/MenuScreen";
 import FriendsPlayersScreen from "./views/friends/FriendsPlayersScreen";
@@ -23,6 +24,7 @@ import AddFriendScreen from "./views/Menu/Friends/AddFriendScreen"
 
 const switchNavigator = createAnimatedSwitchNavigator({
     Loader: LoaderScreen,
+    Animation:AnimationScreen,
     Home: HomeScreen,
     Choose: ChooseScreen,
     Register: RegisterScreen,
