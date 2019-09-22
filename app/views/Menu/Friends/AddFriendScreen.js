@@ -80,6 +80,10 @@ class AddFriendScreen extends Component {
       data.email = data.identifiant
       
       console.log("JUSQU'ICI CA FONCTIONNE", data)
+
+      const actionFriendsDelete = { type: "MUTATION_FRIENDS_DELETE", value: [] }
+      this.props.dispatch(actionFriendsDelete)
+      
       fetch('https://gestarot-api.lerna.eu/api/logged_user/friends', {
         method: 'POST',
         headers: {
@@ -99,6 +103,30 @@ class AddFriendScreen extends Component {
             alert('Les informations sont incorrectes.');
           }
           else{
+            fetch('https://gestarot-api.lerna.eu/api/logged_user/friends', {
+              method: 'GET',
+              headers: {
+                  Accept: 'application/json',
+                  'Content-Type': 'application/json',
+                  'api-token': token
+              },
+              }).then((response) => response.json())
+                .then((responseJson) => {
+                    if(responseJson.status == 'error'){
+                        console.log ("ERROR", responseJson.status)
+                    }
+                    else{
+                        console.log("detail response friends", responseJson)
+  
+                        if(responseJson["friends"].length > 0){
+
+                          const actionFriends = { type: "MUTATION_FRIENDS", value: responseJson["friends"]}
+                          this.props.dispatch(actionFriends)
+                        }
+                        return responseJson;
+                    }
+                })
+
             console.log("TRRRUUUEEE", responseJson)
             this.props.navigation.navigate("Friends");
             return responseJson;

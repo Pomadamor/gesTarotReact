@@ -50,8 +50,12 @@ class MenuScreen extends Component {
       }
     
       console.log('Done')
-    }
+     }
+    // const actionFriends = { type: "MUTATION_FRIENDS_DELETE", value: [] }
+    // this.props.dispatch(actionFriends)
 
+    const actionPseudo = { type: "MUTATION_PSEUDO", value: "Joueur" }
+    this.props.dispatch(actionPseudo)   
 
     const actionVerif = { type: "MUTATION_VERIF", value: false }
     this.props.dispatch(actionVerif)
@@ -157,7 +161,9 @@ class MenuScreen extends Component {
 
 const mapStateToProps = state => {
   return {
-    verif: state.toogleUser.verif
+    verif: state.toogleUser.verif,
+    pseudo: state.toogleUser.pseudo,
+    friends: state.toogleFriends.friends
   }
 }
 

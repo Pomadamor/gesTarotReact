@@ -5,18 +5,22 @@ const initialState = {
     pseudo2 : {username : "J-2"},
     avatar2: require("../../assets/img/icon_user/cat.png"),
     color2:"lightgreen",
+    id2:null,
 
     pseudo3 : {username : "J-3"},
     avatar3: require("../../assets/img/icon_user/dog.png"),
     color3:"lightsteelblue",
+    id3:null,
 
     pseudo4 : {username : "J-4"},
     avatar4: require("../../assets/img/icon_user/sheep.png"),
     color4:"moccasin",
+    id4:null,
 
     pseudo5 : {username : "J-5"},
     avatar5: require("../../assets/img/icon_user/pig.png"),
     color5:"mistyrose",
+    id5:null,
 
     choosePlayer: 0,
     calcul: 0,
@@ -129,6 +133,30 @@ switch(action.type){
     nextState = {
         ...state,
         scoreJ5: action.value
+    }
+    return nextState
+    case 'MUTATION_ID2':
+    nextState = {
+        ...state,
+        id2: action.value
+    }
+    return nextState
+    case 'MUTATION_ID3':
+    nextState = {
+        ...state,
+        id3: action.value
+    }
+    return nextState
+    case 'MUTATION_ID4':
+    nextState = {
+        ...state,
+        id4: action.value
+    }
+    return nextState
+    case 'MUTATION_ID5':
+    nextState = {
+        ...state,
+        id5: action.value
     }
     return nextState
     case 'MUTATION_CALCUL':

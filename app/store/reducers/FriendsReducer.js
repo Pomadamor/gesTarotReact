@@ -14,6 +14,11 @@ switch(action.type){
         ...state,
         friends: [...state.friends, action.value]
     }
+    case 'MUTATION_FRIENDS_DELETE':
+    nextState = {
+        ...state,
+        friends: action.value
+    }
     return nextState
     default:
         return nextState || state

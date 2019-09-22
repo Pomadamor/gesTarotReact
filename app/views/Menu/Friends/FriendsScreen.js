@@ -33,8 +33,8 @@ class FriendsScreen extends Component {
   
 
   render() {
-      friendsSave = this.state.friends[0]
-      console.log("test friends 001", friendsSave[0].username)
+      friendsSave = this.state.friends
+      console.log("test friends 001", friendsSave.username)
     return (
       <View style={{
         flex: 1,

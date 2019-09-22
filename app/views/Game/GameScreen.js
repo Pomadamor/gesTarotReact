@@ -15,32 +15,21 @@ import { CalculScore } from "../../service/CalculScore";
 class GameScreen extends Component {
 
 
-    /**
-    * fonction qui permet avec les deux suivante de géré le retour clavier
-    * ainsi que de les resultat récupéré dans le service calculScore
-    */
+  /**
+  * fonction qui permet avec les deux suivante de géré le retour clavier
+  * ainsi que de les resultat récupéré dans le service calculScore
+  */
 
   componentDidMount() {
-    console.log("point general", this.props)
-
-    console.log('test info pour parti', 
-      this.props.pseudo2, 
-      this.props.pseudo3,
-      this.props.pseudo4, 
-      this.props.pseudo5)
-    
-
     BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
-
-     const res = CalculScore(this.props.datas)
-     console.log("test x",res)
-
-     actionScoreJ1 = res[0]
-     actionScoreJ2 = res[1]
-     actionScoreJ3 = res[2]
-     actionScoreJ4 = res[3]
-     actionScoreJ5 = res[4]
-    console.log("test z",actionScoreJ2)
+    const res = CalculScore(this.props.datas)
+    console.log("test x", res)
+    actionScoreJ1 = res[0]
+    actionScoreJ2 = res[1]
+    actionScoreJ3 = res[2]
+    actionScoreJ4 = res[3]
+    actionScoreJ5 = res[4]
+    console.log("test z", actionScoreJ2)
 
     if (actionScoreJ1 != undefined) {
       this.props.dispatch(actionScoreJ1)
@@ -51,70 +40,46 @@ class GameScreen extends Component {
     }
   }
 
-    /**
-     * Fonction btnSupprimer permet de supprimer la partie en cour et revenir a la vue de départ.
- 
-     */
 
-    /**
-    * Fonction btnSupprimer permet de supprimer la partie en cour et revenir a la vue de départ.
-    * @param {string} buttonTurn 
-    * @param {array} turn 
-    * @param {Int} score 
-    * @param {string} preneur
-    * @param {string} partenaire
-    * @param {string} roi
-    * @param {Int} scoreJ1 
-    * @param {Int} scoreJ2 
-    * @param {Int} scoreJ3 
-    * @param {Int} scoreJ4
-    * @param {Int} scoreJ5
-    * @param {Int} nbJoueur
-    */
+  btnSupprimer() {
+    const actionBtnTurn = { type: "MUTATION_BUTTONTURN", value: "Démarer" }
+    const actionTurn = { type: "MUTATION_TURN", value: [] }
+    const actionScore = { type: "MUTATION_SCORE", value: 0 }
+    const actionType = { type: "MUTATION_TYPE", value: "" }
+    const actionPreneur = { type: "MUTATION_PRENEUR", value: "" }
+    const actionPartenaire = { type: "MUTATION_PARTENAIRE", value: "" }
+    const actionRoi = { type: "MUTATION_ROI", value: "" }
+    const actionScoreJ1 = { type: "MUTATION_SCORE_J1", value: "" }
+    const actionScoreJ2 = { type: "MUTATION_SCORE_J2", value: "" }
+    const actionScoreJ3 = { type: "MUTATION_SCORE_J3", value: "" }
+    const actionScoreJ4 = { type: "MUTATION_SCORE_J4", value: "" }
+    const actionScoreJ5 = { type: "MUTATION_SCORE_J5", value: "" }
+    const actionNb = { type: "MUTATION_NBJOUEURS", value: 0 }
+    this.props.dispatch(actionNb)
+    this.props.dispatch(actionBtnTurn)
+    this.props.dispatch(actionTurn)
+    this.props.dispatch(actionScore)
+    this.props.dispatch(actionType)
+    this.props.dispatch(actionPreneur)
+    this.props.dispatch(actionPartenaire)
+    this.props.dispatch(actionRoi)
+    this.props.dispatch(actionScoreJ1)
+    this.props.dispatch(actionScoreJ2)
+    this.props.dispatch(actionScoreJ3)
+    this.props.dispatch(actionScoreJ4)
+    this.props.dispatch(actionScoreJ5)
 
-  btnSupprimer(){
-      const actionBtnTurn = { type: "MUTATION_BUTTONTURN", value: "Démarer" }
-      const actionTurn = { type: "MUTATION_TURN", value: [] }
-      const actionScore = { type: "MUTATION_SCORE", value: 0 }
-      const actionType = { type: "MUTATION_TYPE", value: "" }
-      const actionPreneur = { type: "MUTATION_PRENEUR", value: "" }
-      const actionPartenaire = { type: "MUTATION_PARTENAIRE", value: "" }
-      const actionRoi = { type: "MUTATION_ROI", value: "" }
-      const actionScoreJ1 = { type: "MUTATION_SCORE_J1", value: ""}
-      const actionScoreJ2 = { type: "MUTATION_SCORE_J2", value: ""}
-      const actionScoreJ3 = { type: "MUTATION_SCORE_J3", value: ""}
-      const actionScoreJ4 = { type: "MUTATION_SCORE_J4", value: ""}
-      const actionScoreJ5 = { type: "MUTATION_SCORE_J5", value: ""}
-      const actionNb = { type: "MUTATION_NBJOUEURS", value: 0 }
-      this.props.dispatch(actionNb)
-      this.props.dispatch(actionBtnTurn)
-      this.props.dispatch(actionTurn)
-      this.props.dispatch(actionScore)
-      this.props.dispatch(actionType)
-      this.props.dispatch(actionPreneur)
-      this.props.dispatch(actionPartenaire)
-      this.props.dispatch(actionRoi)
-      this.props.dispatch(actionScoreJ1)
-      this.props.dispatch(actionScoreJ2)
-      this.props.dispatch(actionScoreJ3)
-      this.props.dispatch(actionScoreJ4)
-      this.props.dispatch(actionScoreJ5)
-
-      this.props.navigation.navigate("Home")
+    this.props.navigation.navigate("Home")
   }
 
-
-  /**
-   * btnPartager
-   */
   async btnPartager() {
     try {
       const result = await Share.share({
-        message: "Score J1 : 1337",
+        message: "Regarde les scores : " + this.props.pseudo + " a " + this.props.scoreJ1 + " points.",
         title: "Partage des scores de Gestarot :"
       }, {
-        dialogTitle : "Partage :"
-      });
+          dialogTitle: "Partage :"
+        });
 
       if (result.action === Share.sharedAction) {
         if (result.activityType) {
@@ -130,28 +95,8 @@ class GameScreen extends Component {
     }
   }
 
-    /**
-     * Fonction btnSauvegarder permet de sauvegarder la partie en cour et ainsi l'ajouter a l'historique
-    * @param {string} buttonTurn 
-    * @param {array} turn 
-    * @param {Int} score 
-    * @param {string} preneur
-    * @param {string} partenaire
-    * @param {string} roi
-    * @param {Int} scoreJ1 
-    * @param {Int} scoreJ2 
-    * @param {Int} scoreJ3 
-    * @param {Int} scoreJ4
-    * @param {Int} scoreJ5
-    * @param {Int} nbJoueur
-    */
-  btnSauvegarder(){}
-
-
   componentWillUnmount() {
     BackHandler.removeEventListener('hardwareBackPress', this.handleBackPress);
-
-
   }
 
   handleBackPress = () => {
@@ -159,23 +104,72 @@ class GameScreen extends Component {
     return true;
   }
 
-  /**
-   * bouton permettant de naviguer entre les differentes grilles selon l'état d'avancement de la partie et de modifier les valeurs en fonction des champs rempli
-    * @param {string} buttonTurn 
-    * @param {array} turn 
-    * @param {Int} score 
-    * @param {string} preneur
-    * @param {string} partenaire
-    * @param {string} roi
-    * @param {Int} scoreJ1 
-    * @param {Int} scoreJ2 
-    * @param {Int} scoreJ3 
-    * @param {Int} scoreJ4
-    * @param {Int} scoreJ5
-    * @param {Int} nbJoueur
-    */
+
   buttonTurn() {
+
+    const token = this.props.token
+    console.log("test 0")
+    // console.log("test 1", this.props.score)
+    
     if (this.props.score != 0) {
+      console.log("test if")
+      fetch('https://gestarot-api.lerna.eu/api/game', {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+          'api-token': token
+        },
+        body: JSON.stringify({
+          "nb_joueurs": this.props.nbJoueur,
+          "Joueur1": {
+            "id": this.props.id,
+            "pseudo": this.props.pseudo,
+            "image": this.props.image,
+            "color": this.props.color
+          },
+          "Joueur2": {
+            "id": this.props.id2,
+            "pseudo": this.props.pseudo2.username,
+            "image": this.props.avatar2,
+            "color": this.props.color2
+          },
+          "Joueur3": {
+            "id": this.props.id3,
+            "pseudo": this.props.pseudo3.username,
+            "image": this.props.avatar3,
+            "color": this.props.color3
+          },
+          "Joueur4": {
+            "id": this.props.id4,
+            "pseudo": this.props.pseudo4.username,
+            "image": this.props.avatar4,
+            "color": this.props.color4
+          },
+          "Joueur5": {
+            "id": this.props.id5,
+            "pseudo": this.props.pseudo4.username,
+            "image": this.props.avatar5,
+            "color": this.props.color5
+          },
+          "turns": this.props.turns
+        }),
+      }).then((response) => response.json())
+        .then((responseJson) => {
+          if (responseJson.status == 'error') {
+            console.log("YOUPIE")
+            alert('Erreur de connexion, veuillez réésayer.');
+          }
+          else {
+            console.log("ca a marcher save game", responseJson)
+            return responseJson;
+          }
+
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+
       const actionId = { type: "MUTATION_ID", value: this.props.id + 1 }
       this.props.dispatch(actionId)
 
@@ -217,9 +211,12 @@ class GameScreen extends Component {
       this.props.navigation.navigate("GrillChoose")
 
     } else if (this.props.score == 0 && this.props.type != "") {
+      console.log("test elseif")
       this.props.navigation.navigate("GrillScore")
 
     } else {
+      console.log("test else")
+
       const actionId = { type: "MUTATION_ID", value: this.props.id + 1 }
       this.props.dispatch(actionId)
 
@@ -231,38 +228,6 @@ class GameScreen extends Component {
     }
   }
 
-
-
-
-  /**
-   * ce rendu affiche le contenant de la grill, ainsi que le bouton de navigation
-    * @param {string} buttonTurn 
-    * @param {array} turn 
-    * @param {Int} score 
-    * @param {string} preneur
-    * @param {string} partenaire
-    * @param {string} roi
-    * @param {Int} scoreJ1 
-    * @param {Int} scoreJ2 
-    * @param {Int} scoreJ3 
-    * @param {Int} scoreJ4
-    * @param {Int} scoreJ5
-    * @param {Int} nbJoueur
-    * @param {string} pseudo
-    * @param {string} pseudo2
-    * @param {string} pseudo3
-    * @param {string} pseudo4
-    * @param {string} pseudo5
-    * @param {Int} id
-    * @param {string} type
-    * @param {Int} score
-    * @param {Int} bou
-    * @param {Int} preneurScore
-    * @param {Int} partenaireScore
-    * @param {Int} autreScore
-    * @param {string} choosePlayer
-    */
-
   render() {
 
     turnBefore = this.props
@@ -270,7 +235,7 @@ class GameScreen extends Component {
     console.log("ploploplop 2", this.props.turns[0])
     console.log("ploploplop 3", this.props.turns[1])
 
-    if (this.props.turns[0] != undefined){
+    if (this.props.turns[0] != undefined) {
       console.log("ploploplop 4", this.props.turns[0])
       turnBefore = this.props.turns
     }
@@ -288,13 +253,13 @@ class GameScreen extends Component {
             keyExtractor={(item) => (item.id).toString()}
             renderItem={({ item }) => <BeforeGame turnBefore={item} />}
           />
-          
+
           <LiveGame />
 
-          <View style={{ flex: 0.1, flexDirection:'row'}}>
+          <View style={{ flex: 0.1, flexDirection: 'row' }}>
 
             <Button block info
-              style={{ flex: 1, margin: 10  }}
+              style={{ flex: 1, margin: 10 }}
               onPress={() => this.buttonTurn()}
             >
               <Text
@@ -307,7 +272,7 @@ class GameScreen extends Component {
               </Text>
             </Button>
             <Button danger
-              style={{ flex: 0.2, margin: 10  }}
+              style={{ flex: 0.2, margin: 10 }}
               onPress={() => Alert.alert(
                 'Attention',
                 "Souhaites-tu sauvegarder la partie pour la continuer plutard ou pas ?",
@@ -326,9 +291,9 @@ class GameScreen extends Component {
                   }
                 ],
                 { cancelable: true },
-                )}
-              >
-              <Icon active name="exit"/>
+              )}
+            >
+              <Icon active name="exit" />
             </Button>
           </View>
         </ScrollView>
@@ -342,11 +307,11 @@ class GameScreen extends Component {
 const mapStateToProps = state => {
 
   const datas = {
-    pseudo : state.toogleUser.pseudo,
-    pseudo2 : state.tooglePlayer.pseudo2,
-    pseudo3 : state.tooglePlayer.pseudo3,
-    pseudo4 : state.tooglePlayer.pseudo4,
-    pseudo5 : state.tooglePlayer.pseudo5,
+    pseudo: state.toogleUser.pseudo,
+    pseudo2: state.tooglePlayer.pseudo2,
+    pseudo3: state.tooglePlayer.pseudo3,
+    pseudo4: state.tooglePlayer.pseudo4,
+    pseudo5: state.tooglePlayer.pseudo5,
     turns: state.toogleScore.turns,
     buttonTurnView: state.toogleScore.buttonTurnView,
     id: state.toogleScore.id,
@@ -367,7 +332,9 @@ const mapStateToProps = state => {
     scoreJ2: state.tooglePlayer.scoreJ2,
     scoreJ3: state.tooglePlayer.scoreJ3,
     scoreJ4: state.tooglePlayer.scoreJ4,
-    scoreJ5: state.tooglePlayer.scoreJ5
+    scoreJ5: state.tooglePlayer.scoreJ5,
+    token: state.toogleUser.token,
+
   }
 
   return { datas, ...datas }

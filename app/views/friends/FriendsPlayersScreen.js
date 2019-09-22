@@ -74,7 +74,7 @@ class FriendsPlayersScreen extends Component {
      */
 
     changePseudo(pseudo, id) {
-        console.log("name pseudo", pseudo)
+        console.log("name pseudo", pseudo.id)
         console.log("name pseudo", this.props.pseudo2.username)
         console.log("name pseudo", this.props.pseudo3.username)
         console.log("name pseudo", this.props.pseudo4.username)
@@ -96,7 +96,11 @@ class FriendsPlayersScreen extends Component {
                     alert("Vous ne pouvez pas ajouter deux fois le même ami.")
                 }else{
                     const actionPseudo = { type: `MUTATION_PSEUDO${id}`, value: pseudo }
+                    const actionId = { type: `MUTATION_ID${id}`, value: id }
+
                     this.props.dispatch(actionPseudo)
+                    this.props.dispatch(actionId)
+
                 }
         }
     }
@@ -152,8 +156,8 @@ class FriendsPlayersScreen extends Component {
             console.log("test ca passe la")
 
             i = 0
-            while ( i < this.props.friends[0].length ){
-                player.push({ label: this.props.friends[0][i].username, value: this.props.friends[0][i], color: "powderblue"})
+            while ( i < this.props.friends.length ){
+                player.push({ label: this.props.friends[i].username, value: this.props.friends[i], color: "powderblue"})
                 i++
             }
         }
@@ -571,6 +575,10 @@ const mapStateToProps = state => {
         pseudo3: state.tooglePlayer.pseudo3,
         pseudo4: state.tooglePlayer.pseudo4,
         pseudo5: state.tooglePlayer.pseudo5,
+        id2: state.tooglePlayer.id2,
+        id3: state.tooglePlayer.id3,
+        id4: state.tooglePlayer.id4,
+        id5: state.tooglePlayer.id5,
         color2: state.tooglePlayer.color2,
         color3: state.tooglePlayer.color3,
         color4: state.tooglePlayer.color4,

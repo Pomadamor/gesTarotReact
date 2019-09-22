@@ -38,12 +38,6 @@ class LoginScreen extends Component {
       email: '',
       phone: ''
     }
-    if (Verifier_Numero_Telephone(data.identifiant) == true) {
-      data.phone = this.state.identifiant
-    }
-    else if (checkMail(data.identifiant) == true) {
-      data.email = this.state.identifiant
-    }
 
     if (data.identifiant == "" || data.password == "") {
       alert('Veuillez remplir tout les champs.');
@@ -53,6 +47,14 @@ class LoginScreen extends Component {
       if (data.phone == "" ){
         data.phone = data.identifiant
       }
+
+      if (Verifier_Numero_Telephone(data.identifiant) == true) {
+        data.phone = this.state.identifiant
+      }
+      else if (checkMail(data.identifiant) == true) {
+        data.email = this.state.identifiant
+      }
+      
       console.log("JUSQU'ICI CA FONCTIONNE", data)
       fetch('https://gestarot-api.lerna.eu/api/user/login', {
         method: 'POST',
@@ -125,10 +127,6 @@ class LoginScreen extends Component {
             const STORAGE_PHONE = responseJson.phone
 
             AsyncStorage.setItem("token", token)
-            AsyncStorage.setItem("STORAGE_ID", STORAGE_ID )
-            // AsyncStorage.setItem("STORAGE_PSEUDO", STORAGE_PSEUDO )
-            AsyncStorage.setItem("STORAGE_EMAIL", STORAGE_EMAIL )
-            AsyncStorage.setItem("STORAGE_PHONE", STORAGE_PHONE )
             
             console.log("TRRRUUUEEE", responseJson)
             const id = { type: "MUTATION_ID", value: responseJson.id }

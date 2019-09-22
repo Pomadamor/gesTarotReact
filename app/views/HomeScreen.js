@@ -52,17 +52,19 @@ class HomeScreen extends Component {
 
                   console.log("detail user 2")
 
-                  const avatar = { type: "MUTATION_AVATAR", value: parseInt(user.image)}
+                  const avatar = { type: "MUTATION_AVATAR", value: user.image}
                   this.props.dispatch(avatar)
 
                   console.log("detail user 3", this.props.avatar)
                 }else{
 
+                  console.log("detail user 3")
                   const avatar = { type: "MUTATION_AVATAR", value: user.avatar }
                   this.props.dispatch(avatar)
                 }
                   console.log("detail response user", user)
-                  AsyncStorage.setItem("avatar", user.image)
+                  AsyncStorage.setItem("avatar", parseInt(user.image))
+                  AsyncStorage.setItem("color", user.color)
                   AsyncStorage.setItem("pseudo", user.username)
 
                   const id = { type: "MUTATION_ID", value: user.id }
@@ -70,14 +72,14 @@ class HomeScreen extends Component {
                   const email = { type: "MUTATION_EMAIL", value: user.email }
                   const phone = { type: "MUTATION_PHONE", value: user.phone }
                   const actionVerif = { type: "MUTATION_VERIF", value: true }
-                  // const color = { type: "MUTATION_COLOR", value: user.color }
+                  const color = { type: "MUTATION_COLOR", value: user.color }
                   const image = { type: "MUTATION_IMAGE", value: parseInt(user.image) }
 
-                  // this.props.dispatch(color)
                   this.props.dispatch(image)
                   this.props.dispatch(actionVerif)
                   this.props.dispatch(id)
                   this.props.dispatch(email)
+                  this.props.dispatch(color)
                   this.props.dispatch(pseudo)
                   this.props.dispatch(phone)
 
@@ -132,6 +134,8 @@ class HomeScreen extends Component {
 */
 
   render() {
+    console.log("test avatar 1 ",this.props.avatar)
+    
 
     return (
       <View style={{
