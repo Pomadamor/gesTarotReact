@@ -29,7 +29,7 @@ class LiveGame extends Component {
     * @param {Int} bou
     * @param {Int} preneurScore
     * @param {Int} partenaireScore
-    * @param {Int} autreScore
+    * @param {Int} autre_score
     */
 
   render(){
@@ -168,7 +168,7 @@ const mapStateToProps = state => {
         roi : state.toogleScore.roi,
         bou : state.toogleScore.bou,
         preneur : state.toogleScore.preneur,
-        autreScore : state.toogleScore.autreScore,
+        autre_score : state.toogleScore.autre_score,
         partenaireScore : state.toogleScore.partenaireScore,
         preneurScore : state.toogleScore.preneurScore,
         scoreJ1 : state.tooglePlayer.scoreJ1,

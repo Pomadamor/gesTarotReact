@@ -108,7 +108,7 @@ class GameScreen extends Component {
   buttonTurn() {
 
     const token = this.props.token
-    console.log("test 0")
+    console.log("test 0", this.props.id1)
     // console.log("test 1", this.props.score)
     
     if (this.props.score != 0) {
@@ -122,12 +122,6 @@ class GameScreen extends Component {
         },
         body: JSON.stringify({
           "nb_joueurs": this.props.nbJoueur,
-          "Joueur1": {
-            "id": this.props.id,
-            "pseudo": this.props.pseudo,
-            "image": this.props.image,
-            "color": this.props.color
-          },
           "Joueur2": {
             "id": this.props.id2,
             "pseudo": this.props.pseudo2.username,
@@ -184,7 +178,7 @@ class GameScreen extends Component {
         type: this.props.type,
         score: this.props.score,
         victoire: this.props.victoire,
-        autreScore: this.props.autreScore,
+        autre_score: this.props.autre_score,
         nbJoueur: this.props.nbJoueur,
         scoreJ1: this.props.scoreJ1,
         scoreJ2: this.props.scoreJ2,
@@ -255,7 +249,7 @@ class GameScreen extends Component {
           />
 
           <LiveGame />
-
+          </ScrollView>
           <View style={{ flex: 0.1, flexDirection: 'row' }}>
 
             <Button block info
@@ -287,7 +281,7 @@ class GameScreen extends Component {
                   },
                   {
                     text: 'Sauvegarder',
-                    onPress: () => this.btnSauvegarder()
+                    onPress: () => this.btnSupprimer()
                   }
                 ],
                 { cancelable: true },
@@ -296,7 +290,7 @@ class GameScreen extends Component {
               <Icon active name="exit" />
             </Button>
           </View>
-        </ScrollView>
+        
 
       </View>
     )
@@ -312,9 +306,22 @@ const mapStateToProps = state => {
     pseudo3: state.tooglePlayer.pseudo3,
     pseudo4: state.tooglePlayer.pseudo4,
     pseudo5: state.tooglePlayer.pseudo5,
+    color2: state.tooglePlayer.color2,
+    color3: state.tooglePlayer.color3,
+    color4: state.tooglePlayer.color4,
+    color5: state.tooglePlayer.color5,
+    avatar2: state.tooglePlayer.avatar2,
+    avatar3: state.tooglePlayer.avatar3,
+    avatar4: state.tooglePlayer.avatar4,
+    avatar5: state.tooglePlayer.avatar5,
     turns: state.toogleScore.turns,
     buttonTurnView: state.toogleScore.buttonTurnView,
     id: state.toogleScore.id,
+    id1: state.toogleUser.id,
+    id2: state.tooglePlayer.id2,
+    id3: state.tooglePlayer.id3,
+    id4: state.tooglePlayer.id4,
+    id5: state.tooglePlayer.id5,
     preneur: state.toogleScore.preneur,
     partenaire: state.toogleScore.partenaire,
     roi: state.toogleScore.roi,
@@ -324,7 +331,7 @@ const mapStateToProps = state => {
     victoire: state.toogleScore.victoire,
     preneurScore: state.toogleScore.preneurScore,
     partenaireScore: state.toogleScore.partenaireScore,
-    autreScore: state.toogleScore.autreScore,
+    autre_score: state.toogleScore.autre_score,
     nbJoueur: state.toogleScore.nbJoueur,
     choosePlayer: state.tooglePlayer.choosePlayer,
     verif: state.toogleUser.verif,

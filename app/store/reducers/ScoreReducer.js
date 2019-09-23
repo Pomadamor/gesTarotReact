@@ -13,7 +13,7 @@ const initialState = {
         victoire : false,
         preneurScore :  parseInt(0),
         partenaireScore : parseInt(0),
-        autreScore : parseInt(0)
+        autre_score : parseInt(0)
 }
 
 /**
@@ -107,10 +107,10 @@ function toogleScore(state = initialState, action){
             partenaireScore: action.value
         }
             return nextState
-        case 'MUTATION_AUTRESCORE':
+        case 'MUTATION_autre_score':
         nextState = {
             ...state,
-            autreScore: action.value
+            autre_score: action.value
         }
             return nextState
         default:

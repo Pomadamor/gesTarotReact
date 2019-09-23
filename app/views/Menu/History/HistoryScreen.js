@@ -17,33 +17,8 @@ class HistoryScreen extends Component {
         party: this.props.party,
     }
   }
-
   componentDidMount() {
     BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
-
-    fetch('https://gestarot-api.lerna.eu/api/history/party', {
-            method: 'GET',
-            headers: {
-                Accept: 'application/json',
-                'Content-Type': 'application/json',
-                'api-token': token
-            },
-            }).then((response) => response.json())
-              .then((responseJson) => {
-                  if(responseJson.status == 'error'){
-                      console.log ("ERROR", responseJson.status)
-                      alert('Vérifier votre connexion internet, avant de cliquer sur OK');
-                  }
-                  else{
-                      console.log("detail response party", responseJson)
-
-                      if(responseJson["party"].length > 0){
-                        const actionParty = { type: "MUTATION_PARTY", value: responseJson["party"]}
-                        this.props.dispatch(actionParty)
-                      }
-                      return responseJson;
-                  }
-              })
 
   }
 
@@ -58,8 +33,8 @@ class HistoryScreen extends Component {
   
 
   render() {
-      historyGrill = this.state.party[0]
-      console.log("test friends 001", historyGrill[0])
+      historyGrill = this.props.party[0]
+      console.log("test history 001", historyGrill)
     return (
       <View style={{
         flex: 1,
@@ -68,7 +43,7 @@ class HistoryScreen extends Component {
         <View style={{ flex: 1, margin:20, flexDirection: 'row' }}>
         <FlatList
           data={historyGrill}
-          keyExtractor={(item) => item.id}
+          keyExtractor={(item) => item.game_id}
           renderItem={({ item }) => <HistoryGrill historyGrill={item} />}
         />
         </View>

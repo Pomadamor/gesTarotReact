@@ -19,6 +19,36 @@ class MenuScreen extends Component {
 
   componentDidMount() {
     BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
+
+    const token = this.props.token
+
+    fetch('https://gestarot-api.lerna.eu/api/history/party', {
+            method: 'GET',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+                'api-token': token
+            },
+            }).then((response) => response.json())
+              .then((responseJson) => {
+                  if(responseJson.status == 'error'){
+                      console.log ("ERROR", responseJson.status)
+                      alert('Vérifier votre connexion internet, avant de cliquer sur OK');
+                  }
+                  else{
+                      console.log("detail response detail party", responseJson)
+
+                      if(responseJson["games"].length > 0){
+                        console.log("detail response detail party 1", responseJson)
+
+                        const actionParty = { type: "MUTATION_PARTY", value: responseJson["games"]}
+                        this.props.dispatch(actionParty)
+                      }
+                      return responseJson;
+                  }
+              })
+
+
   }
 
   componentWillUnmount() {
@@ -69,6 +99,7 @@ class MenuScreen extends Component {
 */
 
   render() {
+
     return (
       <View style={{
         flex: 1,
@@ -163,7 +194,9 @@ const mapStateToProps = state => {
   return {
     verif: state.toogleUser.verif,
     pseudo: state.toogleUser.pseudo,
-    friends: state.toogleFriends.friends
+    friends: state.toogleFriends.friends,
+    party: state.toogleParty.party,
+    token: state.toogleUser.token
   }
 }
 
