@@ -37,7 +37,10 @@ class UserScreen extends Component {
 */
 
     componentDidMount() {
-        console.log("this.props.id", this.props.id)
+        // console.log("this.props.id", this.props.id)
+        // console.log("this.props.email", this.props.email)
+        // console.log("this.props.phone", this.props.phone)
+
         BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
     }
 
@@ -73,10 +76,10 @@ class UserScreen extends Component {
                 [
                   {
                     text: 'Cancel',
-                    onPress: () => console.log('Cancel Pressed'),
+                    onPress: () =>  console.log('Cancel Pressed'),
                     style: 'cancel',
                   },
-                  { text: 'OK', onPress: () => console.log('OK Pressed') },
+                  { text: 'OK', onPress: () =>  console.log('OK Pressed') },
                 ],
                 { cancelable: false },
               );
@@ -105,7 +108,7 @@ class UserScreen extends Component {
                         })
                     });
                     if (res.ok) {
-                        console.log("RESPONSE TRUE", res)
+                        // console.log("RESPONSE TRUE", res)
                 
                         const actionPhone = { type: "MUTATION_PHONE", value: phone }
                         const actionEmail = { type: "MUTATION_EMAIL", value: email }
@@ -116,11 +119,11 @@ class UserScreen extends Component {
                         this.props.dispatch(actionPhone)
                         
                     } else {
-                        console.log("RESPONSE FALSE", res.error)
+                        // console.log("RESPONSE FALSE", res.error)
                         alert("Le numéro de téléphone ou l'email existe déjà.");
                     }
                 } catch (e) {
-                console.log(e);
+                // console.log(e);
                 }
                 }else{
                     try {
@@ -138,7 +141,7 @@ class UserScreen extends Component {
                         })
                     });      
                     if (res.ok) {
-                        console.log("RESPONSE TRUE", res)
+                        // console.log("RESPONSE TRUE", res)
                 
                         const actionPhone = { type: "MUTATION_PHONE", value: phone }
                         const actionEmail = { type: "MUTATION_EMAIL", value: email }
@@ -151,11 +154,11 @@ class UserScreen extends Component {
                         this.props.dispatch(actionPhone)
                         
                     } else {
-                        console.log("RESPONSE FALSE", res.error)
+                        // console.log("RESPONSE FALSE", res.error)
                         alert("Le numéro de téléphone ou l'email existe déjà.");
                     }
                 } catch (e) {
-                console.log(e);
+                // console.log(e);
                 }            
             }
         }
@@ -167,13 +170,13 @@ class UserScreen extends Component {
     changePhoto() {
         ImagePicker.showImagePicker({}, (response) => {
             if (response.didCancel) {
-                console.log('L\'utilisateur a annulé')
+                // console.log('L\'utilisateur a annulé')
             }
             else if (response.error) {
-                console.log('Erreur : ', response.error)
+                // console.log('Erreur : ', response.error)
             }
             else {
-                console.log('Photo : ', response.uri)
+                // console.log('Photo : ', response.uri)
                 let requireSource = { uri: response.uri }
                 AsyncStorage.setItem("avatar", requireSource)
                 const action = { type: "MUTATION_AVATAR", value: requireSource }
@@ -327,7 +330,7 @@ class UserScreen extends Component {
                                 [
                                   {
                                     text: 'Annuler',
-                                    onPress: () => console.log('Ask me later pressed')
+                                    onPress: () =>  console.log('Ask me later pressed')
                                   },
                                   
                                   {

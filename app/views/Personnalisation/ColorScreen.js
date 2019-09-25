@@ -18,7 +18,7 @@ class ColorScreen extends Component {
       const color = couleur
   
       try {
-        console.log('test color', image, color)
+        // console.log('test color', image, color)
           const res = await fetch('https://gestarot-api.lerna.eu/api/logged_user', {
               method: 'POST',
               headers: {
@@ -32,18 +32,18 @@ class ColorScreen extends Component {
               })
           });
           if (res.ok) {
-              console.log("RESPONSE TRUE", couleur)
+              // console.log("RESPONSE TRUE", couleur)
               AsyncStorage.setItem("color", couleur)
               const action = { type: "MUTATION_COLOR", value: color }
               this.props.dispatch(action)
               this.props.navigation.navigate("Home")
 
           } else {
-              console.log("RESPONSE FALSE", res.error)
+              // console.log("RESPONSE FALSE", res.error)
               alert("Le numéro de téléphone ou l'email existe déjà.");
           }
       } catch (e) {
-      console.log(e);          
+      // console.log(e);          
       }
 
       fetch('https://gestarot-api.lerna.eu/api/logged_user', {
@@ -56,14 +56,14 @@ class ColorScreen extends Component {
       }).then((response) => response.json())
           .then((responseJson) => {
               if(responseJson.status == 'error'){
-                  console.log ("ERROR", responseJson.status)
+                  // console.log ("ERROR", responseJson.status)
                   alert('Vérifier votre connexion internet, avant de cliquer sur OK');
                   this.props.navigation.navigate("Choose");
               }
               else{
-                  console.log("PPPLLLIIIPPP", responseJson)
+                  // console.log("PPPLLLIIIPPP", responseJson)
 
-                  console.log("plip", responseJson["user"])
+                  // console.log("plip", responseJson["user"])
 
                   return responseJson;
               }
@@ -97,11 +97,11 @@ class ColorScreen extends Component {
           <Button bordered light
             onPress={() => Alert.alert(
             "Choix de l'image",
-            "Êtes-vous sur de vouloir de l'aquarine comme couleur ?",
+            "Êtes-tu sur de vouloir de l'aquarine comme couleur ?",
             [
                 {
                 text: 'Non',
-                onPress: () => console.log('Ask me later pressed')
+                onPress: () =>  console.log('Ask me later pressed')
                 },
                 {
                 text: 'Oui',
@@ -115,7 +115,7 @@ class ColorScreen extends Component {
           <Button bordered light 
             onPress={() => Alert.alert(
                 "Choix de l'image",
-                "Êtes-vous sur de vouloir du brown comme couleur ?",
+                "Êtes-tu sur de vouloir du brown comme couleur ?",
                 [
                     {
                     text: 'Non',
@@ -135,7 +135,7 @@ class ColorScreen extends Component {
           <Button bordered light
             onPress={() => Alert.alert(
                 "Choix de l'image",
-                "Êtes-vous sur de vouloir de coral comme couleur ?",
+                "Êtes-tu sur de vouloir de coral comme couleur ?",
                 [
                     {
                     text: 'Non',
@@ -152,7 +152,7 @@ class ColorScreen extends Component {
           <Button bordered light
             onPress={() => Alert.alert(
                 "Choix de l'image",
-                "Êtes-vous sur de vouloir du lighblue comme couleur ?",
+                "Êtes-tu sur de vouloir du lighblue comme couleur ?",
                 [
                     {
                     text: 'Non',
@@ -173,7 +173,7 @@ class ColorScreen extends Component {
           <Button bordered light
             onPress={() => Alert.alert(
                 "Choix de l'image",
-                "Êtes-vous sur de vouloir de lemonchiffon comme couleur ?",
+                "Êtes-tu sur de vouloir de lemonchiffon comme couleur ?",
                 [
                     {
                     text: 'Non',
@@ -191,7 +191,7 @@ class ColorScreen extends Component {
           <Button bordered light
             onPress={() => Alert.alert(
                 "Choix de l'image",
-                "Êtes-vous sur de vouloir du lightpink comme couleur ?",
+                "Êtes-tu sur de vouloir du lightpink comme couleur ?",
                 [
                     {
                     text: 'Non',
@@ -212,7 +212,7 @@ class ColorScreen extends Component {
           <Button bordered light 
             onPress={() => Alert.alert(
                 "Choix de l'image",
-                "Êtes-vous sur de vouloir du mistyrose comme couleur ?",
+                "Êtes-tu sur de vouloir du mistyrose comme couleur ?",
                 [
                     {
                     text: 'Non',
@@ -230,7 +230,7 @@ class ColorScreen extends Component {
           <Button bordered light
             onPress={() => Alert.alert(
                 "Choix de l'image",
-                "Êtes-vous sur de vouloir du silver comme couleur ?",
+                "Êtes-tu sur de vouloir du silver comme couleur ?",
                 [
                     {
                     text: 'Non',

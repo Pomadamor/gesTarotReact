@@ -49,7 +49,7 @@ class ChooseScreen extends Component {
               [
                 {
                   text: 'Annuler',
-                  onPress: () => console.log('Ask me later pressed')
+                  onPress: () =>  console.log('Ask me later pressed')
                 },
                 {
                   text: '3',

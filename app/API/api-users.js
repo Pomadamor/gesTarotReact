@@ -13,7 +13,7 @@ export function RegisterUser(data = null) {
     body: data
   }).then((response) => response.json())
     .then((responseJson) => {
-      console.log(responseJson)
+      // console.log(responseJson)
       const id = { type: "MUTATION_ID", value: responseJson.id }
       const email = { type: "MUTATION_EMAIL", value: responseJson.email }
       const phone = { type: "MUTATION_PHONE", value: responseJson.phone }
@@ -23,17 +23,17 @@ export function RegisterUser(data = null) {
       this.props.dispatch(email)
       this.props.dispatch(phone)
       this.props.dispatch(api_token)
-      console.log(responseJson.api_token)
+      // console.log(responseJson.api_token)
 
       const token = responseJson.api_token;
-      console.log(token)
+      // console.log(token)
 
       AsyncStorage.setItem("token", token)
       this.props.navigation.navigate("Loader");
       return responseJson;
 
     })
-    .catch((error) => console.log(error))
+    .catch((error) => // console.log(error))
 }
 
 /**
@@ -48,14 +48,14 @@ export function LoginUser(data) {
     body: data
   }).then((response) => response.json())
     .then((responseJson) => {
-      console.log(responseJson)
+      // console.log(responseJson)
       this.props.navigation.navigate("Login")
         const actionLogin = { type: "MUTATION_PSEUDO", value: true }
         this.props.dispatch(actionLogin)
       return responseJson;
 
     })
-    .catch((error) => console.log(error))
+    .catch((error) => // console.log(error))
 }
 
 /**
@@ -68,7 +68,7 @@ export function DeleteUser(data) {
     headers,
     body: data
   }).then((response) => response.json())
-    .catch((error) => console.log(error))
+    .catch((error) => // console.log(error))
 }
 
 /**
@@ -81,7 +81,7 @@ export function UpdateUser(data) {
     headers,
     body: data
   }).then((response) => response.json())
-    .catch((error) => console.log(error))
+    .catch((error) => // console.log(error))
 }
 
 /**
@@ -95,5 +95,5 @@ export function DetailsUser(data) {
     headers,
     body: data
   }).then((response) => response.json())
-    .catch((error) => console.log(error))
+    .catch((error) => // console.log(error))
 }

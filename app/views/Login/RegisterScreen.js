@@ -42,10 +42,10 @@ class RegisterScreen extends Component {
         [
           {
             text: 'Cancel',
-            onPress: () => console.log('Cancel Pressed'),
+            onPress: () =>  console.log('Cancel Pressed'),
             style: 'cancel',
           },
-          { text: 'OK', onPress: () => console.log('OK Pressed') },
+          { text: 'OK', onPress: () =>  console.log('OK Pressed') },
         ],
         { cancelable: false },
       );
@@ -79,7 +79,7 @@ class RegisterScreen extends Component {
           }),
         });
         if (res.ok) {
-          console.log("RESPONSE TRUE", res)
+          // console.log("RESPONSE TRUE", res)
 
           const actionPhone = { type: "MUTATION_PHONE", value: phone }
           const actionEmail = { type: "MUTATION_EMAIL", value: email }
@@ -92,11 +92,11 @@ class RegisterScreen extends Component {
           this.props.navigation.navigate("Login")
 
         } else {
-          console.log("RESPONSE FALSE", res)
+          // console.log("RESPONSE FALSE", res)
           alert("Le numéro de téléphone ou l'email existe déjà.");
         }
       } catch (e) {
-        console.log(e);
+        // console.log(e);
       }
     }
   }

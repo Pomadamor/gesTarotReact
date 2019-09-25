@@ -51,17 +51,41 @@ class FriendsPlayersScreen extends Component {
 
 
     handleBackPress = () => {
-        if (this.props.verif == true) {
-            const action = { type: "MUTATION_NBJOUEURS", value: 0 }
-            this.props.dispatch(action)
-            this.props.navigation.navigate("Home"); // works best when the goBack is async
-            return true;
-        } else {
-            const action = { type: "MUTATION_NBJOUEURS", value: 0 }
-            this.props.dispatch(action)
-            this.props.navigation.navigate("Choose"); // works best when the goBack is async
-            return true;
-        }
+
+const actionBtnTurn = { type: "MUTATION_BUTTONTURN", value: "Démarer" }
+      const actionTurn = { type: "MUTATION_TURN", value: [] }
+      const actionScore = { type: "MUTATION_SCORE", value: 0 }
+      const actionType = { type: "MUTATION_TYPE", value: "" }
+      const actionPreneur = { type: "MUTATION_PRENEUR", value: "" }
+      const actionPartenaire = { type: "MUTATION_PARTENAIRE", value: "" }
+      const actionRoi = { type: "MUTATION_ROI", value: "" }
+      const actionScoreJ1 = { type: "MUTATION_SCORE_J1", value: "" }
+      const actionScoreJ2 = { type: "MUTATION_SCORE_J2", value: "" }
+      const actionScoreJ3 = { type: "MUTATION_SCORE_J3", value: "" }
+      const actionScoreJ4 = { type: "MUTATION_SCORE_J4", value: "" }
+      const actionScoreJ5 = { type: "MUTATION_SCORE_J5", value: "" }
+      const actionNb = { type: "MUTATION_NBJOUEURS", value: 0 }
+      const actionIdGame = { type: "MUTATION_GAME_ID", value: 0 }
+      const actionWatch = { type: "MUTATION_WATCH_PARTY", value: [] }
+      
+      this.props.dispatch(actionWatch)     
+      this.props.dispatch(actionIdGame)
+      this.props.dispatch(actionNb)
+      this.props.dispatch(actionBtnTurn)
+      this.props.dispatch(actionTurn)
+      this.props.dispatch(actionScore)
+      this.props.dispatch(actionType)
+      this.props.dispatch(actionPreneur)
+      this.props.dispatch(actionPartenaire)
+      this.props.dispatch(actionRoi)
+      this.props.dispatch(actionScoreJ1)
+      this.props.dispatch(actionScoreJ2)
+      this.props.dispatch(actionScoreJ3)
+      this.props.dispatch(actionScoreJ4)
+      this.props.dispatch(actionScoreJ5)
+        this.props.navigation.navigate("Loader"); // works best when the goBack is async
+        return true;
+
     }
 
 
@@ -74,15 +98,15 @@ class FriendsPlayersScreen extends Component {
      */
 
     changePseudo(pseudo, id) {
-        console.log("name pseudo", pseudo.id)
-        console.log("name pseudo", this.props.pseudo2.username)
-        console.log("name pseudo", this.props.pseudo3.username)
-        console.log("name pseudo", this.props.pseudo4.username)
-        console.log("name pseudo", this.props.pseudo5.username)
+        // console.log("name pseudo", pseudo.id)
+        // console.log("name pseudo", this.props.pseudo2.username)
+        // console.log("name pseudo", this.props.pseudo3.username)
+        // console.log("name pseudo", this.props.pseudo4.username)
+        // console.log("name pseudo", this.props.pseudo5.username)
 
 
         if(typeof pseudo == 'string' || pseudo instanceof String){
-            console.log("cest une string", pseudo)
+            // console.log("cest une string", pseudo)
 
             const actionPseudo = { type: `MUTATION_PSEUDO${id}`, value: {username : pseudo} }
             this.props.dispatch(actionPseudo)
@@ -93,7 +117,7 @@ class FriendsPlayersScreen extends Component {
                 this.props.pseudo4 == pseudo ||
                 this.props.pseudo5 == pseudo 
                 ){
-                    alert("Vous ne pouvez pas ajouter deux fois le même ami.")
+                    alert("Tu ne peux pas ajouter deux fois le même ami.")
                 }else{
                     const actionPseudo = { type: `MUTATION_PSEUDO${id}`, value: pseudo }
                     const actionId = { type: `MUTATION_ID${id}`, value: id }
@@ -112,18 +136,32 @@ class FriendsPlayersScreen extends Component {
     changePhoto() {
         ImagePicker.showImagePicker({}, (response) => {
             if (response.didCancel) {
-                console.log('L\'utilisateur a annulé')
+                // console.log('L\'utilisateur a annulé')
             }
             else if (response.error) {
-                console.log('Erreur : ', response.error)
+                // console.log('Erreur : ', response.error)
             }
             else {
-                console.log('Photo : ', response.uri)
+                // console.log('Photo : ', response.uri)
                 let requireSource = { uri: response.uri }
                 const action = { type: `MUTATION_AVATAR${this.props.choosePlayer}`, value: requireSource }
                 this.props.dispatch(action)
             }
         })
+    }
+
+    confirmation(){
+        const actionPseudo1 = { type: `MUTATION_PSEUDO1`, value: this.props.pseudo }
+        const actionImage1 = { type: `MUTATION_AVATAR1`, value: this.props.image}
+        const actionColor1 = { type: `MUTATION_COLOR1`, value: this.props.color}
+
+        this.props.dispatch(actionPseudo1)
+        this.props.dispatch(actionImage1)        
+        this.props.dispatch(actionColor1)
+
+
+
+        this.props.navigation.navigate("Game")
     }
 
     /**
@@ -151,9 +189,9 @@ class FriendsPlayersScreen extends Component {
 
        
         var player = []
-        console.log("test erreur friends", this.props.friends.length)
+        // console.log("test erreur friends", this.props.friends.length)
         if(this.props.friends.length > 0){
-            console.log("test ca passe la")
+            // console.log("test ca passe la")
 
             i = 0
             while ( i < this.props.friends.length ){
@@ -549,7 +587,7 @@ class FriendsPlayersScreen extends Component {
                     {joueur4}
                     {joueur5}
 
-                     <Button block info style={{ margin: 20 }} onPress={() => this.props.navigation.navigate("Game")}>
+                     <Button block info style={{ margin: 20 }} onPress={() => this.confirmation()}>
                      <Label style={{
                         color: "white",
                         fontSize: 17
@@ -565,30 +603,52 @@ class FriendsPlayersScreen extends Component {
 const mapStateToProps = state => {
     return {
         friends: state.toogleFriends.friends,
-        nbJoueur: state.toogleScore.nbJoueur,
-        avatar: state.toogleUser.avatar,
-        avatar2: state.tooglePlayer.avatar2,
-        avatar3: state.tooglePlayer.avatar3,
-        avatar4: state.tooglePlayer.avatar4,
-        avatar5: state.tooglePlayer.avatar5,
+        watchParty: state.toogleParty.watchParty,
+        pseudo1: state.tooglePlayer.pseudo1,
         pseudo2: state.tooglePlayer.pseudo2,
         pseudo3: state.tooglePlayer.pseudo3,
         pseudo4: state.tooglePlayer.pseudo4,
         pseudo5: state.tooglePlayer.pseudo5,
-        id2: state.tooglePlayer.id2,
-        id3: state.tooglePlayer.id3,
-        id4: state.tooglePlayer.id4,
-        id5: state.tooglePlayer.id5,
         color2: state.tooglePlayer.color2,
         color3: state.tooglePlayer.color3,
         color4: state.tooglePlayer.color4,
         color5: state.tooglePlayer.color5,
+        avatar2: state.tooglePlayer.avatar2,
+        avatar3: state.tooglePlayer.avatar3,
+        avatar4: state.tooglePlayer.avatar4,
+        avatar5: state.tooglePlayer.avatar5,
+        turns: state.toogleScore.turns,
+        buttonTurnView: state.toogleScore.buttonTurnView,
+        id: state.toogleScore.id,
+        pseudo: state.toogleUser.pseudo,
+        id1: state.toogleUser.id,
+        id2: state.tooglePlayer.id2,
+        id3: state.tooglePlayer.id3,
+        id4: state.tooglePlayer.id4,
+        id5: state.tooglePlayer.id5,
+        preneur: state.toogleScore.preneur,
+        partenaire: state.toogleScore.partenaire,
+        roi: state.toogleScore.roi,
+        type: state.toogleScore.type,
+        score: state.toogleScore.score,
+        bou: state.toogleScore.bou,
+        victoire: state.toogleScore.victoire,
+        preneurScore: state.toogleScore.preneurScore,
+        partenaireScore: state.toogleScore.partenaireScore,
+        autre_score: state.toogleScore.autre_score,
+        nbJoueur: state.toogleScore.nbJoueur,
+        game_id: state.toogleScore.game_id,
+        choosePlayer: state.tooglePlayer.choosePlayer,
+        verif: state.toogleUser.verif,
+        scoreJ1: state.tooglePlayer.scoreJ1,
+        scoreJ2: state.tooglePlayer.scoreJ2,
+        scoreJ3: state.tooglePlayer.scoreJ3,
+        scoreJ4: state.tooglePlayer.scoreJ4,
+        scoreJ5: state.tooglePlayer.scoreJ5,
+        token: state.toogleUser.token,
         image: state.toogleUser.image,
         pseudo: state.toogleUser.pseudo,
-        color: state.toogleUser.color,
-        verif: state.toogleUser.verif,
-        choosePlayer: state.tooglePlayer.choosePlayer,
-        turns: state.toogleScore.turns
+        color: state.toogleUser.color
 
     }
 }

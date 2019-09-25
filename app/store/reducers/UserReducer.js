@@ -15,47 +15,47 @@ const initialState = {
 AsyncStorage.getItem("color").then(color => {
     if (color) {
         initialState.color = color
-        console.log(color, "color la")
+        // console.log(color, "color la")
     } else {
-        console.log("Pas de color enregistrer", color)
+        // console.log("Pas de color enregistrer", color)
     }
 })
 
 AsyncStorage.getItem("pseudo").then(pseudo => {
     if (pseudo) {
         initialState.pseudo = pseudo
-        console.log(pseudo, "pseudo la")
+        // console.log(pseudo, "pseudo la")
     } else {
-        console.log("Pas de pseudo enregistrer", pseudo)
+        // console.log("Pas de pseudo enregistrer", pseudo)
     }
 })
 
 AsyncStorage.getItem("image").then(image => {
     if (image) {
         initialState.image = parseInt(image)
-        console.log(parseInt(image), "image la")
+        // console.log(parseInt(image), "image la")
     } else {
-        console.log("Pas de image enregistrer", image)
+        // console.log("Pas de image enregistrer", image)
     }
 })
 
 AsyncStorage.getItem("avatar").then(avatar => {
     if (avatar) {
         initialState.avatar = parseInt(avatar)
-        console.log(avatar, "avatar la")
+        // console.log(avatar, "avatar la")
     } else {
-        console.log("Pas de avatar enregistrer", avatar)
+        // console.log("Pas de avatar enregistrer", avatar)
     }
 })
 
 AsyncStorage.getItem("token").then(token => {
     if (token) {
         initialState.token = token
-        console.log(token, "la")
+        // console.log(token, "la")
         //if token then authenticated so go to home
     } else {
-        console.log(AsyncStorage.getItem("token"), "la")
-        console.log("la", token)
+        // console.log(AsyncStorage.getItem("token"), "la")
+        // console.log("la", token)
     }
 })
 /**

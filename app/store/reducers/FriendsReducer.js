@@ -6,7 +6,7 @@ const initialState = {
 * Fonction qui gere les mutations du reducer score
 */
 function toogleFriends(state = initialState, action){
-console.log("toto 1", action)
+// console.log("toto 1", action)
 let nextState
 switch(action.type){
     case 'MUTATION_FRIENDS':

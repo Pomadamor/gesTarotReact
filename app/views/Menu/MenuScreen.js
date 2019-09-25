@@ -32,14 +32,14 @@ class MenuScreen extends Component {
             }).then((response) => response.json())
               .then((responseJson) => {
                   if(responseJson.status == 'error'){
-                      console.log ("ERROR", responseJson.status)
+                      // console.log ("ERROR", responseJson.status)
                       alert('Vérifier votre connexion internet, avant de cliquer sur OK');
                   }
                   else{
-                      console.log("detail response detail party", responseJson)
+                      // console.log("detail response detail party", responseJson)
 
                       if(responseJson["games"].length > 0){
-                        console.log("detail response detail party 1", responseJson)
+                        // console.log("detail response detail party 1", responseJson)
 
                         const actionParty = { type: "MUTATION_PARTY", value: responseJson["games"]}
                         this.props.dispatch(actionParty)
@@ -75,11 +75,11 @@ class MenuScreen extends Component {
       try {
         await AsyncStorage.multiRemove(keys)
       } catch(e) {
-        console.log('echecs suppressions storage')
+        // console.log('echecs suppressions storage')
 
       }
     
-      console.log('Done')
+      // console.log('Done')
      }
     // const actionFriends = { type: "MUTATION_FRIENDS_DELETE", value: [] }
     // this.props.dispatch(actionFriends)
@@ -151,7 +151,7 @@ class MenuScreen extends Component {
             </View>
           </Button>
           <Button bordered light
-            onPress={() => { Linking.openURL('https://google.com') }}
+            onPress={() => { Linking.openURL('https://gestarot-api.lerna.eu/legal') }}
             style={{ flex: 1, alignContent: 'center', height: "90%", marginTop: 10, marginLeft: 10, margin: 10, backgroundColor: 'rgba(52, 52, 52, 0.6)' }} >
             <View style={{ width: "100%", alignItems: "center" }}>
             <Image

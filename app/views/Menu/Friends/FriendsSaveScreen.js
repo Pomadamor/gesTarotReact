@@ -1,19 +1,40 @@
 import React, { Component } from "react";
 import { View, Text, Button } from "native-base";
 import { Alert, Image } from 'react-native';
+import AsyncStorage from "@react-native-community/async-storage";
 
 /**
  * Component permet de gérer l'affichage de la grille des amis.
  */
 
 class FriendsSave extends Component {
+
+  constructor(props) {
+      super(props)
+      this.state = {
+        token1: ""
+    }
+  }
+
+  componentDidMount(){
+    AsyncStorage.getItem("token").then(token => {
+      if (token) {
+          // console.log(token, "la")
+          this.state.token1 = token
+          //if token then authenticated so go to home
+      } else {
+          // console.log(AsyncStorage.getItem("token"), "la")
+          // console.log("la", token)
+      }
+    })
+  }
   render() {
 
     friendsSave = this.props.friendsSave
 
-    console.log("FRIENDS", friendsSave)
-    console.log("FRIENDS 1", friendsSave.username)
-    console.log("FRIENDS 3", this.props.friendsSave.username)
+    // console.log("FRIENDS", friendsSave)
+    // console.log("FRIENDS 1", friendsSave.username)
+    // console.log("FRIENDS 3", this.props.friendsSave.username)
 
     typeFriends = <View style={{ width: "100%", alignItems: "center" }}>
     <Text style={{
@@ -43,7 +64,7 @@ class FriendsSave extends Component {
         <Button bordered light
           onPress={() => Alert.alert(
             'Attention',
-            "Êtes-vous sur de vouloir supprimer cette ami ?",
+            "Êtes-tu sur de vouloir supprimer cette ami ?",
             [
               {
                 text: 'Annuler',
@@ -56,17 +77,17 @@ class FriendsSave extends Component {
                   headers: {
                     Accept: 'application/json',
                     'Content-Type': 'application/json',
-                    'api-token': token
+                    'api-token': this.state.token1
                   },
                 }).then((response) => response.json())
                   .then((responseJson) => {
                     if (responseJson.status == 'error') {
-                      console.log("ERROR", responseJson.status)
+                      // console.log("ERROR", responseJson.status)
                       alert('Vérifier votre connexion internet, avant de cliquer sur OK');
                     }
                     else {
-                      console.log("Party supprimer", responseJson)
-                      this.props.navigation.navigate("Home")
+                      // console.log("friends supprimer", responseJson)
+                      this.props.onPress
                       return responseJson;
                     }
                   })

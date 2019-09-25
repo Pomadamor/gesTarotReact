@@ -6,6 +6,7 @@ import com.facebook.react.ReactRootView;
 import org.devio.rn.splashscreen.SplashScreen;
 import com.swmansion.gesturehandler.react.RNGestureHandlerEnabledRootView;
 import com.google.firebase.FirebaseApp;
+import io.fabric.sdk.android.Fabric;
 import com.google.firebase.messaging.FirebaseMessaging;
 
 import android.os.Bundle;
@@ -16,7 +17,7 @@ public class MainActivity extends ReactActivity {
         SplashScreen.show(this);  // here
         FirebaseApp.initializeApp(this);
         FirebaseMessaging.getInstance().subscribeToTopic("lerna");
-
+        Fabric.with(new Fabric.Builder(this).build());
         super.onCreate(savedInstanceState);
     }
     /**

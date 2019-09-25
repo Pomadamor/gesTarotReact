@@ -29,7 +29,7 @@ class AddFriendScreen extends Component {
 */
 
   async add() {
-    console.log("test add friend 0")
+    // console.log("test add friend 0")
 
     const data = {
         identifiant: this.state.identifiant,
@@ -50,7 +50,7 @@ class AddFriendScreen extends Component {
     }
     else if (Verifier_Numero_Telephone(data.identifiant) == true){
         data.phone = data.identifiant
-      console.log("JUSQU'ICI CA FONCTIONNE", data)
+      // console.log("JUSQU'ICI CA FONCTIONNE", data)
       fetch('https://gestarot-api.lerna.eu/api/logged_user/friends', {
         method: 'POST',
         headers: {
@@ -66,11 +66,11 @@ class AddFriendScreen extends Component {
       }).then((response) => response.json())
         .then((responseJson) => {
           if(responseJson.status == 'error'){
-            console.log ("YOUPIE")
+            // console.log ("YOUPIE")
             alert('Les informations sont incorrectes.');
           }
           else{
-            console.log("TRRRUUUEEE", responseJson)
+            // console.log("TRRRUUUEEE", responseJson)
             this.props.navigation.navigate("Friends");
             return responseJson;
           }
@@ -79,7 +79,7 @@ class AddFriendScreen extends Component {
     else if (checkMail(data.identifiant) == true) {
       data.email = data.identifiant
       
-      console.log("JUSQU'ICI CA FONCTIONNE", data)
+      // console.log("JUSQU'ICI CA FONCTIONNE", data)
 
       const actionFriendsDelete = { type: "MUTATION_FRIENDS_DELETE", value: [] }
       this.props.dispatch(actionFriendsDelete)
@@ -99,7 +99,7 @@ class AddFriendScreen extends Component {
       }).then((response) => response.json())
         .then((responseJson) => {
           if(responseJson.status == 'error'){
-            console.log ("YOUPIE")
+            // console.log ("YOUPIE")
             alert('Les informations sont incorrectes.');
           }
           else{
@@ -113,10 +113,10 @@ class AddFriendScreen extends Component {
               }).then((response) => response.json())
                 .then((responseJson) => {
                     if(responseJson.status == 'error'){
-                        console.log ("ERROR", responseJson.status)
+                        // console.log ("ERROR", responseJson.status)
                     }
                     else{
-                        console.log("detail response friends", responseJson)
+                        // console.log("detail response friends", responseJson)
   
                         if(responseJson["friends"].length > 0){
 
@@ -127,8 +127,8 @@ class AddFriendScreen extends Component {
                     }
                 })
 
-            console.log("TRRRUUUEEE", responseJson)
-            this.props.navigation.navigate("Friends");
+            // console.log("TRRRUUUEEE", responseJson)
+            this.props.navigation.navigate("Home");
             return responseJson;
           }
 

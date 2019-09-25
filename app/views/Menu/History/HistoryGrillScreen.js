@@ -9,21 +9,30 @@ import AsyncStorage from "@react-native-community/async-storage";
 
 
 class HistoryGrill extends Component {
+      constructor (props) {
+        super(props)
+        this.state = {
+          token1: ""
+      }
+    }
 
-    alertChoose(nb){
-      var plop = historyGrill[0]
-      var token1 = ""
+    componentDidMount(){
+      
       AsyncStorage.getItem("token").then(token => {
         if (token) {
-            initialState.token = token
-            console.log(token, "la")
-            token1 = token
+            // console.log(token, "la")
+            this.state.token1 = token
             //if token then authenticated so go to home
         } else {
-            console.log(AsyncStorage.getItem("token"), "la")
-            console.log("la", token)
+            // console.log(AsyncStorage.getItem("token"), "la")
+            // console.log("la", token)
         }
-    })
+      })
+    }
+    alertChoose(nb){
+      // console.log("plop", this.state.token1)
+        var historyGrill = this.props.historyGrill
+
 
         Alert.alert(
             'Historique',
@@ -34,50 +43,24 @@ class HistoryGrill extends Component {
                 onPress: () => console.log('Annulation de la suppression')
             },
             {
-                text: 'Supprimer',
-                onPress: () => 
-                fetch('https://gestarot-api.lerna.eu/api/game/'+plop.game_id, {
-                    method: 'DELETE',
-                    headers: {
-                        Accept: 'application/json',
-                        'Content-Type': 'application/json',
-                        'api-token': token1
-                    },
-                    }).then((response) => response.json())
-                      .then((responseJson) => {
-                          if(responseJson.status == 'error'){
-                              console.log ("ERROR", responseJson.status)
-                              alert('Vérifier votre connexion internet, avant de cliquer sur OK');
-                          }
-                          else{
-                              console.log("Party supprimer", responseJson)
-                              this.props.navigation.navigate("Home")
-                              return responseJson;
-                          }
-                      })
-                },
-            {
                 text: 'Afficher',
                 onPress: () => 
-                fetch('https://gestarot-api.lerna.eu/api/game/'+plop.game_id, {
+                fetch('https://gestarot-api.lerna.eu/api/game/'+historyGrill.game_id, {
             method: 'GET',
             headers: {
                 Accept: 'application/json',
                 'Content-Type': 'application/json',
-                'api-token': token1
+                'api-token': this.state.token1
             },
             }).then((response) => response.json())
               .then((responseJson) => {
                   if(responseJson.status == 'error'){
-                      console.log ("ERROR", responseJson.status)
+                      // console.log ("ERROR", responseJson.status)
                       alert('Vérifier votre connexion internet, avant de cliquer sur OK');
                   }
                   else{
-                      console.log("detail response party unique", responseJson)
-
-                      const actionWatchParty = { type: "MUTATION_WATCH_PARTY", value: responseJson["games"]}
-                      this.props.dispatch(actionWatchParty)
-                      this.props.navigation.navigate("Game")
+                      // console.log("detail response party unique", responseJson)
+                      this.props.onPress(responseJson)
                       return responseJson;
                   }
               })
@@ -103,27 +86,26 @@ class HistoryGrill extends Component {
     */
   render() {
 
-    var plop = historyGrill[0]
-    console.log("test historyGrill", historyGrill)
-    console.log("test historyGrill 1", historyGrill[0])
-    console.log("test historyGrill 2", historyGrill.joueur1)
-    console.log("test historyGrill 3", plop.joueur1)
+     historyGrill = this.props.historyGrill
+    //  // console.log("test historyGrill", historyGrill)
+    // // console.log("test historyGrill 2", historyGrill.Joueur1)
+    // // console.log("test historyGrill 3", historyGrill.nb_joueurs)
 
 
-    if (plop.nb_joueur > 3) {
+    if (historyGrill.nb_joueurs > 3) {
       joueurFour = <Button bordered light
-      onPress={() => this.alertChoose(nb = plop.game_id)}
+      onPress={() => this.alertChoose(nb = historyGrill.game_id)}
         style={{ flex: 1, height: 100, margin: 1, backgroundColor: 'rgba(52, 52, 52, 0.6)' }}
       >
         <View style={{ width: "100%", alignItems: "center" }}>
-          <Image source={plop.joueur4.image} />
+          <Image source={historyGrill.Joueur4.image} />
           <Text style={{
             textAlign: 'center',
             textTransform: 'lowercase',
             color: "white"
           }}
           >
-            {plop.joueur4.username}
+            {historyGrill.Joueur4.username}
           </Text>
         </View>
       </Button>
@@ -131,20 +113,20 @@ class HistoryGrill extends Component {
       joueurFour = <View></View>
     }
 
-    if (plop.nb_joueur > 4) {
+    if (historyGrill.nb_joueurs> 4) {
       joueurFive = <Button bordered light
-      onPress={() => this.alertChoose(nb = plop.game_id)}
+      onPress={() => this.alertChoose(nb = historyGrill.game_id)}
         style={{ flex: 1, height: 100, margin: 1, backgroundColor: 'rgba(52, 52, 52, 0.6)' }}
       >
         <View style={{ width: "100%", alignItems: "center" }}>
-          <Image source={plop.joueur5.image} />
+          <Image source={historyGrill.Joueur5.image} />
           <Text style={{
             textAlign: 'center',
             textTransform: 'lowercase',
             color: "white"
           }}
           >
-            {plop.joueur5.username}
+            {historyGrill.Joueur5.username}
           </Text>
         </View>
       </Button>
@@ -155,50 +137,50 @@ class HistoryGrill extends Component {
     return (
       <View style={{ flexDirection: 'row' }}>
         <Button bordered light
-            onPress={() => this.alertChoose(nb = plop.game_id)}
-          style={{ flex: 1, height: 100, margin: 1, backgroundColor: 'rgba(52, 52, 52, 0.6)' }}
+            onPress={() => this.alertChoose(nb = historyGrill.game_id)}
+          style={{  height: 100, margin: 1, backgroundColor: 'rgba(52, 52, 52, 0.6)' }}
         >
-          <View style={{ width: "100%", alignItems: "center" }}>
-            <Text style={{ color: "white" }}>Nom</Text>
-            <Text style={{ color: "white" }}>Date</Text>
+          <View style={{ width: 50, alignItems: "center" }}>
+            <Text style={{ color: "white" }}>Admin</Text>
+            <Text style={{ color: "white" }}>{historyGrill.Joueur1.username}</Text>
           </View>
         </Button>
         <Button bordered light
-            onPress={() => this.alertChoose(nb = plop.game_id)}
+            onPress={() => this.alertChoose(nb = historyGrill.game_id)}
           style={{ flex: 1, height: 100, margin: 1, backgroundColor: 'rgba(52, 52, 52, 0.6)' }}
         >
           <View style={{ width: "100%", alignItems: "center" }}>
-            <Image source={plop.joueur1.image} />
+            <Image source={historyGrill.Joueur1.image} />
             <Text style={{
               textAlign: 'center',
               textTransform: 'lowercase',
               color: "white"
-            }}>{plop.joueur1.username}
+            }}>{historyGrill.Joueur1.username}
             </Text>
           </View>
         </Button>
         <Button bordered light
-            onPress={() => this.alertChoose(nb = plop.game_id)}
+            onPress={() => this.alertChoose(nb = historyGrill.game_id)}
             style={{ flex: 1, height: 100, margin: 1, backgroundColor: 'rgba(52, 52, 52, 0.6)' }} >
           <View style={{ width: "100%", alignItems: "center" }}>
-            <Image source={plop.joueur2.image} />
+            <Image source={historyGrill.Joueur2.image} />
             <Text style={{
               textAlign: 'center',
               textTransform: 'lowercase',
               color: "white"
-            }}>{plop.joueur2.username}</Text>
+            }}>{historyGrill.Joueur2.username}</Text>
           </View>
         </Button>
         <Button bordered light
-             onPress={() => this.alertChoose(nb = plop.game_id)}
+             onPress={() => this.alertChoose(nb = historyGrill.game_id)}
           style={{ flex: 1, height: 100, margin: 1, backgroundColor: 'rgba(52, 52, 52, 0.6)' }} >
           <View style={{ width: "100%", alignItems: "center" }}>
-            <Image source={plop.joueur3.image} />
+            <Image source={historyGrill.Joueur3.image} />
             <Text style={{
               textAlign: 'center',
               textTransform: 'lowercase',
               color: "white"
-            }}>{plop.joueur3.username}</Text>
+            }}>{historyGrill.Joueur3.username}</Text>
           </View>
         </Button>
         {joueurFour}

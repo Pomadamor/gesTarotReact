@@ -14,6 +14,7 @@ import SplashScreen from "react-native-splash-screen"
 
 export default class App extends React.Component{
   componentDidMount(){
+    console.disableYellowBox = true;
     SplashScreen.hide()
   }
 

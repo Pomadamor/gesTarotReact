@@ -14,12 +14,17 @@ class FriendsScreen extends Component {
   constructor(props) {
     super(props)
     this.state = {
-        friends: this.props.friends,
+      friends: this.props.friends,
     }
+    this.navigate = this.navigate.bind(this);
   }
+
 
   componentDidMount() {
     BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
+    if(this.props.friends.length == 0){
+      alert("Tu n'as pas encore d'amis, appuis sur le plus pour en ajouter.")
+    }
   }
 
   componentWillUnmount() {
@@ -31,10 +36,13 @@ class FriendsScreen extends Component {
     return true;
   }
   
+  navigate(){
+    this.props.navigation.navigate("Home")
+  }
 
   render() {
       friendsSave = this.state.friends
-      console.log("test friends 001", friendsSave.username)
+      // console.log("test friends 001", friendsSave.username)
     return (
       <View style={{
         flex: 1,
@@ -44,7 +52,7 @@ class FriendsScreen extends Component {
         <FlatList
           data={friendsSave}
           keyExtractor={(item) => item.id}
-          renderItem={({ item }) => <FriendsSave friendsSave={item} />}
+          renderItem={({ item }) => <FriendsSave friendsSave={item} onPress={this.navigate} />}
         />
         </View>
         <View style={{ flex: 0.1, flexDirection: 'row' }}>

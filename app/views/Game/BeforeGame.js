@@ -24,9 +24,9 @@ class BeforeGame extends Component {
     */
 
   render(){
-      console.log("TURNBERFORE",this.props.turnBefore)
-      console.log("TURNBERFORE 1",this.props.turnBefore.nbJoueur)
-      console.log("TURNBERFORE 1",turnBefore.nbJoueur)
+      // console.log("TURNBERFORE",this.props.turnBefore)
+      // console.log("TURNBERFORE 1",this.props.turnBefore.nbJoueur)
+      // console.log("TURNBERFORE 1",turnBefore.nbJoueur)
 
       turnBefore = this.props.turnBefore
 

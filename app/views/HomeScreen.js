@@ -27,7 +27,6 @@ class HomeScreen extends Component {
 
   componentWillMount(){
     const token = this.props.token
-    if (this.props.pseudo == "Joueur" || this.props.pseudo == undefined ) {
 
     fetch('https://gestarot-api.lerna.eu/api/logged_user', {
       method: 'GET',
@@ -39,30 +38,30 @@ class HomeScreen extends Component {
       }).then((response) => response.json())
           .then((responseJson) => {
               if(responseJson.status == 'error'){
-                  console.log ("ERROR", responseJson.status)
+                  // console.log ("ERROR", responseJson.status)
                   // this.props.navigation.navigate("Choose");
               }
               else{
                 var user = responseJson["user"]
-                console.log("detail user", user)
-                console.log("detail user 1", user.avatar)
+                // console.log("detail user", user)
+                // console.log("detail user 1", user.avatar)
 
 
                 if(user.avatar == null){
 
-                  console.log("detail user 2")
+                  // console.log("detail user 2")
 
                   const avatar = { type: "MUTATION_AVATAR", value: user.image}
                   this.props.dispatch(avatar)
 
-                  console.log("detail user 3", this.props.avatar)
+                  // console.log("detail user 3", this.props.avatar)
                 }else{
 
-                  console.log("detail user 3")
+                  // console.log("detail user 3")
                   const avatar = { type: "MUTATION_AVATAR", value: user.avatar }
                   this.props.dispatch(avatar)
                 }
-                  console.log("detail response user", user)
+                  // console.log("detail response user", user)
                   AsyncStorage.setItem("avatar", parseInt(user.image))
                   AsyncStorage.setItem("color", user.color)
                   AsyncStorage.setItem("pseudo", user.username)
@@ -86,7 +85,6 @@ class HomeScreen extends Component {
                   return responseJson;
               }
           })
-        }
 
         fetch('https://gestarot-api.lerna.eu/api/logged_user/friends', {
             method: 'GET',
@@ -98,10 +96,10 @@ class HomeScreen extends Component {
             }).then((response) => response.json())
               .then((responseJson) => {
                   if(responseJson.status == 'error'){
-                      console.log ("ERROR", responseJson.status)
+                      // console.log ("ERROR", responseJson.status)
                   }
                   else{
-                      console.log("detail response friends", responseJson)
+                      // console.log("detail response friends", responseJson)
 
                       if(responseJson["friends"].length > 0){
                         const actionFriends = { type: "MUTATION_FRIENDS", value: responseJson["friends"]}
@@ -110,7 +108,7 @@ class HomeScreen extends Component {
                       return responseJson;
                   }
               })
-              console.log("test home 002", this.props.friends)
+              // console.log("test home 002", this.props.friends)
     }
   /**
 * Les trois fonctions suivante permette de gérer le retour du clavier
@@ -134,7 +132,7 @@ class HomeScreen extends Component {
 */
 
   render() {
-    console.log("test avatar 1 ",this.props.avatar)
+    // console.log("test avatar 1 ",this.props.avatar)
     
 
     return (
@@ -145,7 +143,7 @@ class HomeScreen extends Component {
       }}>
         <View style={{ height: 100 }}>
           <View style={{ flex: 1, flexDirection: 'row', marginTop: 5, marginLeft: 5 }}>
-            <View
+            <Button
               style={{
                 flex: 2,
                 height: 70,
@@ -155,9 +153,8 @@ class HomeScreen extends Component {
             >
               <Image
                 onPress={() => this.props.navigation.navigate("User")}
-                source={this.props.avatar} style={{ height: 60, backgroundColor:this.props.color, width: 60, marginTop: 5, marginLeft: 5, marginRight: 5 }} />
+                source={this.props.avatar} style={{ height: 60, backgroundColor:this.props.color, width: 60, marginLeft: 5 }} />
               <View style={{
-                margin: 10,
                 fontSize: 17,
                 height: 100,
                 width: 100
@@ -165,6 +162,7 @@ class HomeScreen extends Component {
                 <Text
                   onPress={() => this.props.navigation.navigate("User")}
                   style={{
+                    marginTop:25,
                     fontSize: 17,
                     color: "white",
                     fontWeight: 'bold'
@@ -176,7 +174,7 @@ class HomeScreen extends Component {
                     color: "white",
                   }}>Version Beta</Text>
               </View>
-            </View>
+            </Button>
             <View style={{ flex: 1, height: 50 }} />
             <View style={{ flex: 0.5, height: 50 }}>
               <Button rounded light

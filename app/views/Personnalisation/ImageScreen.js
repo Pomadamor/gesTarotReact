@@ -16,7 +16,7 @@ class ImageScreen extends Component {
 */
 
   btnChoose(logo) {
-    console.log("logo",logo)
+    // console.log("logo",logo)
     const action = { type: "MUTATION_IMAGE", value: logo }
     const actionAvatar = { type: "MUTATION_AVATAR", value: logo }
 
@@ -51,7 +51,7 @@ class ImageScreen extends Component {
           <Button bordered light
             onPress={() => Alert.alert(
             "Choix de l'image",
-            "Êtes-vous sur de vouloir choisir le mouton comme avatar ?",
+            "Êtes-tu sur de vouloir choisir le mouton comme avatar ?",
             [
                 {
                 text: 'Non',
@@ -79,7 +79,7 @@ class ImageScreen extends Component {
           <Button bordered light 
             onPress={() => Alert.alert(
                 "Choix de l'image",
-                "Êtes-vous sur de vouloir choisir le bébé comme avatar ?",
+                "Êtes-tu sur de vouloir choisir le bébé comme avatar ?",
                 [
                     {
                     text: 'Non',
@@ -109,7 +109,7 @@ class ImageScreen extends Component {
           <Button bordered light
             onPress={() => Alert.alert(
                 "Choix de l'image",
-                "Êtes-vous sur de vouloir choisir le chat comme avatar ?",
+                "Êtes-tu sur de vouloir choisir le chat comme avatar ?",
                 [
                     {
                     text: 'Non',
@@ -136,11 +136,11 @@ class ImageScreen extends Component {
           <Button bordered light
             onPress={() => Alert.alert(
                 "Choix de l'image",
-                "Êtes-vous sur de vouloir choisir le chien comme avatar ?",
+                "Êtes-tu sur de vouloir choisir le chien comme avatar ?",
                 [
                     {
                     text: 'Non',
-                    onPress: () => console.log('Ask me later pressed')
+                    onPress: () =>  console.log('Ask me later pressed')
                     },
                     {
                     text: 'Oui',
@@ -166,7 +166,7 @@ class ImageScreen extends Component {
           <Button bordered light
             onPress={() => Alert.alert(
                 "Choix de l'image",
-                "Êtes-vous sur de vouloir choisir le diable comme avatar ?",
+                "Êtes-tu sur de vouloir choisir le diable comme avatar ?",
                 [
                     {
                     text: 'Non',
@@ -193,7 +193,7 @@ class ImageScreen extends Component {
           <Button bordered light
             onPress={() => Alert.alert(
                 "Choix de l'image",
-                "Êtes-vous sur de vouloir choisir le bonhomme comme avatar ?",
+                "Êtes-tu sur de vouloir choisir le bonhomme comme avatar ?",
                 [
                     {
                     text: 'Non',
@@ -224,7 +224,7 @@ class ImageScreen extends Component {
           <Button bordered light 
             onPress={() => Alert.alert(
                 "Choix de l'image",
-                "Êtes-vous sur de vouloir choisir le cochon comme avatar ?",
+                "Êtes-tu sur de vouloir choisir le cochon comme avatar ?",
                 [
                     {
                     text: 'Non',
@@ -251,11 +251,11 @@ class ImageScreen extends Component {
           <Button bordered light
             onPress={() => Alert.alert(
                 "Choix de l'image",
-                "Êtes-vous sur de vouloir choisir le pirate comme avatar ?",
+                "Êtes-tu sur de vouloir choisir le pirate comme avatar ?",
                 [
                     {
                     text: 'Non',
-                    onPress: () => console.log('Ask me later pressed')
+                    onPress: () =>  console.log('Ask me later pressed')
                     },
                     {
                     text: 'Oui',

@@ -88,12 +88,12 @@ class InitGame extends Component {
           style={{ flex: 1, height: 100, margin: 1, backgroundColor: 'rgba(52, 52, 52, 0.6)' }}
         >
           <View style={{ width: "100%", alignItems: "center" }}>
-            <Image source={this.props.avatar} />
+            <Image source={this.props.avatar1} />
             <Text style={{
               textAlign: 'center',
               textTransform: 'lowercase',
               color: "white"
-            }}>{this.props.pseudo}
+            }}>{this.props.pseudo1}
             </Text>
           </View>
         </Button>
@@ -131,12 +131,12 @@ const mapStateToProps = state => {
   return {
     joueurs: state.toogleScore.joueurs,
     nbJoueur: state.toogleScore.nbJoueur,
-    avatar: state.toogleUser.avatar,
+    avatar1: state.tooglePlayer.avatar1,
     avatar2: state.tooglePlayer.avatar2,
     avatar3: state.tooglePlayer.avatar3,
     avatar4: state.tooglePlayer.avatar4,
     avatar5: state.tooglePlayer.avatar5,
-    pseudo: state.toogleUser.pseudo,
+    pseudo1: state.tooglePlayer.pseudo1,
     pseudo5: state.tooglePlayer.pseudo5,
     pseudo2: state.tooglePlayer.pseudo2,
     pseudo3: state.tooglePlayer.pseudo3,

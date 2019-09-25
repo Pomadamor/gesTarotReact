@@ -36,15 +36,15 @@ export function CalculScore(datas){
         "Joueur 4" : datas.scoreJ4,
         "Joueur 5" : datas.scoreJ5
     }
-    console.log ("test type", datas.type)
+    // console.log ("test type", datas.type)
 
     if(datas.score > 0){
 
-        console.log("datas.score " + datas.score)
-        console.log("valueBou " + valueBou)
-        console.log("valueBou test" + datas.bou)
+        // console.log("datas.score " + datas.score)
+        // console.log("valueBou " + valueBou)
+        // console.log("valueBou test" + datas.bou)
 
-        console.log("ValuePrise " + valuePrise)
+        // console.log("ValuePrise " + valuePrise)
 
         if(datas.score >= valueBou){
             const AUTRES = {
@@ -84,6 +84,6 @@ export function CalculScore(datas){
             )
         }
     }
-    console.log("test y",result)
+    // console.log("test y",result)
     return result
 }

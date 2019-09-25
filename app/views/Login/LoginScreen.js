@@ -55,7 +55,7 @@ class LoginScreen extends Component {
         data.email = this.state.identifiant
       }
       
-      console.log("JUSQU'ICI CA FONCTIONNE", data)
+      // console.log("JUSQU'ICI CA FONCTIONNE", data)
       fetch('https://gestarot-api.lerna.eu/api/user/login', {
         method: 'POST',
         headers: {
@@ -70,11 +70,11 @@ class LoginScreen extends Component {
       }).then((response) => response.json())
         .then((responseJson) => {
           if(responseJson.status == 'error'){
-            console.log ("YOUPIE")
+            // console.log ("YOUPIE")
             alert('Votre identifiant ou votre mot de passe est incorrect.');
           }
           else{
-            console.log("TRRRUUUEEE", responseJson)
+            // console.log("TRRRUUUEEE", responseJson)
             const id = { type: "MUTATION_ID", value: responseJson.id }
             // const pseudo = { type: "MUTATION_PSEUDO", value: responseJson.username }
             const email = { type: "MUTATION_EMAIL", value: responseJson.email }
@@ -87,10 +87,10 @@ class LoginScreen extends Component {
             // this.props.dispatch(pseudo)
             this.props.dispatch(phone)
             this.props.dispatch(api_token)
-            console.log(responseJson.api_token)
+            // console.log(responseJson.api_token)
   
             const token = responseJson.api_token;
-            console.log(token)
+            // console.log(token)
   
             AsyncStorage.setItem("token", token)
             this.props.navigation.navigate("Loader");
@@ -101,7 +101,7 @@ class LoginScreen extends Component {
     else if (checkMail(data.identifiant) == true) {
       data.email = data.identifiant
       
-      console.log("JUSQU'ICI CA FONCTIONNE", data)
+      // console.log("JUSQU'ICI CA FONCTIONNE", data)
       fetch('https://gestarot-api.lerna.eu/api/user/login', {
         method: 'POST',
         headers: {
@@ -116,7 +116,7 @@ class LoginScreen extends Component {
       }).then((response) => response.json())
         .then((responseJson) => {
           if(responseJson.status == 'error'){
-            console.log ("YOUPIE")
+            // console.log ("YOUPIE")
             alert('Votre identifiant ou votre mot de passe est incorrect.');
           }
           else{
@@ -128,7 +128,7 @@ class LoginScreen extends Component {
 
             AsyncStorage.setItem("token", token)
             
-            console.log("TRRRUUUEEE", responseJson)
+            // console.log("TRRRUUUEEE", responseJson)
             const id = { type: "MUTATION_ID", value: responseJson.id }
             const email = { type: "MUTATION_EMAIL", value: responseJson.email }
             const phone = { type: "MUTATION_PHONE", value: responseJson.phone }

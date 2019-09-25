@@ -45,7 +45,7 @@ class GrillScoreScreen extends Component {
         if(this.state.score >90 || this.state.score < 1){
             alert("Attention, votre score ne peut être correct.")
         }else{
-            console.log("this.state.bou", this.state.bou)
+            // console.log("this.state.bou", this.state.bou)
 
             const actionScore = { type: "MUTATION_SCORE", value: this.state.score }
             const actionBou = { type: "MUTATION_BOU", value: this.state.bou }

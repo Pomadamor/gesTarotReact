@@ -34,7 +34,7 @@ class LiveGame extends Component {
 
   render(){
 
-    console.log("----------------", this.props.scoreJ1)
+    // console.log("----------------", this.props.scoreJ1)
 
       if(this.props.nbJoueur>3){
         joueurFour = <Button bordered light 
