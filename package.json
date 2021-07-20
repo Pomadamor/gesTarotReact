@@ -12,7 +12,7 @@
     "@react-native-community/segmented-control": "^1.0.2",
     "native-base": "^2.12.1",
     "react": "16.8.3",
-    "react-native": "0.59.8",
+    "react-native": "0.62.3",
     "react-native-app-intro-slider": "^3.0.0",
     "react-native-ble-manager": "^6.6.8",
     "react-native-cli": "^2.0.1",
